@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EFF072881C8939F000150FA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF072871C8939F000150FA2 /* main.m */; };
+		EFF0728B1C8939F000150FA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF0728A1C8939F000150FA2 /* AppDelegate.m */; };
+		EFF0728E1C8939F000150FA2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF0728D1C8939F000150FA2 /* ViewController.m */; };
+		EFF072911C8939F000150FA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFF0728F1C8939F000150FA2 /* Main.storyboard */; };
+		EFF072931C8939F000150FA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFF072921C8939F000150FA2 /* Assets.xcassets */; };
+		EFF072961C8939F000150FA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFF072941C8939F000150FA2 /* LaunchScreen.storyboard */; };
+		EFF072A11C8939F000150FA2 /* loveshareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF072A01C8939F000150FA2 /* loveshareTests.m */; };
+		EFF072AC1C8939F000150FA2 /* loveshareUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF072AB1C8939F000150FA2 /* loveshareUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EFF0729D1C8939F000150FA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFF0727B1C8939F000150FA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EFF072821C8939F000150FA2;
+			remoteInfo = loveshare;
+		};
+		EFF072A81C8939F000150FA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFF0727B1C8939F000150FA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EFF072821C8939F000150FA2;
+			remoteInfo = loveshare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EFF072831C8939F000150FA2 /* loveshare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loveshare.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFF072871C8939F000150FA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EFF072891C8939F000150FA2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EFF0728A1C8939F000150FA2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EFF0728C1C8939F000150FA2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EFF0728D1C8939F000150FA2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EFF072901C8939F000150FA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EFF072921C8939F000150FA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EFF072951C8939F000150FA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EFF072971C8939F000150FA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFF0729C1C8939F000150FA2 /* loveshareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = loveshareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFF072A01C8939F000150FA2 /* loveshareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = loveshareTests.m; sourceTree = "<group>"; };
+		EFF072A21C8939F000150FA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFF072A71C8939F000150FA2 /* loveshareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = loveshareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFF072AB1C8939F000150FA2 /* loveshareUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = loveshareUITests.m; sourceTree = "<group>"; };
+		EFF072AD1C8939F000150FA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EFF072801C8939F000150FA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFF072991C8939F000150FA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFF072A41C8939F000150FA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EFF0727A1C8939F000150FA2 = {
+			isa = PBXGroup;
+			children = (
+				EFF072851C8939F000150FA2 /* loveshare */,
+				EFF0729F1C8939F000150FA2 /* loveshareTests */,
+				EFF072AA1C8939F000150FA2 /* loveshareUITests */,
+				EFF072841C8939F000150FA2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EFF072841C8939F000150FA2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EFF072831C8939F000150FA2 /* loveshare.app */,
+				EFF0729C1C8939F000150FA2 /* loveshareTests.xctest */,
+				EFF072A71C8939F000150FA2 /* loveshareUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EFF072851C8939F000150FA2 /* loveshare */ = {
+			isa = PBXGroup;
+			children = (
+				EFF072891C8939F000150FA2 /* AppDelegate.h */,
+				EFF0728A1C8939F000150FA2 /* AppDelegate.m */,
+				EFF0728C1C8939F000150FA2 /* ViewController.h */,
+				EFF0728D1C8939F000150FA2 /* ViewController.m */,
+				EFF0728F1C8939F000150FA2 /* Main.storyboard */,
+				EFF072921C8939F000150FA2 /* Assets.xcassets */,
+				EFF072941C8939F000150FA2 /* LaunchScreen.storyboard */,
+				EFF072971C8939F000150FA2 /* Info.plist */,
+				EFF072861C8939F000150FA2 /* Supporting Files */,
+			);
+			path = loveshare;
+			sourceTree = "<group>";
+		};
+		EFF072861C8939F000150FA2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EFF072871C8939F000150FA2 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EFF0729F1C8939F000150FA2 /* loveshareTests */ = {
+			isa = PBXGroup;
+			children = (
+				EFF072A01C8939F000150FA2 /* loveshareTests.m */,
+				EFF072A21C8939F000150FA2 /* Info.plist */,
+			);
+			path = loveshareTests;
+			sourceTree = "<group>";
+		};
+		EFF072AA1C8939F000150FA2 /* loveshareUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EFF072AB1C8939F000150FA2 /* loveshareUITests.m */,
+				EFF072AD1C8939F000150FA2 /* Info.plist */,
+			);
+			path = loveshareUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EFF072821C8939F000150FA2 /* loveshare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFF072B01C8939F000150FA2 /* Build configuration list for PBXNativeTarget "loveshare" */;
+			buildPhases = (
+				EFF0727F1C8939F000150FA2 /* Sources */,
+				EFF072801C8939F000150FA2 /* Frameworks */,
+				EFF072811C8939F000150FA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = loveshare;
+			productName = loveshare;
+			productReference = EFF072831C8939F000150FA2 /* loveshare.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EFF0729B1C8939F000150FA2 /* loveshareTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFF072B31C8939F000150FA2 /* Build configuration list for PBXNativeTarget "loveshareTests" */;
+			buildPhases = (
+				EFF072981C8939F000150FA2 /* Sources */,
+				EFF072991C8939F000150FA2 /* Frameworks */,
+				EFF0729A1C8939F000150FA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EFF0729E1C8939F000150FA2 /* PBXTargetDependency */,
+			);
+			name = loveshareTests;
+			productName = loveshareTests;
+			productReference = EFF0729C1C8939F000150FA2 /* loveshareTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EFF072A61C8939F000150FA2 /* loveshareUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFF072B61C8939F000150FA2 /* Build configuration list for PBXNativeTarget "loveshareUITests" */;
+			buildPhases = (
+				EFF072A31C8939F000150FA2 /* Sources */,
+				EFF072A41C8939F000150FA2 /* Frameworks */,
+				EFF072A51C8939F000150FA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EFF072A91C8939F000150FA2 /* PBXTargetDependency */,
+			);
+			name = loveshareUITests;
+			productName = loveshareUITests;
+			productReference = EFF072A71C8939F000150FA2 /* loveshareUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EFF0727B1C8939F000150FA2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = HT;
+				TargetAttributes = {
+					EFF072821C8939F000150FA2 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					EFF0729B1C8939F000150FA2 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = EFF072821C8939F000150FA2;
+					};
+					EFF072A61C8939F000150FA2 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = EFF072821C8939F000150FA2;
+					};
+				};
+			};
+			buildConfigurationList = EFF0727E1C8939F000150FA2 /* Build configuration list for PBXProject "loveshare" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EFF0727A1C8939F000150FA2;
+			productRefGroup = EFF072841C8939F000150FA2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EFF072821C8939F000150FA2 /* loveshare */,
+				EFF0729B1C8939F000150FA2 /* loveshareTests */,
+				EFF072A61C8939F000150FA2 /* loveshareUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EFF072811C8939F000150FA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFF072961C8939F000150FA2 /* LaunchScreen.storyboard in Resources */,
+				EFF072931C8939F000150FA2 /* Assets.xcassets in Resources */,
+				EFF072911C8939F000150FA2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFF0729A1C8939F000150FA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFF072A51C8939F000150FA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EFF0727F1C8939F000150FA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFF0728E1C8939F000150FA2 /* ViewController.m in Sources */,
+				EFF0728B1C8939F000150FA2 /* AppDelegate.m in Sources */,
+				EFF072881C8939F000150FA2 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFF072981C8939F000150FA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFF072A11C8939F000150FA2 /* loveshareTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFF072A31C8939F000150FA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFF072AC1C8939F000150FA2 /* loveshareUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EFF0729E1C8939F000150FA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EFF072821C8939F000150FA2 /* loveshare */;
+			targetProxy = EFF0729D1C8939F000150FA2 /* PBXContainerItemProxy */;
+		};
+		EFF072A91C8939F000150FA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EFF072821C8939F000150FA2 /* loveshare */;
+			targetProxy = EFF072A81C8939F000150FA2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EFF0728F1C8939F000150FA2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EFF072901C8939F000150FA2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EFF072941C8939F000150FA2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EFF072951C8939F000150FA2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EFF072AE1C8939F000150FA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EFF072AF1C8939F000150FA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EFF072B11C8939F000150FA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = loveshare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EFF072B21C8939F000150FA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = loveshare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EFF072B41C8939F000150FA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = loveshareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/loveshare.app/loveshare";
+			};
+			name = Debug;
+		};
+		EFF072B51C8939F000150FA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = loveshareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/loveshare.app/loveshare";
+			};
+			name = Release;
+		};
+		EFF072B71C8939F000150FA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = loveshareUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshareUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = loveshare;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		EFF072B81C8939F000150FA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = loveshareUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshareUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = loveshare;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EFF0727E1C8939F000150FA2 /* Build configuration list for PBXProject "loveshare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFF072AE1C8939F000150FA2 /* Debug */,
+				EFF072AF1C8939F000150FA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EFF072B01C8939F000150FA2 /* Build configuration list for PBXNativeTarget "loveshare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFF072B11C8939F000150FA2 /* Debug */,
+				EFF072B21C8939F000150FA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EFF072B31C8939F000150FA2 /* Build configuration list for PBXNativeTarget "loveshareTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFF072B41C8939F000150FA2 /* Debug */,
+				EFF072B51C8939F000150FA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EFF072B61C8939F000150FA2 /* Build configuration list for PBXNativeTarget "loveshareUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFF072B71C8939F000150FA2 /* Debug */,
+				EFF072B81C8939F000150FA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EFF0727B1C8939F000150FA2 /* Project object */;
+}
