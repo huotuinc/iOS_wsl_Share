@@ -129,19 +129,7 @@
     if ([model.loginStatus integerValue]) {
         NSMutableDictionary * parame = [NSMutableDictionary dictionary];
         parame[@"loginCode"] = usermodel.loginCode;
-        
-        
-        
-//        UserModel * user = [UserModel mj_objectWithKeyValues:dict[@"resultData"][@"userData"]];
-//        [UserLoginTool LoginModelWriteToShaHe:user andFileName:RegistUserDate];
-//        NSMutableDictionary * dc = [NSMutableDictionary dictionary];
-//        dc[@"loginCode"] = user.loginCode;
-//        dc[@"unionId"] = user.unionId;
-//        //获取商城用户列表
-//        [UserLoginTool loginRequestGet:@"GetUserList" parame:dc success:^(id json) {
-//            LWLog(@"%@",json);
-//        } failure:nil];
-        
+
         //获取支付参数
         [UserLoginTool loginRequestGet:@"PayConfig" parame:parame success:^(id json) {
             LWLog(@"%@",json);
