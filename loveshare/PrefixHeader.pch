@@ -1,0 +1,129 @@
+//
+//  PrefixHeader.pch
+//  loveshare
+//
+//  Created by lhb on 16/3/4.
+//  Copyright © 2016年 HT. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "NSDictionary+EXTERN.h"
+#import "MD5Encryption.h"
+#import "UserLoginTool.h"
+#import <MJExtension.h>
+#import <UIView+BlocksKit.h>
+#import "AFNetworking.h"
+#import "InitModel.h"
+#import "WXApi.h"
+#import "AccountLoginViewController.h"
+#import "LWNavigationController.h"
+#import "MBProgressHUD+MJ.h"
+#import "UserModel.h"
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+//腾讯开放平台（对应QQ和QQ空间）SDK头文件
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import "LeftOfRootViewController.h"
+#import "MMRootViewController.h"
+#import "WeiQAuthModel.h"
+#import "LoginViewController.h"
+#import "WeiXinBackViewController.h"
+#import <UIImageView+WebCache.h>
+#import "NSString+EXTERN.h"
+#import "OptionModel.h"
+#import "HomeCell.h"
+#import "HomeViewController.h"
+#import "NewTaskDataModel.h"
+#import "TaskGrouoModel.h"
+#import "NewShareModel.h"
+#import "TaskGrouoModel.h"
+#import "PersonAccountViewController.h"
+#import "JiFenToMallController.h"
+#import "PersonMessageTableViewController.h"
+#import "MasterAndTudiViewController.h"
+#import "MoreSetTableViewController.h"
+#import "ViewController.h"
+#import "TodayForesController.h"
+#import <UIView+BlocksKit.h>
+#import "PayModel.h"
+#import "HomeListViewController.h"
+#import "payRequsestHandler.h"
+#import "NSDictionary+HuoBanMallSign.h"
+#import "BindDIngViewController.h"
+#import "ChangePasswdViewController.h"
+#import "TudiTableViewCell.h"
+#import "DownTudiTableViewCell.h"
+#import "MallUser.h"
+#import "PushWebViewController.h"
+#import <MJRefresh.h>
+#import "VipAccountViewController.h"
+#import "JiTuan.h"
+#import "EnterpriseTableViewController.h"
+#import "JiTuanModel.h"
+#import "DepartmentViewController.h"
+#import "PersonViewController.h"
+#import "TodayForesController.h"
+
+
+//luohaibo 万事利到商城
+#define HuoBanMallBuyAppId @"huotuacf89c9231848c9f49"
+#define HuoBanMallBuyAppSecrect @"0ad8abe244331aacf89c9231848c9f49"
+
+
+/**屏幕高度*/
+#define ScreenHeight [[UIScreen mainScreen] bounds].size.height
+/**屏幕宽度*/
+#define ScreenWidth [[UIScreen mainScreen] bounds].size.width
+
+/**应用版本号*/
+#define AppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+
+#define MainUrl @"http://192.168.1.6:8050/api.ashx"
+
+/**平台*/
+#define OPERATION_parame @"FH2016APP"
+/**应用版本号*/
+#define AppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+/**设备唯一号*/
+#define  DeviceNo ([[UIDevice currentDevice].identifierForVendor UUIDString])
+
+
+
+#define DEBUG 1
+
+#ifdef DEBUG
+#define LWLog(...) NSLog(__VA_ARGS__)
+#else
+#define LWLog(...)
+#endif
+
+
+//
+
+#define WslShareSdkAppId @"dc6acbc29fe8"
+
+
+#define WxAppID @"wx369cdeb338051de5"
+#define WxAppSecret @"0dcbc62b9a4724e89097bb00a0bd0ae2"
+
+#define Sina @"56985861"  //wb56985861
+#define SinaKey @"a2cf67a9f6666f09dfa4c69202ebfabb"
+#define SinaredirectUri @"www.baidu.com"
+#define QQ   @"1105113260"  //QQ41DEB0AC
+#define QQKET @"HLV7bKucOehpTff8"
+//
+
+//沙盒路径
+#define InitModelCaches @"InitModelCaches"   //初始化数据保存的文件名
+#define RegistUserDate @"RegistUserDate"     //注册后用户返回的数据
+
+#define PayTypeflat @"PayTypeflat"  //支付数据
+#define MallUesrList @"MallUesrList"
+
+#define ChoneMallAccount @"ChoneMallAccount"  //商城特殊数据存储
+#define PhoneLoginunionid @"PhoneLoginunionid" //手机登录unid
+#define WebSit @"WebSit"
+#endif /* PrefixHeader_pch */

@@ -7,39 +7,168 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<WXApiDelegate>
 
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     // Override point for customization after application launch.
+   InitModel * initModel = [self AppInit:application];
+    if (initModel) {
+        if (![initModel.loginStatus intValue]) {
+            [self setUp:initModel];
+        }else{
+           [self SetupLoginIn];
+        }
+    }else{
+        [self setUp:initModel];
+    }
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+
+
+/**
+ *  1、程序启动控制器的选择
+ *
+ *  @param model <#model description#>
+ */
+- (void)setUp:(InitModel *) model{
+    [UserLoginTool LoginModelWriteToShaHe:model andFileName:InitModelCaches];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window makeKeyAndVisible];
+    UIStoryboard* story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    ViewController * vc = [story instantiateViewControllerWithIdentifier:@"ViewController"];
+    self.window.rootViewController = vc;
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
+/**
+ *  2、程序启动控制器的选择
+ */
+- (void)SetupLoginIn{
+    MMRootViewController * root = [[MMRootViewController alloc] init];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window makeKeyAndVisible];
+    self.window.rootViewController = root;
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+
+/**
+ *  初始化接口
+ *
+ *  @param application <#application description#>
+ *
+ *  @return <#return value description#>
+ */
+- (InitModel *)AppInit:(UIApplication *)application{
+
+    [ShareSDK registerApp:WslShareSdkAppId
+     
+          activePlatforms:@[
+                            @(SSDKPlatformTypeSinaWeibo),
+                            @(SSDKPlatformTypeWechat),
+                            @(SSDKPlatformTypeQQ)]
+                 onImport:^(SSDKPlatformType platformType)
+     {
+         switch (platformType)
+         {
+             case SSDKPlatformTypeWechat:
+                 [ShareSDKConnector connectWeChat:[WXApi class]];
+                 break;
+             case SSDKPlatformTypeQQ:
+                 [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
+                 break;
+             default:
+                 break;
+         }
+     }
+          onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo)
+     {
+         
+         switch (platformType)
+         {
+             case SSDKPlatformTypeSinaWeibo:
+                 //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
+                 [appInfo SSDKSetupSinaWeiboByAppKey:Sina
+                                           appSecret:SinaKey
+                                         redirectUri:SinaredirectUri
+                                            authType:SSDKAuthTypeBoth];
+                 break;
+             case SSDKPlatformTypeWechat:
+                 [appInfo SSDKSetupWeChatByAppId:WxAppID
+                                       appSecret:WxAppSecret];
+                 break;
+             case SSDKPlatformTypeQQ:
+                 [appInfo SSDKSetupQQByAppId:QQ
+                                      appKey:QQKET
+                                    authType:SSDKAuthTypeBoth];
+                 break;
+             default:
+                 break;
+         }
+     }];
+    
+    UserModel * usermodel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+    LWLog(@"%@",[usermodel mj_keyValues]);
+    NSMutableDictionary * parames =  [NSMutableDictionary dictionary];
+    parames[@"userName"] = (usermodel?usermodel.userName:@"");
+    parames[@"pwd"] = (usermodel?usermodel.UserPassword:@"");
+    LWLog(@"%@",(usermodel?usermodel.UserPassword:@""));
+    NSDictionary * dict = [UserLoginTool LogingetDateSyncWith:@"init" WithParame:parames];
+    LWLog(@"%@",dict);
+    InitModel * model = [InitModel mj_objectWithKeyValues:dict[@"resultData"]];
+    
+    LWLog(@"model _-- tesr%@",[model mj_keyValues]);
+    [[NSUserDefaults standardUserDefaults] setObject:(dict[@"resultData"][@"website"]) forKey:WebSit];
+    if ([model.loginStatus integerValue]) {
+        NSMutableDictionary * parame = [NSMutableDictionary dictionary];
+        parame[@"loginCode"] = usermodel.loginCode;
+        
+        
+        
+//        UserModel * user = [UserModel mj_objectWithKeyValues:dict[@"resultData"][@"userData"]];
+//        [UserLoginTool LoginModelWriteToShaHe:user andFileName:RegistUserDate];
+//        NSMutableDictionary * dc = [NSMutableDictionary dictionary];
+//        dc[@"loginCode"] = user.loginCode;
+//        dc[@"unionId"] = user.unionId;
+//        //获取商城用户列表
+//        [UserLoginTool loginRequestGet:@"GetUserList" parame:dc success:^(id json) {
+//            LWLog(@"%@",json);
+//        } failure:nil];
+        
+        //获取支付参数
+        [UserLoginTool loginRequestGet:@"PayConfig" parame:parame success:^(id json) {
+            LWLog(@"%@",json);
+            NSArray * payType = [PayModel mj_objectArrayWithKeyValuesArray:json[@"resultData"]];
+            NSMutableData *data = [[NSMutableData alloc] init];
+            //创建归档辅助类
+            NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+            //编码
+            [archiver encodeObject:payType forKey:PayTypeflat];
+            //结束编码
+            [archiver finishEncoding];
+            NSArray *array =  NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString * filename = [[array objectAtIndex:0] stringByAppendingPathComponent:PayTypeflat];
+            //写入
+            [data writeToFile:filename atomically:YES];
+            
+        } failure:nil];
+        
+       
+        
+           }
+    return model;
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
 
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
+
+
+
 
 @end
