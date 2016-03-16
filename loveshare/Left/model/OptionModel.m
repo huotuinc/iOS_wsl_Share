@@ -41,7 +41,7 @@
     md7.OptionName = @"更多选项";
     
     OptionModel * md8 = [[OptionModel alloc] init];
-    md8.optionImageName = @"gengduo";
+    md8.optionImageName = @"vip";
     md8.OptionName = @"监督管理";
     return @[md1,md2,md3,md4,md5,md6,md7,md8];
 }
