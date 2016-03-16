@@ -44,7 +44,7 @@
     _joinLabel.text = [NSString stringWithFormat:@"%@",model.sendCount];
     _introduceLabel.text = [NSString stringWithFormat:@"由[%@]提供",model.storeName];
     
-    if (model.isSend) {
+    if (model.sendList.length) {
         _getImage.image = [UIImage imageNamed:@"已完成"];
     }else if(model.lastScore <= 0.001){
         _getImage.image = [UIImage imageNamed:@"已领完"];
