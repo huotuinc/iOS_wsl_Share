@@ -252,7 +252,11 @@
     
 }
 
-
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    [_webViewProgressView removeFromSuperview];
+    
+}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     [_refreshBtn setBackgroundImage:[UIImage imageNamed:@"main_title_left_refresh"] forState:UIControlStateNormal];

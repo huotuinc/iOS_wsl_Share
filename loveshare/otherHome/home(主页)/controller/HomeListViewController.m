@@ -102,12 +102,25 @@ static NSString * homeCellidentify = @"homeCellId";
 
     }];
 }
+- (void)leftButton{
+    
+
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:^(BOOL finished) {
+        
+        
+    }];
+}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"任务领取";
     
-
+    UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [btn setBackgroundImage:[UIImage imageNamed:@"HomeLeftOPtion"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(leftButton) forControlEvents:UIControlEventTouchDown];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectController:) name:@"backToHomeView" object:nil];
     

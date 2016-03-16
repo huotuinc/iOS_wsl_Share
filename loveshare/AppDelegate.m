@@ -15,23 +15,68 @@
 
 @implementation AppDelegate
 
+
+- (BOOL) isFirstLoad{
+    
+    //版本号
+    NSString *currentVersion = AppVersion;//[[[NSBundle mainBundle] infoDictionary];
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    NSString *lastRunVersion = [defaults objectForKey:LAST_RUN_VERSION_KEY];
+    
+    NSString* firstFlage = [defaults objectForKey:LAST_Flage_KEY]; //true
+    
+    if (!lastRunVersion || !firstFlage) {
+        [defaults setObject:currentVersion forKey:LAST_RUN_VERSION_KEY];
+        [defaults setObject:@"yes" forKey:LAST_Flage_KEY];
+        return YES;
+        // App is being run for first time
+    }
+    else if (![lastRunVersion isEqualToString:currentVersion] || ![firstFlage isEqualToString:@"yes"])
+    {
+        [defaults setObject:currentVersion forKey:LAST_RUN_VERSION_KEY];
+        [defaults setObject:@"yes" forKey:LAST_Flage_KEY];
+        return YES;
+        // App has been updated since last run
+    }
+    return NO;
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    // Override point for customization after application launch.
-   InitModel * initModel = [self AppInit:application];
-    if (initModel) {
-        if (![initModel.loginStatus intValue]) {
-            [self setUp:initModel];
-        }else{
-           [self SetupLoginIn];
-        }
+    InitModel * initModel = [self AppInit:application];
+    if ([self isFirstLoad]) {
+        self.flag = YES;
+       
+        [self setupInitNew:initModel];
+       
     }else{
-        [self setUp:initModel];
+        self.flag = NO;
+        if (initModel) {
+            if (![initModel.loginStatus intValue]) {
+                [self setUp:initModel];
+            }else{
+                [self SetupLoginIn];
+            }
+        }else{
+            [self setUp:initModel];
+        }
+        return YES;
     }
+    
     return YES;
 }
 
 
+- (void)setupInitNew:(InitModel *) model{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window makeKeyAndVisible];
+
+    LWNewFeatureController * nav = [[LWNewFeatureController alloc] init];
+    self.window.rootViewController = nav;
+    
+    
+}
 
 /**
  *  1、程序启动控制器的选择

@@ -694,7 +694,11 @@
 }
 
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    [_webViewProgressView removeFromSuperview];
 
+}
 
 @end
 

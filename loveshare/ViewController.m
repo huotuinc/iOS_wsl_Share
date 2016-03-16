@@ -142,18 +142,26 @@
                     [UserLoginTool loginRequestGet:@"GetUserList" parame:dc success:^(id json) {
                         LWLog(@"%@",json);
                         NSArray * UserList = [MallUser mj_objectArrayWithKeyValuesArray:json[@"resultData"]];
-                        //创建归档辅助类
-                        NSMutableData *data = [[NSMutableData alloc] init];
-                        //创建归档辅助类
-                        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-                        //编码
-                        [archiver encodeObject:UserList forKey:MallUesrList];
-                        //结束编码
-                        [archiver finishEncoding];
-                        NSArray *array =  NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                        NSString * filename = [[array objectAtIndex:0] stringByAppendingPathComponent:MallUesrList];
-                        //写入
-                        [data writeToFile:filename atomically:YES];
+                        if (UserList.count == 1) {
+                            MallUser * user =  [UserList firstObject];
+                            ;
+                            LWLog(@"%@",user.userid);
+                            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",user.userid] forKey:ChoneMallAccount];
+                            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",user.wxUnionId] forKey:PhoneLoginunionid];
+                        }else{
+                            //创建归档辅助类
+                            NSMutableData *data = [[NSMutableData alloc] init];
+                            //创建归档辅助类
+                            NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+                            //编码
+                            [archiver encodeObject:UserList forKey:MallUesrList];
+                            //结束编码
+                            [archiver finishEncoding];
+                            NSArray *array =  NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                            NSString * filename = [[array objectAtIndex:0] stringByAppendingPathComponent:MallUesrList];
+                            //写入
+                            [data writeToFile:filename atomically:YES];
+                        }
                         
                     } failure:nil];
                     
