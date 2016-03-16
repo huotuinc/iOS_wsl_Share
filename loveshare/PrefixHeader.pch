@@ -66,8 +66,11 @@
 #import "DepartmentViewController.h"
 #import "PersonViewController.h"
 #import "TodayForesController.h"
-
-
+#import "HostTableViewController.h"
+#import "TodayAdvance.h"
+#import "HistoryModel.h"
+#import "AwardList.h"
+#import "TitleHead.h"
 //luohaibo 万事利到商城
 #define HuoBanMallBuyAppId @"huotuacf89c9231848c9f49"
 #define HuoBanMallBuyAppSecrect @"0ad8abe244331aacf89c9231848c9f49"

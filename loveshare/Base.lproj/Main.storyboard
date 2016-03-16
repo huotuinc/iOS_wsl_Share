@@ -2153,6 +2153,34 @@
             </objects>
             <point key="canvasLocation" x="-2498" y="986"/>
         </scene>
+        <!--Today Fores Controller-->
+        <scene sceneID="rYs-nf-4m5">
+            <objects>
+                <tableViewController storyboardIdentifier="TodayForesController" id="cWV-j0-d5C" customClass="TodayForesController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="FXH-Eu-Nph">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="fgV-dr-SHF">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fgV-dr-SHF" id="yiR-6z-Nw7">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cWV-j0-d5C" id="zdo-5M-NLq"/>
+                            <outlet property="delegate" destination="cWV-j0-d5C" id="y5C-hT-sOw"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="62y-jO-2Kx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1790" y="885"/>
+        </scene>
         <!--Master And Tudi View Controller-->
         <scene sceneID="Hte-cD-ihq">
             <objects>

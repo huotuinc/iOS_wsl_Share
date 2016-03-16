@@ -135,6 +135,8 @@ static NSString * homeCellidentify = @"homeCellId";
         
     }else if([note.userInfo[@"option"] integerValue] == 1){//历史收益
        
+        HostTableViewController * vc = [[HostTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        [self.navigationController pushViewController:vc animated:NO];
         
         
     }else if([note.userInfo[@"option"] integerValue] == 2){//积分兑换
@@ -148,6 +150,8 @@ static NSString * homeCellidentify = @"homeCellId";
       [self.navigationController pushViewController:vc animated:NO];
     }else if([note.userInfo[@"option"] integerValue] == 4){//最新预告
         
+        TodayForesController * vc =  (TodayForesController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"TodayForesController"];
+        [self.navigationController pushViewController:vc animated:NO];
         
     }else if([note.userInfo[@"option"] integerValue] == 5){//师徒联盟
         MasterAndTudiViewController * vc = (MasterAndTudiViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"MasterAndTudiViewController"];
