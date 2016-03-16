@@ -115,7 +115,7 @@
     UIButton * startButton = [[UIButton alloc] init];
 //    [startButton setBackgroundImage:[UIImage imageNamed:@"button-BR"] forState:UIControlStateNormal];
 
-    //设置尺寸
+    //设置尺寸s
     CGFloat centerX = imageView.frame.size.width*0.5;
     CGFloat centerY = imageView.frame.size.height*0.85;
     startButton.center = CGPointMake(centerX,centerY);
