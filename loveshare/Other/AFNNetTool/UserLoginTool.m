@@ -164,6 +164,7 @@
                                             url:[NSURL URLWithString:shareModel.taskInfo]
                                           title:shareModel.taskName
                                            type:SSDKContentTypeAuto];
+    
         //2、分享（可以弹出我们的分享菜单和编辑界面）
         [ShareSDK showShareActionSheet:nil items:nil
                            shareParams:shareParams
