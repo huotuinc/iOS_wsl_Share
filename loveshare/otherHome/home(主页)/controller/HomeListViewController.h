@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MMDrawerController.h"
 
-@interface HomeListViewController : UITableViewController
+@interface HomeListViewController : UIViewController
 
 
 @end

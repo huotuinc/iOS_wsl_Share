@@ -46,12 +46,12 @@
     
     InitModel * initModel = [self AppInit:application];
     if ([self isFirstLoad]) {
-        self.flag = YES;
+        self.isflag = YES;
        
         [self setupInitNew:initModel];
        
     }else{
-        self.flag = NO;
+        self.isflag = NO;
         if (initModel) {
             if (![initModel.loginStatus intValue]) {
                 [self setUp:initModel];

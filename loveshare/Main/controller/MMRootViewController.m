@@ -26,7 +26,8 @@
     self.rightDrawerViewController = nil;
     
     
-    self.centerViewController =[[LWNavigationController alloc] initWithRootViewController:[[HomeListViewController alloc] initWithStyle:UITableViewStylePlain]];
+    HomeListViewController * hone = (HomeListViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"HomeListViewController"];
+    self.centerViewController =[[LWNavigationController alloc] initWithRootViewController:hone];
     
     //设置手势范围
     [self setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];

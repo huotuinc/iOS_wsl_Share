@@ -45,7 +45,7 @@
     self.tableView.tableFooterView = [[UIView alloc] init];
     
     if (CTL.selectedSegmentIndex == 0) {
-        self.tableView.rowHeight = 50;
+        self.tableView.rowHeight = 60;
     }
     [self setupDate];
 }
@@ -109,10 +109,16 @@
         UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"jituan"];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"jituan"];
+            cell.imageView.frame = CGRectMake(0, 0, 40, 40);
+            cell.imageView.layer.cornerRadius = 5;
+            cell.imageView.layer.masksToBounds = YES;
+            cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+            
         }
         
         JiTuan * model = self.JITuan[indexPath.row];
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:nil];
+        
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:[UIImage imageNamed:@"imglogo"]];
         cell.textLabel.text = model.name;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%d人",model.personCount];
         return cell;

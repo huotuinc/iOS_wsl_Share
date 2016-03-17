@@ -19,6 +19,12 @@
 
 @property(nonatomic,strong) NewShareModel * shareModel;
 
+
+@property(nonatomic,strong) UILabel * left;
+@property(nonatomic,strong) UILabel * right;
+
+
+
 @end
 
 @implementation detailViewController
@@ -41,7 +47,73 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    
+    self.contentWebView.scrollView.backgroundColor = [UIColor whiteColor];
+    
+    [self.contentWebView.scrollView setShowsHorizontalScrollIndicator:NO];
+    [UIApplication sharedApplication].keyWindow.backgroundColor = [UIColor whiteColor];
+    
+    self.contentWebView.scrollView.contentInset =
+    UIEdgeInsetsMake(40, 0, 0, 0);
     self.title = @"任务详情";
+    
+    UIView * topView = [[UIView alloc] initWithFrame:CGRectMake(0, -40, ScreenWidth, 40)];
+    topView.backgroundColor = [UIColor whiteColor];
+    
+    UIView * left = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth*0.5-2, 39)];
+//    left.backgroundColor = [UIColor lightGrayColor];
+    UIImageView * leftImage = [[UIImageView alloc] init];
+//    leftImage.backgroundColor = [UIColor redColor];
+    leftImage.image = [UIImage imageNamed:@"iconfont-liulan"];
+    leftImage.contentMode = UIViewContentModeScaleAspectFit;
+    leftImage.frame = CGRectMake(left.frame.size.width *0.25-5, 5, 30, 30);
+    [left addSubview:leftImage];
+    
+    UILabel* ji= [[UILabel alloc] init];
+    ji.adjustsFontSizeToFitWidth = YES;
+    ji.frame = CGRectMake(CGRectGetMaxX(leftImage.frame)+2, 5, left.frame.size.width -CGRectGetMaxX(leftImage.frame) , 30);
+    ji.text = @"xxxxxxx";
+    _left = ji;
+     ji.font = [UIFont systemFontOfSize:13];
+    ji.textColor = [UIColor lightGrayColor];
+    [left addSubview:ji];
+    
+    
+    
+//    left.backgroundColor = [UIColor blueColor];
+    UIView * right = [[UIView alloc] initWithFrame:CGRectMake(ScreenWidth*0.5+2, 0, ScreenWidth*0.5-0.5, 39)];
+
+    UIImageView * rightImage = [[UIImageView alloc] init];
+//    rightImage.backgroundColor = [UIColor redColor];
+    rightImage.image = [UIImage imageNamed:@"iconfont-huijijiayuanzhuanfaicon01"];
+    rightImage.contentMode = UIViewContentModeScaleAspectFit;
+    rightImage.frame = CGRectMake(right.frame.size.width *0.25-5, 5, 30, 30);
+    [right addSubview:rightImage];
+
+    UILabel* jixi= [[UILabel alloc] init];
+    jixi.textColor = [UIColor lightGrayColor];
+    jixi.adjustsFontSizeToFitWidth = YES;
+    jixi.frame = CGRectMake(CGRectGetMaxX(rightImage.frame)+2, 5, right.frame.size.width -CGRectGetMaxX(rightImage.frame) , 30);
+    jixi.text = @"xxxxxxx";
+    jixi.font = [UIFont systemFontOfSize:13];
+    _right = jixi;
+    [right addSubview:jixi];
+    
+
+    UIView *mid = [[UIView alloc] initWithFrame:CGRectMake(ScreenWidth*0.5+0.5, 2, 1, 38)];
+    mid.backgroundColor = [UIColor lightGrayColor];
+     mid.alpha = 0.8;
+    
+    UIView * bottom = [[UIView alloc] initWithFrame:CGRectMake(0, 39, ScreenWidth, 1)];
+    bottom.backgroundColor = [UIColor lightGrayColor];
+    bottom.alpha = 0.8;
+    [topView addSubview:bottom];
+    
+    [topView addSubview:left];
+    [topView addSubview:mid];
+    [topView addSubview:right];
+    [self.contentWebView.scrollView addSubview:topView];
+    
 //    
 //    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:@"iconfont-jiantou"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 //    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
@@ -54,6 +126,9 @@
 
 - (void)setTaskModel:(NewTaskDataModel *)taskModel{
     _taskModel = taskModel;
+    
+    
+    
     
     if(taskModel.isSend){
         [_ShareBtn setTitle:@"已转发" forState:UIControlStateNormal];
@@ -79,10 +154,14 @@
             wself.shareModel.taskInfo = json[@"resultData"][@"taskInfo"];
             wself.shareModel.taskSmallImgUrl = json[@"resultData"][@"taskSmallImgUrl"];
             wself.shareModel.taskName = json[@"resultData"][@"taskName"];
-            NSURL * url = [NSURL URLWithString:@"http://www.jianshu.com/p/d4e9a4e2f639"];
+           
+            wself.left.text = [NSString stringWithFormat:@"浏览奖励:%@",json[@"resultData"][@"awardScan"]];
+            wself.right.text = [NSString stringWithFormat:@"转发奖励:%@",[NSString xiaoshudianweishudeal:[json[@"resultData"][@"awardSend"] floatValue]]];
+            _ShareBtn.hidden = NO;
+            
+            NSURL * url = [NSURL URLWithString:json[@"resultData"][@"taskInfo"]];
             NSURLRequest * req = [NSURLRequest requestWithURL:url];
             [_contentWebView loadRequest:req];
-            _ShareBtn.hidden = NO;
             
         }
     } failure:^(NSError *error) {
@@ -110,4 +189,6 @@
         [MBProgressHUD showError:@"分享失败"];
     }];
 }
+
+
 @end

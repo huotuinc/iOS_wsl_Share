@@ -14,12 +14,34 @@
 
 #define pageSize 10
 
-@interface HomeListViewController ()
+@interface HomeListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
+
+@property (weak, nonatomic) IBOutlet UIView *firstView;
+
+@property (weak, nonatomic) IBOutlet UILabel *firstLable;
+
+@property (weak, nonatomic) IBOutlet UIView *secondView;
+
+@property (weak, nonatomic) IBOutlet UILabel *secondLable;
+
+@property (weak, nonatomic) IBOutlet UIView *thirdView;
+
+@property (weak, nonatomic) IBOutlet UILabel *thirdLable;
+
+@property (weak, nonatomic) IBOutlet UIView *fourthView;
+
+@property (weak, nonatomic) IBOutlet UILabel *fourLable;
+
+@property(nonatomic,strong)UIView * redView;
+
+@property (weak, nonatomic) IBOutlet UIView *topHeadView;
+
+
+@property (weak, nonatomic) IBOutlet UITableView *taskTableview;
 /**分组模型*/
 @property(nonatomic,strong) NSMutableArray *taskGroup;
-
 @property(nonatomic,strong) MJRefreshNormalHeader * head;
 @property(nonatomic,strong) MJRefreshAutoFooter * footer;
 @end
@@ -43,10 +65,10 @@ static NSString * homeCellidentify = @"homeCellId";
 
 - (void)RefreshJicheng{
     _head = [MJRefreshNormalHeader  headerWithRefreshingTarget:self refreshingAction:@selector(headRefresh)];
-    self.tableView.mj_header = _head;
+    self.taskTableview.mj_header = _head;
     
    _footer =  [MJRefreshAutoFooter footerWithRefreshingTarget:self refreshingAction:@selector(footRefresh)];
-    self.tableView.tableFooterView = _footer;
+    self.taskTableview.tableFooterView = _footer;
 }
 
 - (void)headRefresh{
@@ -111,11 +133,81 @@ static NSString * homeCellidentify = @"homeCellId";
     }];
 }
 
+- (void)doselectSort{
+    
+    
+    __weak HomeListViewController * wself = self;
+    CGFloat aa  = (ScreenWidth*1.0) / 4;
+    self.firstView.userInteractionEnabled = YES;
+    [self.firstView bk_whenTapped:^{
+        CGRect bb = wself.redView.frame;
+        bb.origin.x = (aa - aa *2.0/3)*0.5;
+        wself.redView.frame = bb;
+        
+        wself.firstLable.textColor = [UIColor orangeColor];
+        wself.secondLable.textColor = [UIColor lightGrayColor];
+        wself.thirdLable.textColor = [UIColor lightGrayColor];
+        wself.fourLable.textColor = [UIColor lightGrayColor];
 
+    }];
+    self.secondView.userInteractionEnabled = YES;
+    [self.secondView bk_whenTapped:^{
+        CGRect bb = wself.redView.frame;
+        bb.origin.x = (aa - aa *2.0/3)*0.5 + wself.secondView.frame.origin.x;
+        wself.redView.frame = bb;
+        wself.firstLable.textColor = [UIColor lightGrayColor];
+        wself.secondLable.textColor = [UIColor orangeColor];
+        wself.thirdLable.textColor = [UIColor lightGrayColor];
+        wself.fourLable.textColor = [UIColor lightGrayColor];
+    }];
+    self.thirdView.userInteractionEnabled = YES;
+    [self.thirdView bk_whenTapped:^{
+        CGRect bb = wself.redView.frame;
+        bb.origin.x = (aa - aa *2.0/3)*0.5 + wself.thirdView.frame.origin.x;
+        wself.redView.frame = bb;
+        
+        wself.firstLable.textColor = [UIColor lightGrayColor];
+        wself.secondLable.textColor = [UIColor lightGrayColor];
+        wself.thirdLable.textColor = [UIColor orangeColor];
+        wself.fourLable.textColor = [UIColor lightGrayColor];
+    }];
+    self.fourthView.userInteractionEnabled = YES;
+    [self.fourthView bk_whenTapped:^{
+        CGRect bb = wself.redView.frame;
+        bb.origin.x = (aa - aa *2.0/3)*0.5 + wself.fourthView.frame.origin.x;
+        wself.redView.frame = bb;
+        
+        wself.firstLable.textColor = [UIColor lightGrayColor];
+        wself.secondLable.textColor = [UIColor lightGrayColor];
+        wself.thirdLable.textColor = [UIColor lightGrayColor];
+        wself.fourLable.textColor = [UIColor orangeColor];
+    }];
+    
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"任务领取";
+    
+    
+    self.taskTableview.delegate = self;
+    self.taskTableview.dataSource = self;
+    
+    
+    
+    CGFloat aa  = (ScreenWidth*1.0) / 4;
+    UIView * view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor orangeColor];
+    self.firstLable.textColor = [UIColor orangeColor];
+    view.frame = CGRectMake((aa - aa *2.0/3)*0.5, _topHeadView.frame.size.height-2, aa*2.0/3 , 2);
+    [_topHeadView addSubview:view];
+    _redView = view;
+    
+    
+    //排序选择
+    [self doselectSort];
+    
     
     UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [btn setBackgroundImage:[UIImage imageNamed:@"HomeLeftOPtion"] forState:UIControlStateNormal];
@@ -126,15 +218,40 @@ static NSString * homeCellidentify = @"homeCellId";
     
     [self RefreshJicheng];
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"HomeCell" bundle:nil] forCellReuseIdentifier:homeCellidentify];
-    self.tableView.rowHeight = 150;
+    [self.taskTableview registerNib:[UINib nibWithNibName:@"HomeCell" bundle:nil] forCellReuseIdentifier:homeCellidentify];
+    self.taskTableview.rowHeight = 150;
     
 //    self.tableView.contentInset = UIEdgeInsetsMake(5, 5, 5, 5);
     //    self.tableView.tableFooterView = [[UIView alloc] init];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.taskTableview.separatorStyle = UITableViewCellSeparatorStyleNone;
 
-    self.tableView.backgroundColor = [UIColor colorWithRed:0.884 green:0.890 blue:0.832 alpha:1.000]
+    self.taskTableview.backgroundColor = [UIColor colorWithRed:0.884 green:0.890 blue:0.832 alpha:1.000]
     ;
+    
+    
+    AppDelegate * appde =  (AppDelegate * )[[UIApplication sharedApplication] delegate];
+    if (!appde.isflag) {
+        
+        UIImageView * image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+        image.userInteractionEnabled = YES;
+        
+        [image bk_whenTapped:^{
+           
+            [image removeFromSuperview];
+            
+        }];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [image removeFromSuperview];
+        });
+        image.contentMode = UIViewContentModeScaleAspectFit;
+        image.image = [UIImage imageNamed:@"万事利引导图"];
+        UIWindow * win =  [UIApplication sharedApplication].keyWindow;
+        [win addSubview:image];
+        
+    }
+    
  }
 /**
  *  控制器选择
@@ -214,7 +331,7 @@ static NSString * homeCellidentify = @"homeCellId";
             [self.taskGroup addObject:group];
         }
     }
-    [self.tableView reloadData];
+    [self.taskTableview reloadData];
 }
 
 

@@ -47,7 +47,7 @@
     self.turnLable.userInteractionEnabled = YES;
     self.browsLable.userInteractionEnabled = YES;
     
-    self.optionLable.rowHeight = 60;
+    self.optionLable.rowHeight = 100;
     CGFloat aa  = (ScreenWidth - 40.0) / 3;
     UIView * view = [[UIView alloc] init];
     view.backgroundColor = [UIColor orangeColor];
@@ -57,7 +57,7 @@
     _redView = view;
     self.optionLable.delegate = self;
     self.optionLable.dataSource = self;
-    self.optionLable.rowHeight = 50;
+//    self.optionLable.rowHeight = 50;
     self.optionLable.tableFooterView = [[UIView alloc] init];
     [self ToGetDate];
 }
@@ -144,6 +144,10 @@
 #pragma mark - Table view data source
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 60;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     return self.SortArray.count;
@@ -160,10 +164,14 @@
         lable.textAlignment = NSTextAlignmentRight;
         lable.text = @"xxx";
         lable.adjustsFontSizeToFitWidth = YES;
+        cell.imageView.frame = CGRectMake(0, 0, 40, 40);
+        cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        cell.imageView.layer.cornerRadius = 5;
+        cell.imageView.layer.masksToBounds = YES;
     }
     
     JiTuan * model = self.SortArray[indexPath.row];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:nil];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:[UIImage imageNamed:@"imglogo"]];
     cell.textLabel.text = model.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"总转发%d次/总浏览%d次",model.totalTurnCount,model.totalBrowseCount];
     UILabel * aa =  (UILabel *)cell.accessoryView;

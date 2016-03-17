@@ -26,6 +26,8 @@
 		EF1B8A7D1C89557D003D230A /* UITableView+CJ.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A731C89557D003D230A /* UITableView+CJ.m */; };
 		EF1B8A7E1C89557D003D230A /* UIViewController+MonitorNetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A751C89557D003D230A /* UIViewController+MonitorNetWork.m */; };
 		EF1B8A7F1C89557D003D230A /* UIViewController+NAV.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A771C89557D003D230A /* UIViewController+NAV.m */; };
+		EF23A7631C9A3F99005818CD /* DetailWebViewTopOption.m in Sources */ = {isa = PBXBuildFile; fileRef = EF23A7621C9A3F99005818CD /* DetailWebViewTopOption.m */; };
+		EF23A7651C9A3FA7005818CD /* DetailWebViewTopOption.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF23A7641C9A3FA7005818CD /* DetailWebViewTopOption.xib */; };
 		EF3636721C90448B006AD6F1 /* PersonCenterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3636711C90448B006AD6F1 /* PersonCenterModel.m */; };
 		EF3636751C9046A3006AD6F1 /* TwoOption.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3636741C9046A3006AD6F1 /* TwoOption.m */; };
 		EF3636791C911E67006AD6F1 /* MasterAndTudiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3636781C911E67006AD6F1 /* MasterAndTudiViewController.m */; };
@@ -202,6 +204,9 @@
 		EF1B8A761C89557D003D230A /* UIViewController+NAV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NAV.h"; sourceTree = "<group>"; };
 		EF1B8A771C89557D003D230A /* UIViewController+NAV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NAV.m"; sourceTree = "<group>"; };
 		EF1B8A801C895790003D230A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		EF23A7611C9A3F99005818CD /* DetailWebViewTopOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailWebViewTopOption.h; sourceTree = "<group>"; };
+		EF23A7621C9A3F99005818CD /* DetailWebViewTopOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailWebViewTopOption.m; sourceTree = "<group>"; };
+		EF23A7641C9A3FA7005818CD /* DetailWebViewTopOption.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailWebViewTopOption.xib; sourceTree = "<group>"; };
 		EF3636701C90448B006AD6F1 /* PersonCenterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCenterModel.h; sourceTree = "<group>"; };
 		EF3636711C90448B006AD6F1 /* PersonCenterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCenterModel.m; sourceTree = "<group>"; };
 		EF3636731C9046A3006AD6F1 /* TwoOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoOption.h; sourceTree = "<group>"; };
@@ -869,6 +874,9 @@
 				EF5A1EDF1C8D7272002035FC /* HomeCell.xib */,
 				EF5A1EE01C8D7272002035FC /* optionView.h */,
 				EF5A1EE11C8D7272002035FC /* optionView.m */,
+				EF23A7611C9A3F99005818CD /* DetailWebViewTopOption.h */,
+				EF23A7621C9A3F99005818CD /* DetailWebViewTopOption.m */,
+				EF23A7641C9A3FA7005818CD /* DetailWebViewTopOption.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1314,6 +1322,7 @@
 				EF6F97C21C8A737700D760EC /* ShareSDK.bundle in Resources */,
 				EF6F97E01C8AB3B800D760EC /* MBProgressHUD.bundle in Resources */,
 				EF15C9821C993DD100ABD2F6 /* TitleHead.xib in Resources */,
+				EF23A7651C9A3FA7005818CD /* DetailWebViewTopOption.xib in Resources */,
 				EF3636C31C926E2C006AD6F1 /* DownTudiTableViewCell.xib in Resources */,
 				EF6F97C01C8A737700D760EC /* read_me.txt in Resources */,
 				EF6F977C1C89755200D760EC /* LICENSE in Resources */,
@@ -1397,6 +1406,7 @@
 				EF1B8A7E1C89557D003D230A /* UIViewController+MonitorNetWork.m in Sources */,
 				EF3877DD1C8FFB14008279BD /* ProfessionalController.m in Sources */,
 				EF3877C71C8FCC7E008279BD /* GTMBase64.m in Sources */,
+				EF23A7631C9A3F99005818CD /* DetailWebViewTopOption.m in Sources */,
 				EF6F97831C89755200D760EC /* UIImageView+AFNetworking.m in Sources */,
 				EF6F97821C89755200D760EC /* UIButton+AFNetworking.m in Sources */,
 				EFA760C51C97E2B200EFCE9A /* PersonViewController.m in Sources */,

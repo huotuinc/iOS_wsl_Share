@@ -43,6 +43,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setInit];
+    
+    self.listTableView.rowHeight = 60;
     [self TogetDate:0];
 }
 
@@ -167,15 +169,30 @@
         cell.accessoryView = lable;
         lable.textAlignment = NSTextAlignmentRight;
         lable.text = @"xxx";
+        cell.imageView.frame = CGRectMake(0, 0, 40, 40);
+        cell.imageView.layer.cornerRadius = 20;
+        cell.imageView.layer.masksToBounds = YES;
+//        cell.imageView.backgroundColor = [UIColor redColor];
         cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        
+        cell.imageView.image = [UIImage imageNamed:@"iconfont-user"];
+        
     }
     
     
+    LWLog(@"%@", NSStringFromCGRect(cell.imageView.frame));
     JiTuanModel * model = self.originArray[indexPath.row];
     LWLog(@"%@",model.name);
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:nil];
+    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:model.logo] options:SDWebImageRetryFailed progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        CGSize size = CGSizeMake(40, 40);
+        UIGraphicsBeginImageContextWithOptions(size, NO,0.0);
+        CGRect imageRect=CGRectMake(0.0, 0.0, size.width, size.height);
+        [image drawInRect:imageRect];
+        cell.imageView.image=UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        [cell.imageView layoutIfNeeded];
+    }];
     cell.textLabel.text = model.name;
-   
     cell.detailTextLabel.text = [NSString stringWithFormat:@"转发%d次/浏览%d次/徒弟%d人",model.totalTurnCount,model.totalBrowseCount, model.prenticeCount];
     UILabel * aa =  (UILabel *)cell.accessoryView;
     

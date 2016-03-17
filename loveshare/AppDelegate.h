@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (nonatomic,assign) BOOL flag;
+@property (nonatomic,assign) BOOL isflag;
 
 @end
 
