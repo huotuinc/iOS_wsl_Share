@@ -57,9 +57,10 @@
         LWLog(@"xxx");
     }else if(indexPath.row == 2){
 #warning xxxx
-//        BindDIngViewController * vc = (BindDIngViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"BindDIngViewController"];
-//        LWNavigationController * nav = [[LWNavigationController alloc] initWithRootViewController:vc];
-//        [self presentViewController:nav animated:YES completion:nil];
+        BindDIngViewController * vc = (BindDIngViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"BindDIngViewController"];
+        LWNavigationController * nav = [[LWNavigationController alloc] initWithRootViewController:vc];
+        [self presentViewController:nav animated:YES completion:nil];
+//        [self.navigationController pushViewController:vc animated:YES];
     }else if(indexPath.row == 3){
         ChangePasswdViewController * vc = (ChangePasswdViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"ChangePasswdViewController"];
         LWNavigationController * nav = [[LWNavigationController alloc] initWithRootViewController:vc];

@@ -161,7 +161,7 @@
     UserModel * user = [UserModel mj_objectWithKeyValues:dict[@"resultData"][@"userData"]];
     [UserLoginTool LoginModelWriteToShaHe:user andFileName:RegistUserDate];
     InitModel * model = [InitModel mj_objectWithKeyValues:dict[@"resultData"]];
-    
+    [UserLoginTool LoginModelWriteToShaHe:model andFileName:InitModelCaches];
     LWLog(@"model _-- tesr%@",[model mj_keyValues]);
     [[NSUserDefaults standardUserDefaults] setObject:(dict[@"resultData"][@"website"]) forKey:WebSit];
     if ([model.loginStatus integerValue]) {
