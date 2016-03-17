@@ -8,7 +8,7 @@
 
 #import "TodayForesController.h"
 #import "TodayTableViewCell.h"
-
+#import "detailViewController.h"
 
 #define pagesize 10
 
@@ -66,7 +66,7 @@ static NSString *homeCellidentify = @"TodayTableViewCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"TodayTableViewCell" bundle:nil] forCellReuseIdentifier:homeCellidentify];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.tableHeaderView = [[UIView alloc] init];
-    self.tableView.allowsSelection = NO;
+//    self.tableView.allowsSelection = NO;
 
     
     
@@ -171,6 +171,14 @@ static NSString *homeCellidentify = @"TodayTableViewCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    LWLog(@"xxx");
+    
+    TodayAdvance * model = self.dateArray[indexPath.row];
+    
+    NSDictionary * dict = [model mj_keyValues];
+    NewTaskDataModel * cc = [NewTaskDataModel mj_objectWithKeyValues:dict];
+    detailViewController * vc =(detailViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"detailViewController"];
+    vc.loi = 1;
+    vc.taskModel = cc;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end

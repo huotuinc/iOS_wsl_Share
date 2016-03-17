@@ -24,4 +24,6 @@
 
 @property(nonatomic,strong) NewTaskDataModel * taskModel;
 
+@property(nonatomic,assign) int loi;
+
 @end

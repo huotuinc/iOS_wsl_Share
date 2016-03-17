@@ -47,6 +47,10 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    if (self.loi==1) {
+        
+        self.ShareBtn.hidden = YES;
+    }
     
     self.contentWebView.scrollView.backgroundColor = [UIColor whiteColor];
     
@@ -130,18 +134,18 @@
     
     
     
-    if(taskModel.isSend){
-        [_ShareBtn setTitle:@"已转发" forState:UIControlStateNormal];
-        [_ShareBtn setBackgroundColor:[UIColor lightGrayColor]];
-        _ShareBtn.userInteractionEnabled = NO;
-    }
-    
-    if (taskModel.lastScore<= 0.01) {
-        [_ShareBtn setTitle:@"已转发" forState:UIControlStateNormal];
-        [_ShareBtn setBackgroundColor:[UIColor lightGrayColor]];
-        _ShareBtn.userInteractionEnabled = NO;
-        
-    }
+//    if(taskModel.isSend){
+//        [_ShareBtn setTitle:@"已转发" forState:UIControlStateNormal];
+//        [_ShareBtn setBackgroundColor:[UIColor lightGrayColor]];
+//        _ShareBtn.userInteractionEnabled = NO;
+//    }
+//    
+//    if (taskModel.lastScore<= 0.01) {
+//        [_ShareBtn setTitle:@"已转发" forState:UIControlStateNormal];
+//        [_ShareBtn setBackgroundColor:[UIColor lightGrayColor]];
+//        _ShareBtn.userInteractionEnabled = NO;
+//        
+//    }
     __weak detailViewController * wself = self;
     UserModel * user =  (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
@@ -157,7 +161,7 @@
            
             wself.left.text = [NSString stringWithFormat:@"浏览奖励:%@",json[@"resultData"][@"awardScan"]];
             wself.right.text = [NSString stringWithFormat:@"转发奖励:%@",[NSString xiaoshudianweishudeal:[json[@"resultData"][@"awardSend"] floatValue]]];
-            _ShareBtn.hidden = NO;
+//            _ShareBtn.hidden = NO;
             
             NSURL * url = [NSURL URLWithString:json[@"resultData"][@"taskInfo"]];
             NSURLRequest * req = [NSURLRequest requestWithURL:url];
