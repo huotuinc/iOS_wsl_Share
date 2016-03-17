@@ -74,6 +74,8 @@
 #import "TitleHead.h"
 #import "LWNewFeatureController.h"
 #import "AppDelegate.h"
+
+
 //luohaibo 万事利到商城
 #define HuoBanMallBuyAppId @"huotuacf89c9231848c9f49"
 #define HuoBanMallBuyAppSecrect @"0ad8abe244331aacf89c9231848c9f49"
@@ -87,7 +89,7 @@
 /**应用版本号*/
 #define AppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 
-#define MainUrl @"http://192.168.1.6:8050/api.ashx"
+#define MainUrl @"http://taskapi.silk08.com" //@"http://192.168.1.6:8050/api.ashx"  //
 
 /**平台*/
 #define OPERATION_parame @"FH2016APP"

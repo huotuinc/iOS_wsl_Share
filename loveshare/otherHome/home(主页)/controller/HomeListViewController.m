@@ -16,6 +16,8 @@
 
 @interface HomeListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
+/**thirdImage*/
+@property (weak, nonatomic) IBOutlet UIImageView *thirdImage;
 
 
 @property (weak, nonatomic) IBOutlet UIView *firstView;
@@ -38,10 +40,25 @@
 
 @property (weak, nonatomic) IBOutlet UIView *topHeadView;
 
+@property(nonatomic,strong)UIView * currentSelect;
+
+
+@property(nonatomic,assign) int thirdLableNum;
+
+
+@property(assign ,nonatomic) NSInteger currentTag;
+
+@property(assign ,nonatomic) NSInteger pageIndex;
+
 
 @property (weak, nonatomic) IBOutlet UITableView *taskTableview;
 /**分组模型*/
 @property(nonatomic,strong) NSMutableArray *taskGroup;
+
+/**分组模型*/
+@property(nonatomic,strong) NSMutableArray *taskLists;
+
+
 @property(nonatomic,strong) MJRefreshNormalHeader * head;
 @property(nonatomic,strong) MJRefreshAutoFooter * footer;
 @end
@@ -61,7 +78,12 @@ static NSString * homeCellidentify = @"homeCellId";
     return _taskGroup;
 }
 
-
+- (NSMutableArray *)taskLists{
+    if (_taskLists == nil) {
+        _taskLists =  [NSMutableArray array];
+    }
+    return _taskLists;
+}
 
 - (void)RefreshJicheng{
     _head = [MJRefreshNormalHeader  headerWithRefreshingTarget:self refreshingAction:@selector(headRefresh)];
@@ -73,85 +95,138 @@ static NSString * homeCellidentify = @"homeCellId";
 
 - (void)headRefresh{
     
-    [self getDate:0];
+    _pageIndex = 0;
+    LWLog(@"%ld",(long)_currentTag);
+    if(_currentTag == 1){ //默认
+        [self getDateSortType:0 andOrderby:1 andPageIndex:_pageIndex];
+    }else if(_currentTag == 2){
+        [self getDateSortType:1 andOrderby:1 andPageIndex:_pageIndex];
+    }else if(_currentTag == 3){//特殊处理
+        if (_thirdLableNum == 1) {
+           [self getDateSortType:2 andOrderby:1 andPageIndex:_pageIndex];
+        }else{
+            [self getDateSortType:2 andOrderby:0 andPageIndex:_pageIndex];
+        }
+    }else if(_currentTag == 4){
+        [self getDateSortType:3 andOrderby:1 andPageIndex:_pageIndex];
+    }
+    
 }
 
 - (void)footRefresh{
-    TaskGrouoModel * group =  [self.taskGroup lastObject];
-    NewTaskDataModel * model = [group.tasks lastObject];
-    [self getDate:model.taskId];
+    if(_currentTag == 1){ //默认
+        [self getDateSortType:0 andOrderby:1 andPageIndex:self.pageIndex+1];
+    }else if(_currentTag == 2){
+        [self getDateSortType:1 andOrderby:1 andPageIndex:_pageIndex+1];
+    }else if(_currentTag == 3){//特殊处理
+        if (_thirdLableNum == 1) {
+            [self getDateSortType:2 andOrderby:1 andPageIndex:_pageIndex+1];
+        }else{
+            [self getDateSortType:2 andOrderby:0 andPageIndex:_pageIndex+1];
+        }
+    }else if(_currentTag == 4){
+        [self getDateSortType:3 andOrderby:1 andPageIndex:_pageIndex+1];
+    }
 }
 
 
-- (void)getDate:(int)taskId{
+- (void)getDateSortType:(NSInteger)SortType  andOrderby:(int)orderby andPageIndex:(NSInteger)PageIndex{
+    
+    
+    LWLog(@"%ld--%d---%ld",(long)SortType,orderby,(long)PageIndex);
     __weak HomeListViewController * wself = self;
     UserModel * user =  (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
     parame[@"loginCode"] = user.loginCode;
-    parame[@"screenType"] = @(0);
-    parame[@"oldTaskId"] = @(taskId);
-    parame[@"pageSize"] = @(10);
-    [UserLoginTool loginRequestGet:@"AllTasK220" parame:parame success:^(id json) {
+    parame[@"orderby"] = @(orderby);
+    parame[@"pageIndex"] = @(PageIndex);
+    parame[@"sortType"] = @(SortType);
+    [UserLoginTool loginRequestGet:@"TaskList" parame:parame success:^(id json) {
         LWLog(@"%@",json);
+    
+        wself.pageIndex = [json[@"pageIndex"] integerValue];
         if ([json[@"status"] integerValue]==1 && [json[@"resultCode"] integerValue] == 1) {
-           NSArray * tasks  =  [NewTaskDataModel mj_objectArrayWithKeyValuesArray:json[@"resultData"][@"taskData"]];
-           if (tasks.count) {
-                if (taskId == 0) {
-                    [_head endRefreshing];
-                    [wself.taskGroup removeAllObjects];
-                }else{
-                    [_footer endRefreshing];
-                }
-                [wself toGroupsByTime:tasks];
-            }else{
-                if (taskId == 0) {
-                    [_head endRefreshing];
-                }else{
-                    [MBProgressHUD showMessage:@"没有更多数据"];
-                    [_footer endRefreshing];
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        [MBProgressHUD hideHUD];
-                    });
-                }
-            }
+            NSArray * tasks  =  [NewTaskDataModel mj_objectArrayWithKeyValuesArray:json[@"resultData"][@"taskData"]];
+                       if (tasks.count) {
+                           if (wself.currentSelect.tag == 1) {
+                               if (PageIndex == 0) {
+                                   [_head endRefreshing];
+                                   [wself.taskGroup removeAllObjects];
+                               }else{
+                                   [_footer endRefreshing];
+                               }
+                               [wself toGroupsByTime:tasks];
+                           }else{
+                               if (PageIndex ==0) {
+                                   [wself.taskLists removeAllObjects];
+                                   [wself.taskLists addObjectsFromArray:tasks];
+                                   [wself.head endRefreshing];
+                                   [wself.taskTableview reloadData];
+                               }else{
+                                  [wself.footer endRefreshing];
+                                  [wself.taskLists addObjectsFromArray:tasks];
+                                  [wself.taskTableview reloadData];
+                                }
+                            }
+                           
+                        }else{
+                            if (PageIndex == 0) {
+                                [_head endRefreshing];
+                            }else{
+                                [MBProgressHUD showMessage:@"没有更多数据"];
+                                [_head endRefreshing];
+                                [_footer endRefreshing];
+                                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                    [MBProgressHUD hideHUD];
+                                });
+                            }
         }
-    } failure:^(NSError *error) {
-        if (taskId == 0) {
+    
+        }
+    }failure:^(NSError *error) {
+        if (PageIndex == 0) {
             [_head endRefreshing];
         }else{
             [_footer endRefreshing];
         }
-
+//
     }];
+    
 }
 - (void)leftButton{
-    
-
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:^(BOOL finished) {
-        
-        
     }];
 }
 
 - (void)doselectSort{
-    
-    
     __weak HomeListViewController * wself = self;
     CGFloat aa  = (ScreenWidth*1.0) / 4;
     self.firstView.userInteractionEnabled = YES;
     [self.firstView bk_whenTapped:^{
+        
+        LWLog(@"%ld", (long)wself.firstLable.tag);
+        _currentTag = 1;
+        _thirdLableNum = 0;
+         wself.thirdImage.image = [UIImage imageNamed:@"jt-3"];
+        
+        _currentSelect = wself.firstView;
         CGRect bb = wself.redView.frame;
         bb.origin.x = (aa - aa *2.0/3)*0.5;
         wself.redView.frame = bb;
-        
         wself.firstLable.textColor = [UIColor orangeColor];
         wself.secondLable.textColor = [UIColor lightGrayColor];
         wself.thirdLable.textColor = [UIColor lightGrayColor];
         wself.fourLable.textColor = [UIColor lightGrayColor];
+        
+        [wself.head beginRefreshing];
 
     }];
     self.secondView.userInteractionEnabled = YES;
     [self.secondView bk_whenTapped:^{
+        _thirdLableNum = 0;
+        wself.thirdImage.image = [UIImage imageNamed:@"jt-3"];
+        _currentSelect = wself.secondView;
+        _currentTag = 2;
         CGRect bb = wself.redView.frame;
         bb.origin.x = (aa - aa *2.0/3)*0.5 + wself.secondView.frame.origin.x;
         wself.redView.frame = bb;
@@ -159,28 +234,48 @@ static NSString * homeCellidentify = @"homeCellId";
         wself.secondLable.textColor = [UIColor orangeColor];
         wself.thirdLable.textColor = [UIColor lightGrayColor];
         wself.fourLable.textColor = [UIColor lightGrayColor];
+        [wself.head beginRefreshing];
     }];
     self.thirdView.userInteractionEnabled = YES;
     [self.thirdView bk_whenTapped:^{
+        LWLog(@"xxx");
+        if (_thirdLableNum == 0) {
+            wself.thirdImage.image = [UIImage imageNamed:@"jt-1"];
+            _thirdLableNum = 1;
+        }else{
+            if(_thirdLableNum == 1){
+                wself.thirdImage.image = [UIImage imageNamed:@"jt-2"];
+                _thirdLableNum = 2;
+            }else{
+                wself.thirdImage.image = [UIImage imageNamed:@"jt-1"];
+                _thirdLableNum = 1;
+            }
+        }
+        _currentSelect = wself.thirdView;
+        _currentTag = 3;
         CGRect bb = wself.redView.frame;
         bb.origin.x = (aa - aa *2.0/3)*0.5 + wself.thirdView.frame.origin.x;
         wself.redView.frame = bb;
-        
         wself.firstLable.textColor = [UIColor lightGrayColor];
         wself.secondLable.textColor = [UIColor lightGrayColor];
         wself.thirdLable.textColor = [UIColor orangeColor];
         wself.fourLable.textColor = [UIColor lightGrayColor];
+        [wself.head beginRefreshing];
     }];
     self.fourthView.userInteractionEnabled = YES;
     [self.fourthView bk_whenTapped:^{
+        _thirdLableNum = 0;
+         wself.thirdImage.image = [UIImage imageNamed:@"jt-3"];
+        _currentSelect = wself.fourthView;
+        _currentTag = 4;
         CGRect bb = wself.redView.frame;
         bb.origin.x = (aa - aa *2.0/3)*0.5 + wself.fourthView.frame.origin.x;
         wself.redView.frame = bb;
-        
         wself.firstLable.textColor = [UIColor lightGrayColor];
         wself.secondLable.textColor = [UIColor lightGrayColor];
         wself.thirdLable.textColor = [UIColor lightGrayColor];
         wself.fourLable.textColor = [UIColor orangeColor];
+        [wself.head beginRefreshing];
     }];
     
     
@@ -194,7 +289,10 @@ static NSString * homeCellidentify = @"homeCellId";
     self.taskTableview.delegate = self;
     self.taskTableview.dataSource = self;
     
-    
+    _currentSelect = self.firstView;
+    _currentTag = 1;
+    _pageIndex = 0;
+    _thirdLableNum = 0;
     
     CGFloat aa  = (ScreenWidth*1.0) / 4;
     UIView * view = [[UIView alloc] init];
@@ -230,7 +328,7 @@ static NSString * homeCellidentify = @"homeCellId";
     
     
     AppDelegate * appde =  (AppDelegate * )[[UIApplication sharedApplication] delegate];
-    if (!appde.isflag) {
+    if (appde.isflag) {
         
         UIImageView * image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
         image.userInteractionEnabled = YES;
@@ -340,13 +438,22 @@ static NSString * homeCellidentify = @"homeCellId";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return self.taskGroup.count;
+    if (self.currentSelect.tag == 1) {
+        return self.taskGroup.count;
+    }
+    return 1;
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    TaskGrouoModel * taskGroup  = self.taskGroup[section];
-    return taskGroup.tasks.count;
+    
+    if (self.currentSelect.tag == 1) {
+        TaskGrouoModel * taskGroup  = self.taskGroup[section];
+        return taskGroup.tasks.count;
+    }
+    return self.taskLists.count;
+    
 }
 
 
@@ -356,20 +463,28 @@ static NSString * homeCellidentify = @"homeCellId";
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"HomeCell" owner:nil options:nil] lastObject];
     }
-    
-    TaskGrouoModel * taskGroup  = self.taskGroup[indexPath.section];
-    NewTaskDataModel *task = taskGroup.tasks[indexPath.row];
-    cell.model = task;
-
+    if (self.currentSelect.tag == 1) {
+        TaskGrouoModel * taskGroup  = self.taskGroup[indexPath.section];
+        NewTaskDataModel *task = taskGroup.tasks[indexPath.row];
+        cell.model = task;
+        return cell;
+    }
+    NewTaskDataModel * model = self.taskLists[indexPath.row];
+    cell.model = model;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     LWLog(@"%@",indexPath);
-    TaskGrouoModel * taskGroup  = self.taskGroup[indexPath.section];
-    NewTaskDataModel *task = taskGroup.tasks[indexPath.row];
+    NewTaskDataModel *task =  nil;
     
+    if (self.currentSelect.tag == 1) {
+        TaskGrouoModel * taskGroup  = self.taskGroup[indexPath.section];
+        task = taskGroup.tasks[indexPath.row];
+    }else{
+        task = self.taskLists[indexPath.row];
+    }
     detailViewController * vc =(detailViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"detailViewController"];
   
     vc.taskModel = task;
@@ -379,10 +494,12 @@ static NSString * homeCellidentify = @"homeCellId";
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    TaskGrouoModel * aaaa = self.taskGroup[section];
-    return [[aaaa.timeSectionTitle componentsSeparatedByString:@" "] firstObject];;
+    if (self.currentSelect.tag == 1) {
+        TaskGrouoModel * aaaa = self.taskGroup[section];
+        return [[aaaa.timeSectionTitle componentsSeparatedByString:@" "] firstObject];;
+    }
     
+    return nil;
 }
-
 
 @end

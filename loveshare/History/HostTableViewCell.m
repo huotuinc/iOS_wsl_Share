@@ -31,7 +31,6 @@
     
     self.contaivciew.layer.cornerRadius = 5;
     self.contaivciew.layer.masksToBounds = YES;
-    
     self.HeadimageView.layer.cornerRadius = self.HeadimageView.frame.size.height * 0.5;
     self.HeadimageView.layer.masksToBounds = YES;
 }

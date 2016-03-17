@@ -63,7 +63,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
     //没有登录的情况
     self.phoneBtn.hidden = NO;
     if ([WXApi isWXAppInstalled]) {
@@ -88,14 +87,15 @@
 
 - (IBAction)WeChatBtnLoginClick:(id)sender {
     LWLog(@"weix");
-     __weak ViewController * wself = self;
+    __weak ViewController * wself = self;
     [ShareSDK getUserInfo:SSDKPlatformTypeWechat onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
         if (state == SSDKResponseStateSuccess) {
             LWLog(@"-------%@",[user.rawData mj_keyValues]);
             WeiQAuthModel * model = [WeiQAuthModel WeiQAuthModelWithDict:[user.rawData mj_keyValues]];
             [wself TodoWeChatBack:model];
-            
+//            [MBProgressHUD hideHUD];
         }else {
+//            [MBProgressHUD hideHUD];
             [MBProgressHUD showError:@"微信授权失败"];
             LWLog(@"%@",error);
         }
@@ -111,16 +111,14 @@
     LWLog(@"%s---%@",__func__,dict);
     [MBProgressHUD hideHUD];
     if (![dict[@"tip"] isEqualToString:@"未注册"]) {//已注册
-        
+        [MBProgressHUD hideHUD];
         NSMutableDictionary *parame = [NSMutableDictionary dictionary];
         //    parame[@"sex"] = [NSString stringWithFormat:@"%ld",(long)[user.sex integerValue]];
         parame[@"nickname"] = model.nickname;
         parame[@"openid"] = model.openid;
-        
         parame[@"picUrl"] = model.headimgurl;
         parame[@"unionId"] = model.unionid;
         parame[@"invitationCode"] = @"";
-        
         NSDictionary * dict = [UserLoginTool LogingetDateSyncWith:@"register" WithParame:parame];
         LWLog(@"%@",dict);
         if([dict[@"status"] integerValue] == 1 &&[dict[@"resultCode"] integerValue] == 1){
@@ -175,6 +173,7 @@
         vc.model = model;
         LWNavigationController * nav = [[LWNavigationController alloc] initWithRootViewController:vc];
         [self presentViewController:nav animated:YES completion:nil];
+        [MBProgressHUD hideHUD];
     }
 }
 

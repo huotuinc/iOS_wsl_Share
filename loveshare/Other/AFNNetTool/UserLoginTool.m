@@ -196,12 +196,12 @@
     
 }
 
-+ (void)LoginToShareTextMessageByShareSdk:(NSString *)shareText success:(void (^)(int json))success failure:(void (^)(id json))failure{
++ (void)LoginToShareTextMessageByShareSdk:(NSString *)shareText andUrl:(NSString *) url success:(void (^)(int json))success failure:(void (^)(id json))failure{
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     [shareParams SSDKSetupShareParamsByText:shareText images:nil
                                         url:nil
                                       title:@"万事利分红师徒邀请吗"
-                                       type:SSDKContentTypeText];
+                                       type:SSDKContentTypeAuto];
     //2、分享（可以弹出我们的分享菜单和编辑界面）
     [ShareSDK showShareActionSheet:nil items:nil
                        shareParams:shareParams

@@ -76,6 +76,6 @@
  *  @param success    <#success description#>
  *  @param failure    <#failure description#>
  */
-+ (void)LoginToShareTextMessageByShareSdk:(NSString *)shareText success:(void (^)(int json))success failure:(void (^)(id json))failure;
++ (void)LoginToShareTextMessageByShareSdk:(NSString *)shareText andUrl:(NSString *) url success:(void (^)(int json))success failure:(void (^)(id json))failure;
 
 @end

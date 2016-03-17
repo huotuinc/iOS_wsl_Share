@@ -115,9 +115,7 @@
 
     [ShareSDK registerApp:WslShareSdkAppId
      
-          activePlatforms:@[
-                            @(SSDKPlatformTypeSinaWeibo),
-                            @(SSDKPlatformTypeWechat),
+          activePlatforms:@[@(SSDKPlatformTypeWechat),
                             @(SSDKPlatformTypeQQ)]
                  onImport:^(SSDKPlatformType platformType)
      {
@@ -138,13 +136,6 @@
          
          switch (platformType)
          {
-             case SSDKPlatformTypeSinaWeibo:
-                 //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
-                 [appInfo SSDKSetupSinaWeiboByAppKey:Sina
-                                           appSecret:SinaKey
-                                         redirectUri:SinaredirectUri
-                                            authType:SSDKAuthTypeBoth];
-                 break;
              case SSDKPlatformTypeWechat:
                  [appInfo SSDKSetupWeChatByAppId:WxAppID
                                        appSecret:WxAppSecret];
@@ -167,6 +158,8 @@
     LWLog(@"%@",(usermodel?usermodel.UserPassword:@""));
     NSDictionary * dict = [UserLoginTool LogingetDateSyncWith:@"init" WithParame:parames];
     LWLog(@"%@",dict);
+    UserModel * user = [UserModel mj_objectWithKeyValues:dict[@"resultData"][@"userData"]];
+    [UserLoginTool LoginModelWriteToShaHe:user andFileName:RegistUserDate];
     InitModel * model = [InitModel mj_objectWithKeyValues:dict[@"resultData"]];
     
     LWLog(@"model _-- tesr%@",[model mj_keyValues]);
@@ -174,7 +167,6 @@
     if ([model.loginStatus integerValue]) {
         NSMutableDictionary * parame = [NSMutableDictionary dictionary];
         parame[@"loginCode"] = usermodel.loginCode;
-
         //获取支付参数
         [UserLoginTool loginRequestGet:@"PayConfig" parame:parame success:^(id json) {
             LWLog(@"%@",json);

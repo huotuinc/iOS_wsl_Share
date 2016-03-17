@@ -26,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     self.title = @"设置";
     self.versionNum.text = [NSString stringWithFormat:@"v%@",AppVersion];
     self.tableView.tableFooterView = [[UIView alloc] init];
@@ -35,6 +36,17 @@
 
 
 #pragma mark - Table view data source
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    return 60;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(20, 10, ScreenWidth-40, 44)];
+    return button;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     

@@ -14,6 +14,9 @@
 
 @interface MasterAndTudiViewController ()
 
+
+@property(nonatomic,copy) NSString * shareUrl;
+
 /**头像*/
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
 /**用户名*/
@@ -91,15 +94,18 @@
     parame[@"pageSize"] = @(0);
     [UserLoginTool loginRequestGet:@"ScorePrentice" parame:parame success:^(id json) {
         
+        LWLog(@"%@",json);
+        
+        wself.shareUrl = json[@"resultData"][@"shareUrl"];
         [MBProgressHUD hideHUD];
         wself.nameLable.text = [NSString stringWithFormat:@"邀请码:%@",json[@"resultData"][@"inviteCode"]];
-        self.tuDiCount.text = [NSString stringWithFormat:@"%d",[json[@"resultData"][@"prenticeAmount"] integerValue]];
+        self.tuDiCount.text = [NSString stringWithFormat:@"%ld",[json[@"resultData"][@"prenticeAmount"] integerValue]];
         self.firstLable.text = [NSString xiaoshudianweishudeal:[json[@"resultData"][@"totalScore"] floatValue]];
         self.secondLable.text = [NSString xiaoshudianweishudeal:[json[@"resultData"][@"yesterdayTotalScore"] floatValue]];
         
-        self.thirdLable.text = [NSString stringWithFormat:@"%d/%d",[json[@"resultData"][@"yesterdayBrowseAmount"] integerValue],[json[@"resultData"][@"historyTotalBrowseAmount"] integerValue]];
+        self.thirdLable.text = [NSString stringWithFormat:@"%ld/%ld",[json[@"resultData"][@"yesterdayBrowseAmount"] integerValue],[json[@"resultData"][@"historyTotalBrowseAmount"] integerValue]];
         
-        self.fourthLable.text = [NSString stringWithFormat:@"%d/%d",[json[@"resultData"][@"yesterdayTurnAmount"] integerValue],[json[@"resultData"][@"historyTotalTurnAmount"] integerValue]];
+        self.fourthLable.text = [NSString stringWithFormat:@"%ld/%ld",[json[@"resultData"][@"yesterdayTurnAmount"] integerValue],[json[@"resultData"][@"historyTotalTurnAmount"] integerValue]];
         LWLog(@"%@",json);
         
         if (json[@"resultData"][@"desc"]) {
@@ -144,15 +150,12 @@
 }
 
 - (IBAction)shareYaoqinMa:(id)sender {
-    
-
-    [UserLoginTool LoginToShareTextMessageByShareSdk:self.nameLable.text success:^(int json) {
-        
+    [UserLoginTool LoginToShareTextMessageByShareSdk:self.nameLable.text andUrl:self.shareUrl success:^(int json) {
         [MBProgressHUD showSuccess:@"分享成功"];
         LWLog(@"%d",json);
-    } failure:^(id json) {
-        
-    }];
+
+    } failure:nil];
+    
 
 }
 @end

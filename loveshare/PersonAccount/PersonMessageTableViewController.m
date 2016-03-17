@@ -64,6 +64,10 @@
 @property(nonatomic,strong) UserModel * userInfo;
 
 - (IBAction)iconViewCkick:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *accountCl;
+- (IBAction)asdsdfsqfgqwerewrqew:(id)sender;
+
 @end
 
 @implementation PersonMessageTableViewController
@@ -86,7 +90,13 @@
 }
 
 - (void)setInitDate{
+    
+    __weak PersonMessageTableViewController * wself = self;
+    
     UserModel *user = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:user.userHead] options:SDWebImageRetryFailed progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        [wself.iconView setImage:image forState:UIControlStateNormal];
+    }];
     self.userInfo = user;
     self.navigationController.navigationBarHidden = NO;
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
@@ -260,6 +270,18 @@
 //            pro.type = 2;
 //            [self.navigationController pushViewController:pro animated:YES];
 //        }
+    }
+    if (indexPath.section == 2) {
+        if (indexPath.row == 0) { //职业
+            
+            NSString * path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+            NSFileManager * manger = [NSFileManager defaultManager];
+            [manger removeItemAtPath:path error:nil];
+            
+            ViewController *  vc = (ViewController * )[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"ViewController"];
+            [self presentViewController:vc animated:YES completion:nil];
+            
+        }
     }
 }
 
@@ -532,5 +554,14 @@
         [MBProgressHUD hideHUD];
     }];
 
+}
+- (IBAction)asdsdfsqfgqwerewrqew:(id)sender {
+    NSString * path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSFileManager * manger = [NSFileManager defaultManager];
+    [manger removeItemAtPath:path error:nil];
+    
+    ViewController *  vc = (ViewController * )[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"ViewController"];
+    [self presentViewController:vc animated:YES completion:nil];
+    
 }
 @end

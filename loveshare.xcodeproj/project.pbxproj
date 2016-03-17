@@ -28,6 +28,8 @@
 		EF1B8A7F1C89557D003D230A /* UIViewController+NAV.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A771C89557D003D230A /* UIViewController+NAV.m */; };
 		EF23A7631C9A3F99005818CD /* DetailWebViewTopOption.m in Sources */ = {isa = PBXBuildFile; fileRef = EF23A7621C9A3F99005818CD /* DetailWebViewTopOption.m */; };
 		EF23A7651C9A3FA7005818CD /* DetailWebViewTopOption.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF23A7641C9A3FA7005818CD /* DetailWebViewTopOption.xib */; };
+		EF23A7751C9AF790005818CD /* MallBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF23A7731C9AF790005818CD /* MallBackViewController.m */; };
+		EF23A7761C9AF790005818CD /* MallBackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF23A7741C9AF790005818CD /* MallBackViewController.xib */; };
 		EF3636721C90448B006AD6F1 /* PersonCenterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3636711C90448B006AD6F1 /* PersonCenterModel.m */; };
 		EF3636751C9046A3006AD6F1 /* TwoOption.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3636741C9046A3006AD6F1 /* TwoOption.m */; };
 		EF3636791C911E67006AD6F1 /* MasterAndTudiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3636781C911E67006AD6F1 /* MasterAndTudiViewController.m */; };
@@ -110,8 +112,6 @@
 		EF6F97BA1C8A737700D760EC /* ShareSDKUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF6F979A1C8A737700D760EC /* ShareSDKUI.framework */; };
 		EF6F97BB1C8A737700D760EC /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF6F979D1C8A737700D760EC /* TencentOpenAPI.framework */; };
 		EF6F97BC1C8A737700D760EC /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EF6F979E1C8A737700D760EC /* TencentOpenApi_IOS_Bundle.bundle */; };
-		EF6F97BD1C8A737700D760EC /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF6F97A01C8A737700D760EC /* libWeiboSDK.a */; };
-		EF6F97BE1C8A737700D760EC /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EF6F97AA1C8A737700D760EC /* WeiboSDK.bundle */; };
 		EF6F97BF1C8A737700D760EC /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF6F97AE1C8A737700D760EC /* libWeChatSDK.a */; };
 		EF6F97C01C8A737700D760EC /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = EF6F97AF1C8A737700D760EC /* read_me.txt */; };
 		EF6F97C11C8A737700D760EC /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF6F97B41C8A737700D760EC /* MOBFoundation.framework */; };
@@ -207,6 +207,9 @@
 		EF23A7611C9A3F99005818CD /* DetailWebViewTopOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailWebViewTopOption.h; sourceTree = "<group>"; };
 		EF23A7621C9A3F99005818CD /* DetailWebViewTopOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailWebViewTopOption.m; sourceTree = "<group>"; };
 		EF23A7641C9A3FA7005818CD /* DetailWebViewTopOption.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailWebViewTopOption.xib; sourceTree = "<group>"; };
+		EF23A7721C9AF790005818CD /* MallBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallBackViewController.h; sourceTree = "<group>"; };
+		EF23A7731C9AF790005818CD /* MallBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallBackViewController.m; sourceTree = "<group>"; };
+		EF23A7741C9AF790005818CD /* MallBackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MallBackViewController.xib; sourceTree = "<group>"; };
 		EF3636701C90448B006AD6F1 /* PersonCenterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCenterModel.h; sourceTree = "<group>"; };
 		EF3636711C90448B006AD6F1 /* PersonCenterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCenterModel.m; sourceTree = "<group>"; };
 		EF3636731C9046A3006AD6F1 /* TwoOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoOption.h; sourceTree = "<group>"; };
@@ -359,19 +362,6 @@
 		EF6F979A1C8A737700D760EC /* ShareSDKUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKUI.framework; sourceTree = "<group>"; };
 		EF6F979D1C8A737700D760EC /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		EF6F979E1C8A737700D760EC /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
-		EF6F97A01C8A737700D760EC /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
-		EF6F97A11C8A737700D760EC /* WBHttpRequest+WeiboGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboGame.h"; sourceTree = "<group>"; };
-		EF6F97A21C8A737700D760EC /* WBHttpRequest+WeiboShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboShare.h"; sourceTree = "<group>"; };
-		EF6F97A31C8A737700D760EC /* WBHttpRequest+WeiboToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboToken.h"; sourceTree = "<group>"; };
-		EF6F97A41C8A737700D760EC /* WBHttpRequest+WeiboUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboUser.h"; sourceTree = "<group>"; };
-		EF6F97A51C8A737700D760EC /* WBHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBHttpRequest.h; sourceTree = "<group>"; };
-		EF6F97A61C8A737700D760EC /* WBSDKBasicButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSDKBasicButton.h; sourceTree = "<group>"; };
-		EF6F97A71C8A737700D760EC /* WBSDKCommentButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSDKCommentButton.h; sourceTree = "<group>"; };
-		EF6F97A81C8A737700D760EC /* WBSDKRelationshipButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSDKRelationshipButton.h; sourceTree = "<group>"; };
-		EF6F97A91C8A737700D760EC /* WeiboSDK+Statistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WeiboSDK+Statistics.h"; sourceTree = "<group>"; };
-		EF6F97AA1C8A737700D760EC /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
-		EF6F97AB1C8A737700D760EC /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
-		EF6F97AC1C8A737700D760EC /* WeiboUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboUser.h; sourceTree = "<group>"; };
 		EF6F97AE1C8A737700D760EC /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		EF6F97AF1C8A737700D760EC /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
 		EF6F97B01C8A737700D760EC /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
@@ -449,7 +439,6 @@
 				EF6F97C11C8A737700D760EC /* MOBFoundation.framework in Frameworks */,
 				EF6F97BF1C8A737700D760EC /* libWeChatSDK.a in Frameworks */,
 				EF6F97BB1C8A737700D760EC /* TencentOpenAPI.framework in Frameworks */,
-				EF6F97BD1C8A737700D760EC /* libWeiboSDK.a in Frameworks */,
 				346DC368A095B2B2C935D191 /* libPods.a in Frameworks */,
 				EF6F97B71C8A737700D760EC /* ShareSDK.framework in Frameworks */,
 				EF6F97B81C8A737700D760EC /* ShareSDKExtension.framework in Frameworks */,
@@ -786,6 +775,9 @@
 				EF3636B81C925C55006AD6F1 /* ChangePasswdViewController.m */,
 				EFA760C91C98001C00EFCE9A /* BindDIngViewController.h */,
 				EFA760CA1C98001C00EFCE9A /* BindDIngViewController.m */,
+				EF23A7721C9AF790005818CD /* MallBackViewController.h */,
+				EF23A7731C9AF790005818CD /* MallBackViewController.m */,
+				EF23A7741C9AF790005818CD /* MallBackViewController.xib */,
 			);
 			path = PersonAccount;
 			sourceTree = "<group>";
@@ -994,7 +986,6 @@
 			isa = PBXGroup;
 			children = (
 				EF6F979C1C8A737700D760EC /* QQSDK */,
-				EF6F979F1C8A737700D760EC /* SinaWeiboSDK */,
 				EF6F97AD1C8A737700D760EC /* WeChatSDK */,
 			);
 			path = PlatformSDK;
@@ -1007,26 +998,6 @@
 				EF6F979E1C8A737700D760EC /* TencentOpenApi_IOS_Bundle.bundle */,
 			);
 			path = QQSDK;
-			sourceTree = "<group>";
-		};
-		EF6F979F1C8A737700D760EC /* SinaWeiboSDK */ = {
-			isa = PBXGroup;
-			children = (
-				EF6F97A01C8A737700D760EC /* libWeiboSDK.a */,
-				EF6F97A11C8A737700D760EC /* WBHttpRequest+WeiboGame.h */,
-				EF6F97A21C8A737700D760EC /* WBHttpRequest+WeiboShare.h */,
-				EF6F97A31C8A737700D760EC /* WBHttpRequest+WeiboToken.h */,
-				EF6F97A41C8A737700D760EC /* WBHttpRequest+WeiboUser.h */,
-				EF6F97A51C8A737700D760EC /* WBHttpRequest.h */,
-				EF6F97A61C8A737700D760EC /* WBSDKBasicButton.h */,
-				EF6F97A71C8A737700D760EC /* WBSDKCommentButton.h */,
-				EF6F97A81C8A737700D760EC /* WBSDKRelationshipButton.h */,
-				EF6F97A91C8A737700D760EC /* WeiboSDK+Statistics.h */,
-				EF6F97AA1C8A737700D760EC /* WeiboSDK.bundle */,
-				EF6F97AB1C8A737700D760EC /* WeiboSDK.h */,
-				EF6F97AC1C8A737700D760EC /* WeiboUser.h */,
-			);
-			path = SinaWeiboSDK;
 			sourceTree = "<group>";
 		};
 		EF6F97AD1C8A737700D760EC /* WeChatSDK */ = {
@@ -1318,6 +1289,7 @@
 				EF5A1EF71C8D7272002035FC /* ConversionCell.xib in Resources */,
 				EF5A1EF91C8D7272002035FC /* HomeCell.xib in Resources */,
 				EF6F97B91C8A737700D760EC /* ShareSDKUI.bundle in Resources */,
+				EF23A7761C9AF790005818CD /* MallBackViewController.xib in Resources */,
 				EF3636921C916BA7006AD6F1 /* ForeshowTableViewCell.xib in Resources */,
 				EF6F97C21C8A737700D760EC /* ShareSDK.bundle in Resources */,
 				EF6F97E01C8AB3B800D760EC /* MBProgressHUD.bundle in Resources */,
@@ -1326,7 +1298,6 @@
 				EF3636C31C926E2C006AD6F1 /* DownTudiTableViewCell.xib in Resources */,
 				EF6F97C01C8A737700D760EC /* read_me.txt in Resources */,
 				EF6F977C1C89755200D760EC /* LICENSE in Resources */,
-				EF6F97BE1C8A737700D760EC /* WeiboSDK.bundle in Resources */,
 				EF5A1EF51C8D7272002035FC /* BPCell.xib in Resources */,
 				EFF072911C8939F000150FA2 /* Main.storyboard in Resources */,
 				EF6F97911C89856500D760EC /* InfoPlist.strings in Resources */,
@@ -1405,6 +1376,7 @@
 			files = (
 				EF1B8A7E1C89557D003D230A /* UIViewController+MonitorNetWork.m in Sources */,
 				EF3877DD1C8FFB14008279BD /* ProfessionalController.m in Sources */,
+				EF23A7751C9AF790005818CD /* MallBackViewController.m in Sources */,
 				EF3877C71C8FCC7E008279BD /* GTMBase64.m in Sources */,
 				EF23A7631C9A3F99005818CD /* DetailWebViewTopOption.m in Sources */,
 				EF6F97831C89755200D760EC /* UIImageView+AFNetworking.m in Sources */,

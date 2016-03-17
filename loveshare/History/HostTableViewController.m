@@ -48,6 +48,7 @@
     
     self.tableView.rowHeight = 167;
     
+    self.tableView.userInteractionEnabled = YES;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -107,35 +108,18 @@
         if ([json[@"resultCode"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
             NSArray * array = [HistoryModel mj_objectArrayWithKeyValuesArray:json[@"resultData"][@"itemData"]];
             LWLog(@"%lu",(unsigned long)array.count);
-            
             if (array.count) {
                 [wself.dateArray removeAllObjects];
                 [wself.dateArray addObjectsFromArray:array];
                 [wself.head endRefreshing];
                 [wself.tableView reloadData];
             }
-//            if (!array.count) {
-//                [wself.head endRefreshing];
-//                [wself.footer endRefreshing];
-//                return ;
-//            }
-//            if (taskId == 0) {
-//                [wself.dateArray removeAllObjects];
-//                [wself.dateArray addObjectsFromArray:array];
-//                [wself.tableView reloadData];
-//                [wself.head endRefreshing];
-//            }else{
-//                [wself.dateArray addObjectsFromArray:array];
-//                [wself.tableView reloadData];
-//                [wself.footer endRefreshing];
-//            }
-//            
-            
+            [wself.head endRefreshing];
         }
         
         
     } failure:^(NSError *error) {
-        
+        [wself.head endRefreshing];
     }];
     
     

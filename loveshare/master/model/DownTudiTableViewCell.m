@@ -29,7 +29,7 @@
     LWLog(@"%@",[model mj_keyValues]);
     self.firstLable.text = [NSString stringWithFormat:@"%ld/%ld次",(long)[model.yesterdayBrowseAmount integerValue],[model.historyTotalBrowseAmount integerValue]];
     self.secondLable.text = [NSString stringWithFormat:@"%@积分",[NSString xiaoshudianweishudeal:[model.totalScore floatValue]]];
-    self.thirdLable.text = [NSString stringWithFormat:@"%ld/%ld次",(long)[model.yesterdayTurnAmount integerValue],[model.yesterdayTurnAmount integerValue]];
+    self.thirdLable.text = [NSString stringWithFormat:@"%ld/%ld次",(long)[model.yesterdayTurnAmount integerValue],[model.historyTotalTurnAmount integerValue]];
     self.fourLable.text = model.time;
     
 }

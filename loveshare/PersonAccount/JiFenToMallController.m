@@ -9,7 +9,7 @@
 #import "JiFenToMallController.h"
 #import "NSString+Encryption.h"
 
-
+#import "MallBackViewController.h"
 @interface JiFenToMallController ()<UIAlertViewDelegate,UITabBarDelegate,UITableViewDataSource,UITableViewDelegate>
 /**万事利积分*/
 @property (weak, nonatomic) IBOutlet UILabel *scoreJifen;
@@ -91,54 +91,20 @@
         if(json[@"resultData"][@"desc"]){
             wself.Mydes.text = [NSString stringWithFormat:@" 说明：%@",json[@"resultData"][@"desc"]];
         }
-  
         wself.toMallJifen.text = [NSString xiaoshudianweishudeal:[json[@"resultData"][@"money"] doubleValue]];
-         if (![json[@"resultData"][@"lastApply"] isKindOfClass:[NSNull class]]) {
-            if(json[@"lastApply"][@"ApplyTime"]){
-                wself.firstRecord.text = json[@"resultData"][@"lastApply"][@"ApplyTime"];
-                wself.toMakkJifen.text = [NSString stringWithFormat:@"转入钱包%@元",[NSString xiaoshudianweishudeal:[json[@"resultData"][@"lastApply"][@"ApplyMoney"] doubleValue]]];
-                wself.Record.hidden = NO;
-            }else{
-                wself.Record.hidden = YES;
-            }
+        if(json[@"resultData"][@"lastApply"][@"ApplyTime"]){
+            wself.firstRecord.text = json[@"resultData"][@"lastApply"][@"ApplyTime"];
+            wself.toMakkJifen.text = [NSString stringWithFormat:@"转入钱包%@元",[NSString xiaoshudianweishudeal:[json[@"resultData"][@"lastApply"][@"ApplyMoney"] doubleValue]]];
+            wself.Record.hidden = NO;
         }else{
             wself.Record.hidden = YES;
         }
+        
 //        LOG(@"---%@--------%@",,error.description);
     } failure:^(NSError *error) {
         
     }];
-//    
-//    LoginState * a =  [AppDelegate getInstance].loadingState.userData;
-//    
-//    self.scoreJifen.text = [NSString stringWithFormat:@"%@",[NSString xiaoshudianweishudeal:[a.score floatValue]]];
-//    __weak JiFenToMallController * wself = self;
-//    [[[AppDelegate getInstance]  getFanOperations] TOGetGlodDate:nil block:^(id result, NSError *error) {
-//
-//        LOG(@"xxxxxxxx%@",result);
-//        if(result[@"desc"]){
-//            wself.Mydes.text = [NSString stringWithFormat:@" 说明：%@",result[@"desc"]];
-//        }
-//        if(result[@"desc"]){
-//            LOG(@"000000000000%@",result[@"desc"]);
-//            wself.toMallJifen.text = [NSString stringWithFormat:@"%ld",[result[@"money"] integerValue]];
-//        }
-//        
-//        
-//        if (![result[@"lastApply"] isKindOfClass:[NSNull class]]) {
-//            if(result[@"lastApply"][@"ApplyTime"]){
-//                wself.firstRecord.text = result[@"lastApply"][@"ApplyTime"];
-//                
-//                wself.toMakkJifen.text = [NSString stringWithFormat:@"转入钱包%@元",[NSString xiaoshudianweishudeal:[result[@"lastApply"][@"ApplyMoney"] doubleValue]]];
-//                wself.Record.hidden = NO;
-//            }else{
-//                wself.Record.hidden = YES;
-//            }
-//        }else{
-//            wself.Record.hidden = YES;
-//        }
-//        LOG(@"---%@--------%@",result,error.description);
-//    } WithParam:self.scoreJifen.text];
+
 }
 //
 //
@@ -181,13 +147,15 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     //得到输入框
+    
+    __weak JiFenToMallController * wself =self;
     UITextField *tf = [alertView textFieldAtIndex:0];
     LWLog(@"%@",tf.text);
     UserModel * userModel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableDictionary* p = [NSMutableDictionary dictionary];
     p[@"score"] = @(userModel.score);
     p[@"cashpassword"] = [NSString MD5FromData:[tf.text dataUsingEncoding:NSUTF8StringEncoding]];
-    p[@"mallUserId"] = [NSString stringWithFormat:@"%@",@(userModel.mallUserId)];
+    p[@"mallUserId"] = [[NSUserDefaults standardUserDefaults] objectForKey:ChoneMallAccount];
     p[@"loginCode"] = userModel.loginCode;
    
    
@@ -197,16 +165,13 @@
         [MBProgressHUD showError:@"密码错误,请去修改密码"];
     }else{
         [MBProgressHUD showSuccess:dict[@"tip"]];
-        self.scoreJifen.text = [NSString stringWithFormat:@"%f",userModel.score - [self.toMallJifen.text floatValue]];
-        self.toMallJifen.text = [NSString xiaoshudianweishudeal:0.001];
+        self.scoreJifen.text = [NSString stringWithFormat:@"%.1f",[wself.scoreJifen.text floatValue] - [wself.toMallJifen.text floatValue]];
         
-        NSMutableDictionary * parame = [NSMutableDictionary dictionary];
-        parame[@"loginCode"] = userModel.loginCode;
-        NSDictionary * dict = [UserLoginTool LogingetDateSyncWith:@"GETUSERINFO" WithParame:parame];
-        UserModel * user = [UserModel mj_objectWithKeyValues:dict[@"resultData"]];
-        if (user) {
-            [UserLoginTool LoginModelWriteToShaHe:user andFileName:RegistUserDate];
-        }
+        
+        MallBackViewController * aa = [[MallBackViewController alloc] initWithNibName:@"MallBackViewController" bundle:nil];
+        [self.navigationController pushViewController:aa animated:NO];
+        
+
     }
 }
 

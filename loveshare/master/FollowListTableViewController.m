@@ -144,24 +144,10 @@
     if (indexPath.row == 0) {
         static NSString * reide = @"top";
         TudiTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reide];
-//        if (cell == nil) {
-//            
-//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reide];
-//            UIImageView * arrView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-//            arrView.image = [UIImage imageNamed:@"upArrow"];
-//            cell.accessoryView = arrView;
-//            cell.textLabel.textColor = [UIColor lightGrayColor];
-//        }
-        
         FollowList * fol =  self.lists[indexPath.section];
         FollowModel * mod = (FollowModel *)fol.list[0];
         cell.arrow.image = [UIImage imageNamed:@"downArrow"];
         cell.model = mod;
-//        cell.imageView.image = [UIImage imageNamed:@"WeiXinIIconViewDefaule"];
-//        
-//        cell.textLabel.text = [NSString stringWithFormat:@"我的徒弟%@",mod.userName];
-//        cell.detailTextLabel.text = [NSString stringWithFormat:@"昨日/历史总贡献: %d/%d积分",[mod.recentScore integerValue],[mod.totalScore integerValue]];
-        
         return cell;
         
         
@@ -193,15 +179,8 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSLog(@"%d----%d",indexPath.section,indexPath.row);
-    
-    
-    
-    
     if (self.lastIndexPath.section == indexPath.section) {
-        
-         TudiTableViewCell  * cella = (TudiTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+        TudiTableViewCell  * cella = (TudiTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
         TudiTableViewCell * cellb = (TudiTableViewCell*)[tableView cellForRowAtIndexPath:self.lastIndexPath];
         FollowList * fol = self.lists[indexPath.section];
         if (fol.list.count > 1) {

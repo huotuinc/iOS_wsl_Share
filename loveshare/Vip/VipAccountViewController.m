@@ -35,7 +35,7 @@
     UISegmentedControl * CTL = [[UISegmentedControl alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
     _CTL = CTL;
     [CTL addTarget:self action:@selector(ctlChange:) forControlEvents:UIControlEventValueChanged];
-    [CTL insertSegmentWithTitle:@"公司" atIndex:0 animated:YES];
+    [CTL insertSegmentWithTitle:@"架构" atIndex:0 animated:YES];
     [CTL insertSegmentWithTitle:@"任务" atIndex:1 animated:YES];
     CTL.selectedSegmentIndex = 0;
     self.navigationItem.titleView= CTL;

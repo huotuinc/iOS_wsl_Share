@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *optionTable;
 
 
+@property (strong, nonatomic) UILabel * aa;
 
 @property(nonatomic,strong) NSArray * optionArray;
 
@@ -51,7 +52,7 @@
     self.headImage.layer.borderColor = [UIColor whiteColor].CGColor;
     UserModel * userModel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:userModel.userHead] placeholderImage:nil completed:nil];
-    self.userName.text= userModel.userName;
+    self.userName.text= userModel.UserNickName;
     self.userScore.text =[NSString stringWithFormat:@"可用分红%@",[NSString xiaoshudianweishudeal:userModel.score]] ;
     
 }
@@ -82,6 +83,18 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    
+    __weak LeftOfRootViewController * wself = self;
+    [UserLoginTool loginRequestGet:@"PreviewTaskCount" parame:nil success:^(id json) {
+        
+        wself.aa.text = [NSString stringWithFormat:@"%ld", [json[@"resultData"][@"count"] integerValue]];
+    
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    [self.optionTable reloadData];
     [self setup];
 }
 
@@ -107,6 +120,13 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"optioncell"];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    
+    if (indexPath.row == 4) {
+        UILabel * aa = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        _aa = aa;
+        aa.textColor = [UIColor orangeColor];
+        cell.accessoryView = aa;
     }
     OptionModel * model  = self.optionArray[indexPath.row];
     
