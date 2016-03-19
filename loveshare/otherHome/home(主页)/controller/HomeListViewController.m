@@ -87,6 +87,7 @@ static NSString * homeCellidentify = @"homeCellId";
 
 - (void)RefreshJicheng{
     _head = [MJRefreshNormalHeader  headerWithRefreshingTarget:self refreshingAction:@selector(headRefresh)];
+    _head.arrowView.image = [UIImage imageNamed:@"iconfont-user"];
     self.taskTableview.mj_header = _head;
     
    _footer =  [MJRefreshAutoFooter footerWithRefreshingTarget:self refreshingAction:@selector(footRefresh)];

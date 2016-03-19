@@ -92,13 +92,17 @@
             wself.Mydes.text = [NSString stringWithFormat:@" 说明：%@",json[@"resultData"][@"desc"]];
         }
         wself.toMallJifen.text = [NSString xiaoshudianweishudeal:[json[@"resultData"][@"money"] doubleValue]];
-        if(json[@"resultData"][@"lastApply"][@"ApplyTime"]){
-            wself.firstRecord.text = json[@"resultData"][@"lastApply"][@"ApplyTime"];
-            wself.toMakkJifen.text = [NSString stringWithFormat:@"转入钱包%@元",[NSString xiaoshudianweishudeal:[json[@"resultData"][@"lastApply"][@"ApplyMoney"] doubleValue]]];
-            wself.Record.hidden = NO;
-        }else{
-            wself.Record.hidden = YES;
+        
+        if (json[@"resultData"][@"lastApply"]) {
+            if(json[@"resultData"][@"lastApply"][@"ApplyTime"]){
+                wself.firstRecord.text = json[@"resultData"][@"lastApply"][@"ApplyTime"];
+                wself.toMakkJifen.text = [NSString stringWithFormat:@"转入钱包%@元",[NSString xiaoshudianweishudeal:[json[@"resultData"][@"lastApply"][@"ApplyMoney"] doubleValue]]];
+                wself.Record.hidden = NO;
+            }else{
+                wself.Record.hidden = YES;
+            }
         }
+        
         
 //        LOG(@"---%@--------%@",,error.description);
     } failure:^(NSError *error) {

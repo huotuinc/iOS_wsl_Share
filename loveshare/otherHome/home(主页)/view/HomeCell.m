@@ -42,7 +42,7 @@
     _timeLabel.text = model.orderTime;
     _receiveLabel.text = [NSString xiaoshudianweishudeal:model.awardSend];
     _joinLabel.text = [NSString stringWithFormat:@"%@",model.sendCount];
-    _introduceLabel.text = [NSString stringWithFormat:@"由[%@]提供",model.storeName];
+    _introduceLabel.text = [NSString stringWithFormat:@"由[%@]提供",model.storeName?model.storeName:@"万事利"];
     
     if (model.sendList.length) {
         _getImage.image = [UIImage imageNamed:@"已完成"];

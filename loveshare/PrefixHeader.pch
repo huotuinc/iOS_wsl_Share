@@ -74,7 +74,7 @@
 #import "TitleHead.h"
 #import "LWNewFeatureController.h"
 #import "AppDelegate.h"
-
+#import "JPUSHService.h"
 
 //luohaibo 万事利到商城
 #define HuoBanMallBuyAppId @"huotuacf89c9231848c9f49"
@@ -100,7 +100,7 @@
 
 
 
-#define DEBUG 1
+//#define DEBUG 1
 
 #ifdef DEBUG
 #define LWLog(...) NSLog(__VA_ARGS__)

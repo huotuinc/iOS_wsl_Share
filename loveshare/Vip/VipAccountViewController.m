@@ -8,17 +8,42 @@
 
 #import "VipAccountViewController.h"
 
+
+#define homeCellidentify @"homeCellIdSH"
+
 @interface VipAccountViewController ()
 
 
+/**
+ *  任务的索引
+ */
+@property(nonatomic,assign) int RenWupageIndex;
+
+@property(nonatomic,assign) int JiTuanpageIndex;
+
 @property(nonatomic,strong) NSMutableArray * JITuan;
 
+@property(nonatomic,strong) NSMutableArray * VipRenWudates;
 
 @property(nonatomic,strong) UISegmentedControl * CTL;
+
+
+
+@property(nonatomic,strong) MJRefreshNormalHeader * head;
+@property(nonatomic,strong) MJRefreshAutoFooter * footer;
+
+
 @end
 
 @implementation VipAccountViewController
 
+
+- (NSMutableArray *)VipRenWudates{
+    if (_VipRenWudates == nil) {
+        _VipRenWudates = [NSMutableArray array];
+    }
+    return _VipRenWudates;
+}
 
 - (NSMutableArray *)JITuan{
     if (_JITuan== nil) {
@@ -30,8 +55,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
     
+    self.RenWupageIndex = 1;
+    self.view.backgroundColor = [UIColor whiteColor];
     UISegmentedControl * CTL = [[UISegmentedControl alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
     _CTL = CTL;
     [CTL addTarget:self action:@selector(ctlChange:) forControlEvents:UIControlEventValueChanged];
@@ -44,10 +70,77 @@
     
     self.tableView.tableFooterView = [[UIView alloc] init];
     
-    if (CTL.selectedSegmentIndex == 0) {
-        self.tableView.rowHeight = 60;
+//    self.tableView.backgroundColor = [UIColor colorWithRed:0.827 green:0.827 blue:0.808 alpha:1.000];
+    
+    [self RefreshJicheng];
+    
+    [self.head beginRefreshing];
+}
+
+- (void)RefreshJicheng{
+    _head = [MJRefreshNormalHeader  headerWithRefreshingTarget:self refreshingAction:@selector(headRefresh)];
+    self.tableView.mj_header = _head;
+    
+    _footer =  [MJRefreshAutoFooter footerWithRefreshingTarget:self refreshingAction:@selector(footRefresh)];
+    self.tableView.tableFooterView = _footer;
+}
+
+
+- (void)headRefresh{
+    
+    LWLog(@"%ld",(long)self.CTL.selectedSegmentIndex);
+    if(self.CTL.selectedSegmentIndex){//任务
+        //按任务
+        [self setRenWuWithPageIndex:1];
+    }else{//架构
+        //按人的
+        [self setupDate];
     }
-    [self setupDate];
+    
+}
+
+- (void)footRefresh{
+    
+    LWLog(@"xxxx");
+    if (self.CTL.selectedSegmentIndex) {
+        
+        //按任务
+        [self setRenWuWithPageIndex:self.RenWupageIndex+1];
+    }
+}
+- (void)setRenWuWithPageIndex:(int)PageIndex{
+    LWLog(@"%d",PageIndex);
+    __weak VipAccountViewController * wself = self;
+    UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+    NSMutableDictionary * parame = [NSMutableDictionary dictionary];
+    parame[@"loginCode"] = userInfo.loginCode;
+    parame[@"pageIndex"] = @(PageIndex);
+    [MBProgressHUD showMessage:nil];
+    [UserLoginTool loginRequestGet:@"UserOrganizeAllTask" parame:parame success:^(id json) {
+        [MBProgressHUD hideHUD];
+        LWLog(@"%@",json);
+        wself.RenWupageIndex = [json[@"pageIndex"] intValue];
+        if ([json[@"status"] integerValue] ==1 && [json[@"resultCode"] integerValue] ==1){
+           NSMutableArray * dates = [NewTaskDataModel mj_objectArrayWithKeyValuesArray:json[@"resultData"]];
+            if (dates.count) {//有数据
+                if (PageIndex>1) {//尾部刷新
+                    [wself.VipRenWudates addObjectsFromArray:dates];
+                    [wself.tableView reloadData];
+                    [wself.footer endRefreshing];
+                }else{
+                    [wself.VipRenWudates removeAllObjects];
+                    [wself.VipRenWudates addObjectsFromArray:dates];
+                    [wself.tableView reloadData];
+                    [wself.head endRefreshing];
+                }
+            }
+        }
+     
+    } failure:^(NSError *error) {
+        [MBProgressHUD hideHUD];
+        [wself.head endRefreshing];
+        [wself.footer endRefreshing];
+    }];
 }
 
 
@@ -56,9 +149,10 @@
     
     self.navigationController.navigationBarHidden = NO;
 }
+
+
+
 - (void)setupDate{
-    
-    
     __weak VipAccountViewController * wself = self;
     UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
@@ -66,17 +160,22 @@
     parame[@"loginCode"] = userInfo.loginCode;
     parame[@"pid"] = @(1);
     parame[@"taskId"] = @(0);
-    
+    [MBProgressHUD showMessage:nil];
     [UserLoginTool loginRequestGet:@"UserOrganize" parame:parame success:^(id json) {
         LWLog(@"%@",json);
+        [MBProgressHUD hideHUD];
         if ([json[@"status"] integerValue] == 1 || [json[@"resultCode"] integerValue] == 1) {
             NSArray * array = [JiTuan mj_objectArrayWithKeyValuesArray:json[@"resultData"]];
             ;
-            [wself.JITuan addObjectsFromArray:array];
-            [wself.tableView reloadData];
-            
+            if (array.count) {
+                [wself.JITuan removeAllObjects];
+                [wself.JITuan addObjectsFromArray:array];
+                [wself.tableView reloadData];
+                [wself.head endRefreshing];
+            }
         }
     } failure:^(NSError *error) {
+        [wself.head endRefreshing];
         LWLog(@"%@",error.description);
     }];
     
@@ -85,20 +184,14 @@
 
 
 - (void)ctlChange:(UISegmentedControl *)ctl{
-    
-//    if (ctl.selectedSegmentIndex) {
-//        <#statements#>
-//    }
-    LWLog(@"%ld",(long)ctl.selectedSegmentIndex);
-    
+    [self.head beginRefreshing];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
     if (self.CTL.selectedSegmentIndex==0) {
         return self.JITuan.count;
     }else{
-        return 0;
+        return self.VipRenWudates.count;
     }
     
 }
@@ -115,25 +208,59 @@
             cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
             
         }
-        
         JiTuan * model = self.JITuan[indexPath.row];
-        
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:[UIImage imageNamed:@"imglogo"]];
         cell.textLabel.text = model.name;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%d人",model.personCount];
         return cell;
+    }else{
+        
+        
+        HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:homeCellidentify];
+        if (cell == nil) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"HomeCell" owner:nil options:nil] lastObject];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+//        if (self.currentSelect.tag == 1) {
+//            TaskGrouoModel * taskGroup  = self.taskGroup[indexPath.section];
+//            NewTaskDataModel *task = taskGroup.tasks[indexPath.row];
+//            cell.model = task;
+//            return cell;
+//        }
+        LWLog(@"%s-----%lu",__func__,(unsigned long)self.VipRenWudates.count);
+        NewTaskDataModel * model = self.VipRenWudates[indexPath.row];
+        cell.model = model;
+        return cell;
     }
     
-    return nil;
+    
 }
 
 
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.CTL.selectedSegmentIndex == 0) {
+       return 60;
+    }
+    return 150;
+    
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.CTL.selectedSegmentIndex == 0) {
+        JiTuan * model = self.JITuan[indexPath.row];
+        EnterpriseTableViewController* vc = (EnterpriseTableViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"EnterpriseTableViewController"];
+        vc.model = model;
+        vc.title = model.name;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     
     JiTuan * model = self.JITuan[indexPath.row];
     EnterpriseTableViewController* vc = (EnterpriseTableViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"EnterpriseTableViewController"];
     vc.model = model;
     vc.title = model.name;
     [self.navigationController pushViewController:vc animated:YES];
+
 }
 @end

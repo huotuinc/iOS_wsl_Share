@@ -25,6 +25,10 @@
     
     NSString* firstFlage = [defaults objectForKey:LAST_Flage_KEY]; //true
     
+    
+    //极光推送
+    [self setJPush];
+    
     if (!lastRunVersion || !firstFlage) {
         [defaults setObject:currentVersion forKey:LAST_RUN_VERSION_KEY];
         [defaults setObject:@"yes" forKey:LAST_Flage_KEY];
@@ -41,6 +45,16 @@
     return NO;
 }
 
+
+- (void)setJPush{
+    
+    //可以添加自定义categories
+    [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+                                                          UIUserNotificationTypeSound |
+                                                          UIUserNotificationTypeAlert)
+                                              categories:nil];
+    
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
@@ -191,9 +205,18 @@
     return model;
 }
 
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    [JPUSHService registerDeviceToken:deviceToken];
+}
 
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    
+    [JPUSHService handleRemoteNotification:userInfo];
+}
 
 
-
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+    
+}
 @end

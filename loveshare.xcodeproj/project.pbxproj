@@ -19,6 +19,15 @@
 		EF15C97D1C99307D00ABD2F6 /* ContainArray.m in Sources */ = {isa = PBXBuildFile; fileRef = EF15C97C1C99307D00ABD2F6 /* ContainArray.m */; };
 		EF15C9801C993CCD00ABD2F6 /* TitleHead.m in Sources */ = {isa = PBXBuildFile; fileRef = EF15C97F1C993CCD00ABD2F6 /* TitleHead.m */; };
 		EF15C9821C993DD100ABD2F6 /* TitleHead.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF15C9811C993DD100ABD2F6 /* TitleHead.xib */; };
+		EF17BB101C9D9B210072856E /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF17BB0E1C9D9B210072856E /* jpush-ios-2.1.0.a */; };
+		EF17BB121C9D9B9E0072856E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF17BB111C9D9B9D0072856E /* CFNetwork.framework */; };
+		EF17BB141C9D9BAD0072856E /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF17BB131C9D9BAD0072856E /* CoreFoundation.framework */; };
+		EF17BB161C9D9BBE0072856E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF17BB151C9D9BBE0072856E /* CoreTelephony.framework */; };
+		EF17BB181C9D9BCC0072856E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF17BB171C9D9BCC0072856E /* SystemConfiguration.framework */; };
+		EF17BB1A1C9D9BDA0072856E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF17BB191C9D9BDA0072856E /* CoreGraphics.framework */; };
+		EF17BB1C1C9D9BE70072856E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF17BB1B1C9D9BE70072856E /* Foundation.framework */; };
+		EF17BB1E1C9D9BF50072856E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF17BB1D1C9D9BF50072856E /* UIKit.framework */; };
+		EF17BB201C9D9C050072856E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF17BB1F1C9D9C050072856E /* Security.framework */; };
 		EF1B8A661C894054003D230A /* UserLoginTool.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A651C894054003D230A /* UserLoginTool.m */; };
 		EF1B8A781C89557D003D230A /* NSDictionary+EXTERN.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A691C89557D003D230A /* NSDictionary+EXTERN.m */; };
 		EF1B8A791C89557D003D230A /* NSString+EXTERN.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A6B1C89557D003D230A /* NSString+EXTERN.m */; };
@@ -189,6 +198,16 @@
 		EF15C97E1C993CCD00ABD2F6 /* TitleHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleHead.h; sourceTree = "<group>"; };
 		EF15C97F1C993CCD00ABD2F6 /* TitleHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleHead.m; sourceTree = "<group>"; };
 		EF15C9811C993DD100ABD2F6 /* TitleHead.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleHead.xib; sourceTree = "<group>"; };
+		EF17BB0E1C9D9B210072856E /* jpush-ios-2.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.0.a"; sourceTree = "<group>"; };
+		EF17BB0F1C9D9B210072856E /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		EF17BB111C9D9B9D0072856E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		EF17BB131C9D9BAD0072856E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		EF17BB151C9D9BBE0072856E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		EF17BB171C9D9BCC0072856E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EF17BB191C9D9BDA0072856E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		EF17BB1B1C9D9BE70072856E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EF17BB1D1C9D9BF50072856E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		EF17BB1F1C9D9C050072856E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		EF1B8A641C894054003D230A /* UserLoginTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoginTool.h; sourceTree = "<group>"; };
 		EF1B8A651C894054003D230A /* UserLoginTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoginTool.m; sourceTree = "<group>"; };
 		EF1B8A681C89557D003D230A /* NSDictionary+EXTERN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+EXTERN.h"; sourceTree = "<group>"; };
@@ -429,6 +448,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF17BB201C9D9C050072856E /* Security.framework in Frameworks */,
+				EF17BB1E1C9D9BF50072856E /* UIKit.framework in Frameworks */,
+				EF17BB1C1C9D9BE70072856E /* Foundation.framework in Frameworks */,
+				EF17BB1A1C9D9BDA0072856E /* CoreGraphics.framework in Frameworks */,
+				EF17BB181C9D9BCC0072856E /* SystemConfiguration.framework in Frameworks */,
+				EF17BB161C9D9BBE0072856E /* CoreTelephony.framework in Frameworks */,
+				EF17BB141C9D9BAD0072856E /* CoreFoundation.framework in Frameworks */,
+				EF17BB121C9D9B9E0072856E /* CFNetwork.framework in Frameworks */,
 				EF6F97D11C8A774900D760EC /* libsqlite3.tbd in Frameworks */,
 				EF6F97CF1C8A773E00D760EC /* AdSupport.framework in Frameworks */,
 				EF6F97CD1C8A773600D760EC /* ImageIO.framework in Frameworks */,
@@ -443,6 +470,7 @@
 				EF6F97B71C8A737700D760EC /* ShareSDK.framework in Frameworks */,
 				EF6F97B81C8A737700D760EC /* ShareSDKExtension.framework in Frameworks */,
 				EF6F97C31C8A737700D760EC /* ShareSDKConnector.framework in Frameworks */,
+				EF17BB101C9D9B210072856E /* jpush-ios-2.1.0.a in Frameworks */,
 				EF6F97BA1C8A737700D760EC /* ShareSDKUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,6 +504,14 @@
 		65D1EAB06F12F7736F8D78F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF17BB1F1C9D9C050072856E /* Security.framework */,
+				EF17BB1D1C9D9BF50072856E /* UIKit.framework */,
+				EF17BB1B1C9D9BE70072856E /* Foundation.framework */,
+				EF17BB191C9D9BDA0072856E /* CoreGraphics.framework */,
+				EF17BB171C9D9BCC0072856E /* SystemConfiguration.framework */,
+				EF17BB151C9D9BBE0072856E /* CoreTelephony.framework */,
+				EF17BB131C9D9BAD0072856E /* CoreFoundation.framework */,
+				EF17BB111C9D9B9D0072856E /* CFNetwork.framework */,
 				EF6F97D01C8A774900D760EC /* libsqlite3.tbd */,
 				EF6F97CE1C8A773E00D760EC /* AdSupport.framework */,
 				EF6F97CC1C8A773600D760EC /* ImageIO.framework */,
@@ -518,9 +554,19 @@
 			path = History;
 			sourceTree = "<group>";
 		};
+		EF17BB0D1C9D9B210072856E /* JPushlib */ = {
+			isa = PBXGroup;
+			children = (
+				EF17BB0E1C9D9B210072856E /* jpush-ios-2.1.0.a */,
+				EF17BB0F1C9D9B210072856E /* JPUSHService.h */,
+			);
+			path = JPushlib;
+			sourceTree = "<group>";
+		};
 		EF1B8A621C894054003D230A /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				EF17BB0D1C9D9B210072856E /* JPushlib */,
 				EF3877BE1C8FCC7E008279BD /* Encryption */,
 				EF6F97D91C8AB3B800D760EC /* MBProgressHUD */,
 				EF6F97941C8A737700D760EC /* ShareSDK */,
@@ -1632,6 +1678,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/loveshare/Other/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/loveshare/Other/ShareSDK/Support/PlatformSDK/WeChatSDK",
+					"$(PROJECT_DIR)/loveshare/Other/JPushlib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1661,6 +1708,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/loveshare/Other/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/loveshare/Other/ShareSDK/Support/PlatformSDK/WeChatSDK",
+					"$(PROJECT_DIR)/loveshare/Other/JPushlib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -25,6 +25,17 @@
     // Do any additional setup after loading the view.
     
     
+    //设置返回按钮
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 20, 50, 30);
+    [button setTitle:@"取消" forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor clearColor];
+    [button addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = left;
+    
+    
+    
     __weak  BindDIngViewController *wself = self;
     
     self.yanzhengma.userInteractionEnabled = YES;
@@ -33,6 +44,17 @@
     }];
 }
 
+
+- (void)buttonAction{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.view endEditing:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
