@@ -205,18 +205,47 @@
     return model;
 }
 
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    [application setApplicationIconBadgeNumber:0];
+}
+
+
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
     [JPUSHService registerDeviceToken:deviceToken];
 }
 
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    NSLog(@"收到通知:%@",[self logDic:userInfo]);
     
-    [JPUSHService handleRemoteNotification:userInfo];
 }
 
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+//    
+//}
+//
+
+// log NSSet with UTF8
+// if not ,log will be \Uxxx
+- (NSString *)logDic:(NSDictionary *)dic {
+    if (![dic count]) {
+        return nil;
+    }
+    NSString *tempStr1 =
+    [[dic description] stringByReplacingOccurrencesOfString:@"\\u"
+                                                 withString:@"\\U"];
+    NSString *tempStr2 =
+    [tempStr1 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
+    NSString *tempStr3 =
+    [[@"\"" stringByAppendingString:tempStr2] stringByAppendingString:@"\""];
     
+    NSData *tempData = [tempStr3 dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSString *str =
+    [NSPropertyListSerialization propertyListWithData:tempData options:NSPropertyListImmutable format:nil error:nil];
+    
+    return str;
 }
+
 @end
