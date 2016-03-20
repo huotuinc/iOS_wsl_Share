@@ -256,10 +256,9 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     
-    JiTuan * model = self.JITuan[indexPath.row];
-    EnterpriseTableViewController* vc = (EnterpriseTableViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"EnterpriseTableViewController"];
-    vc.model = model;
-    vc.title = model.name;
+    NewTaskDataModel * model = self.VipRenWudates[indexPath.row];
+    AccountTableViewController* vc = [[AccountTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    vc.taskModel = model;
     [self.navigationController pushViewController:vc animated:YES];
 
 }

@@ -404,7 +404,7 @@
     parame[@"industry"] = self.person.industry;
     parame[@"favorite"] = self.person.favorite;
     parame[@"income"] = self.person.income;
-    parame[@"birth"] = @"1989-01-01";//self.person.birth;
+    parame[@"birth"] = [self convertDateFromString:self.person.birth];
 //    parame[@"sex"] = self.userInfo.sex;
     //sex,birth,industry,industry,industry
     [MBProgressHUD showMessage:@"资料上传中"];
@@ -430,6 +430,16 @@
     
 }
 
+
+- (NSDate*) convertDateFromString:(NSString*)uiDate
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+    [formatter setDateFormat:@"yyyy-MM-dd hh-mm-ss"];
+    NSDate *date=[formatter dateFromString:uiDate];
+    return date;
+}
+
+
 /**
  *  改收入
  *
@@ -447,7 +457,8 @@
     parame[@"name"] = self.person.name;
     parame[@"sex"] = @(self.person.sex);
     parame[@"favorite"] = self.person.favorite;
-    parame[@"birth"] = self.person.birth;//self.person.birth;
+    LWLog(@"%@--%@",self.person.birth,[self convertDateFromString:self.person.birth]);
+    parame[@"birth"] = self.person.birth;
     [MBProgressHUD showMessage:@"资料上传中"];
     [UserLoginTool loginRequestGet:@"UpdateUserInfo" parame:parame success:^(id json) {
         if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
@@ -471,7 +482,8 @@
     parame[@"name"] = self.person.name;
     parame[@"sex"] = @(self.person.sex);
     parame[@"favorite"] = self.person.favorite;
-    parame[@"birth"] = self.person.birth;//self.person.birth;
+    LWLog(@"%@",[self convertDateFromString:self.person.birth]);
+    parame[@"birth"] = [self convertDateFromString:self.person.birth];
     [MBProgressHUD showMessage:@"资料上传中"];
     [UserLoginTool loginRequestGet:@"UpdateUserInfo" parame:parame success:^(id json) {
         if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
@@ -537,7 +549,7 @@
     parame[@"name"] = self.person.name;
     parame[@"sex"] = @(self.person.sex);
     parame[@"favorite"] = self.person.favorite;
-    parame[@"birth"] = [[self.person.birth  componentsSeparatedByString:@" "] firstObject] ;//self.person.birth;
+    parame[@"birth"] = [self convertDateFromString:self.person.birth];
     [MBProgressHUD showMessage:@"资料上传中"];
     [UserLoginTool loginRequestGet:@"UpdateUserInfo" parame:parame success:^(id json) {
         if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {

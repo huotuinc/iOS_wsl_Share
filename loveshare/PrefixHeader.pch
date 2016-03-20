@@ -75,6 +75,7 @@
 #import "LWNewFeatureController.h"
 #import "AppDelegate.h"
 #import "JPUSHService.h"
+#import "AccountTableViewController.h"
 
 //luohaibo 万事利到商城
 #define HuoBanMallBuyAppId @"huotuacf89c9231848c9f49"

@@ -65,16 +65,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    LWLog(@"%s---%@",__func__,NSStringFromCGRect(self.iconView.frame));
     self.masterRuleDes.hidden = YES;
     self.iconView.layer.borderWidth = 2;
     self.iconView.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.iconView.layer.cornerRadius = self.iconView.frame.size.height * 0.5;
-    self.iconView.layer.masksToBounds = YES;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setup];
+    self.iconView.layer.cornerRadius = 30;
+    [self.iconView layoutIfNeeded];
+    self.iconView.layer.masksToBounds = YES;
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     
 }
@@ -93,16 +97,13 @@
     parame[@"pageTag"] = @(0);
     parame[@"pageSize"] = @(0);
     [UserLoginTool loginRequestGet:@"ScorePrentice" parame:parame success:^(id json) {
-        
         LWLog(@"%@",json);
-        
         wself.shareUrl = json[@"resultData"][@"shareUrl"];
         [MBProgressHUD hideHUD];
         wself.nameLable.text = [NSString stringWithFormat:@"邀请码:%@",json[@"resultData"][@"inviteCode"]];
         self.tuDiCount.text = [NSString stringWithFormat:@"%ld",[json[@"resultData"][@"prenticeAmount"] integerValue]];
         self.firstLable.text = [NSString xiaoshudianweishudeal:[json[@"resultData"][@"totalScore"] floatValue]];
         self.secondLable.text = [NSString xiaoshudianweishudeal:[json[@"resultData"][@"yesterdayTotalScore"] floatValue]];
-        
         self.thirdLable.text = [NSString stringWithFormat:@"%ld/%ld",[json[@"resultData"][@"yesterdayBrowseAmount"] integerValue],[json[@"resultData"][@"historyTotalBrowseAmount"] integerValue]];
         
         self.fourthLable.text = [NSString stringWithFormat:@"%ld/%ld",[json[@"resultData"][@"yesterdayTurnAmount"] integerValue],[json[@"resultData"][@"historyTotalTurnAmount"] integerValue]];
@@ -111,7 +112,7 @@
         if (json[@"resultData"][@"desc"]) {
             
             self.masterRuleDes.hidden = NO;
-            self.masterRuleDes.text = json[@"resultData"][@"desc"];
+            self.masterRuleDes.text =[NSString stringWithFormat:@" %@",json[@"resultData"][@"desc"]] ;
         }else{
             self.masterRuleDes.hidden = YES;
         }

@@ -6,11 +6,15 @@
 //  Copyright (c) 2015年 HT. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "NewShareModel.h"
 
 
 @interface UserLoginTool : NSObject
+
+
+
 
 /*账户网络请求Get*/
 + (void)loginRequestGet:(NSString *)urlStr parame:(NSMutableDictionary *)params success:(void (^)(id json))success failure:(void (^)(NSError *error))failure;
@@ -77,5 +81,8 @@
  *  @param failure    <#failure description#>
  */
 + (void)LoginToShareTextMessageByShareSdk:(NSString *)shareText andUrl:(NSString *) url success:(void (^)(int json))success failure:(void (^)(id json))failure;
+
+
++ (UIImage *)LoginCreateImageWithNoDate;
 
 @end

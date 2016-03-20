@@ -101,7 +101,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.head beginRefreshing];
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -122,7 +122,7 @@
     
     
     [self setUp];
-    
+    [self.head beginRefreshing];
     
 }
 

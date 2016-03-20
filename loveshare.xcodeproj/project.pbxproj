@@ -28,6 +28,13 @@
 		EF17BB1C1C9D9BE70072856E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF17BB1B1C9D9BE70072856E /* Foundation.framework */; };
 		EF17BB1E1C9D9BF50072856E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF17BB1D1C9D9BF50072856E /* UIKit.framework */; };
 		EF17BB201C9D9C050072856E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF17BB1F1C9D9C050072856E /* Security.framework */; };
+		EF17BB301C9DADD20072856E /* MJChiBaoZiFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = EF17BB251C9DADD20072856E /* MJChiBaoZiFooter.m */; };
+		EF17BB311C9DADD20072856E /* MJChiBaoZiFooter2.m in Sources */ = {isa = PBXBuildFile; fileRef = EF17BB271C9DADD20072856E /* MJChiBaoZiFooter2.m */; };
+		EF17BB321C9DADD20072856E /* MJChiBaoZiHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EF17BB291C9DADD20072856E /* MJChiBaoZiHeader.m */; };
+		EF17BB331C9DADD20072856E /* MJDIYAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = EF17BB2B1C9DADD20072856E /* MJDIYAutoFooter.m */; };
+		EF17BB341C9DADD20072856E /* MJDIYBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = EF17BB2D1C9DADD20072856E /* MJDIYBackFooter.m */; };
+		EF17BB351C9DADD20072856E /* MJDIYHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EF17BB2F1C9DADD20072856E /* MJDIYHeader.m */; };
+		EF17BB381C9E74530072856E /* AccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF17BB371C9E74530072856E /* AccountTableViewController.m */; };
 		EF1B8A661C894054003D230A /* UserLoginTool.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A651C894054003D230A /* UserLoginTool.m */; };
 		EF1B8A781C89557D003D230A /* NSDictionary+EXTERN.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A691C89557D003D230A /* NSDictionary+EXTERN.m */; };
 		EF1B8A791C89557D003D230A /* NSString+EXTERN.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A6B1C89557D003D230A /* NSString+EXTERN.m */; };
@@ -208,6 +215,20 @@
 		EF17BB1B1C9D9BE70072856E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EF17BB1D1C9D9BF50072856E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EF17BB1F1C9D9C050072856E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		EF17BB241C9DADD20072856E /* MJChiBaoZiFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJChiBaoZiFooter.h; sourceTree = "<group>"; };
+		EF17BB251C9DADD20072856E /* MJChiBaoZiFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJChiBaoZiFooter.m; sourceTree = "<group>"; };
+		EF17BB261C9DADD20072856E /* MJChiBaoZiFooter2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJChiBaoZiFooter2.h; sourceTree = "<group>"; };
+		EF17BB271C9DADD20072856E /* MJChiBaoZiFooter2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJChiBaoZiFooter2.m; sourceTree = "<group>"; };
+		EF17BB281C9DADD20072856E /* MJChiBaoZiHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJChiBaoZiHeader.h; sourceTree = "<group>"; };
+		EF17BB291C9DADD20072856E /* MJChiBaoZiHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJChiBaoZiHeader.m; sourceTree = "<group>"; };
+		EF17BB2A1C9DADD20072856E /* MJDIYAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDIYAutoFooter.h; sourceTree = "<group>"; };
+		EF17BB2B1C9DADD20072856E /* MJDIYAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDIYAutoFooter.m; sourceTree = "<group>"; };
+		EF17BB2C1C9DADD20072856E /* MJDIYBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDIYBackFooter.h; sourceTree = "<group>"; };
+		EF17BB2D1C9DADD20072856E /* MJDIYBackFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDIYBackFooter.m; sourceTree = "<group>"; };
+		EF17BB2E1C9DADD20072856E /* MJDIYHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDIYHeader.h; sourceTree = "<group>"; };
+		EF17BB2F1C9DADD20072856E /* MJDIYHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDIYHeader.m; sourceTree = "<group>"; };
+		EF17BB361C9E74530072856E /* AccountTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountTableViewController.h; sourceTree = "<group>"; };
+		EF17BB371C9E74530072856E /* AccountTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTableViewController.m; sourceTree = "<group>"; };
 		EF1B8A641C894054003D230A /* UserLoginTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoginTool.h; sourceTree = "<group>"; };
 		EF1B8A651C894054003D230A /* UserLoginTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoginTool.m; sourceTree = "<group>"; };
 		EF1B8A681C89557D003D230A /* NSDictionary+EXTERN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+EXTERN.h"; sourceTree = "<group>"; };
@@ -563,9 +584,29 @@
 			path = JPushlib;
 			sourceTree = "<group>";
 		};
+		EF17BB231C9DADD20072856E /* DIY */ = {
+			isa = PBXGroup;
+			children = (
+				EF17BB241C9DADD20072856E /* MJChiBaoZiFooter.h */,
+				EF17BB251C9DADD20072856E /* MJChiBaoZiFooter.m */,
+				EF17BB261C9DADD20072856E /* MJChiBaoZiFooter2.h */,
+				EF17BB271C9DADD20072856E /* MJChiBaoZiFooter2.m */,
+				EF17BB281C9DADD20072856E /* MJChiBaoZiHeader.h */,
+				EF17BB291C9DADD20072856E /* MJChiBaoZiHeader.m */,
+				EF17BB2A1C9DADD20072856E /* MJDIYAutoFooter.h */,
+				EF17BB2B1C9DADD20072856E /* MJDIYAutoFooter.m */,
+				EF17BB2C1C9DADD20072856E /* MJDIYBackFooter.h */,
+				EF17BB2D1C9DADD20072856E /* MJDIYBackFooter.m */,
+				EF17BB2E1C9DADD20072856E /* MJDIYHeader.h */,
+				EF17BB2F1C9DADD20072856E /* MJDIYHeader.m */,
+			);
+			path = DIY;
+			sourceTree = "<group>";
+		};
 		EF1B8A621C894054003D230A /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				EF17BB231C9DADD20072856E /* DIY */,
 				EF17BB0D1C9D9B210072856E /* JPushlib */,
 				EF3877BE1C8FCC7E008279BD /* Encryption */,
 				EF6F97D91C8AB3B800D760EC /* MBProgressHUD */,
@@ -1126,6 +1167,8 @@
 				EFAF47171C97B25600D5A5C4 /* DepartmentViewController.m */,
 				EFA760C31C97E2B200EFCE9A /* PersonViewController.h */,
 				EFA760C41C97E2B200EFCE9A /* PersonViewController.m */,
+				EF17BB361C9E74530072856E /* AccountTableViewController.h */,
+				EF17BB371C9E74530072856E /* AccountTableViewController.m */,
 			);
 			path = Vip;
 			sourceTree = "<group>";
@@ -1423,6 +1466,9 @@
 				EF1B8A7E1C89557D003D230A /* UIViewController+MonitorNetWork.m in Sources */,
 				EF3877DD1C8FFB14008279BD /* ProfessionalController.m in Sources */,
 				EF23A7751C9AF790005818CD /* MallBackViewController.m in Sources */,
+				EF17BB381C9E74530072856E /* AccountTableViewController.m in Sources */,
+				EF17BB341C9DADD20072856E /* MJDIYBackFooter.m in Sources */,
+				EF17BB351C9DADD20072856E /* MJDIYHeader.m in Sources */,
 				EF3877C71C8FCC7E008279BD /* GTMBase64.m in Sources */,
 				EF23A7631C9A3F99005818CD /* DetailWebViewTopOption.m in Sources */,
 				EF6F97831C89755200D760EC /* UIImageView+AFNetworking.m in Sources */,
@@ -1438,6 +1484,7 @@
 				EF3636911C916BA7006AD6F1 /* ForeshowTableViewCell.m in Sources */,
 				EFAF470E1C96B62300D5A5C4 /* VipAccountViewController.m in Sources */,
 				EF3636AB1C918FE2006AD6F1 /* WXUtil.mm in Sources */,
+				EF17BB331C9DADD20072856E /* MJDIYAutoFooter.m in Sources */,
 				EF6F977D1C89755200D760EC /* README.md in Sources */,
 				EF3636BD1C926C28006AD6F1 /* TudiTableViewCell.m in Sources */,
 				EFF0728E1C8939F000150FA2 /* ViewController.m in Sources */,
@@ -1448,6 +1495,7 @@
 				EF5A1EF81C8D7272002035FC /* HomeCell.m in Sources */,
 				EF3636C61C92AEFA006AD6F1 /* MallUser.m in Sources */,
 				EF15C9801C993CCD00ABD2F6 /* TitleHead.m in Sources */,
+				EF17BB301C9DADD20072856E /* MJChiBaoZiFooter.m in Sources */,
 				EF5C0B701C8C193100C76019 /* WeiXinBackViewController.m in Sources */,
 				EF6F97E11C8AB3B800D760EC /* MBProgressHUD.m in Sources */,
 				EF3877CE1C8FFA64008279BD /* PersonMessageTableViewController.m in Sources */,
@@ -1460,6 +1508,7 @@
 				EFAF47121C96D6E700D5A5C4 /* JiTuan.m in Sources */,
 				EF1B8A7F1C89557D003D230A /* UIViewController+NAV.m in Sources */,
 				EF3877C81C8FCC7E008279BD /* MD5Encryption.m in Sources */,
+				EF17BB311C9DADD20072856E /* MJChiBaoZiFooter2.m in Sources */,
 				EF3636B31C9190B8006AD6F1 /* NSDictionary+HuoBanMallSign.m in Sources */,
 				EF3636C21C926E2C006AD6F1 /* DownTudiTableViewCell.m in Sources */,
 				EFA760CB1C98001C00EFCE9A /* BindDIngViewController.m in Sources */,
@@ -1504,6 +1553,7 @@
 				EF5A1EF41C8D7272002035FC /* BPCell.m in Sources */,
 				EF3636A91C918FE2006AD6F1 /* ApiXml.mm in Sources */,
 				EF6F97861C89755200D760EC /* UIWebView+AFNetworking.m in Sources */,
+				EF17BB321C9DADD20072856E /* MJChiBaoZiHeader.m in Sources */,
 				EFF072881C8939F000150FA2 /* main.m in Sources */,
 				EF3636721C90448B006AD6F1 /* PersonCenterModel.m in Sources */,
 				EF3636821C914D07006AD6F1 /* FollowList.m in Sources */,

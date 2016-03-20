@@ -19,6 +19,17 @@
 
 @implementation UserLoginTool
 
++ (UIImage *)LoginCreateImageWithNoDate{
+    if(ScreenWidth == 320){
+        if(ScreenHeight == 480){
+            return [UIImage imageNamed:@"tbg320x480"];
+        }
+        return [UIImage imageNamed:@"tbg320x568"];
+    }else if(ScreenWidth == 375){
+        return [UIImage imageNamed:@"tbg375x667"];
+    }
+    return [UIImage imageNamed:@"tbg621x1104"];
+}
 + (void)loginRequestGet:(NSString *)urlStr parame:(NSMutableDictionary *)params success:(void (^)(id json))success failure:(void (^)(NSError *error))failure{
     
     NSMutableDictionary * paramsOption = [NSMutableDictionary dictionary];
@@ -109,8 +120,8 @@
     NSURL *urls = [NSURL URLWithString:strUrl];
      //设置请求
     NSURLRequest *request = [NSURLRequest requestWithURL:urls];
-//    request.timeoutInterval = 30.0;
-     //发生GET同步请求（Sync）
+     
+    //发生GET同步请求（Sync）
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSError *error =nil;
     if (data) {

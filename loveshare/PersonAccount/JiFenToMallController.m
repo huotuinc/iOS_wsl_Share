@@ -35,6 +35,10 @@
 @property (nonatomic,strong) UIView * backView;
 /**遮罩*/
 @property (nonatomic,strong) UITableView * midtableView;
+
+/**能到商城的积分*/
+@property (nonatomic,strong) NSNumber * toMallScore;
+
 @end
 
 @implementation JiFenToMallController
@@ -51,10 +55,6 @@
  *  获取网络数据
  */
 - (void)toGetNewWorkDate{
-    
-    
-    
-    
     
 }
 
@@ -92,7 +92,6 @@
             wself.Mydes.text = [NSString stringWithFormat:@" 说明：%@",json[@"resultData"][@"desc"]];
         }
         wself.toMallJifen.text = [NSString xiaoshudianweishudeal:[json[@"resultData"][@"money"] doubleValue]];
-        
         if (json[@"resultData"][@"lastApply"]) {
             if(json[@"resultData"][@"lastApply"][@"ApplyTime"]){
                 wself.firstRecord.text = json[@"resultData"][@"lastApply"][@"ApplyTime"];
@@ -102,32 +101,12 @@
                 wself.Record.hidden = YES;
             }
         }
-        
-        
-//        LOG(@"---%@--------%@",,error.description);
+
     } failure:^(NSError *error) {
         
     }];
 
 }
-//
-//
-///**
-// *  获取用户列表
-// */
-//- (void)toGetTheGlodToMallAccountList{
-////    LoginState * a =  [AppDelegate getInstance].loadingState.userData;
-////    __weak JiFenToMallController * wself = self;
-////    [[[AppDelegate getInstance]  getFanOperations] TOGetUserList:nil block:^(id result, NSError *error) {
-////        NSLog(@"%@",result);
-////        if (result) {
-////           NSArray * UserList = [GlodMallUserModel objectArrayWithKeyValuesArray:result];
-////            if (UserList.count) {
-////                wself.userList = [NSMutableArray arrayWithArray:UserList];
-////            }
-////        }
-////    } WithunionId:a.unionId];
-//}
 
 ///**
 // *  积分兑换
@@ -166,7 +145,7 @@
     NSDictionary * dict =  [UserLoginTool LogingetDateSyncWith:@"Recharge" WithParame:p];
     LWLog(@"%@",dict);
     if ([dict[@"tip"] isEqualToString:@"错误的提现密码"])  {
-        [MBProgressHUD showError:@"密码错误,请去修改密码"];
+        [MBProgressHUD showError:@"密码错误,去更多选项修改密码"];
     }else{
         [MBProgressHUD showSuccess:dict[@"tip"]];
         self.scoreJifen.text = [NSString stringWithFormat:@"%.1f",[wself.scoreJifen.text floatValue] - [wself.toMallJifen.text floatValue]];

@@ -10,8 +10,7 @@
 #import "detailViewController.h"
 #import <MJRefresh.h>
 
-
-
+#import "MJChiBaoZiHeader.h"
 #define pageSize 10
 
 @interface HomeListViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -59,7 +58,7 @@
 @property(nonatomic,strong) NSMutableArray *taskLists;
 
 
-@property(nonatomic,strong) MJRefreshNormalHeader * head;
+@property(nonatomic,strong) MJRefreshGifHeader * head;
 @property(nonatomic,strong) MJRefreshAutoFooter * footer;
 @end
 
@@ -86,7 +85,14 @@ static NSString * homeCellidentify = @"homeCellId";
 }
 
 - (void)RefreshJicheng{
-    _head = [MJRefreshNormalHeader  headerWithRefreshingTarget:self refreshingAction:@selector(headRefresh)];
+    _head = [MJChiBaoZiHeader headerWithRefreshingTarget:self refreshingAction:@selector(headRefresh)];
+    //[MJRefreshGifHeader  headerWithRefreshingTarget:self refreshingAction:@selector(headRefresh)];
+    // 隐藏时间
+    _head.lastUpdatedTimeLabel.hidden = YES;
+    
+    // 隐藏状态
+    _head.stateLabel.hidden = YES;
+
     self.taskTableview.mj_header = _head;
     
    _footer =  [MJRefreshAutoFooter footerWithRefreshingTarget:self refreshingAction:@selector(footRefresh)];

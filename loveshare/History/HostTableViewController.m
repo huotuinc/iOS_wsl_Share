@@ -129,6 +129,12 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    if (self.dateArray.count == 0) {
+        self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UserLoginTool LoginCreateImageWithNoDate]];
+    }else{
+        self.tableView.backgroundColor = [UIColor whiteColor];
+    }
     return  self.dateArray.count;
 }
 

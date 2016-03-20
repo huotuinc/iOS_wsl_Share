@@ -152,6 +152,11 @@ static NSString *homeCellidentify = @"TodayTableViewCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (self.dateArray.count == 0) {
+        self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UserLoginTool LoginCreateImageWithNoDate]];
+    }else{
+        self.tableView.backgroundColor = [UIColor whiteColor];
+    }
     return self.dateArray.count;
 }
 
