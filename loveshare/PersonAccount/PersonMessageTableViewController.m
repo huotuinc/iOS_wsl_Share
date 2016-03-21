@@ -108,7 +108,7 @@
         self.person = person;
         if (person) {
             self.nameLable.text = person.name;
-            self.sexLable.text = person.sex ? @"男":@"女";  //1男
+            self.sexLable.text = person.sex==1 ? @"男":@"女";  //1男
             self.birDate.text = [[person.birth componentsSeparatedByString:@" "] firstObject];
             self.careerLable.text =person.industry;
             self.favLable.text = person.favorite;
@@ -287,6 +287,8 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
+    
+    __weak PersonMessageTableViewController * wself = self;
 //    NSLog(@"%@",info);
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
 //    NSLog(@"%@",mediaType);
@@ -321,8 +323,14 @@
         parame[@"loginCode"] = userInfo.loginCode;
         [MBProgressHUD showMessage:@"头像上传中..."];
         [UserLoginTool loginRequestPostWithFile:@"UploadPicture" parame:parame success:^(id json) {
+            
+            LWLog(@"%@",json);
             if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
-                [self.iconView setImage:photoImage forState:UIControlStateNormal];
+                
+               UserModel * model = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+                model.userHead = json[@"resultData"][@"picUrl"];
+                [UserLoginTool LoginModelWriteToShaHe:model andFileName:RegistUserDate];
+                [wself.iconView setImage:photoImage forState:UIControlStateNormal];
             }
             [MBProgressHUD hideHUD];
             
@@ -458,7 +466,7 @@
     parame[@"sex"] = @(self.person.sex);
     parame[@"favorite"] = self.person.favorite;
     LWLog(@"%@--%@",self.person.birth,[self convertDateFromString:self.person.birth]);
-    parame[@"birth"] = self.person.birth;
+    parame[@"birth"] = [[self.person.birth componentsSeparatedByString:@" "] firstObject];
     [MBProgressHUD showMessage:@"资料上传中"];
     [UserLoginTool loginRequestGet:@"UpdateUserInfo" parame:parame success:^(id json) {
         if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
@@ -483,7 +491,7 @@
     parame[@"sex"] = @(self.person.sex);
     parame[@"favorite"] = self.person.favorite;
     LWLog(@"%@",[self convertDateFromString:self.person.birth]);
-    parame[@"birth"] = [self convertDateFromString:self.person.birth];
+    parame[@"birth"] = [[self.person.birth componentsSeparatedByString:@" "] firstObject];
     [MBProgressHUD showMessage:@"资料上传中"];
     [UserLoginTool loginRequestGet:@"UpdateUserInfo" parame:parame success:^(id json) {
         if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
@@ -528,8 +536,8 @@
 /**
  *  性别选择的代理方法
  *
- *  @param sex 0 男
- *             1 女
+ *  @param sex 1 男
+ *             2 女
  */
 - (void)selectSexOver:(NSInteger)sex
 {
@@ -547,9 +555,9 @@
     parame[@"industry"] = @(self.person.industryId);
     parame[@"income"] = @(self.person.incomeId);
     parame[@"name"] = self.person.name;
-    parame[@"sex"] = @(self.person.sex);
+    parame[@"sex"] = @(sex+1);
     parame[@"favorite"] = self.person.favorite;
-    parame[@"birth"] = [self convertDateFromString:self.person.birth];
+    parame[@"birth"] = [[self.person.birth componentsSeparatedByString:@" "] firstObject];
     [MBProgressHUD showMessage:@"资料上传中"];
     [UserLoginTool loginRequestGet:@"UpdateUserInfo" parame:parame success:^(id json) {
         if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {

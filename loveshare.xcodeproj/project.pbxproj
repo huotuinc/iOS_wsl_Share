@@ -163,6 +163,8 @@
 		EFF072A11C8939F000150FA2 /* loveshareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF072A01C8939F000150FA2 /* loveshareTests.m */; };
 		EFF072AC1C8939F000150FA2 /* loveshareUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF072AB1C8939F000150FA2 /* loveshareUITests.m */; };
 		EFFA36FB1C8AD9BD00D6AE4D /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFA36FA1C8AD9BD00D6AE4D /* UserModel.m */; };
+		EFFE36481CA01FE2000EA32D /* LeftTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFE36461CA01FE2000EA32D /* LeftTableViewCell.m */; };
+		EFFE36491CA01FE2000EA32D /* LeftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFFE36471CA01FE2000EA32D /* LeftTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -462,6 +464,9 @@
 		EFF072AD1C8939F000150FA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFFA36F91C8AD9BD00D6AE4D /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		EFFA36FA1C8AD9BD00D6AE4D /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		EFFE36451CA01FE2000EA32D /* LeftTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTableViewCell.h; sourceTree = "<group>"; };
+		EFFE36461CA01FE2000EA32D /* LeftTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTableViewCell.m; sourceTree = "<group>"; };
+		EFFE36471CA01FE2000EA32D /* LeftTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -679,6 +684,9 @@
 		EF1B8A931C89616D003D230A /* view */ = {
 			isa = PBXGroup;
 			children = (
+				EFFE36451CA01FE2000EA32D /* LeftTableViewCell.h */,
+				EFFE36461CA01FE2000EA32D /* LeftTableViewCell.m */,
+				EFFE36471CA01FE2000EA32D /* LeftTableViewCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1333,6 +1341,11 @@
 					EFF072821C8939F000150FA2 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = K7FU393EUA;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 					EFF0729B1C8939F000150FA2 = {
 						CreatedOnToolsVersion = 7.2;
@@ -1379,6 +1392,7 @@
 				EF5A1EF91C8D7272002035FC /* HomeCell.xib in Resources */,
 				EF6F97B91C8A737700D760EC /* ShareSDKUI.bundle in Resources */,
 				EF23A7761C9AF790005818CD /* MallBackViewController.xib in Resources */,
+				EFFE36491CA01FE2000EA32D /* LeftTableViewCell.xib in Resources */,
 				EF3636921C916BA7006AD6F1 /* ForeshowTableViewCell.xib in Resources */,
 				EF6F97C21C8A737700D760EC /* ShareSDK.bundle in Resources */,
 				EF6F97E01C8AB3B800D760EC /* MBProgressHUD.bundle in Resources */,
@@ -1568,6 +1582,7 @@
 				EF15C96F1C9906C700ABD2F6 /* HostTableViewController.m in Sources */,
 				EF5A1EF21C8D7272002035FC /* RequestTasks.m in Sources */,
 				EF3636751C9046A3006AD6F1 /* TwoOption.m in Sources */,
+				EFFE36481CA01FE2000EA32D /* LeftTableViewCell.m in Sources */,
 				EF5A1EF01C8D7272002035FC /* TaskGrouoModel.m in Sources */,
 				EF3877DA1C8FFAFE008279BD /* SexController.m in Sources */,
 				EF5A1EF31C8D7272002035FC /* TaskDataCeach.m in Sources */,
@@ -1712,6 +1727,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/loveshare/Other/ShareSDK",
@@ -1733,6 +1749,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1743,6 +1760,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/loveshare/Other/ShareSDK",
@@ -1763,6 +1781,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

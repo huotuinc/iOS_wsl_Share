@@ -67,7 +67,7 @@
     NSString * SEX = self.sexs[indexPath.row];
     cell.textLabel.text = SEX;
     
-    if(self.sex == indexPath.row){
+    if(self.sex-1 == indexPath.row){
         self.selected = indexPath;
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];

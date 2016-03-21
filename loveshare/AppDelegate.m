@@ -11,9 +11,17 @@
 
 @interface AppDelegate ()<WXApiDelegate>
 
+
+
+
 @end
 
 @implementation AppDelegate
+
+
+static NSString *channel = @"Publish channel";
+static BOOL isProduction = FALSE;
+
 
 
 - (BOOL) isFirstLoad{
@@ -48,6 +56,7 @@
 
 - (void)setJPush{
     
+    
     //可以添加自定义categories
     [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
                                                           UIUserNotificationTypeSound |
@@ -57,6 +66,12 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    
+    self.TodayPredictingNumber = [NSMutableDictionary dictionaryWithObject:@(0) forKey:@"today"];
+    
+    [JPUSHService setupWithOption:launchOptions appKey:JPushAppKey
+                          channel:channel apsForProduction:isProduction];
     
     InitModel * initModel = [self AppInit:application];
     if ([self isFirstLoad]) {
@@ -211,15 +226,53 @@
 
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    
+    LWLog(@"%@", [deviceToken description]);
+    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    NSString * myDeviceToken = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"deviceToken:%@", myDeviceToken);
+    
     [JPUSHService registerDeviceToken:deviceToken];
 }
 
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
-    NSLog(@"收到通知:%@",[self logDic:userInfo]);
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
     
+    LWLog(@"%@----%s",[error description],__func__);
 }
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    NSLog(@"收到通知:%@",[self logDic:userInfo]);
+    
+    LWLog(@"%@",userInfo);
+    if ([[userInfo allKeys] containsObject:@"type"]) {
+        
+        LWLog(@"xxx");
+        NSInteger a = [userInfo[@"type"] integerValue] + 1;
+        [self.TodayPredictingNumber  setValue:@(a) forKey:@"today"];
+        LWLog(@"%@",self.TodayPredictingNumber);
+    }
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"推送通知" message:userInfo[@"aps"][@"alert"] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+    [alert show];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+    
+    LWLog(@"%@",userInfo);
+    if ([[userInfo allKeys] containsObject:@"type"]) {
+        LWLog(@"%@",self.TodayPredictingNumber);
+        NSInteger a = [userInfo[@"type"] integerValue] + 1;
+        
+        [self.TodayPredictingNumber setValue:[NSString stringWithFormat:@"%ld",a] forKey:@"today"];
+        
+//        [self.TodayPredictingNumber setValue:@(a) forKey:@"type"];
+        LWLog(@"%@",self.TodayPredictingNumber);
+    }
+     completionHandler(UIBackgroundFetchResultNewData);
+    
+}
 
 //- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
 //    

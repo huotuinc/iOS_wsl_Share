@@ -80,7 +80,7 @@
  *  @param success    <#success description#>
  *  @param failure    <#failure description#>
  */
-+ (void)LoginToShareTextMessageByShareSdk:(NSString *)shareText andUrl:(NSString *) url success:(void (^)(int json))success failure:(void (^)(id json))failure;
++ (void)LoginToShareTextMessageByShareSdk:(NSString *)shareText andUrl:(NSString *) aaurl success:(void (^)(int json))success failure:(void (^)(id json))failure;
 
 
 + (UIImage *)LoginCreateImageWithNoDate;

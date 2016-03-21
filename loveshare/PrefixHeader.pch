@@ -77,6 +77,12 @@
 #import "JPUSHService.h"
 #import "AccountTableViewController.h"
 
+
+/**极光推送*/
+#define JPushAppKey @"26326d560507983df9217c39"
+#define JPushSecret @"f0a441832e28d1c69ba94093"
+
+
 //luohaibo 万事利到商城
 #define HuoBanMallBuyAppId @"huotuacf89c9231848c9f49"
 #define HuoBanMallBuyAppSecrect @"0ad8abe244331aacf89c9231848c9f49"

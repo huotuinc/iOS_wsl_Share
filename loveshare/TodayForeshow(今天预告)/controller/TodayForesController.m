@@ -179,11 +179,11 @@ static NSString *homeCellidentify = @"TodayTableViewCell";
     
     TodayAdvance * model = self.dateArray[indexPath.row];
     
-    NSDictionary * dict = [model mj_keyValues];
-    NewTaskDataModel * cc = [NewTaskDataModel mj_objectWithKeyValues:dict];
+//    NSDictionary * dict = [model mj_keyValues];
+//    NewTaskDataModel * cc = [NewTaskDataModel mj_objectWithKeyValues:dict];
     detailViewController * vc =(detailViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"detailViewController"];
     vc.loi = 1;
-    vc.taskModel = cc;
+    vc.taskModel = (NewTaskDataModel *)model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 @end

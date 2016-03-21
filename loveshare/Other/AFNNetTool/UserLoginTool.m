@@ -171,7 +171,7 @@
 + (void)LoginToShareMessageByShareSdk:(NewShareModel *)shareModel success:(void (^)(int json))success failure:(void (^)(id json))failure{
     
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-    [shareParams SSDKSetupShareParamsByText:nil images:(shareModel.taskSmallImgUrl?@[shareModel.taskSmallImgUrl]:nil)
+    [shareParams SSDKSetupShareParamsByText:nil images:(shareModel.taskSmallImgUrl?@[shareModel.taskSmallImgUrl]:@[[UIImage imageNamed:@"29"]])
                                             url:[NSURL URLWithString:shareModel.taskInfo]
                                           title:shareModel.taskName
                                            type:SSDKContentTypeAuto];
@@ -208,16 +208,21 @@
     
 }
 
-+ (void)LoginToShareTextMessageByShareSdk:(NSString *)shareText andUrl:(NSString *) url success:(void (^)(int json))success failure:(void (^)(id json))failure{
++ (void)LoginToShareTextMessageByShareSdk:(NSString *)shareText andUrl:(NSString *) aaurl success:(void (^)(int json))success failure:(void (^)(id json))failure{
+    
+    NSArray* imageArray = @[[UIImage imageNamed:@"29"]];
+    
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-    [shareParams SSDKSetupShareParamsByText:shareText images:nil
-                                        url:nil
-                                      title:@"万事利分红师徒邀请吗"
+    [shareParams SSDKSetupShareParamsByText:nil images:imageArray
+                                        url:[NSURL URLWithString:aaurl]
+                                      title:shareText
                                        type:SSDKContentTypeAuto];
+    
     //2、分享（可以弹出我们的分享菜单和编辑界面）
     [ShareSDK showShareActionSheet:nil items:nil
                        shareParams:shareParams
                onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+                   
                    switch (state) {
                        case SSDKResponseStateSuccess:
                        {
@@ -240,6 +245,7 @@
                    }
                }
      ];
+    
 }
 
 + (void)loginRequestPostImageWithFile:(NSString *)urlStr parame:(NSMutableDictionary *)params success:(void (^)(id json))success failure:(void (^)(NSError *error))failure withFileKey:(NSString *)key{

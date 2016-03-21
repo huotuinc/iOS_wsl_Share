@@ -184,11 +184,10 @@
         return;
     }
     
-    NSString * urs =  self.homeWebView.request.URL.absoluteString;
+//    NSString * urs =  self.homeWebView.request.URL.absoluteString;
     NewShareModel * newshare= [[NewShareModel alloc] init];
-    newshare.taskInfo = urs;
+    newshare.taskInfo = [[NSUserDefaults standardUserDefaults] objectForKey:WebSit];
     newshare.taskName = @"万事利商城";
-#warning luohaibo
     newshare.taskSmallImgUrl = nil;
     [UserLoginTool LoginToShareMessageByShareSdk:newshare success:^(int json) {
         LWLog(@"%d",json);

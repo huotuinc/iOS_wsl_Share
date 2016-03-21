@@ -72,6 +72,9 @@
         [root toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
     }];
     
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [app.TodayPredictingNumber addObserver:self forKeyPath:@"today" options:0 context:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(JifenChange) name:@"jichenChange" object:nil];
     self.ceter.hidden = YES;
     self.arrowImage.hidden = YES;
@@ -81,20 +84,34 @@
     self.optionTable.rowHeight = 60;
 }
 
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    
+    LWLog(@"%@---%@",object,change);
+    
+    OptionModel * model = self.optionArray[4];
+    model.OptionName = [NSString stringWithFormat:@"%@ %@",model.OptionName,object[@"today"]];
+    [self.optionTable reloadData];
+    
+}
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    
-    __weak LeftOfRootViewController * wself = self;
-    [UserLoginTool loginRequestGet:@"PreviewTaskCount" parame:nil success:^(id json) {
-        
-        wself.aa.text = [NSString stringWithFormat:@"%ld", [json[@"resultData"][@"count"] integerValue]];
-    
-    } failure:^(NSError *error) {
-        
-    }];
-    
-    [self.optionTable reloadData];
+//    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    LWLog(@"%@",app.TodayPredictingNumber);
+//    if ([app.TodayPredictingNumber intValue] > 0) {
+//       self.aa.text = [NSString stringWithFormat:@"%@",app.TodayPredictingNumber];
+//       [self.optionTable reloadData];
+//    }
+//    }else{
+//        NSIndexPath * aa = [NSIndexPath indexPathForRow:4 inSection:0];
+//        UITableViewCell * cell = [self.optionTable cellForRowAtIndexPath:aa];
+//        
+//        [_aa removeFromSuperview];
+//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    }
+//    [self.optionTable reloadData];
     [self setup];
 }
 
@@ -122,16 +139,19 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    if (indexPath.row == 4) {
-        UILabel * aa = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        _aa = aa;
-        aa.textColor = [UIColor orangeColor];
-        cell.accessoryView = aa;
-    }
-    OptionModel * model  = self.optionArray[indexPath.row];
+//    if (indexPath.row == 4) {
+//        UILabel * aa = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+//        _aa = aa;
+//        aa.textColor = [UIColor orangeColor];
+//        cell.accessoryView = aa;
+    //    }if ([app.TodayPredictingNumber intValue] > 0) {
+
     
-    cell.imageView.image = [UIImage imageNamed:model.optionImageName];
+    
+    OptionModel * model  = self.optionArray[indexPath.row];
     cell.textLabel.text = model.OptionName;
+    cell.imageView.image = [UIImage imageNamed:model.optionImageName];
+    
     return cell;
 }
 
@@ -173,8 +193,12 @@
             break;
         }
         case 4:{
+            
+            AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            app.TodayPredictingNumber = @(0);
             NSDictionary * objc = [NSDictionary dictionaryWithObject:@(4) forKey:@"option"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
+            self.aa.text = @"";
             MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
             [root toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
             break;

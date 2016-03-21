@@ -14,5 +14,8 @@
 
 @property (nonatomic,assign) BOOL isflag;
 
+
+@property (nonatomic,strong) NSMutableDictionary * TodayPredictingNumber;
+
 @end
 

@@ -141,7 +141,7 @@
                 <outlet property="timeLable" destination="zdJ-PP-K2u" id="qIg-Ck-Yx0"/>
                 <outlet property="title" destination="vOC-B1-fla" id="FY4-1m-gKu"/>
             </connections>
-            <point key="canvasLocation" x="449" y="362"/>
+            <point key="canvasLocation" x="369" y="363"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -314,7 +314,7 @@ static NSString * homeCellidentify = @"homeCellId";
     
     
     UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [btn setBackgroundImage:[UIImage imageNamed:@"HomeLeftOPtion"] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageNamed:@"geren"] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(leftButton) forControlEvents:UIControlEventTouchDown];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     

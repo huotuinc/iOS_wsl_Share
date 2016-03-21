@@ -25,8 +25,8 @@
                                     <constraint firstAttribute="height" constant="70" id="pW1-k7-qHd"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7L2-ll-2t2">
-                                <rect key="frame" x="80" y="5" width="49" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7L2-ll-2t2">
+                                <rect key="frame" x="80" y="5" width="221" height="22"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                                 <color key="textColor" red="0.14509803921568629" green="0.70980392156862748" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -57,6 +57,7 @@
                             <constraint firstAttribute="bottom" secondItem="4yM-Qu-m2o" secondAttribute="bottom" id="AO7-z1-xZ5"/>
                             <constraint firstItem="MKl-qy-KPo" firstAttribute="bottom" secondItem="UsR-0i-sn6" secondAttribute="bottom" id="Man-MD-3Ou"/>
                             <constraint firstItem="7L2-ll-2t2" firstAttribute="leading" secondItem="dd0-yC-7vm" secondAttribute="trailing" constant="5" id="OAT-T1-jQI"/>
+                            <constraint firstAttribute="trailing" secondItem="7L2-ll-2t2" secondAttribute="trailing" constant="5" id="Zyd-rg-FQv"/>
                             <constraint firstItem="dd0-yC-7vm" firstAttribute="leading" secondItem="WAM-Qc-LER" secondAttribute="leading" constant="5" id="kwE-06-cJ8"/>
                             <constraint firstItem="4yM-Qu-m2o" firstAttribute="leading" secondItem="dd0-yC-7vm" secondAttribute="leading" id="ohz-9r-kGg"/>
                             <constraint firstItem="dd0-yC-7vm" firstAttribute="centerY" secondItem="WAM-Qc-LER" secondAttribute="centerY" id="p1U-Eo-oal"/>
@@ -71,7 +72,7 @@
                         </variation>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                <color key="backgroundColor" red="0.80784313730000001" green="0.80784313730000001" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="WAM-Qc-LER" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="055-db-Vah"/>
                     <constraint firstAttribute="trailing" secondItem="WAM-Qc-LER" secondAttribute="trailing" constant="5" id="VDk-gY-kXI"/>
@@ -87,7 +88,7 @@
                 <outlet property="titleLable" destination="7L2-ll-2t2" id="cOK-NT-jMq"/>
                 <outlet property="totleScore" destination="UsR-0i-sn6" id="oo1-zz-fgD"/>
             </connections>
-            <point key="canvasLocation" x="427.5" y="322.5"/>
+            <point key="canvasLocation" x="427.5" y="322"/>
         </tableViewCell>
     </objects>
 </document>

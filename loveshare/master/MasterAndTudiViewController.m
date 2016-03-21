@@ -151,12 +151,25 @@
 }
 
 - (IBAction)shareYaoqinMa:(id)sender {
+    
+    LWLog(@"%@",self.shareUrl);
+    NewShareModel * aa = [[NewShareModel alloc] init];
+    aa.taskInfo = self.shareUrl;
+    aa.taskName = @"万事利师徒邀请码";
+    aa.taskSmallImgUrl = nil;
+//    [UserLoginTool LoginToShareMessageByShareSdk:aa success:^(int json) {
+//        LWLog(@"%d",json);
+//    } failure:^(id error) {
+//        
+//    }];
+    
+    
     [UserLoginTool LoginToShareTextMessageByShareSdk:self.nameLable.text andUrl:self.shareUrl success:^(int json) {
         [MBProgressHUD showSuccess:@"分享成功"];
         LWLog(@"%d",json);
 
     } failure:nil];
-    
+//
 
 }
 @end
