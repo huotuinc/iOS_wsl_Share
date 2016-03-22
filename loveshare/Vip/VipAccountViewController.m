@@ -254,12 +254,15 @@
         vc.model = model;
         vc.title = model.name;
         [self.navigationController pushViewController:vc animated:YES];
+        
+    }else{
+        NewTaskDataModel * model = self.VipRenWudates[indexPath.row];
+        AccountTableViewController* vc = [[AccountTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        vc.taskModel = model;
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
-    NewTaskDataModel * model = self.VipRenWudates[indexPath.row];
-    AccountTableViewController* vc = [[AccountTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    vc.taskModel = model;
-    [self.navigationController pushViewController:vc animated:YES];
+    
 
 }
 @end

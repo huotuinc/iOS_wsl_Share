@@ -148,6 +148,7 @@
         p[@"verifyCode"] = self.yaoqingText.text;
         [MBProgressHUD showMessage:nil];
         NSDictionary * dict = [UserLoginTool LogingetDateSyncWith:@"MobileLogin" WithParame:p];
+        LWLog(@"%@",dict);
         [MBProgressHUD hideHUD];
         if ([dict[@"tip"] isEqualToString:@"用户名不存在"]) {//要去注册
             LoginViewController * registVc = (LoginViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"LoginViewController"];

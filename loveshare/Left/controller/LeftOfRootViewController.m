@@ -56,10 +56,7 @@
     self.userScore.text =[NSString stringWithFormat:@"可用分红%@",[NSString xiaoshudianweishudeal:userModel.score]] ;
     
 }
-- (void)dealloc{
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -87,11 +84,8 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     
-    LWLog(@"%@---%@",object,change);
+    _aa.hidden = NO;
     
-    OptionModel * model = self.optionArray[4];
-    model.OptionName = [NSString stringWithFormat:@"%@ %@",model.OptionName,object[@"today"]];
-    [self.optionTable reloadData];
     
 }
 
@@ -137,14 +131,20 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"optioncell"];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        
     }
     
-//    if (indexPath.row == 4) {
-//        UILabel * aa = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-//        _aa = aa;
-//        aa.textColor = [UIColor orangeColor];
-//        cell.accessoryView = aa;
-    //    }if ([app.TodayPredictingNumber intValue] > 0) {
+    if (indexPath.row == 4) {
+        LWLog(@"%@",NSStringFromCGRect(cell.accessoryView.frame));
+        UILabel * aa = [[UILabel alloc] initWithFrame:CGRectMake(self.optionTable.frame.size.width - 60,25, 10, 10)];
+        aa.backgroundColor = [UIColor redColor];
+        aa.layer.cornerRadius = 5;
+        aa.layer.masksToBounds = YES;
+        [cell addSubview:aa];
+        aa.hidden = YES;
+        _aa = aa;
+    }
 
     
     
@@ -194,8 +194,7 @@
         }
         case 4:{
             
-            AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            app.TodayPredictingNumber = @(0);
+            _aa.hidden = YES;
             NSDictionary * objc = [NSDictionary dictionaryWithObject:@(4) forKey:@"option"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
             self.aa.text = @"";
@@ -229,6 +228,14 @@
     }
     
 
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [app.TodayPredictingNumber removeObserver:self forKeyPath:@"today"];
+    
 }
 
 @end

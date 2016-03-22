@@ -397,14 +397,19 @@
                 NSKeyedUnarchiver *unArchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
                 // 3.解码并存到数组中
                 NSArray *namesArray = [unArchiver decodeObjectForKey:PayTypeflat];
-                NSMutableString * url = [NSMutableString stringWithString:MainUrl];
-                [url appendFormat:@"%@?orderid=%@",@"/order/GetOrderInfo",trade_noss];
-                NSString * to = [NSDictionary ToSignUrlWithString:url];
-                [UserLoginTool loginRequestGet:to parame:nil success:^(id json) {
-                    if ([json[@"code"] integerValue] == 200) {
-                        self.priceNumber = json[@"data"][@"Final_Amount"];
-                        NSString * des =  json[@"data"][@"ToStr"]; //商品描述
-                        self.proDes = des;
+//                NSMutableString * url = [NSMutableString stringWithString:MainUrl];
+//                [url appendFormat:@"%@?orderid=%@",@"/order/GetOrderInfo",trade_noss];
+//                NSString * to = [NSDictionary ToSignUrlWithString:url];
+            NSMutableDictionary * dict =[NSMutableDictionary dictionary];
+            dict[@"orderNo"] = trade_noss;
+            [UserLoginTool loginRequestGet:@"OrderInfo" parame:dict success:^(id json) {
+                LWLog(@"%@",json);
+                if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
+                    self.priceNumber = json[@"resultData"][@"Final_Amount"];
+                    //                    NSLog(@"%@",self.priceNumber);
+                    NSString * des =  json[@"resultData"][@"ToStr"]; //商品描述
+                    //                    NSLog(@"%@",json[@"data"][@"ToStr"]);
+                    self.proDes = [des copy];
                         if(namesArray.count == 1){
                             PayModel * pay =  namesArray.firstObject;  //300微信  400支付宝
                             self.paymodel = pay;
@@ -624,7 +629,7 @@
  *  微信支付预zhifu
  */
 - (NSMutableDictionary *)PayByWeiXinParame:(PayModel *)paymodel{
-    
+    LWLog(@"%@",[paymodel mj_keyValues]);
     payRequsestHandler * payManager = [[payRequsestHandler alloc] init];
     [payManager setKey:paymodel.appKey];
     BOOL isOk = [payManager init:self.paymodel.appId mch_id:self.paymodel.partnerId];
@@ -637,9 +642,10 @@
         params[@"trade_type"] = @"APP";   //取值如下：JSAPI，NATIVE，APP，WAP,详细说明见参数规定
         params[@"body"] = @"万事利商城";//MallName; //商品或支付单简要描述
         NSMutableString * urls = [[NSUserDefaults standardUserDefaults] objectForKey:WebSit];
-        [urls appendString:paymodel.notify];
-        params[@"notify_url"] = urls;  //接收微信支付异步通知回调地址
-        
+        LWLog(@"%@",urls);
+        NSString * URL = [NSString stringWithFormat:@"%@%@",urls,paymodel.notify];
+        LWLog(@"%@",URL);
+        params[@"notify_url"] = URL;  //接收微信支付异步通知回调地址
         InitModel * initmod =  (InitModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:InitModelCaches];
         NSString * order = [NSString stringWithFormat:@"%@_%@_%d",self.orderNo,initmod.customerId,(arc4random() % 900 + 100)];
         params[@"out_trade_no"] = order; //订单号
@@ -650,7 +656,7 @@
         //获取prepayId（预支付交易会话标识）
         NSString * prePayid = nil;
         prePayid  = [payManager sendPrepay:params];
-//        NSLog(@"xcaccasc%@",[payManager getDebugifo]);
+        NSLog(@"xcaccasc%@",[payManager getDebugifo]);
         if ( prePayid != nil) {
             //获取到prepayid后进行第二次签名
             NSString    *package, *time_stamp, *nonce_str;

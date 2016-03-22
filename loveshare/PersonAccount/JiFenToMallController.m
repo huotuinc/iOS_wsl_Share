@@ -86,8 +86,10 @@
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
     parame[@"loginCode"] = user.loginCode;
     parame[@"score"] = @(user.score);
+    [MBProgressHUD showMessage:nil];
     [UserLoginTool loginRequestGet:@"IntegralGoldInfo" parame:parame success:^(id json) {
         LWLog(@"%@",json);
+        [MBProgressHUD hideHUD];
         if(json[@"resultData"][@"desc"]){
             wself.Mydes.text = [NSString stringWithFormat:@" 说明：%@",json[@"resultData"][@"desc"]];
         }
@@ -103,7 +105,7 @@
         }
 
     } failure:^(NSError *error) {
-        
+        [MBProgressHUD hideHUD];
     }];
 
 }
@@ -138,6 +140,7 @@
     NSMutableDictionary* p = [NSMutableDictionary dictionary];
     p[@"score"] = @(userModel.score);
     p[@"cashpassword"] = [NSString MD5FromData:[tf.text dataUsingEncoding:NSUTF8StringEncoding]];
+    LWLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:ChoneMallAccount]);
     p[@"mallUserId"] = [[NSUserDefaults standardUserDefaults] objectForKey:ChoneMallAccount];
     p[@"loginCode"] = userModel.loginCode;
    

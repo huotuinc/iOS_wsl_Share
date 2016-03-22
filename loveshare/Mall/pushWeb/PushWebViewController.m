@@ -298,15 +298,18 @@
             NSKeyedUnarchiver *unArchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
             // 3.解码并存到数组中
             NSArray *namesArray = [unArchiver decodeObjectForKey:PayTypeflat];
-            NSMutableString * url = [NSMutableString stringWithString:[[NSUserDefaults standardUserDefaults] objectForKey:WebSit]];
-            [url appendFormat:@"%@?orderid=%@",@"/order/GetOrderInfo",trade_noss];
-            NSString * to = [NSDictionary ToSignUrlWithString:url];
-            [UserLoginTool loginRequestGet:to parame:nil success:^(id json) {
+            LWLog(@"%lu",(unsigned long)namesArray.count);
+//            NSMutableString * url = [NSMutableString stringWithString:[[NSUserDefaults standardUserDefaults] objectForKey:WebSit]];
+//            [url appendFormat:@"%@?orderid=%@",@"/order/GetOrderInfo",trade_noss];
+//            NSString * to = [NSDictionary ToSignUrlWithString:url];
+            NSMutableDictionary * dict =[NSMutableDictionary dictionary];
+            dict[@"orderNo"] = trade_noss;
+            [UserLoginTool loginRequestGet:@"OrderInfo" parame:dict success:^(id json) {
                 LWLog(@"%@",json);
-                if ([json[@"code"] integerValue] == 200) {
-                    self.priceNumber = json[@"data"][@"Final_Amount"];
+                if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
+                    self.priceNumber = json[@"resultData"][@"Final_Amount"];
                     //                    NSLog(@"%@",self.priceNumber);
-                    NSString * des =  json[@"data"][@"ToStr"]; //商品描述
+                    NSString * des =  json[@"resultData"][@"ToStr"]; //商品描述
                     //                    NSLog(@"%@",json[@"data"][@"ToStr"]);
                     self.proDes = [des copy];
                     //                    NSLog(@"%@",self.proDes);
@@ -342,6 +345,8 @@
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
 
+
+    
     if (actionSheet.tag == 500) {//单个微信支付
         NSArray *array =  NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString * filename = [[array objectAtIndex:0] stringByAppendingPathComponent:PayTypeflat];
@@ -442,6 +447,8 @@
  *  微信支付
  */
 - (void)WeiChatPay:(PayModel *)model{
+    
+    LWLog(@"%@",[model mj_keyValues]);
     //获取到实际调起微信支付的参数后，在app端调起支付
     NSMutableDictionary *dict = [self PayByWeiXinParame:model];
     if(dict != nil){
@@ -487,6 +494,8 @@
         params[@"notify_url"] = urls;  //接收微信支付异步通知回调地址
         params[@"out_trade_no"] = self.orderNo; //订单号
         params[@"spbill_create_ip"] = @"192.168.1.1"; //APP和网页支付提交用户端ip，Native支付填调用微信支付API的机器IP。
+        NSString * cc = [NSString stringWithFormat:@"%.f",[self.priceNumber floatValue] * 100];
+        LWLog(@"%@",cc);
         params[@"total_fee"] = [NSString stringWithFormat:@"%.f",[self.priceNumber floatValue] * 100];  //订单总金额，只能为整数，详见支付金额
         params[@"device_info"] = ([[UIDevice currentDevice].identifierForVendor UUIDString]);
         
@@ -498,7 +507,7 @@
         NSString * prePayid = nil;
         prePayid  = [payManager sendPrepay:params];
 //        [payManager getDebugifo];
-//        NSLog(@"%@",[payManager getDebugifo]);
+        NSLog(@"%@",[payManager getDebugifo]);
         if ( prePayid != nil) {
             //获取到prepayid后进行第二次签名
             NSString    *package, *time_stamp, *nonce_str;
