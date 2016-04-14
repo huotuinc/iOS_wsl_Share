@@ -292,7 +292,7 @@
 //    NSLog(@"%@",info);
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
 //    NSLog(@"%@",mediaType);
-    // 判断获取类型：图片
+    // 判断获取类型：图片s
     UIImage *photoImage = nil;
     if ([mediaType isEqualToString:( NSString *)kUTTypeImage]){
         // 判断，图片是否允许修改
