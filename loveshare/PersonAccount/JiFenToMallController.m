@@ -91,7 +91,7 @@
         LWLog(@"%@",json);
         [MBProgressHUD hideHUD];
         if(json[@"resultData"][@"desc"]){
-            wself.Mydes.text = [NSString stringWithFormat:@" 说明：%@",json[@"resultData"][@"desc"]];
+            wself.Mydes.text = [NSString stringWithFormat:@"%@",json[@"resultData"][@"desc"]];
         }
         wself.toMallJifen.text = [NSString xiaoshudianweishudeal:[json[@"resultData"][@"money"] doubleValue]];
         if (json[@"resultData"][@"lastApply"]) {
