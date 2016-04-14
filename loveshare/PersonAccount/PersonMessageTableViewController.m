@@ -304,7 +304,6 @@
             photoImage = [info objectForKey:UIImagePickerControllerOriginalImage];
         }
     }
-    
     NSData *data;
     if (UIImagePNGRepresentation(photoImage) == nil) {
         
@@ -313,7 +312,23 @@
     } else {
         
         data = UIImagePNGRepresentation(photoImage);
+        
+        
+        if ([data length] / 1000 > 2000) {
+            data = UIImagePNGRepresentation([self imageWithImageSimple:photoImage scaledToSize:CGSizeMake(800, 800)]);
+        }
+        
+        
     }
+//    NSData *data;
+//    if (UIImagePNGRepresentation(photoImage) == nil) {
+//        
+//        data = UIImageJPEGRepresentation(photoImage, 1);
+//        
+//    } else {
+//        
+//        data = UIImagePNGRepresentation(photoImage);
+//    }
     
     NSString * imagefile = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     [picker dismissViewControllerAnimated:YES completion:^{
@@ -439,12 +454,19 @@
 }
 
 
-- (NSDate*) convertDateFromString:(NSString*)uiDate
+/**
+ *
+ *
+ *  @param uiDate 传入时间
+ *
+ *  @return 年月日
+ */
+- (NSString*) convertDateFromString:(NSString*)uiDate
 {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
-    [formatter setDateFormat:@"yyyy-MM-dd hh-mm-ss"];
-    NSDate *date=[formatter dateFromString:uiDate];
-    return date;
+    NSString *dateString = [uiDate substringToIndex:10];
+    LWLog(@"%@",dateString);
+    return dateString;
+
 }
 
 
@@ -574,6 +596,21 @@
         [MBProgressHUD hideHUD];
     }];
 
+}
+//压缩图片尺寸
+- (UIImage*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // End the context
+    UIGraphicsEndImageContext();
+    // Return the new image.
+    return newImage;
 }
 - (IBAction)asdsdfsqfgqwerewrqew:(id)sender {
     NSString * path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
