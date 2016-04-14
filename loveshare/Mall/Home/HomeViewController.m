@@ -432,7 +432,7 @@
                     }
 
                 } failure:^(NSError *error) {
-                    NSLog(@"%@",error.description);
+                    LWLog(@"%@",error.description);
                 }];
                 return NO;
          
@@ -656,7 +656,7 @@
         //获取prepayId（预支付交易会话标识）
         NSString * prePayid = nil;
         prePayid  = [payManager sendPrepay:params];
-        NSLog(@"xcaccasc%@",[payManager getDebugifo]);
+        LWLog(@"xcaccasc%@",[payManager getDebugifo]);
         if ( prePayid != nil) {
             //获取到prepayid后进行第二次签名
             NSString    *package, *time_stamp, *nonce_str;

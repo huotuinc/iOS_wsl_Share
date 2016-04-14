@@ -315,7 +315,7 @@
         
         
         if ([data length] / 1000 > 2000) {
-            data = UIImagePNGRepresentation([self imageWithImageSimple:photoImage scaledToSize:CGSizeMake(800, 800)]);
+            data = UIImagePNGRepresentation([self imageWithImageSimple:photoImage scaledToSize:CGSizeMake(600, 600)]);
         }
         
         

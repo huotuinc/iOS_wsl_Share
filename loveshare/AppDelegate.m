@@ -230,7 +230,7 @@ static BOOL isProduction = FALSE;
     LWLog(@"%@", [deviceToken description]);
     NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     NSString * myDeviceToken = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSLog(@"deviceToken:%@", myDeviceToken);
+    LWLog(@"deviceToken:%@", myDeviceToken);
     
     [JPUSHService registerDeviceToken:deviceToken];
 }
