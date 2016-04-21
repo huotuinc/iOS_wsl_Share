@@ -214,7 +214,6 @@ static NSString * homeCellidentify = @"homeCellId";
         _currentTag = 1;
         _thirdLableNum = 0;
          wself.thirdImage.image = [UIImage imageNamed:@"jt-3"];
-        
         _currentSelect = wself.firstView;
         CGRect bb = wself.redView.frame;
         bb.origin.x = (aa - aa *2.0/3)*0.5;
