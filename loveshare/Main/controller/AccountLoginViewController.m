@@ -177,6 +177,7 @@
 - (void)SetupLoginIn{
     MMRootViewController * root = [[MMRootViewController alloc] init];
     UIWindow * win = [UIApplication sharedApplication].keyWindow;
+    win.backgroundColor = [UIColor whiteColor];
     win.rootViewController = root;
 }
 @end

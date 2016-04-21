@@ -366,6 +366,7 @@ static NSString * homeCellidentify = @"homeCellId";
         image.contentMode = UIViewContentModeScaleAspectFit;
         image.image = [UIImage imageNamed:@"万事利引导图"];
         UIWindow * win =  [UIApplication sharedApplication].keyWindow;
+        win.backgroundColor = [UIColor whiteColor];
         [win addSubview:image];
         
     }
@@ -482,6 +483,7 @@ static NSString * homeCellidentify = @"homeCellId";
     HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:homeCellidentify];
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"HomeCell" owner:nil options:nil] lastObject];
+        cell.backgroundColor = [UIColor whiteColor];
     }
     if (self.currentSelect.tag == 1) {
         TaskGrouoModel * taskGroup  = self.taskGroup[indexPath.section];

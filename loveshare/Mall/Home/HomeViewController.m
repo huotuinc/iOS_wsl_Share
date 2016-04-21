@@ -187,7 +187,7 @@
 //    NSString * urs =  self.homeWebView.request.URL.absoluteString;
     NewShareModel * newshare= [[NewShareModel alloc] init];
     newshare.taskInfo = [[NSUserDefaults standardUserDefaults] objectForKey:WebSit];
-    newshare.taskName = @"万事利商城";
+    newshare.taskName = [self.homeWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
     newshare.taskSmallImgUrl = nil;
     [UserLoginTool LoginToShareMessageByShareSdk:newshare success:^(int json) {
         LWLog(@"%d",json);

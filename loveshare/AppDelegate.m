@@ -193,7 +193,9 @@ static BOOL isProduction = FALSE;
     InitModel * model = [InitModel mj_objectWithKeyValues:dict[@"resultData"]];
     [UserLoginTool LoginModelWriteToShaHe:model andFileName:InitModelCaches];
     LWLog(@"model _-- tesr%@",[model mj_keyValues]);
-    [[NSUserDefaults standardUserDefaults] setObject:(dict[@"resultData"][@"website"]) forKey:WebSit];
+    if (dict[@"resultData"][@"website"]) {
+        [[NSUserDefaults standardUserDefaults] setObject:(dict[@"resultData"][@"website"]) forKey:WebSit];
+    }
     if ([model.loginStatus integerValue]) {
         NSMutableDictionary * parame = [NSMutableDictionary dictionary];
         parame[@"loginCode"] = usermodel.loginCode;

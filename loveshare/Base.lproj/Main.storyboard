@@ -2106,7 +2106,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivq-rP-APy">
-                                <rect key="frame" x="20" y="182" width="98" height="40"/>
+                                <rect key="frame" x="20" y="132" width="98" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="gcE-jW-heu"/>
@@ -2116,7 +2116,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0M-1S-Xtz">
-                                <rect key="frame" x="20" y="230" width="98" height="40"/>
+                                <rect key="frame" x="20" y="180" width="98" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="98" id="7YV-Qa-enl"/>
@@ -2127,7 +2127,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmN-kp-toP">
-                                <rect key="frame" x="20" y="278" width="560" height="44"/>
+                                <rect key="frame" x="20" y="228" width="560" height="44"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="jpr-zj-DLb"/>
@@ -2140,12 +2140,12 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="新密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NO6-b9-o6i">
-                                <rect key="frame" x="126" y="230" width="454" height="40"/>
+                                <rect key="frame" x="126" y="180" width="454" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="新密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cAS-rR-G6T">
-                                <rect key="frame" x="126" y="182" width="454" height="40"/>
+                                <rect key="frame" x="126" y="132" width="454" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" secureTextEntry="YES"/>
                             </textField>
@@ -2166,7 +2166,7 @@
                             <constraint firstItem="NO6-b9-o6i" firstAttribute="leading" secondItem="z0M-1S-Xtz" secondAttribute="trailing" constant="8" id="brm-Ru-zf0"/>
                             <constraint firstItem="z0M-1S-Xtz" firstAttribute="trailing" secondItem="Ivq-rP-APy" secondAttribute="trailing" id="dee-eg-3gR"/>
                             <constraint firstItem="z0M-1S-Xtz" firstAttribute="top" secondItem="Ivq-rP-APy" secondAttribute="bottom" constant="8" id="fQG-gm-KLu"/>
-                            <constraint firstItem="LmN-kp-toP" firstAttribute="centerY" secondItem="dTf-io-fYj" secondAttribute="centerY" id="pRN-yJ-2Wm"/>
+                            <constraint firstItem="LmN-kp-toP" firstAttribute="centerY" secondItem="dTf-io-fYj" secondAttribute="centerY" constant="-50" id="pRN-yJ-2Wm"/>
                             <constraint firstItem="NO6-b9-o6i" firstAttribute="top" secondItem="z0M-1S-Xtz" secondAttribute="top" id="tkW-KL-fUs"/>
                             <constraint firstItem="LmN-kp-toP" firstAttribute="top" secondItem="z0M-1S-Xtz" secondAttribute="bottom" constant="8" id="voB-sH-1xc"/>
                         </constraints>

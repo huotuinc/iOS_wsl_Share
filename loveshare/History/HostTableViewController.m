@@ -44,6 +44,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    [UIApplication sharedApplication].keyWindow.backgroundColor = [UIColor whiteColor];
     self.title = @"历史收益";
     
     self.tableView.rowHeight = 167;
