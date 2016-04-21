@@ -17,6 +17,9 @@
 
 @property(nonatomic,copy) NSString * shareUrl;
 
+
+@property(nonatomic,copy) NSString *  des;
+
 /**头像*/
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
 /**用户名*/
@@ -98,6 +101,7 @@
     parame[@"pageSize"] = @(0);
     [UserLoginTool loginRequestGet:@"ScorePrentice" parame:parame success:^(id json) {
         LWLog(@"%@",json);
+        wself.des =json[@"resultData"][@"shareDesc"];
         wself.shareUrl = json[@"resultData"][@"shareUrl"];
         [MBProgressHUD hideHUD];
         wself.nameLable.text = [NSString stringWithFormat:@"邀请码:%@",json[@"resultData"][@"inviteCode"]];
@@ -111,6 +115,7 @@
         
         if (json[@"resultData"][@"desc"]) {
             
+           
             self.masterRuleDes.hidden = NO;
             self.masterRuleDes.text =[NSString stringWithFormat:@" %@",json[@"resultData"][@"desc"]] ;
         }else{
@@ -151,25 +156,14 @@
 }
 
 - (IBAction)shareYaoqinMa:(id)sender {
-    
     LWLog(@"%@",self.shareUrl);
     NewShareModel * aa = [[NewShareModel alloc] init];
     aa.taskInfo = self.shareUrl;
-    aa.taskName = @"万事利师徒邀请码";
+    aa.taskName = self.des;
     aa.taskSmallImgUrl = nil;
-//    [UserLoginTool LoginToShareMessageByShareSdk:aa success:^(int json) {
-//        LWLog(@"%d",json);
-//    } failure:^(id error) {
-//        
-//    }];
-    
-    
-    [UserLoginTool LoginToShareTextMessageByShareSdk:self.nameLable.text andUrl:self.shareUrl success:^(int json) {
+    [UserLoginTool LoginToShareTextMessageByShareSdk:self.des andUrl:self.shareUrl success:^(int json) {
         [MBProgressHUD showSuccess:@"分享成功"];
         LWLog(@"%d",json);
-
     } failure:nil];
-//
-
 }
 @end
