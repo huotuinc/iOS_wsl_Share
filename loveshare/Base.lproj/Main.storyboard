@@ -2710,7 +2710,9 @@
                         <outlet property="firstLable" destination="AbM-Hy-B8z" id="4C3-S6-wP0"/>
                         <outlet property="firstView" destination="eGA-6l-gyz" id="30J-xb-7Uw"/>
                         <outlet property="fourLable" destination="zpb-fB-Rnh" id="ynr-fV-XFd"/>
+                        <outlet property="fourthImage" destination="XQ1-YF-R7V" id="AuN-Fb-Lcf"/>
                         <outlet property="fourthView" destination="SyQ-uu-IHT" id="ufS-HE-qIP"/>
+                        <outlet property="secondImage" destination="8mf-3k-N8d" id="mbQ-5h-02D"/>
                         <outlet property="secondLable" destination="MCC-F6-z9e" id="gUT-Yo-Z8l"/>
                         <outlet property="secondView" destination="PJL-be-FAV" id="toI-Sg-R2g"/>
                         <outlet property="taskTableview" destination="RFk-dD-qWX" id="cCe-0m-dat"/>
@@ -2722,7 +2724,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDk-5e-fG9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="69" y="299"/>
+            <point key="canvasLocation" x="-77" y="300"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="ifp-sV-gCA">

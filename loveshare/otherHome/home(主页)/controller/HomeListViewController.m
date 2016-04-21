@@ -15,6 +15,12 @@
 
 @interface HomeListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
+/**第四个图片*/
+@property (weak, nonatomic) IBOutlet UIImageView *fourthImage;
+
+/**第二个图片*/
+@property (weak, nonatomic) IBOutlet UIImageView *secondImage;
+
 /**thirdImage*/
 @property (weak, nonatomic) IBOutlet UIImageView *thirdImage;
 
@@ -213,6 +219,8 @@ static NSString * homeCellidentify = @"homeCellId";
         LWLog(@"%ld", (long)wself.firstLable.tag);
         _currentTag = 1;
         _thirdLableNum = 0;
+        wself.secondImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu"];
+        wself.fourthImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu"];
          wself.thirdImage.image = [UIImage imageNamed:@"jt-3"];
         _currentSelect = wself.firstView;
         CGRect bb = wself.redView.frame;
@@ -230,6 +238,8 @@ static NSString * homeCellidentify = @"homeCellId";
     [self.secondView bk_whenTapped:^{
         _thirdLableNum = 0;
         wself.thirdImage.image = [UIImage imageNamed:@"jt-3"];
+         wself.fourthImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu"];
+        wself.secondImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu-1"];
         _currentSelect = wself.secondView;
         _currentTag = 2;
         CGRect bb = wself.redView.frame;
@@ -256,6 +266,9 @@ static NSString * homeCellidentify = @"homeCellId";
                 _thirdLableNum = 1;
             }
         }
+        
+        self.secondImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu"];
+        self.fourthImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu"];
         _currentSelect = wself.thirdView;
         _currentTag = 3;
         CGRect bb = wself.redView.frame;
@@ -271,6 +284,8 @@ static NSString * homeCellidentify = @"homeCellId";
     [self.fourthView bk_whenTapped:^{
         _thirdLableNum = 0;
          wself.thirdImage.image = [UIImage imageNamed:@"jt-3"];
+        wself.fourthImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu-1"];
+        wself.secondImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu"];
         _currentSelect = wself.fourthView;
         _currentTag = 4;
         CGRect bb = wself.redView.frame;

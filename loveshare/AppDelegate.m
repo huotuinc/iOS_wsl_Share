@@ -115,6 +115,7 @@ static BOOL isProduction = FALSE;
 - (void)setUp:(InitModel *) model{
     [UserLoginTool LoginModelWriteToShaHe:model andFileName:InitModelCaches];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     UIStoryboard* story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     ViewController * vc = [story instantiateViewControllerWithIdentifier:@"ViewController"];
