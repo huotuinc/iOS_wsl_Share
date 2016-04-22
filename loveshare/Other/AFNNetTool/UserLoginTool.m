@@ -43,7 +43,7 @@
     [paramsOption removeObjectForKey:@"appSecret"];
     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     [manager GET:MainUrl parameters:paramsOption progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        LWLog(@"%@",task.originalRequest);
+        LWLog(@"%@",task.currentRequest);
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         LWLog(@"%@",task);

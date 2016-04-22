@@ -10,6 +10,6 @@
 
 @interface EnterpriseTableViewController : UIViewController
 @property(nonatomic,strong)JiTuan * model;
-
+@property (nonatomic, strong) NSNumber *taskId;
 
 @end

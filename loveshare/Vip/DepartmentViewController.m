@@ -55,7 +55,7 @@
     parame[@"pageIndex"] = @(1);
     parame[@"loginCode"] = userInfo.loginCode;
     parame[@"sort"] = @(sortType);
-    parame[@"taskId"] = @(0);
+    parame[@"taskId"] = self.taskId;
     parame[@"pid"] = @(self.model.orgid);
     [UserLoginTool loginRequestGet:@"GetGroupPerson" parame:parame success:^(id json) {
         LWLog(@"%@",json);

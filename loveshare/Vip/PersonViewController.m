@@ -38,7 +38,10 @@
 
 @property(nonatomic,strong) UIView *redView;
 
-@property(nonatomic,assign) int setTag;
+@property(nonatomic,assign) int setTag;// = 1 为任务; = 2 为徒弟
+
+@property (nonatomic, assign) NSInteger followerPageIndex;//徒弟页数
+@property (nonatomic, assign) NSInteger taskPageSize;//任务页数 传100 暂无页数
 
 //任务
 @property(nonatomic,strong)NSMutableArray * dateArray;
@@ -70,33 +73,39 @@
     }
     return _lists;
 }
-
+#pragma mark 刷新方法
 - (void)RefreshJicheng{
-    _head = [MJRefreshNormalHeader  headerWithRefreshingTarget:self refreshingAction:@selector(headRefresh)];
+    _head = [MJRefreshNormalHeader  headerWithRefreshingTarget:self refreshingAction:@selector(headRefreshA)];
     self.listLable.mj_header = _head;
     
-    _footer =  [MJRefreshAutoFooter footerWithRefreshingTarget:self refreshingAction:@selector(footRefresh)];
+    _footer =  [MJRefreshAutoFooter footerWithRefreshingTarget:self refreshingAction:@selector(footRefreshA)];
     self.listLable.tableFooterView = _footer;
 }
 
 
 //头部刷新
-- (void)headRefresh  //加载最新数据
+- (void)headRefreshA  //加载最新数据
 {
     if (self.setTag == 1) {
         
-        [self GetDateWithOldTaskidPageSize:10];
+        [self GetDateWithOldTaskidPageSize:100];
     }else{
-        
-        [self setupTudiDate];
+        _followerPageIndex = 1;
+        [self setupTudiDateWithPageIndex:_followerPageIndex];
     }
 }
 
 //尾部刷新
-- (void)footRefresh  //加载最新数据
+- (void)footRefreshA  //加载最新数据
 {
 //    TodayAdvance * model =  [self.dateArray lastObject];
 //    [self GetDateWithOldTaskid:model.taskId andPageSize:10];
+    if (self.setTag == 1) {
+        LWLog(@"暂无分页功能");
+    }else{
+        ++_followerPageIndex;
+        [self setupTudiDateWithPageIndex:_followerPageIndex];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -163,7 +172,9 @@
         _firstLable.textColor = [UIColor orangeColor];
         _secondLable.textColor = [UIColor blackColor];
         _redView.frame = CGRectMake(aa *0.5-aa/2/2+30, _containView.frame.size.height-2, aa / 2 , 2);
+        self.setTag = 1;
         [wself.head beginRefreshing];
+//        [self GetDateWithOldTaskidPageSize:100];
        
     }];
     
@@ -171,14 +182,17 @@
         _firstLable.textColor = [UIColor blackColor];
         _secondLable.textColor = [UIColor orangeColor];
         _redView.frame = CGRectMake(aa *0.5-aa/2/2+30+aa, _containView.frame.size.height-2, aa / 2 , 2);
+        self.setTag = 2;
         [wself.head beginRefreshing];
-        
+//        _followerPageIndex = 1;
+//        [self setupTudiDateWithPageIndex:_followerPageIndex];
+
         
     }];
     
 }
-
-- (void)setupTudiDate{
+//徒弟
+- (void)setupTudiDateWithPageIndex:(NSInteger) pageIndex{
     __weak PersonViewController * wself = self;
     UserModel * userInfo = (UserModel * )[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
@@ -186,10 +200,10 @@
     parame[@"masterId"] = @(self.model.userid);
     
     LWLog(@"%d",self.model.userid);
-    parame[@"pageIndex"] = @(1);
+    parame[@"pageIndex"] = @(pageIndex);
     [UserLoginTool loginRequestGet:@"GetUserListByMasterId" parame:parame success:^(id json) {
         LWLog(@"%@",json);
-        wself.setTag = 1;
+//        wself.setTag = 1;
         if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
             NSArray * aa = [FollowModel mj_objectArrayWithKeyValuesArray:json[@"resultData"]];
             [wself ToGroupList:aa];
@@ -226,7 +240,7 @@
 }
 
 
-
+//任务
 - (void)GetDateWithOldTaskidPageSize:(int)Pagesize{
     
     __weak PersonViewController * wself = self;
@@ -239,7 +253,7 @@
     [MBProgressHUD showMessage:nil];
     [UserLoginTool loginRequestGet:@"NewTotalScoreList" parame:parame success:^(id json) {
         LWLog(@"%@",json);
-         wself.setTag = 2;
+//         wself.setTag = 2;
         if ([json[@"resultCode"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
             NSArray * array = [HistoryModel mj_objectArrayWithKeyValuesArray:json[@"resultData"][@"itemData"]];
             LWLog(@"%lu",(unsigned long)array.count);

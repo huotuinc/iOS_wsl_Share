@@ -74,6 +74,8 @@
         _redView.frame = CGRectMake(aa *0.5-aa/2/2+20, _containView.frame.size.height-2, aa / 2 , 2);
         [wself.SortArray removeAllObjects];
         [wself.SortArray addObjectsFromArray:wself.JITuan];
+        [wself.optionLable reloadData];
+
     }];
     
     [self.turnLable bk_whenTapped:^{
@@ -94,6 +96,8 @@
         _browsLable.textColor = [UIColor orangeColor];
          _redView.frame = CGRectMake(aa *0.5-aa/2/2+20+2*aa, _containView.frame.size.height-2, aa / 2 , 2);
         [wself DateToSort:wself.SortArray withType:2];
+        [wself.optionLable reloadData];
+
     }];
 }
 
@@ -123,7 +127,7 @@
     parame[@"level"] = @(self.model.level);
     parame[@"loginCode"] = userInfo.loginCode;
     parame[@"pid"] = @(self.model.orgid);
-    parame[@"taskId"] = @(0);
+    parame[@"taskId"] = self.taskId;
     
     [UserLoginTool loginRequestGet:@"UserOrganize" parame:parame success:^(id json) {
         LWLog(@"%@",json);
@@ -188,6 +192,7 @@
     DepartmentViewController* vc = (DepartmentViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"DepartmentViewController"];
     vc.model = model;
     vc.title = model.name;
+    vc.taskId = self.taskId;
     vc.dilu = self.title;
     [self.navigationController pushViewController:vc animated:YES];
 }
