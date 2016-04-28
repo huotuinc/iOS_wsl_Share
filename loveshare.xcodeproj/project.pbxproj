@@ -1340,7 +1340,7 @@
 				TargetAttributes = {
 					EFF072821C8939F000150FA2 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = K7FU393EUA;
+						DevelopmentTeam = Q3B3AD6JJH;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -1726,8 +1726,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/loveshare/Other/ShareSDK",
@@ -1747,7 +1747,7 @@
 					"$(PROJECT_DIR)/loveshare/Other/JPushlib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshare;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.huotu.fanmore---";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1759,8 +1759,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/loveshare/Other/ShareSDK",
@@ -1779,7 +1779,7 @@
 					"$(PROJECT_DIR)/loveshare/Other/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/loveshare/Other/JPushlib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshare;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.huotu.fanmore---";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

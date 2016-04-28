@@ -23,6 +23,9 @@
 
 @property(nonatomic,strong) NSMutableArray * originArray;
 
+@property(nonatomic,assign) int currenctPageIndex;//当前页数
+@property (nonatomic, assign) int currenctType;//排序类型，0默认排序,1转发，2浏览，3徒弟，4积分
+
 @end
 
 @implementation DepartmentViewController
@@ -43,16 +46,35 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setInit];
-    
+    [self setupRefresh];
     self.listTableView.rowHeight = 60;
-    [self TogetDate:0];
+    [self getDataWithType:0 andPageIndex:1];
 }
+- (void)setupRefresh {
+    MJRefreshNormalHeader * headRe = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getData)];
+    self.listTableView.mj_header = headRe;
+    
+    MJRefreshBackNormalFooter * Footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getMoreData)];
+    self.listTableView.mj_footer = Footer;
 
-- (void)TogetDate:(int)sortType{
+}
+- (void)getData {
+    self.currenctPageIndex = 1;
+    [self getDataWithType:self.currenctType andPageIndex:self.currenctPageIndex];
+}
+- (void)getMoreData {
+    LWLog(@"上拉加载");
+    ++self.currenctPageIndex;
+    [self getDataWithType:self.currenctType andPageIndex:self.currenctPageIndex];
+    
+}
+- (void)getDataWithType:(int)sortType andPageIndex:(int)pageIndex{
+    self.currenctType = sortType;
+    self.currenctPageIndex = pageIndex;
     __weak DepartmentViewController * wself = self;
     UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
-    parame[@"pageIndex"] = @(1);
+    parame[@"pageIndex"] = @(pageIndex);
     parame[@"loginCode"] = userInfo.loginCode;
     parame[@"sort"] = @(sortType);
     parame[@"taskId"] = self.taskId;
@@ -61,8 +83,16 @@
         LWLog(@"%@",json);
         if([json[@"resultCode"] integerValue] == 1 ||[json[@"status"] integerValue] == 1){
            NSArray * arrays = [JiTuanModel mj_objectArrayWithKeyValuesArray:json[@"resultData"]];
-            [_originArray removeAllObjects];
-            [_originArray addObjectsFromArray:arrays];
+            if (pageIndex != 1) {
+                [_originArray addObjectsFromArray:arrays];
+                [wself.listTableView.mj_footer endRefreshing];
+            } else {
+                [_originArray removeAllObjects];
+                [_originArray addObjectsFromArray:arrays];
+                [wself.listTableView.mj_header endRefreshing];
+
+            }
+            
             [wself.listTableView reloadData];
         }
     } failure:^(NSError *error) {
@@ -104,8 +134,8 @@
         _redView.frame = CGRectMake(aa *0.5-aa/2/2+20, _containView.frame.size.height-2, aa / 2 , 2);
 //        [wself.SortArray removeAllObjects];
 //        [wself.SortArray addObjectsFromArray:wself.JITuan];
-        
-        [wself TogetDate:0];
+        self.currenctType = 0;
+        [self getDataWithType:0 andPageIndex:1];
     }];
     [self.secondLable bk_whenTapped:^{
         LWLog(@"xxx");
@@ -116,7 +146,8 @@
         _fiveLable.textColor = [UIColor blackColor];
         
         _redView.frame = CGRectMake(aa *0.5-aa/2/2+20+aa, _containView.frame.size.height-2, aa / 2 , 2);
-        [wself TogetDate:1];
+        self.currenctType = 0;
+        [self getDataWithType:1 andPageIndex:1];
     }];
     [self.thirdLable bk_whenTapped:^{
         LWLog(@"xxx");
@@ -127,7 +158,8 @@
         _fiveLable.textColor = [UIColor blackColor];
         
         _redView.frame = CGRectMake(aa *0.5-aa/2/2+20+2*aa, _containView.frame.size.height-2, aa / 2 , 2);
-        [wself TogetDate:2];
+        self.currenctType = 0;
+        [self getDataWithType:2 andPageIndex:1];
     }];
     [self.fourthLable bk_whenTapped:^{
         LWLog(@"xxx");
@@ -138,7 +170,8 @@
         _fiveLable.textColor = [UIColor blackColor];
         
         _redView.frame = CGRectMake(aa *0.5-aa/2/2+20+3*aa, _containView.frame.size.height-2, aa / 2 , 2);
-        [wself TogetDate:3];
+        self.currenctType = 0;
+        [self getDataWithType:3 andPageIndex:1];
     }];
     [self.fiveLable bk_whenTapped:^{
         LWLog(@"xxx");
@@ -149,7 +182,8 @@
         _fiveLable.textColor = [UIColor orangeColor];
         
         _redView.frame = CGRectMake(aa *0.5-aa/2/2+20+4*aa, _containView.frame.size.height-2, aa / 2 , 2);
-        [wself TogetDate:4];
+        self.currenctType = 0;
+        [self getDataWithType:4 andPageIndex:1];
     }];
 }
 
@@ -175,7 +209,9 @@
 //        cell.imageView.backgroundColor = [UIColor redColor];
         cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
         
-        cell.imageView.image = [UIImage imageNamed:@"iconfont-user"];
+//        cell.imageView.image = [UIImage imageNamed:@"iconfont-user"];
+        cell.imageView.image = [UIImage imageNamed:@"xiangxtouxiang"];
+
         
     }
     
@@ -190,8 +226,14 @@
         [image drawInRect:imageRect];
         cell.imageView.image=UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
+        
         [cell.imageView layoutIfNeeded];
     }];
+    if (model.logo.length == 0) {
+        cell.imageView.image = [UIImage imageNamed:@"imagehead"];
+    
+    }
+//    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:[UIImage imageNamed:@"xiangxtouxiang"]];
     cell.textLabel.text = model.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"转发%d次/浏览%d次/徒弟%d人",model.totalTurnCount,model.totalBrowseCount, model.prenticeCount];
     UILabel * aa =  (UILabel *)cell.accessoryView;

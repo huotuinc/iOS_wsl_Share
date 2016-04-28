@@ -78,15 +78,15 @@
 }
 
 - (void)RefreshJicheng{
-    _head = [MJRefreshNormalHeader  headerWithRefreshingTarget:self refreshingAction:@selector(headRefresh)];
+    _head = [MJRefreshNormalHeader  headerWithRefreshingTarget:self refreshingAction:@selector(headRefreshVip)];
     self.tableView.mj_header = _head;
     
-    _footer =  [MJRefreshAutoFooter footerWithRefreshingTarget:self refreshingAction:@selector(footRefresh)];
-    self.tableView.tableFooterView = _footer;
+    _footer =  [MJRefreshAutoFooter footerWithRefreshingTarget:self refreshingAction:@selector(footRefreshVip)];
+    self.tableView.mj_footer = _footer;
 }
 
 
-- (void)headRefresh{
+- (void)headRefreshVip{
     
     LWLog(@"%ld",(long)self.CTL.selectedSegmentIndex);
     if(self.CTL.selectedSegmentIndex){//任务
@@ -99,7 +99,7 @@
     
 }
 
-- (void)footRefresh{
+- (void)footRefreshVip{
     
     LWLog(@"xxxx");
     if (self.CTL.selectedSegmentIndex) {
@@ -184,7 +184,22 @@
 
 
 - (void)ctlChange:(UISegmentedControl *)ctl{
-    [self.head beginRefreshing];
+//    [self.head beginRefreshing];
+    //BC 修改
+    if (ctl.selectedSegmentIndex == 0) {
+        [self.VipRenWudates removeAllObjects];
+        [self.tableView reloadData];
+        [self setupDate];
+
+        
+    } else {
+        [self.JITuan removeAllObjects];
+        [self.tableView reloadData];
+        [self setRenWuWithPageIndex:1];
+
+//        [self.tableView reloadData];
+
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
