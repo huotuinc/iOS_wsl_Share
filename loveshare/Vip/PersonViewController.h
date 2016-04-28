@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ *  任务徒弟 最后的界面
+ */
 @interface PersonViewController : UIViewController
 @property(nonatomic,strong)JiTuanModel * model;
 

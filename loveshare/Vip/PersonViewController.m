@@ -38,7 +38,13 @@
 
 @property(nonatomic,strong) UIView *redView;
 
-@property(nonatomic,assign) int setTag;
+@property(nonatomic,strong) TudiTableViewCell *sectionFollowerView;//
+//BC
+@property(nonatomic,assign) int setTag;// = 1 为任务; = 2 为徒弟
+@property (nonatomic, assign) NSInteger followerPageIndex;//徒弟页数
+@property (nonatomic, assign) NSInteger taskPageSize;//任务页数 传100 暂无页数
+@property (nonatomic, assign) NSInteger openSection;//点击的section (展开cell)
+@property (nonatomic, assign) BOOL openStatus; //section是否展开
 
 //任务
 @property(nonatomic,strong)NSMutableArray * dateArray;
@@ -70,37 +76,50 @@
     }
     return _lists;
 }
-
-- (void)RefreshJicheng{
-    _head = [MJRefreshNormalHeader  headerWithRefreshingTarget:self refreshingAction:@selector(headRefresh)];
-    self.listLable.mj_header = _head;
+#pragma mark 刷新方法
+- (void)setupRefresh {
+    MJRefreshNormalHeader * headRe = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getPersonData)];
+    self.listLable.mj_header = headRe;
     
-    _footer =  [MJRefreshAutoFooter footerWithRefreshingTarget:self refreshingAction:@selector(footRefresh)];
-    self.listLable.tableFooterView = _footer;
+    MJRefreshBackNormalFooter * Footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getMorePersonData)];
+    self.listLable.mj_footer = Footer;
+    
 }
 
-
 //头部刷新
-- (void)headRefresh  //加载最新数据
+- (void)getPersonData  //加载最新数据
 {
     if (self.setTag == 1) {
-        
-        [self GetDateWithOldTaskidPageSize:10];
+        [self.lists removeAllObjects];
+        [self.listLable reloadData];
+        [self GetDateWithOldTaskidPageSize:100];
     }else{
-        
-        [self setupTudiDate];
+        [self.lists removeAllObjects];
+        [self.listLable reloadData];
+        self.followerPageIndex = 1;
+        [self.lists removeAllObjects];
+        [self setupTudiDateWithPageIndex:_followerPageIndex];
     }
 }
 
 //尾部刷新
-- (void)footRefresh  //加载最新数据
+- (void)getMorePersonData  //加载最新数据
 {
+    LWLog(@"下拉刷新了");
 //    TodayAdvance * model =  [self.dateArray lastObject];
 //    [self GetDateWithOldTaskid:model.taskId andPageSize:10];
+    if (self.setTag == 1) {
+        LWLog(@"暂无分页功能");
+        [self.listLable.mj_footer endRefreshing];
+    }else{
+        ++_followerPageIndex;
+        [self setupTudiDateWithPageIndex:_followerPageIndex];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self getPersonData];
     
 }
 - (void)viewDidLoad {
@@ -110,10 +129,9 @@
     self.setTag = 1;
     self.listLable.delegate = self;
     self.listLable.dataSource = self;
-    
-    [self RefreshJicheng];
-    
     self.listLable.tableFooterView = [[UIView alloc] init];
+    [self setupRefresh];
+    
     [self.listLable registerNib:[UINib nibWithNibName:@"HostTableViewCell" bundle:nil] forCellReuseIdentifier:@"HostTableViewCell"];
     [self.listLable registerNib:[UINib nibWithNibName:@"TudiTableViewCell" bundle:nil]  forCellReuseIdentifier:@"top"];
     [self.listLable registerNib:[UINib nibWithNibName:@"DownTudiTableViewCell" bundle:nil]  forCellReuseIdentifier:@"down"];
@@ -122,9 +140,11 @@
     
     
     [self setUp];
-    [self.head beginRefreshing];
+//    [self.head beginRefreshing];
+    
     
 }
+
 
 
 - (void)setUp{
@@ -163,7 +183,13 @@
         _firstLable.textColor = [UIColor orangeColor];
         _secondLable.textColor = [UIColor blackColor];
         _redView.frame = CGRectMake(aa *0.5-aa/2/2+30, _containView.frame.size.height-2, aa / 2 , 2);
-        [wself.head beginRefreshing];
+        self.setTag = 1;
+//        [wself.head beginRefreshing];
+        [self.lists removeAllObjects];
+        [self.listLable reloadData];
+        self.openStatus = NO;
+        self.openSection = -1;
+        [self GetDateWithOldTaskidPageSize:100];
        
     }];
     
@@ -171,33 +197,58 @@
         _firstLable.textColor = [UIColor blackColor];
         _secondLable.textColor = [UIColor orangeColor];
         _redView.frame = CGRectMake(aa *0.5-aa/2/2+30+aa, _containView.frame.size.height-2, aa / 2 , 2);
-        [wself.head beginRefreshing];
-        
+        self.setTag = 2;
+//        [wself.head beginRefreshing];
+        [self.dateArray removeAllObjects];
+        [self.listLable reloadData];
+        self.followerPageIndex = 1;
+        self.openStatus = NO;
+        self.openSection = -1;
+        [self setupTudiDateWithPageIndex:_followerPageIndex];
+
         
     }];
     
 }
-
-- (void)setupTudiDate{
+//徒弟
+- (void)setupTudiDateWithPageIndex:(NSInteger) pageIndex{
+    self.followerPageIndex = pageIndex;
     __weak PersonViewController * wself = self;
     UserModel * userInfo = (UserModel * )[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
     parame[@"loginCode"] = userInfo.loginCode;
     parame[@"masterId"] = @(self.model.userid);
-    
     LWLog(@"%d",self.model.userid);
-    parame[@"pageIndex"] = @(1);
+    parame[@"pageIndex"] = @(pageIndex);
+    [MBProgressHUD showMessage:nil];
+    LWLog(@"*******开始请求数据********");
+
     [UserLoginTool loginRequestGet:@"GetUserListByMasterId" parame:parame success:^(id json) {
         LWLog(@"%@",json);
-        wself.setTag = 1;
+//        wself.setTag = 1;
+        LWLog(@"**************请求数据成功********");
         if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
-            NSArray * aa = [FollowModel mj_objectArrayWithKeyValuesArray:json[@"resultData"]];
-            [wself ToGroupList:aa];
-            [wself.head endRefreshing];
-            
+            NSArray * array = [FollowModel mj_objectArrayWithKeyValuesArray:json[@"resultData"]];
+//            wself.listLable.tableFooterView = _footer;
+            if (pageIndex == 1) {
+                [wself ToGroupList:array];
+                [wself.listLable.mj_header endRefreshing];
+
+            } else {
+                [wself ToMoreGroupList:array];
+                [wself.listLable.mj_footer endRefreshing];
+            }
+            [MBProgressHUD hideHUD];
+            [wself.listLable reloadData];
         }
     } failure:^(NSError *error) {
-        [wself.head endRefreshing];
+        if (pageIndex == 1) {
+            [wself.listLable.mj_header endRefreshing];
+        } else {
+            [wself.listLable.mj_footer endRefreshing];
+        }
+        LWLog(@"**************请求数据失败*************");
+        [MBProgressHUD hideHUD];
     }];
     
 };
@@ -220,15 +271,26 @@
         
         [self.lists addObject:mod];
     }
+//    [self.listLable reloadData];
+}
+- (void)ToMoreGroupList:(NSArray * )list{
     
+    for (int i = 0; i<list.count; i++) {
+        
+        FollowList * mod = [[FollowList alloc] init];
+        mod.groupId = i;
+        NSMutableArray * marra = [NSMutableArray array];
+        [marra addObject:list[i]];
+        mod.list = marra;
+        
+        [self.lists addObject:mod];
+    }
     [self.listLable reloadData];
-    
 }
 
-
-
+//任务
 - (void)GetDateWithOldTaskidPageSize:(int)Pagesize{
-    
+    LWLog(@"*************请求的任务数据");
     __weak PersonViewController * wself = self;
     UserModel * user =  (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
@@ -239,7 +301,8 @@
     [MBProgressHUD showMessage:nil];
     [UserLoginTool loginRequestGet:@"NewTotalScoreList" parame:parame success:^(id json) {
         LWLog(@"%@",json);
-         wself.setTag = 2;
+//         wself.setTag = 2;
+        
         if ([json[@"resultCode"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
             NSArray * array = [HistoryModel mj_objectArrayWithKeyValuesArray:json[@"resultData"][@"itemData"]];
             LWLog(@"%lu",(unsigned long)array.count);
@@ -247,17 +310,16 @@
             if (array.count) {
                 [wself.dateArray removeAllObjects];
                 [wself.dateArray addObjectsFromArray:array];
-//                [wself.head endRefreshing];
-                [MBProgressHUD hideHUD];
+                [wself.listLable.mj_header endRefreshing];
                 [wself.listLable reloadData];
+                [MBProgressHUD hideHUD];
+
             }
-            [wself.head endRefreshing];
-            [MBProgressHUD hideHUD];
         }
         
         
     } failure:^(NSError *error) {
-        [wself.head endRefreshing];
+        [wself.listLable.mj_header endRefreshing];
         [MBProgressHUD hideHUD];
     }];
     
@@ -265,10 +327,11 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    
+    LWLog(@"%d",self.setTag);
     if (self.setTag== 1) {
         return  self.dateArray.count;
     }else{
+        LWLog(@"%lu",(unsigned long)self.lists.count);
         return self.lists.count;
     }
     
@@ -282,10 +345,13 @@
         HistoryModel * model =  self.dateArray[section];
         return model.awardList.count;
     }else{
-        FollowList * ss = self.lists[section];
-        NSLog(@"%lu",(unsigned long)ss.list.count);
-        return ss.list.count;
-        
+        if (section == self.openSection && self.openStatus == YES) {
+            FollowList * ss = self.lists[section];
+            NSLog(@"%lu",(unsigned long)ss.list.count);
+            return ss.list.count;
+        } else {
+            return 0;
+        }
     }
     
 }
@@ -298,7 +364,7 @@
        return 30;
     }
     
-    return 0;
+    return 60;
 }
 
 
@@ -312,16 +378,38 @@
 }
 
 
-- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    HistoryModel * model =  self.dateArray[section];
-    LWLog(@"%@",[model mj_keyValues]);
-    NSString * time = [NSString stringWithFormat:@"%@ 收益",[[model.date componentsSeparatedByString:@" "] firstObject]];
-    TitleHead * view = [[[NSBundle mainBundle] loadNibNamed:@"TitleHead" owner:nil options:nil] lastObject];
-    view.timeLable.text = time;
-    LWLog(@"--------%d",model.browseAmount);
-    time = [NSString stringWithFormat:@" 浏览量: %d 总积分: %@ ",model.browseAmount,[NSString xiaoshudianweishudeal:[model.totalScore floatValue]]];
-    view.rightLable.text = time;
-    return view;
+- ( UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (self.setTag == 1) {
+        HistoryModel * model =  self.dateArray[section];
+        LWLog(@"%@",[model mj_keyValues]);
+        NSString * time = [NSString stringWithFormat:@"%@ 收益",[[model.date componentsSeparatedByString:@" "] firstObject]];
+        TitleHead * view = [[[NSBundle mainBundle] loadNibNamed:@"TitleHead" owner:nil options:nil] lastObject];
+        view.timeLable.text = time;
+        LWLog(@"--------%d",model.browseAmount);
+        time = [NSString stringWithFormat:@" 浏览量: %d 总积分: %@ ",model.browseAmount,[NSString xiaoshudianweishudeal:[model.totalScore floatValue]]];
+        view.rightLable.text = time;
+        return view;
+    }
+    else {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TudiTableViewCell" owner:nil options:nil];
+        _sectionFollowerView = [nib firstObject];
+        _sectionFollowerView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 60);
+        FollowList * fol =  self.lists[section];
+        FollowModel * mod = (FollowModel *)fol.list[0];
+        _sectionFollowerView.backgroundColor = [UIColor lightGrayColor];
+        _sectionFollowerView.arrow.image = [UIImage imageNamed:@"downArrow"];
+        _sectionFollowerView.model = mod;
+        [_sectionFollowerView bk_whenTapped:^{
+            self.openSection = section;
+            LWLog(@"点击的是第%ld个section",(long)self.openSection);
+            self.openStatus = YES;
+//            NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:self.openSection];
+//            [self.listLable reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.listLable reloadData];
+        }];
+        return _sectionFollowerView;
+    }
+    
 }
 
 
@@ -340,32 +428,47 @@
         cell.model = models;
         return cell;
     }else{
-        if (indexPath.row == 0) {
-            static NSString * reide = @"top";
-            TudiTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reide];
-            
-            FollowList * fol =  self.lists[indexPath.section];
-            FollowModel * mod = (FollowModel *)fol.list[0];
-            cell.backgroundColor = [UIColor lightGrayColor];
-            cell.arrow.image = [UIImage imageNamed:@"downArrow"];
-            cell.model = mod;
-            
-            return cell;
-            
-            
-            
-        }else{
+        if (indexPath.section == self.openSection && self.openStatus == YES) {
             static NSString * reidess = @"down";
             DownTudiTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reidess];
+            LWLog(@"self.lists.count--------%ld",(unsigned long)self.lists.count);
             FollowList * fol =  self.lists[indexPath.section];
-            FollowModel * mod = (FollowModel *)fol.list[1];
-            
+            FollowModel * mod = (FollowModel *)fol.list[0];
+
             LWLog(@"%@",[mod mj_keyValues]) ;
             cell.model = mod;
             //        cell.textLabel.text = [NSString stringWithFormat:@"昨日浏览/转发量: %d/%d次",[mod.yesterdayBrowseAmount integerValue],[mod.yesterdayTurnAmount integerValue]];
             //        cell.detailTextLabel.text = [NSString stringWithFormat:@"历史浏览/转发量: %d/%d次",[mod.historyTotalBrowseAmount integerValue],[mod.historyTotalTurnAmount integerValue]];
             return cell;
         }
+        return nil;
+//        if (indexPath.row == 0) {
+//            static NSString * reide = @"top";
+//            TudiTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reide];
+//            
+//            FollowList * fol =  self.lists[indexPath.section];
+//            FollowModel * mod = (FollowModel *)fol.list[0];
+//            cell.backgroundColor = [UIColor lightGrayColor];
+//            cell.arrow.image = [UIImage imageNamed:@"downArrow"];
+//            cell.model = mod;
+//            
+//            return cell;
+//            
+//            
+//            
+//        }else{
+//            static NSString * reidess = @"down";
+//            DownTudiTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reidess];
+//            LWLog(@"self.lists.count--------%ld",self.lists.count);
+//            FollowList * fol =  self.lists[indexPath.section];
+//            FollowModel * mod = (FollowModel *)fol.list[1];
+//            
+//            LWLog(@"%@",[mod mj_keyValues]) ;
+//            cell.model = mod;
+//            //        cell.textLabel.text = [NSString stringWithFormat:@"昨日浏览/转发量: %d/%d次",[mod.yesterdayBrowseAmount integerValue],[mod.yesterdayTurnAmount integerValue]];
+//            //        cell.detailTextLabel.text = [NSString stringWithFormat:@"历史浏览/转发量: %d/%d次",[mod.historyTotalBrowseAmount integerValue],[mod.historyTotalTurnAmount integerValue]];
+//            return cell;
+//        }
         
     }
     
@@ -375,70 +478,74 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+//    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+//    
+//    if (self.setTag == 1) {
+//        return;
+//    }
+//    
+//    if (self.lastIndexPath.section == indexPath.section) {
+//        TudiTableViewCell  * cella = (TudiTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+//        TudiTableViewCell * cellb = (TudiTableViewCell*)[tableView cellForRowAtIndexPath:self.lastIndexPath];
+//        FollowList * fol = self.lists[indexPath.section];
+//        if (fol.list.count > 1) {
+//            [fol.list removeObjectAtIndex:1];
+//            
+//            cellb.arrow.image = [UIImage imageNamed:@"upArrow"];
+//            //            UIImageView *aa = (UIImageView *)cellb.accessoryView;
+//            //            aa.image = [UIImage imageNamed:@"upArrow"];
+//            self.lastIndexPath = [NSIndexPath indexPathForRow:-1 inSection:-1];
+//        }else{
+//            
+//            FollowModel * mod = fol.list[0];
+//            [fol.list addObject:mod];
+//            cella.arrow.image = [UIImage imageNamed:@"downArrow"];
+//            //            UIImageView *aa = (UIImageView *)cella.accessoryView;
+//            //            aa.image = [UIImage imageNamed:@"downArrow"];
+//            self.lastIndexPath = indexPath;
+//        }
+//        
+//        [self.listLable reloadData];
+//        
+//        return;
+//        
+//    }
+//    
+//    
+//    TudiTableViewCell  * cella = (TudiTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+//    TudiTableViewCell * cellb = (TudiTableViewCell*)[tableView cellForRowAtIndexPath:self.lastIndexPath];
+//    
+//    
+//    FollowList * fol = self.lists[indexPath.section];
+//    FollowModel * mod = fol.list[0];
+//    [fol.list addObject:mod];
+//    cella.arrow.image = [UIImage imageNamed:@"upArrow"];
+//    //    UIImageView *aa = (UIImageView *)cella.accessoryView;
+//    //    aa.image = [UIImage imageNamed:@"downArrow"];
+//    
+//    if (indexPath.section != self.lastIndexPath.section && self.lastIndexPath.section >= 0) {
+//        
+//        FollowList * fols = self.lists[self.lastIndexPath.section];
+//        if (fols.list.count == 2) {
+//            
+//            [fols.list removeObjectAtIndex:1];
+//            cellb.arrow.image = [UIImage imageNamed:@"downArrow"];
+//            //            UIImageView *aa = (UIImageView *)cellb.accessoryView;
+//            //            aa.image = [UIImage imageNamed:@"upArrow"];
+//            
+//        }
+//    }
+//    
+//    self.lastIndexPath = indexPath;
+//    
+//    [self.listLable reloadData];
+//    
     
-    if (self.setTag == 1) {
-        return;
-    }
     
-    if (self.lastIndexPath.section == indexPath.section) {
-        TudiTableViewCell  * cella = (TudiTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
-        TudiTableViewCell * cellb = (TudiTableViewCell*)[tableView cellForRowAtIndexPath:self.lastIndexPath];
-        FollowList * fol = self.lists[indexPath.section];
-        if (fol.list.count > 1) {
-            [fol.list removeObjectAtIndex:1];
-            
-            cellb.arrow.image = [UIImage imageNamed:@"upArrow"];
-            //            UIImageView *aa = (UIImageView *)cellb.accessoryView;
-            //            aa.image = [UIImage imageNamed:@"upArrow"];
-            self.lastIndexPath = [NSIndexPath indexPathForRow:-1 inSection:-1];
-        }else{
-            
-            FollowModel * mod = fol.list[0];
-            [fol.list addObject:mod];
-            cella.arrow.image = [UIImage imageNamed:@"downArrow"];
-            //            UIImageView *aa = (UIImageView *)cella.accessoryView;
-            //            aa.image = [UIImage imageNamed:@"downArrow"];
-            self.lastIndexPath = indexPath;
-        }
-        
-        [self.listLable reloadData];
-        
-        return;
-        
-    }
-    
-    
-    TudiTableViewCell  * cella = (TudiTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
-    TudiTableViewCell * cellb = (TudiTableViewCell*)[tableView cellForRowAtIndexPath:self.lastIndexPath];
-    
-    
-    FollowList * fol = self.lists[indexPath.section];
-    FollowModel * mod = fol.list[0];
-    [fol.list addObject:mod];
-    cella.arrow.image = [UIImage imageNamed:@"upArrow"];
-    //    UIImageView *aa = (UIImageView *)cella.accessoryView;
-    //    aa.image = [UIImage imageNamed:@"downArrow"];
-    
-    if (indexPath.section != self.lastIndexPath.section && self.lastIndexPath.section >= 0) {
-        
-        FollowList * fols = self.lists[self.lastIndexPath.section];
-        if (fols.list.count == 2) {
-            
-            [fols.list removeObjectAtIndex:1];
-            cellb.arrow.image = [UIImage imageNamed:@"downArrow"];
-            //            UIImageView *aa = (UIImageView *)cellb.accessoryView;
-            //            aa.image = [UIImage imageNamed:@"upArrow"];
-            
-        }
-    }
-    
-    self.lastIndexPath = indexPath;
-    
-    [self.listLable reloadData];
-    
-    
-    
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [MBProgressHUD hideHUD];
 }
 
 

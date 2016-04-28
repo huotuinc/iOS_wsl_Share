@@ -136,6 +136,7 @@
         EnterpriseTableViewController* vc = (EnterpriseTableViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"EnterpriseTableViewController"];
         vc.model = model;
         vc.title = model.name;
+        vc.taskId = [NSNumber numberWithInt:self.taskModel.taskId];
         [self.navigationController pushViewController:vc animated:YES];
 //    }
 //    

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ *  架构任务
+ */
 @interface VipAccountViewController : UITableViewController
 
 @end
