@@ -209,8 +209,7 @@
 //        cell.imageView.backgroundColor = [UIColor redColor];
         cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
         
-//        cell.imageView.image = [UIImage imageNamed:@"iconfont-user"];
-        cell.imageView.image = [UIImage imageNamed:@"xiangxtouxiang"];
+        cell.imageView.image = [UIImage imageNamed:@"iconfont-user"];
 
         
     }
@@ -226,14 +225,8 @@
         [image drawInRect:imageRect];
         cell.imageView.image=UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-        
         [cell.imageView layoutIfNeeded];
     }];
-    if (model.logo.length == 0) {
-        cell.imageView.image = [UIImage imageNamed:@"imagehead"];
-    
-    }
-//    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:[UIImage imageNamed:@"xiangxtouxiang"]];
     cell.textLabel.text = model.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"转发%d次/浏览%d次/徒弟%d人",model.totalTurnCount,model.totalBrowseCount, model.prenticeCount];
     UILabel * aa =  (UILabel *)cell.accessoryView;

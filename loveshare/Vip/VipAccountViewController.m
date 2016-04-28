@@ -277,7 +277,10 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     
-    
 
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [MBProgressHUD hideHUD];
 }
 @end

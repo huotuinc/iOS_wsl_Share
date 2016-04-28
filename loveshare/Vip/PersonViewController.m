@@ -543,6 +543,10 @@
     
     
 }
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [MBProgressHUD hideHUD];
+}
 
 
 @end
