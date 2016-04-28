@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -1757,8 +1757,8 @@
                         <constraints>
                             <constraint firstItem="HpP-Xo-xLf" firstAttribute="leading" secondItem="Gj6-Sb-RJX" secondAttribute="leading" id="Jrl-8P-MUe"/>
                             <constraint firstAttribute="trailing" secondItem="cG7-R9-4hf" secondAttribute="trailing" id="ReB-Nm-1jx"/>
+                            <constraint firstItem="aea-Ti-gLH" firstAttribute="top" secondItem="cG7-R9-4hf" secondAttribute="bottom" id="TXQ-mA-oef"/>
                             <constraint firstItem="cG7-R9-4hf" firstAttribute="leading" secondItem="Gj6-Sb-RJX" secondAttribute="leading" id="UVE-w9-LOr"/>
-                            <constraint firstItem="aea-Ti-gLH" firstAttribute="top" secondItem="cG7-R9-4hf" secondAttribute="bottom" id="WmU-lP-ZdO"/>
                             <constraint firstItem="cG7-R9-4hf" firstAttribute="top" secondItem="HpP-Xo-xLf" secondAttribute="bottom" id="aQc-Eo-BwW"/>
                             <constraint firstItem="HpP-Xo-xLf" firstAttribute="top" secondItem="Gj6-Sb-RJX" secondAttribute="top" id="pwY-8c-6ne"/>
                             <constraint firstAttribute="trailing" secondItem="HpP-Xo-xLf" secondAttribute="trailing" id="qeu-hA-Dbm"/>

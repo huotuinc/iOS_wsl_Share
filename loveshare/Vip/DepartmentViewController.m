@@ -7,7 +7,9 @@
 //
 
 #import "DepartmentViewController.h"
+#import "DepartmentTableViewCell.h"
 
+static NSString *deCell = @"deCell";
 @interface DepartmentViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *firstLable;
@@ -47,7 +49,8 @@
     // Do any additional setup after loading the view.
     [self setInit];
     [self setupRefresh];
-    self.listTableView.rowHeight = 60;
+    [self.listTableView registerNib:[UINib nibWithNibName:@"DepartmentTableViewCell" bundle:nil] forCellReuseIdentifier:deCell];
+//    self.listTableView.rowHeight = 60;
     [self getDataWithType:0 andPageIndex:1];
 }
 - (void)setupRefresh {
@@ -105,7 +108,7 @@
     
     __weak DepartmentViewController * wself = self;
     self.listTableView.tableFooterView = [[UIView alloc] init];
-    self.listTableView.rowHeight = 50;
+//    self.listTableView.rowHeight = 50;
     self.firstLable.userInteractionEnabled = YES;
     self.secondLable.userInteractionEnabled = YES;
     self.thirdLable.userInteractionEnabled = YES;
@@ -192,47 +195,62 @@
     LWLog(@"%lu",(unsigned long)self.originArray.count);
     return self.originArray.count;
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60.f;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"jituan"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"jituan"];
-        UILabel * lable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
-        lable.adjustsFontSizeToFitWidth = YES;
-        cell.accessoryView = lable;
-        lable.textAlignment = NSTextAlignmentRight;
-        lable.text = @"xxx";
-        cell.imageView.frame = CGRectMake(0, 0, 40, 40);
-        cell.imageView.layer.cornerRadius = 20;
-        cell.imageView.layer.masksToBounds = YES;
-//        cell.imageView.backgroundColor = [UIColor redColor];
-        cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        
-        cell.imageView.image = [UIImage imageNamed:@"iconfont-user"];
-
-        
-    }
-    
-    
-    LWLog(@"%@", NSStringFromCGRect(cell.imageView.frame));
+    DepartmentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:deCell forIndexPath:indexPath];
     JiTuanModel * model = self.originArray[indexPath.row];
-    LWLog(@"%@",model.name);
-    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:model.logo] options:SDWebImageRetryFailed progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-        CGSize size = CGSizeMake(40, 40);
-        UIGraphicsBeginImageContextWithOptions(size, NO,0.0);
-        CGRect imageRect=CGRectMake(0.0, 0.0, size.width, size.height);
-        [image drawInRect:imageRect];
-        cell.imageView.image=UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        [cell.imageView layoutIfNeeded];
-    }];
-    cell.textLabel.text = model.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"转发%d次/浏览%d次/徒弟%d人",model.totalTurnCount,model.totalBrowseCount, model.prenticeCount];
-    UILabel * aa =  (UILabel *)cell.accessoryView;
-    
-    aa.text = [NSString stringWithFormat:@"%@积分",[NSString xiaoshudianweishudeal:[model.totalScore floatValue]]];
+//    if (model.logo.length == 0) {
+//        cell.imageVHead.image = [UIImage imageNamed:@"29"];
+//    } else {
+//        [cell.imageVHead sd_setImageWithURL:[NSURL URLWithString:model.logo]];
+//    }
+    [cell.imageVHead sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:[UIImage imageNamed:@"xiangxtouxiang"]];
+    cell.labelName.text = model.name;
+    cell.labelDetails.text = [NSString stringWithFormat:@"转发%d次/浏览%d次/徒弟%d人",model.totalTurnCount,model.totalBrowseCount, model.prenticeCount];
+    cell.labelScore.text = [NSString stringWithFormat:@"%@积分",[NSString xiaoshudianweishudeal:[model.totalScore floatValue]]];
     return cell;
+//    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"jituan"];
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"jituan"];
+//        UILabel * lable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+//        lable.adjustsFontSizeToFitWidth = YES;
+//        cell.accessoryView = lable;
+//        lable.textAlignment = NSTextAlignmentRight;
+//        lable.text = @"xxx";
+//        cell.imageView.frame = CGRectMake(0, 0, 40, 40);
+//        cell.imageView.layer.cornerRadius = 20;
+//        cell.imageView.layer.masksToBounds = YES;
+////        cell.imageView.backgroundColor = [UIColor redColor];
+////        cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+////        
+////        cell.imageView.image = [UIImage imageNamed:@"iconfont-user"];
+//
+//        
+//    }
+//    
+//    
+//    LWLog(@"%@", NSStringFromCGRect(cell.imageView.frame));
+//    JiTuanModel * model = self.originArray[indexPath.row];
+//    LWLog(@"%@",model.name);
+//    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:[UIImage imageNamed:@"xiangxtouxiang"]];
+////    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:model.logo] options:SDWebImageRetryFailed progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+////        CGSize size = CGSizeMake(40, 40);
+////        UIGraphicsBeginImageContextWithOptions(size, NO,0.0);
+////        CGRect imageRect=CGRectMake(0.0, 0.0, size.width, size.height);
+////        [image drawInRect:imageRect];
+////        cell.imageView.image=UIGraphicsGetImageFromCurrentImageContext();
+////        UIGraphicsEndImageContext();
+////        [cell.imageView layoutIfNeeded];
+////    }];
+//    cell.textLabel.text =
+//    cell.detailTextLabel.text = [NSString stringWithFormat:@"转发%d次/浏览%d次/徒弟%d人",model.totalTurnCount,model.totalBrowseCount, model.prenticeCount];
+//    UILabel * aa =  (UILabel *)cell.accessoryView;
+//    
+//    aa.text = [NSString stringWithFormat:@"%@积分",[NSString xiaoshudianweishudeal:[model.totalScore floatValue]]];
+//    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
