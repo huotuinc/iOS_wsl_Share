@@ -9,6 +9,7 @@
 #import "HomeListViewController.h"
 #import "detailViewController.h"
 #import <MJRefresh.h>
+#import "RAYNewFunctionGuideVC.h"
 
 #import "MJChiBaoZiHeader.h"
 #define pageSize 10
@@ -304,7 +305,7 @@ static NSString * homeCellidentify = @"homeCellId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"任务领取";
-    
+
     
     self.taskTableview.delegate = self;
     self.taskTableview.dataSource = self;
@@ -372,6 +373,7 @@ static NSString * homeCellidentify = @"homeCellId";
     }
     
  }
+
 /**
  *  控制器选择
  *
@@ -425,6 +427,45 @@ static NSString * homeCellidentify = @"homeCellId";
     
     self.navigationController.navigationBarHidden = NO;
     [_head beginRefreshing];
+
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    //判断是否为第一次进入
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *isFirstHome = [defaults stringForKey:@"isFirstHome"];
+    if (![isFirstHome isEqualToString:@"1"]){
+        [defaults setObject:@"1" forKey:@"isFirstHome"];
+        [defaults synchronize];
+        [self makeGuideView];
+    }
+    //判断是否为第一次进入
+    NSString *isFirstShareSuccess = [defaults stringForKey:@"isFirstShareSuccess"];
+    //正常加个
+    if ([isFirstHome isEqualToString:@"1"] && [isFirstShareSuccess isEqualToString:@"YES"]){
+        [defaults setObject:@"NO" forKey:@"isFirstShareSuccess"];
+        [defaults setObject:@"YES" forKey:@"isShareSuccessAndGoHome"];
+        [defaults synchronize];
+        [self makeGuideShareView];
+    }
+    
+
+}
+- (void)makeGuideShareView{
+    RAYNewFunctionGuideVC *vc = [[RAYNewFunctionGuideVC alloc]init];
+    vc.titles = @[@"转发成功后在这里查看奖励"];
+    vc.frames = @[@"{{5,10},{50,50}}"];
+    
+    [self presentViewController:vc animated:YES completion:nil];
+    
+}
+- (void)makeGuideView{
+    RAYNewFunctionGuideVC *vc = [[RAYNewFunctionGuideVC alloc]init];
+    vc.titles = @[@"新手任务: 首次转发即可获得积分奖励"];
+    vc.frames = @[@"{{0,  140},{130,140}}"];
+    
+    [self presentViewController:vc animated:YES completion:nil];
     
 }
 /**

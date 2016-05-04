@@ -167,6 +167,8 @@
 		EFFE36491CA01FE2000EA32D /* LeftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFFE36471CA01FE2000EA32D /* LeftTableViewCell.xib */; };
 		F2748EA91CD21C10003C99CD /* DepartmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2748EA71CD21C10003C99CD /* DepartmentTableViewCell.m */; };
 		F2748EAA1CD21C10003C99CD /* DepartmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2748EA81CD21C10003C99CD /* DepartmentTableViewCell.xib */; };
+		F2F9AAD11CD9E08C00FC9024 /* RAYNewFunctionGuideVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F9AACE1CD9E08C00FC9024 /* RAYNewFunctionGuideVC.m */; };
+		F2F9AAD21CD9E08C00FC9024 /* RAYNewFunctionGuideVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F9AACF1CD9E08C00FC9024 /* RAYNewFunctionGuideVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -472,6 +474,9 @@
 		F2748EA61CD21C10003C99CD /* DepartmentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartmentTableViewCell.h; sourceTree = "<group>"; };
 		F2748EA71CD21C10003C99CD /* DepartmentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartmentTableViewCell.m; sourceTree = "<group>"; };
 		F2748EA81CD21C10003C99CD /* DepartmentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepartmentTableViewCell.xib; sourceTree = "<group>"; };
+		F2F9AACD1CD9E08C00FC9024 /* RAYNewFunctionGuideVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAYNewFunctionGuideVC.h; sourceTree = "<group>"; };
+		F2F9AACE1CD9E08C00FC9024 /* RAYNewFunctionGuideVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAYNewFunctionGuideVC.m; sourceTree = "<group>"; };
+		F2F9AACF1CD9E08C00FC9024 /* RAYNewFunctionGuideVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RAYNewFunctionGuideVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1225,6 +1230,7 @@
 		EFF072851C8939F000150FA2 /* loveshare */ = {
 			isa = PBXGroup;
 			children = (
+				F202DAC11CD9988E0022E71F /* Library */,
 				EFA229751C99685600F5254F /* NewFeature(版本新特性) */,
 				EF15C96C1C99047200ABD2F6 /* History */,
 				EFAF470B1C96B60000D5A5C4 /* Vip */,
@@ -1276,6 +1282,25 @@
 				EFF072AD1C8939F000150FA2 /* Info.plist */,
 			);
 			path = loveshareUITests;
+			sourceTree = "<group>";
+		};
+		F202DAC11CD9988E0022E71F /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				F2F9AAD01CD9E08C00FC9024 /* WBGuide */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		F2F9AAD01CD9E08C00FC9024 /* WBGuide */ = {
+			isa = PBXGroup;
+			children = (
+				F2F9AACD1CD9E08C00FC9024 /* RAYNewFunctionGuideVC.h */,
+				F2F9AACE1CD9E08C00FC9024 /* RAYNewFunctionGuideVC.m */,
+				F2F9AACF1CD9E08C00FC9024 /* RAYNewFunctionGuideVC.xib */,
+			);
+			name = WBGuide;
+			path = ../../../BCTest/BCTest/WBGuide;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1402,6 +1427,7 @@
 				EF6F97B91C8A737700D760EC /* ShareSDKUI.bundle in Resources */,
 				EF23A7761C9AF790005818CD /* MallBackViewController.xib in Resources */,
 				EFFE36491CA01FE2000EA32D /* LeftTableViewCell.xib in Resources */,
+				F2F9AAD21CD9E08C00FC9024 /* RAYNewFunctionGuideVC.xib in Resources */,
 				EF3636921C916BA7006AD6F1 /* ForeshowTableViewCell.xib in Resources */,
 				EF6F97C21C8A737700D760EC /* ShareSDK.bundle in Resources */,
 				EF6F97E01C8AB3B800D760EC /* MBProgressHUD.bundle in Resources */,
@@ -1511,6 +1537,7 @@
 				EF6F977D1C89755200D760EC /* README.md in Sources */,
 				EF3636BD1C926C28006AD6F1 /* TudiTableViewCell.m in Sources */,
 				EFF0728E1C8939F000150FA2 /* ViewController.m in Sources */,
+				F2F9AAD11CD9E08C00FC9024 /* RAYNewFunctionGuideVC.m in Sources */,
 				EFA229791C99685600F5254F /* LWNewFeatureController.m in Sources */,
 				EF5A1EE41C8D7272002035FC /* detailViewController.m in Sources */,
 				EFF0728B1C8939F000150FA2 /* AppDelegate.m in Sources */,
@@ -1667,7 +1694,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1710,7 +1738,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1799,7 +1828,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhiwei Yu (K7FU393EUA)";
 				INFOPLIST_FILE = loveshareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshareTests;
@@ -1812,7 +1841,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhiwei Yu (K7FU393EUA)";
 				INFOPLIST_FILE = loveshareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshareTests;

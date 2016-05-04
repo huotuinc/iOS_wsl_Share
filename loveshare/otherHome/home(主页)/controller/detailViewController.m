@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 HT. All rights reserved.
 //  ss
 #import "detailViewController.h"
-
+#import "RAYNewFunctionGuideVC.h"
 
 @interface detailViewController ()<UIWebViewDelegate>
 
@@ -29,6 +29,28 @@
 
 @implementation detailViewController
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    //判断是否为第一次进入
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *isFirstDatail = [defaults stringForKey:@"isFirstDatail"];
+    if (![isFirstDatail isEqualToString:@"1"]){
+        [defaults setObject:@"1" forKey:@"isFirstDatail"];
+        [defaults synchronize];
+        [self makeGuideView];
+    }
+}
+- (void)makeGuideView{
+    RAYNewFunctionGuideVC *vc = [[RAYNewFunctionGuideVC alloc]init];
+    vc.titles = @[@"新手任务: 首次转发即可获得积分奖励"];
+    //这个页面的.y传1000就行  内部已算好
+    vc.frames = @[@"{{0, 1000},{350,100}}"];
+    
+    [self presentViewController:vc animated:YES completion:nil];
+    
+}
 - (NewShareModel *)shareModel{
     if (_shareModel == nil) {
         _shareModel = [[NewShareModel alloc] init];
@@ -187,6 +209,17 @@
             LWLog(@"%@",json);
             if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1){
                 [MBProgressHUD showSuccess:@"分享成功"];
+                
+                
+                //判断是否为第一次分享
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                NSString *isFirstShare = [defaults stringForKey:@"isFirstShare"];
+                //正常是 ! [
+                if (![isFirstShare isEqualToString:@"YES"]){
+                    [defaults setObject:@"YES" forKey:@"isFirstShare"];
+                    [defaults setObject:@"YES" forKey:@"isFirstShareSuccess"];
+                    [defaults synchronize];
+                }
             }
         } failure:^(NSError *error) {
             [MBProgressHUD showError:@"分享失败"];
