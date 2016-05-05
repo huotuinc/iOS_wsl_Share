@@ -12,9 +12,11 @@
 #import "RAYNewFunctionGuideVC.h"
 
 #import "MJChiBaoZiHeader.h"
+
+#import "XYPopView.h"
 #define pageSize 10
 
-@interface HomeListViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface HomeListViewController ()<UITableViewDelegate,UITableViewDataSource,XYPopViewDelegate>
 
 /**第四个图片*/
 @property (weak, nonatomic) IBOutlet UIImageView *fourthImage;
@@ -35,12 +37,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *secondLable;
 
 @property (weak, nonatomic) IBOutlet UIView *thirdView;
+@property (weak, nonatomic) IBOutlet UIView *otherView;
 
 @property (weak, nonatomic) IBOutlet UILabel *thirdLable;
 
 @property (weak, nonatomic) IBOutlet UIView *fourthView;
 
 @property (weak, nonatomic) IBOutlet UILabel *fourLable;
+@property (weak, nonatomic) IBOutlet UILabel *otherLabel;
+@property (nonatomic, strong) XYPopView *popView;
+@property (nonatomic, strong) NSArray *otherArray;
 
 @property(nonatomic,strong)UIView * redView;
 
@@ -74,7 +80,19 @@
 
 static NSString * homeCellidentify = @"homeCellId";
 
-
+- (XYPopView *)popView {
+    if (_popView == nil) {
+        _popView = [[XYPopView alloc] initWXYPopViewWithImage:nil andTitle:nil andSuperView:self.otherView];
+        _popView.delegate = self;
+    }
+    return _popView;
+}
+- (NSArray *)otherArray {
+    if (_otherArray == nil) {
+        _otherArray = @[@"1",@"2",@"3"];
+    }
+    return _otherArray;
+}
 - (NSMutableArray *)taskGroup
 {
     if (_taskGroup == nil) {
@@ -207,6 +225,9 @@ static NSString * homeCellidentify = @"homeCellId";
     
 }
 - (void)leftButton{
+//    if (_popView) {
+//        [_popView showPopView];
+//    }
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:^(BOOL finished) {
     }];
 }
@@ -216,7 +237,9 @@ static NSString * homeCellidentify = @"homeCellId";
     CGFloat aa  = (ScreenWidth*1.0) / 4;
     self.firstView.userInteractionEnabled = YES;
     [self.firstView bk_whenTapped:^{
-        
+        if (_popView) {
+            [_popView showPopView];
+        }
         LWLog(@"%ld", (long)wself.firstLable.tag);
         _currentTag = 1;
         _thirdLableNum = 0;
@@ -231,12 +254,14 @@ static NSString * homeCellidentify = @"homeCellId";
         wself.secondLable.textColor = [UIColor lightGrayColor];
         wself.thirdLable.textColor = [UIColor lightGrayColor];
         wself.fourLable.textColor = [UIColor lightGrayColor];
-        
         [wself.head beginRefreshing];
 
     }];
     self.secondView.userInteractionEnabled = YES;
     [self.secondView bk_whenTapped:^{
+        if (_popView) {
+            [_popView showPopView];
+        }
         _thirdLableNum = 0;
         wself.thirdImage.image = [UIImage imageNamed:@"jt-3"];
          wself.fourthImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu"];
@@ -254,6 +279,9 @@ static NSString * homeCellidentify = @"homeCellId";
     }];
     self.thirdView.userInteractionEnabled = YES;
     [self.thirdView bk_whenTapped:^{
+        if (_popView) {
+            [_popView showPopView];
+        }
         LWLog(@"xxx");
         if (_thirdLableNum == 0) {
             wself.thirdImage.image = [UIImage imageNamed:@"jt-1"];
@@ -283,6 +311,9 @@ static NSString * homeCellidentify = @"homeCellId";
     }];
     self.fourthView.userInteractionEnabled = YES;
     [self.fourthView bk_whenTapped:^{
+        if (_popView) {
+            [_popView showPopView];
+        }
         _thirdLableNum = 0;
          wself.thirdImage.image = [UIImage imageNamed:@"jt-3"];
         wself.fourthImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu-1"];
@@ -297,6 +328,11 @@ static NSString * homeCellidentify = @"homeCellId";
         wself.thirdLable.textColor = [UIColor lightGrayColor];
         wself.fourLable.textColor = [UIColor orangeColor];
         [wself.head beginRefreshing];
+    }];
+    self.otherView.userInteractionEnabled = YES;
+    [self.otherView bk_whenTapped:^{
+        [self.view addSubview:self.popView];
+        [self.popView showPopView];
     }];
     
     
@@ -495,8 +531,12 @@ static NSString * homeCellidentify = @"homeCellId";
     }
     [self.taskTableview reloadData];
 }
+#pragma mark XYPopViewDelegate
 
 
+- (void)chooseItem:(NSString *)title andTag:(NSInteger)tag {
+    NSLog(@"title ------ %@ title ------ %ld",title,(long)tag);
+}
 #pragma mark 协议方法
 
 
@@ -566,5 +606,11 @@ static NSString * homeCellidentify = @"homeCellId";
     
     return nil;
 }
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+
+
 
 @end
