@@ -626,10 +626,10 @@
                             <constraint firstAttribute="trailing" secondItem="zbz-DS-2Nc" secondAttribute="trailing" id="KtH-RM-s1K"/>
                             <constraint firstItem="Gno-cj-Deo" firstAttribute="top" secondItem="4lx-fF-cO2" secondAttribute="top" id="MfM-xt-GOU"/>
                             <constraint firstItem="zbz-DS-2Nc" firstAttribute="leading" secondItem="4lx-fF-cO2" secondAttribute="leading" id="dNw-Wb-e6W"/>
-                            <constraint firstItem="HFN-Ry-nMb" firstAttribute="top" secondItem="zbz-DS-2Nc" secondAttribute="bottom" id="frb-qV-Cgh"/>
                             <constraint firstItem="Gno-cj-Deo" firstAttribute="leading" secondItem="4lx-fF-cO2" secondAttribute="leading" id="pIJ-gd-Hu8"/>
                             <constraint firstItem="zbz-DS-2Nc" firstAttribute="top" secondItem="Gno-cj-Deo" secondAttribute="bottom" id="phs-jk-0xA"/>
                             <constraint firstAttribute="trailing" secondItem="Gno-cj-Deo" secondAttribute="trailing" id="uqI-aj-lmu"/>
+                            <constraint firstItem="HFN-Ry-nMb" firstAttribute="top" secondItem="zbz-DS-2Nc" secondAttribute="bottom" id="w0q-gd-2VD"/>
                             <constraint firstItem="Gno-cj-Deo" firstAttribute="height" secondItem="4lx-fF-cO2" secondAttribute="height" multiplier="1:5" id="z5v-ic-aZP"/>
                         </constraints>
                     </view>

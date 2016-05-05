@@ -441,14 +441,16 @@ static NSString * homeCellidentify = @"homeCellId";
         [self makeGuideView];
     }
     //判断是否为第一次进入
-    NSString *isFirstShareSuccess = [defaults stringForKey:@"isFirstShareSuccess"];
-    //正常加个
-    if ([isFirstHome isEqualToString:@"1"] && [isFirstShareSuccess isEqualToString:@"YES"]){
-        [defaults setObject:@"NO" forKey:@"isFirstShareSuccess"];
-        [defaults setObject:@"YES" forKey:@"isShareSuccessAndGoHome"];
-        [defaults synchronize];
-        [self makeGuideShareView];
-    }
+//    NSString *isFirstShareSuccess = [defaults stringForKey:@"isFirstShareSuccess"];
+//    //正常加个
+//    if ([isFirstHome isEqualToString:@"1"] && [isFirstShareSuccess isEqualToString:@"YES"]){
+//        [defaults setObject:@"NO" forKey:@"isFirstShareSuccess"];
+//        [defaults setObject:@"YES" forKey:@"isShareSuccessAndGoHome"];
+//        [defaults synchronize];
+//        [self makeGuideShareView];
+//    }
+    [self makeGuideShareView];
+
     
 
 }
