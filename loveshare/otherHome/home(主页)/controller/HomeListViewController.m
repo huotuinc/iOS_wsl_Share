@@ -485,7 +485,7 @@ static NSString * homeCellidentify = @"homeCellId";
 //        [defaults synchronize];
 //        [self makeGuideShareView];
 //    }
-    [self makeGuideShareView];
+//    [self makeGuideShareView];
 
     
 

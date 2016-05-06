@@ -120,7 +120,7 @@
         [defaults synchronize];
         [self makeGuideView];
     }
-    [self makeGuideView];
+//    [self makeGuideView];
 
 }
 - (void)makeGuideView{

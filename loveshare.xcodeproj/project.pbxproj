@@ -170,6 +170,7 @@
 		F28CC0771CDB799300F4B72E /* BCCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F28CC0731CDB799300F4B72E /* BCCollectionViewCell.m */; };
 		F28CC0781CDB799300F4B72E /* BCCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F28CC0741CDB799300F4B72E /* BCCollectionViewCell.xib */; };
 		F28CC0791CDB799300F4B72E /* XYPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F28CC0761CDB799300F4B72E /* XYPopView.m */; };
+		F2996D2A1CDC3BD300680725 /* BCPNChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2996D291CDC3BD300680725 /* BCPNChartView.m */; };
 		F2AAA2191CDAD9C3005709FE /* RAYNewFunctionGuideVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AAA2171CDAD9C3005709FE /* RAYNewFunctionGuideVC.m */; };
 		F2AAA21A1CDAD9C3005709FE /* RAYNewFunctionGuideVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2AAA2181CDAD9C3005709FE /* RAYNewFunctionGuideVC.xib */; };
 /* End PBXBuildFile section */
@@ -482,6 +483,8 @@
 		F28CC0741CDB799300F4B72E /* BCCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BCCollectionViewCell.xib; sourceTree = "<group>"; };
 		F28CC0751CDB799300F4B72E /* XYPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPopView.h; sourceTree = "<group>"; };
 		F28CC0761CDB799300F4B72E /* XYPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPopView.m; sourceTree = "<group>"; };
+		F2996D281CDC3BD300680725 /* BCPNChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCPNChartView.h; sourceTree = "<group>"; };
+		F2996D291CDC3BD300680725 /* BCPNChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCPNChartView.m; sourceTree = "<group>"; };
 		F2AAA2161CDAD9C3005709FE /* RAYNewFunctionGuideVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAYNewFunctionGuideVC.h; sourceTree = "<group>"; };
 		F2AAA2171CDAD9C3005709FE /* RAYNewFunctionGuideVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAYNewFunctionGuideVC.m; sourceTree = "<group>"; };
 		F2AAA2181CDAD9C3005709FE /* RAYNewFunctionGuideVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RAYNewFunctionGuideVC.xib; sourceTree = "<group>"; };
@@ -594,6 +597,8 @@
 				EF15C97E1C993CCD00ABD2F6 /* TitleHead.h */,
 				EF15C97F1C993CCD00ABD2F6 /* TitleHead.m */,
 				EF15C9811C993DD100ABD2F6 /* TitleHead.xib */,
+				F2996D281CDC3BD300680725 /* BCPNChartView.h */,
+				F2996D291CDC3BD300680725 /* BCPNChartView.m */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -1589,6 +1594,7 @@
 				EF5A1EFA1C8D7272002035FC /* optionView.m in Sources */,
 				EF1B8A791C89557D003D230A /* NSString+EXTERN.m in Sources */,
 				EF3877C61C8FCC7E008279BD /* Base64Util.m in Sources */,
+				F2996D2A1CDC3BD300680725 /* BCPNChartView.m in Sources */,
 				EF3636A11C918EE5006AD6F1 /* PushWebViewController.m in Sources */,
 				EF5C0B761C8C1A3700C76019 /* LoginViewController.m in Sources */,
 				EF5A1EAC1C8D6A93002035FC /* OptionModel.m in Sources */,

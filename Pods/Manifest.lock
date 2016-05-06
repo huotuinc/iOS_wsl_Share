@@ -39,11 +39,14 @@ PODS:
     - NJKWebViewProgress/ProgressView (= 0.2.3)
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
+  - PNChart (0.8.8):
+    - UICountingLabel (~> 1.2.0)
   - Reachability (3.1.1)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
   - SVProgressHUD (HEAD based on 2.0.3)
+  - UICountingLabel (1.2.0)
 
 DEPENDENCIES:
   - BlocksKit (= 2.2.5)
@@ -54,6 +57,7 @@ DEPENDENCIES:
   - MKNetworkKit
   - MMDrawerController
   - NJKWebViewProgress
+  - PNChart (~> 0.8.8)
   - SDWebImage
   - SVProgressHUD (HEAD)
 
@@ -66,8 +70,10 @@ SPEC CHECKSUMS:
   MKNetworkKit: 60ad3c83b62183e40ba75ce772c9427c25b520de
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
+  PNChart: 25f91e9c4688af49c3647489760624d037f5383f
   Reachability: dd9aa4fb6667b9f787690a74f53cb7634ce99893
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
 
 COCOAPODS: 0.39.0

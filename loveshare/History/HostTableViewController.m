@@ -9,6 +9,7 @@
 #import "HostTableViewController.h"
 #import "HostTableViewCell.h"
 
+#import "BCPNChartView.h"
 
 @interface HostTableViewController ()
 @property(nonatomic,strong) MJRefreshNormalHeader * head;
@@ -16,13 +17,22 @@
 
 
 @property(nonatomic,strong)NSMutableArray * dateArray;
+
+@property(nonatomic, strong) BCPNChartView *bcChartView;
+
 @end
 
 @implementation HostTableViewController
 
 
 
-
+- (BCPNChartView *)bcChartView {
+    if (_bcChartView == nil) {
+        _bcChartView = [[BCPNChartView alloc] initBCPNChartViewWithArray:self.dateArray];
+        _bcChartView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT / 3);
+    }
+    return _bcChartView;
+}
 
 - (NSMutableArray *)dateArray{
     if (_dateArray == nil) {
@@ -47,9 +57,9 @@
     
     [UIApplication sharedApplication].keyWindow.backgroundColor = [UIColor whiteColor];
     self.title = @"历史收益";
-    
+    self.tableView.tableHeaderView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT / 3);
+
     self.tableView.rowHeight = 167;
-    
     self.tableView.userInteractionEnabled = YES;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // Uncomment the following line to preserve selection between presentations.
@@ -114,6 +124,9 @@
                 [wself.dateArray removeAllObjects];
                 [wself.dateArray addObjectsFromArray:array];
                 [wself.head endRefreshing];
+//                [_bcChartView removeFromSuperview];
+//                _bcChartView = nil;
+                self.tableView.tableHeaderView = self.bcChartView;
                 [wself.tableView reloadData];
             }
             [wself.head endRefreshing];
