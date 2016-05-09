@@ -78,6 +78,9 @@
 #import "AccountTableViewController.h"
 
 
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
+
 /**极光推送*/
 #define JPushAppKey @"26326d560507983df9217c39"
 #define JPushSecret @"f0a441832e28d1c69ba94093"

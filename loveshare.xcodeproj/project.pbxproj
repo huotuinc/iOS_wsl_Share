@@ -167,6 +167,11 @@
 		EFFE36491CA01FE2000EA32D /* LeftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFFE36471CA01FE2000EA32D /* LeftTableViewCell.xib */; };
 		F2748EA91CD21C10003C99CD /* DepartmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2748EA71CD21C10003C99CD /* DepartmentTableViewCell.m */; };
 		F2748EAA1CD21C10003C99CD /* DepartmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2748EA81CD21C10003C99CD /* DepartmentTableViewCell.xib */; };
+		F28CC0771CDB799300F4B72E /* BCCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F28CC0731CDB799300F4B72E /* BCCollectionViewCell.m */; };
+		F28CC0781CDB799300F4B72E /* BCCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F28CC0741CDB799300F4B72E /* BCCollectionViewCell.xib */; };
+		F28CC0791CDB799300F4B72E /* XYPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F28CC0761CDB799300F4B72E /* XYPopView.m */; };
+		F2AAA2191CDAD9C3005709FE /* RAYNewFunctionGuideVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AAA2171CDAD9C3005709FE /* RAYNewFunctionGuideVC.m */; };
+		F2AAA21A1CDAD9C3005709FE /* RAYNewFunctionGuideVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2AAA2181CDAD9C3005709FE /* RAYNewFunctionGuideVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -472,6 +477,14 @@
 		F2748EA61CD21C10003C99CD /* DepartmentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartmentTableViewCell.h; sourceTree = "<group>"; };
 		F2748EA71CD21C10003C99CD /* DepartmentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartmentTableViewCell.m; sourceTree = "<group>"; };
 		F2748EA81CD21C10003C99CD /* DepartmentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepartmentTableViewCell.xib; sourceTree = "<group>"; };
+		F28CC0721CDB799300F4B72E /* BCCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCCollectionViewCell.h; sourceTree = "<group>"; };
+		F28CC0731CDB799300F4B72E /* BCCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCCollectionViewCell.m; sourceTree = "<group>"; };
+		F28CC0741CDB799300F4B72E /* BCCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BCCollectionViewCell.xib; sourceTree = "<group>"; };
+		F28CC0751CDB799300F4B72E /* XYPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPopView.h; sourceTree = "<group>"; };
+		F28CC0761CDB799300F4B72E /* XYPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPopView.m; sourceTree = "<group>"; };
+		F2AAA2161CDAD9C3005709FE /* RAYNewFunctionGuideVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAYNewFunctionGuideVC.h; sourceTree = "<group>"; };
+		F2AAA2171CDAD9C3005709FE /* RAYNewFunctionGuideVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAYNewFunctionGuideVC.m; sourceTree = "<group>"; };
+		F2AAA2181CDAD9C3005709FE /* RAYNewFunctionGuideVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RAYNewFunctionGuideVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1225,6 +1238,7 @@
 		EFF072851C8939F000150FA2 /* loveshare */ = {
 			isa = PBXGroup;
 			children = (
+				F202DAC11CD9988E0022E71F /* Library */,
 				EFA229751C99685600F5254F /* NewFeature(版本新特性) */,
 				EF15C96C1C99047200ABD2F6 /* History */,
 				EFAF470B1C96B60000D5A5C4 /* Vip */,
@@ -1276,6 +1290,37 @@
 				EFF072AD1C8939F000150FA2 /* Info.plist */,
 			);
 			path = loveshareUITests;
+			sourceTree = "<group>";
+		};
+		F202DAC11CD9988E0022E71F /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				F28CC0711CDB799300F4B72E /* XYPopView */,
+				F2AAA2151CDAD9C3005709FE /* WBGuide */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		F28CC0711CDB799300F4B72E /* XYPopView */ = {
+			isa = PBXGroup;
+			children = (
+				F28CC0721CDB799300F4B72E /* BCCollectionViewCell.h */,
+				F28CC0731CDB799300F4B72E /* BCCollectionViewCell.m */,
+				F28CC0741CDB799300F4B72E /* BCCollectionViewCell.xib */,
+				F28CC0751CDB799300F4B72E /* XYPopView.h */,
+				F28CC0761CDB799300F4B72E /* XYPopView.m */,
+			);
+			path = XYPopView;
+			sourceTree = "<group>";
+		};
+		F2AAA2151CDAD9C3005709FE /* WBGuide */ = {
+			isa = PBXGroup;
+			children = (
+				F2AAA2161CDAD9C3005709FE /* RAYNewFunctionGuideVC.h */,
+				F2AAA2171CDAD9C3005709FE /* RAYNewFunctionGuideVC.m */,
+				F2AAA2181CDAD9C3005709FE /* RAYNewFunctionGuideVC.xib */,
+			);
+			path = WBGuide;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1402,6 +1447,7 @@
 				EF6F97B91C8A737700D760EC /* ShareSDKUI.bundle in Resources */,
 				EF23A7761C9AF790005818CD /* MallBackViewController.xib in Resources */,
 				EFFE36491CA01FE2000EA32D /* LeftTableViewCell.xib in Resources */,
+				F2AAA21A1CDAD9C3005709FE /* RAYNewFunctionGuideVC.xib in Resources */,
 				EF3636921C916BA7006AD6F1 /* ForeshowTableViewCell.xib in Resources */,
 				EF6F97C21C8A737700D760EC /* ShareSDK.bundle in Resources */,
 				EF6F97E01C8AB3B800D760EC /* MBProgressHUD.bundle in Resources */,
@@ -1410,6 +1456,7 @@
 				EF3636C31C926E2C006AD6F1 /* DownTudiTableViewCell.xib in Resources */,
 				EF6F97C01C8A737700D760EC /* read_me.txt in Resources */,
 				EF6F977C1C89755200D760EC /* LICENSE in Resources */,
+				F28CC0781CDB799300F4B72E /* BCCollectionViewCell.xib in Resources */,
 				EF5A1EF51C8D7272002035FC /* BPCell.xib in Resources */,
 				EFF072911C8939F000150FA2 /* Main.storyboard in Resources */,
 				EF6F97911C89856500D760EC /* InfoPlist.strings in Resources */,
@@ -1511,6 +1558,7 @@
 				EF6F977D1C89755200D760EC /* README.md in Sources */,
 				EF3636BD1C926C28006AD6F1 /* TudiTableViewCell.m in Sources */,
 				EFF0728E1C8939F000150FA2 /* ViewController.m in Sources */,
+				F2AAA2191CDAD9C3005709FE /* RAYNewFunctionGuideVC.m in Sources */,
 				EFA229791C99685600F5254F /* LWNewFeatureController.m in Sources */,
 				EF5A1EE41C8D7272002035FC /* detailViewController.m in Sources */,
 				EFF0728B1C8939F000150FA2 /* AppDelegate.m in Sources */,
@@ -1568,6 +1616,7 @@
 				EF3636AA1C918FE2006AD6F1 /* payRequsestHandler.mm in Sources */,
 				EF6F97841C89755200D760EC /* UIProgressView+AFNetworking.m in Sources */,
 				EF3877D91C8FFAFE008279BD /* NameController.m in Sources */,
+				F28CC0791CDB799300F4B72E /* XYPopView.m in Sources */,
 				EF15C9771C992BE700ABD2F6 /* HistoryModel.m in Sources */,
 				EF6F97DF1C8AB3B800D760EC /* MBProgressHUD+MJ.m in Sources */,
 				EF5C0B6A1C8BFE5300C76019 /* LeftOfRootViewController.m in Sources */,
@@ -1594,6 +1643,7 @@
 				EF3636751C9046A3006AD6F1 /* TwoOption.m in Sources */,
 				EFFE36481CA01FE2000EA32D /* LeftTableViewCell.m in Sources */,
 				EF5A1EF01C8D7272002035FC /* TaskGrouoModel.m in Sources */,
+				F28CC0771CDB799300F4B72E /* BCCollectionViewCell.m in Sources */,
 				EF3877DA1C8FFAFE008279BD /* SexController.m in Sources */,
 				EF5A1EF31C8D7272002035FC /* TaskDataCeach.m in Sources */,
 			);
@@ -1667,7 +1717,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1710,7 +1761,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1758,7 +1810,7 @@
 					"$(PROJECT_DIR)/loveshare/Other/JPushlib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.huotu.fanmore---";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1791,7 +1843,7 @@
 					"$(PROJECT_DIR)/loveshare/Other/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/loveshare/Other/JPushlib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.huotu.fanmore---";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1801,7 +1853,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhiwei Yu (K7FU393EUA)";
 				INFOPLIST_FILE = loveshareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshareTests;
@@ -1814,7 +1866,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhiwei Yu (K7FU393EUA)";
 				INFOPLIST_FILE = loveshareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshareTests;

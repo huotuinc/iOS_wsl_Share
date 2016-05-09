@@ -34,7 +34,7 @@
     
     OptionModel * md6 = [[OptionModel alloc] init];
     md6.optionImageName = @"lianmeng";
-    md6.OptionName = @"师徒联盟";
+    md6.OptionName = @"伙伴联盟";
     
     OptionModel * md7 = [[OptionModel alloc] init];
     md7.optionImageName = @"gengduo";

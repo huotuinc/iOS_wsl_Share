@@ -8,6 +8,7 @@
 
 #import "LeftOfRootViewController.h"
 #import "MMRootViewController.h"
+#import "RAYNewFunctionGuideVC.h"
 #import <UIViewController+MMDrawerController.h>
 @interface LeftOfRootViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -44,7 +45,6 @@
 }
 
 - (void)setup{
-    
     self.navigationController.navigationBarHidden = YES;
     self.headImage.layer.cornerRadius = self.headImage.frame.size.height * 0.5;
     self.headImage.layer.masksToBounds = YES;
@@ -108,7 +108,30 @@
 //    [self.optionTable reloadData];
     [self setup];
 }
+- (void)viewDidAppear:(BOOL)animated {
+    //判断是否为第一次进入
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *isFirstHome = [defaults objectForKey:@"isFirstHome"];
+    NSString *isFirstSSLeft = [defaults objectForKey:@"isFirstSSLeft"];
+    NSString *isShareSuccessAndGoHome = [defaults objectForKey:@"isShareSuccessAndGoHome"];
+    //正常发布加个 ! [
+    if ([isFirstHome isEqualToString:@"1"] && [isShareSuccessAndGoHome isEqualToString:@"YES"] && ![isFirstSSLeft isEqualToString:@"YES"]){
+        [defaults setObject:@"YES" forKey:@"isFirstSSLeft"];
+        [defaults synchronize];
+        [self makeGuideView];
+    }
+    [self makeGuideView];
 
+}
+- (void)makeGuideView{
+    RAYNewFunctionGuideVC *vc = [[RAYNewFunctionGuideVC alloc]init];
+    vc.titles = @[@"转发后在这里查看奖励"];
+    //传1001
+    vc.frames = @[@"{{0, 1001},{0,70}}"];
+    
+    [self presentViewController:vc animated:YES completion:nil];
+    
+}
 
 - (void)JifenChange{
     UserModel * userModel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];

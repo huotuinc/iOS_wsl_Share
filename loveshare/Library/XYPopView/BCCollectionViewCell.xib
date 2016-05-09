@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="BCCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="221" height="174"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="221" height="174"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bco-BQ-OEk">
+                        <rect key="frame" x="0.0" y="0.0" width="221" height="174"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lgu-fJ-IeF">
+                                <rect key="frame" x="74" y="15" width="73" height="74"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Lgu-fJ-IeF" secondAttribute="height" multiplier="1:1" id="2XY-09-yVl"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FT7-qg-8eF">
+                                <rect key="frame" x="90" y="136" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Lgu-fJ-IeF" firstAttribute="width" secondItem="Bco-BQ-OEk" secondAttribute="width" multiplier="2:5" id="1Re-Rh-rel"/>
+                            <constraint firstItem="FT7-qg-8eF" firstAttribute="centerX" secondItem="Lgu-fJ-IeF" secondAttribute="centerX" id="9Jj-rR-fGd"/>
+                            <constraint firstItem="Lgu-fJ-IeF" firstAttribute="centerY" secondItem="Bco-BQ-OEk" secondAttribute="centerY" id="DeA-D9-IzY"/>
+                            <constraint firstItem="FT7-qg-8eF" firstAttribute="centerY" secondItem="Lgu-fJ-IeF" secondAttribute="centerY" id="I9r-Nu-uBg"/>
+                            <constraint firstItem="Lgu-fJ-IeF" firstAttribute="centerX" secondItem="Bco-BQ-OEk" secondAttribute="centerX" id="lSV-Px-ebi"/>
+                            <constraint firstItem="FT7-qg-8eF" firstAttribute="top" secondItem="Lgu-fJ-IeF" secondAttribute="bottom" constant="5" id="vxN-i4-UO1"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="I9r-Nu-uBg"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Bco-BQ-OEk" secondAttribute="trailing" id="BqP-Rf-haE"/>
+                <constraint firstItem="Bco-BQ-OEk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="J2A-p3-fD4"/>
+                <constraint firstItem="Bco-BQ-OEk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="KF5-PB-aDO"/>
+                <constraint firstAttribute="bottom" secondItem="Bco-BQ-OEk" secondAttribute="bottom" id="UA9-jF-Cqs"/>
+            </constraints>
+            <size key="customSize" width="221" height="174"/>
+            <connections>
+                <outlet property="imageVIcon" destination="Lgu-fJ-IeF" id="lge-1F-KMG"/>
+                <outlet property="labelName" destination="FT7-qg-8eF" id="YVT-Bb-8Hj"/>
+                <outlet property="viewBase" destination="Bco-BQ-OEk" id="9Da-9E-kpP"/>
+            </connections>
+            <point key="canvasLocation" x="418.5" y="352"/>
+        </collectionViewCell>
+    </objects>
+</document>
