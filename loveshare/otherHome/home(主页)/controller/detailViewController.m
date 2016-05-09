@@ -33,15 +33,14 @@
     [super viewDidAppear:animated];
     
     //判断是否为第一次进入
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    
-//    NSString *isFirstDatail = [defaults stringForKey:@"isFirstDatail"];
-//    if (![isFirstDatail isEqualToString:@"1"]){
-//        [defaults setObject:@"1" forKey:@"isFirstDatail"];
-//        [defaults synchronize];
-//        [self makeGuideView];
-//    }
-    [self makeGuideView];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *isFirstDatail = [defaults stringForKey:@"isFirstDatail"];
+    if (![isFirstDatail isEqualToString:@"1"]){
+        [defaults setObject:@"1" forKey:@"isFirstDatail"];
+        [defaults synchronize];
+        [self makeGuideView];
+    }
 
 }
 - (void)makeGuideView{
