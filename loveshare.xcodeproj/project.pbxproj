@@ -1398,7 +1398,7 @@
 				TargetAttributes = {
 					EFF072821C8939F000150FA2 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = Q3B3AD6JJH;
+						DevelopmentTeam = K7FU393EUA;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -1796,6 +1796,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/loveshare/Other/ShareSDK",
@@ -1815,7 +1816,7 @@
 					"$(PROJECT_DIR)/loveshare/Other/JPushlib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.huotu.fanmore---";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1829,6 +1830,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/loveshare/Other/ShareSDK",
@@ -1847,7 +1849,7 @@
 					"$(PROJECT_DIR)/loveshare/Other/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/loveshare/Other/JPushlib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.huotu.fanmore---";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
