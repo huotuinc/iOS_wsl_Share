@@ -246,7 +246,7 @@ static BOOL isProduction = FALSE;
     
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    LWLog(@"收到通知:%@",[self logDic:userInfo]);
+    LWLog(@"收到通s知:%@",[self logDic:userInfo]);
     
     LWLog(@"%@",userInfo);
     if ([[userInfo allKeys] containsObject:@"type"]) {
