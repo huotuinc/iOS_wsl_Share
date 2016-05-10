@@ -246,7 +246,7 @@ static BOOL isProduction = FALSE;
     
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    NSLog(@"收到通知:%@",[self logDic:userInfo]);
+    LWLog(@"收到通知:%@",[self logDic:userInfo]);
     
     LWLog(@"%@",userInfo);
     if ([[userInfo allKeys] containsObject:@"type"]) {
@@ -267,7 +267,7 @@ static BOOL isProduction = FALSE;
         LWLog(@"%@",self.TodayPredictingNumber);
         NSInteger a = [userInfo[@"type"] integerValue] + 1;
         
-        [self.TodayPredictingNumber setValue:[NSString stringWithFormat:@"%ld",a] forKey:@"today"];
+        [self.TodayPredictingNumber setValue:[NSString stringWithFormat:@"%ld",(long)a] forKey:@"today"];
         
 //        [self.TodayPredictingNumber setValue:@(a) forKey:@"type"];
         LWLog(@"%@",self.TodayPredictingNumber);
