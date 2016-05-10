@@ -10,6 +10,7 @@
 #import "detailViewController.h"
 #import <MJRefresh.h>
 #import "RAYNewFunctionGuideVC.h"
+#import "SearchViewController.h"
 
 #import "MJChiBaoZiHeader.h"
 
@@ -73,6 +74,9 @@
 
 @property(nonatomic,strong) MJRefreshGifHeader * head;
 @property(nonatomic,strong) MJRefreshAutoFooter * footer;
+@property(nonatomic,strong) UISegmentedControl * segmentedControl;
+@property(nonatomic,strong) UIButton * searchButton;
+
 @end
 
 
@@ -80,6 +84,50 @@
 
 static NSString * homeCellidentify = @"homeCellId";
 
+- (UIButton *)searchButton {
+    if (_searchButton == nil) {
+        _searchButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        [_searchButton setBackgroundImage:[UIImage imageNamed:@"geren"] forState:UIControlStateNormal];
+        [_searchButton bk_whenTapped:^{
+            if (_popView) {
+                [_popView showPopView];
+            }
+            SearchViewController *search = [[SearchViewController alloc] init];
+            [self.navigationController pushViewController:search animated:YES];
+        }];
+    }
+    return _searchButton;
+}
+- (UISegmentedControl *)segmentedControl {
+    if (_segmentedControl == nil) {
+        _segmentedControl = [[UISegmentedControl alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+        [_segmentedControl addTarget:self action:@selector(segmentedControlChange:) forControlEvents:UIControlEventValueChanged];
+        //修改字体的默认颜色与选中颜色
+        _segmentedControl.layer.borderWidth = 0.0;
+        _segmentedControl.tintColor = [UIColor whiteColor];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:225.0/255 green:128/255.0 blue:0/255.0 alpha:1.000],UITextAttributeTextColor,  [UIFont systemFontOfSize:16.f],UITextAttributeFont ,[UIColor whiteColor],UITextAttributeTextShadowColor ,nil];
+//        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:225.0/255 green:128/255.0 blue:0/255.0 alpha:1.000],NSForegroundColorAttributeName,  [UIFont systemFontOfSize:16.f],NSFontAttributeName ,[UIColor whiteColor],NSShadowAttributeName ,nil];
+        [_segmentedControl setTitleTextAttributes:dic forState:UIControlStateSelected];
+        [_segmentedControl setTitleTextAttributes:dic forState:UIControlStateSelected];
+        [_segmentedControl insertSegmentWithTitle:@"已上架" atIndex:0 animated:YES];
+        [_segmentedControl insertSegmentWithTitle:@"已下架" atIndex:1 animated:YES];
+        _segmentedControl.selectedSegmentIndex = 0;
+    }
+    return _segmentedControl;
+}
+- (void)segmentedControlChange:(UISegmentedControl *)sgc {
+    if (sgc.selectedSegmentIndex == 0) {
+        if (_popView) {
+            [_popView showPopView];
+        }
+        LWLog(@"点击了已上架");
+    } else {
+        if (_popView) {
+            [_popView showPopView];
+        }
+        LWLog(@"点击了已下架");
+    }
+}
 - (XYPopView *)popView {
     if (_popView == nil) {
         _popView = [[XYPopView alloc] initWXYPopViewWithImage:nil andTitle:nil andSuperView:self.otherView];
@@ -234,7 +282,7 @@ static NSString * homeCellidentify = @"homeCellId";
 
 - (void)doselectSort{
     __weak HomeListViewController * wself = self;
-    CGFloat aa  = (ScreenWidth*1.0) / 4;
+    CGFloat aa  = (ScreenWidth*1.0) * (140.f/650);
     self.firstView.userInteractionEnabled = YES;
     [self.firstView bk_whenTapped:^{
         if (_popView) {
@@ -248,7 +296,7 @@ static NSString * homeCellidentify = @"homeCellId";
          wself.thirdImage.image = [UIImage imageNamed:@"jt-3"];
         _currentSelect = wself.firstView;
         CGRect bb = wself.redView.frame;
-        bb.origin.x = (aa - aa *2.0/3)*0.5;
+        bb.origin.x = (aa - aa *4/5)*0.5;
         wself.redView.frame = bb;
         wself.firstLable.textColor = [UIColor orangeColor];
         wself.secondLable.textColor = [UIColor lightGrayColor];
@@ -269,7 +317,7 @@ static NSString * homeCellidentify = @"homeCellId";
         _currentSelect = wself.secondView;
         _currentTag = 2;
         CGRect bb = wself.redView.frame;
-        bb.origin.x = (aa - aa *2.0/3)*0.5 + wself.secondView.frame.origin.x;
+        bb.origin.x = (aa - aa *4/5)*0.5 + wself.secondView.frame.origin.x;
         wself.redView.frame = bb;
         wself.firstLable.textColor = [UIColor lightGrayColor];
         wself.secondLable.textColor = [UIColor orangeColor];
@@ -301,7 +349,7 @@ static NSString * homeCellidentify = @"homeCellId";
         _currentSelect = wself.thirdView;
         _currentTag = 3;
         CGRect bb = wself.redView.frame;
-        bb.origin.x = (aa - aa *2.0/3)*0.5 + wself.thirdView.frame.origin.x;
+        bb.origin.x = (aa - aa *4/5)*0.5 + wself.thirdView.frame.origin.x;
         wself.redView.frame = bb;
         wself.firstLable.textColor = [UIColor lightGrayColor];
         wself.secondLable.textColor = [UIColor lightGrayColor];
@@ -321,7 +369,7 @@ static NSString * homeCellidentify = @"homeCellId";
         _currentSelect = wself.fourthView;
         _currentTag = 4;
         CGRect bb = wself.redView.frame;
-        bb.origin.x = (aa - aa *2.0/3)*0.5 + wself.fourthView.frame.origin.x;
+        bb.origin.x = (aa - aa *4/5)*0.5 + wself.fourthView.frame.origin.x;
         wself.redView.frame = bb;
         wself.firstLable.textColor = [UIColor lightGrayColor];
         wself.secondLable.textColor = [UIColor lightGrayColor];
@@ -345,17 +393,18 @@ static NSString * homeCellidentify = @"homeCellId";
     
     self.taskTableview.delegate = self;
     self.taskTableview.dataSource = self;
-    
+    self.navigationItem.titleView = self.segmentedControl;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
     _currentSelect = self.firstView;
     _currentTag = 1;
     _pageIndex = 0;
     _thirdLableNum = 0;
     
-    CGFloat aa  = (ScreenWidth*1.0) / 4;
+    CGFloat aa  = (ScreenWidth*1.0) * (140.f/650 );
     UIView * view = [[UIView alloc] init];
     view.backgroundColor = [UIColor orangeColor];
     self.firstLable.textColor = [UIColor orangeColor];
-    view.frame = CGRectMake((aa - aa *2.0/3)*0.5, _topHeadView.frame.size.height-2, aa*2.0/3 , 2);
+    view.frame = CGRectMake((aa - aa * 4/5)*0.5, _topHeadView.frame.size.height-2, aa*4/5 , 2);
     [_topHeadView addSubview:view];
     _redView = view;
     
@@ -460,7 +509,8 @@ static NSString * homeCellidentify = @"homeCellId";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+    [self.view endEditing:YES];
+
     self.navigationController.navigationBarHidden = NO;
     [_head beginRefreshing];
 

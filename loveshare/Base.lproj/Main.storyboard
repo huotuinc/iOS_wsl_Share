@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -2675,6 +2675,7 @@
                                     <constraint firstAttribute="trailing" secondItem="SyQ-uu-IHT" secondAttribute="trailing" id="AHZ-Uo-D0q"/>
                                     <constraint firstAttribute="bottom" secondItem="PJL-be-FAV" secondAttribute="bottom" constant="2" id="ICF-oX-kdy"/>
                                     <constraint firstItem="eGA-6l-gyz" firstAttribute="top" secondItem="j29-Me-got" secondAttribute="top" id="Ilc-Nz-xPF"/>
+                                    <constraint firstItem="eGA-6l-gyz" firstAttribute="width" secondItem="j29-Me-got" secondAttribute="width" multiplier="140:650" id="J4t-bI-F0b"/>
                                     <constraint firstItem="Pja-Sx-d1y" firstAttribute="leading" secondItem="PJL-be-FAV" secondAttribute="trailing" id="T47-wJ-9tN"/>
                                     <constraint firstAttribute="bottom" secondItem="Pja-Sx-d1y" secondAttribute="bottom" constant="2" id="VGN-Af-Ktk"/>
                                     <constraint firstItem="Pja-Sx-d1y" firstAttribute="width" secondItem="eGA-6l-gyz" secondAttribute="width" id="VJB-0T-bc1"/>
@@ -2692,7 +2693,11 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="8l3-gl-pc3"/>
+                                        <exclude reference="T47-wJ-9tN"/>
                                         <exclude reference="1TD-aT-R1s"/>
+                                        <exclude reference="bQo-YT-BPP"/>
+                                        <exclude reference="YSM-nc-XWu"/>
                                     </mask>
                                 </variation>
                             </view>

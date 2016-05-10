@@ -36,7 +36,26 @@
 
 @implementation LeftOfRootViewController
 
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    
+    //    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //    LWLog(@"%@",app.TodayPredictingNumber);
+    //    if ([app.TodayPredictingNumber intValue] > 0) {
+    //       self.aa.text = [NSString stringWithFormat:@"%@",app.TodayPredictingNumber];
+    //       [self.optionTable reloadData];
+    //    }
+    //    }else{
+    //        NSIndexPath * aa = [NSIndexPath indexPathForRow:4 inSection:0];
+    //        UITableViewCell * cell = [self.optionTable cellForRowAtIndexPath:aa];
+    //
+    //        [_aa removeFromSuperview];
+    //        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    //    }
+    //    [self.optionTable reloadData];
+    [self setup];
+}
 - (NSArray *)optionArray{
     if (_optionArray == nil) {
         _optionArray = [OptionModel OptionModelBringBackArray];
@@ -79,6 +98,7 @@
     self.optionTable.scrollEnabled = NO;
     self.optionTable.tableFooterView = [[UIView alloc] init];
     self.optionTable.rowHeight = 60;
+
 }
 
 
@@ -89,25 +109,7 @@
     
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-//    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    LWLog(@"%@",app.TodayPredictingNumber);
-//    if ([app.TodayPredictingNumber intValue] > 0) {
-//       self.aa.text = [NSString stringWithFormat:@"%@",app.TodayPredictingNumber];
-//       [self.optionTable reloadData];
-//    }
-//    }else{
-//        NSIndexPath * aa = [NSIndexPath indexPathForRow:4 inSection:0];
-//        UITableViewCell * cell = [self.optionTable cellForRowAtIndexPath:aa];
-//        
-//        [_aa removeFromSuperview];
-//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//    }
-//    [self.optionTable reloadData];
-    [self setup];
-}
+
 - (void)viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
@@ -122,7 +124,7 @@
         [defaults synchronize];
         [self makeGuideView];
     }
-
+ 
 }
 - (void)makeGuideView{
     RAYNewFunctionGuideVC *vc = [[RAYNewFunctionGuideVC alloc]init];
