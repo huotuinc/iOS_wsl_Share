@@ -34,7 +34,7 @@ static BOOL isProduction = FALSE;
     NSString* firstFlage = [defaults objectForKey:LAST_Flage_KEY]; //true
     
     
-    //极光推送
+    //极光s推送
     [self setJPush];
     
     if (!lastRunVersion || !firstFlage) {
