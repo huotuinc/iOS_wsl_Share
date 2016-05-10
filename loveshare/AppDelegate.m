@@ -135,7 +135,7 @@ static BOOL isProduction = FALSE;
 
 
 /**
- *  初始化接口
+ *  初始化git 测试接口
  *
  *  @param application <#application description#>
  *
