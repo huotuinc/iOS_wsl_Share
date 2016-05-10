@@ -165,6 +165,7 @@
 		EFFA36FB1C8AD9BD00D6AE4D /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFA36FA1C8AD9BD00D6AE4D /* UserModel.m */; };
 		EFFE36481CA01FE2000EA32D /* LeftTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFE36461CA01FE2000EA32D /* LeftTableViewCell.m */; };
 		EFFE36491CA01FE2000EA32D /* LeftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFFE36471CA01FE2000EA32D /* LeftTableViewCell.xib */; };
+		F21E319A1CE189840050F851 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21E31991CE189840050F851 /* SearchViewController.m */; };
 		F2748EA91CD21C10003C99CD /* DepartmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2748EA71CD21C10003C99CD /* DepartmentTableViewCell.m */; };
 		F2748EAA1CD21C10003C99CD /* DepartmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2748EA81CD21C10003C99CD /* DepartmentTableViewCell.xib */; };
 		F28CC0771CDB799300F4B72E /* BCCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F28CC0731CDB799300F4B72E /* BCCollectionViewCell.m */; };
@@ -475,6 +476,8 @@
 		EFFE36451CA01FE2000EA32D /* LeftTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTableViewCell.h; sourceTree = "<group>"; };
 		EFFE36461CA01FE2000EA32D /* LeftTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTableViewCell.m; sourceTree = "<group>"; };
 		EFFE36471CA01FE2000EA32D /* LeftTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftTableViewCell.xib; sourceTree = "<group>"; };
+		F21E31981CE189840050F851 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		F21E31991CE189840050F851 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		F2748EA61CD21C10003C99CD /* DepartmentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartmentTableViewCell.h; sourceTree = "<group>"; };
 		F2748EA71CD21C10003C99CD /* DepartmentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartmentTableViewCell.m; sourceTree = "<group>"; };
 		F2748EA81CD21C10003C99CD /* DepartmentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepartmentTableViewCell.xib; sourceTree = "<group>"; };
@@ -940,6 +943,8 @@
 				EF5A1EB51C8D7272002035FC /* detailViewController.m */,
 				EF5A1EB81C8D7272002035FC /* HomeListViewController.h */,
 				EF5A1EB91C8D7272002035FC /* HomeListViewController.m */,
+				F21E31981CE189840050F851 /* SearchViewController.h */,
+				F21E31991CE189840050F851 /* SearchViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1560,6 +1565,7 @@
 				EFAF470E1C96B62300D5A5C4 /* VipAccountViewController.m in Sources */,
 				EF3636AB1C918FE2006AD6F1 /* WXUtil.mm in Sources */,
 				EF17BB331C9DADD20072856E /* MJDIYAutoFooter.m in Sources */,
+				F21E319A1CE189840050F851 /* SearchViewController.m in Sources */,
 				EF6F977D1C89755200D760EC /* README.md in Sources */,
 				EF3636BD1C926C28006AD6F1 /* TudiTableViewCell.m in Sources */,
 				EFF0728E1C8939F000150FA2 /* ViewController.m in Sources */,

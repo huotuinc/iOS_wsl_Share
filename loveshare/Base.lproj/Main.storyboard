@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -2580,11 +2580,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <subviews>
                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGA-6l-gyz">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="42"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="129" height="42"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbM-Hy-B8z">
-                                                <rect key="frame" x="41" y="9" width="38" height="23"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <rect key="frame" x="50" y="12" width="30" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -2595,16 +2595,16 @@
                                         </constraints>
                                     </view>
                                     <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJL-be-FAV">
-                                        <rect key="frame" x="120" y="0.0" width="120" height="42"/>
+                                        <rect key="frame" x="129" y="0.0" width="129" height="42"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩余积分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCC-F6-z9e">
-                                                <rect key="frame" x="18" y="12" width="60" height="18"/>
+                                                <rect key="frame" x="21" y="12" width="60" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconfont-jiantouxiangxiapaixu" translatesAutoresizingMaskIntoConstraints="NO" id="8mf-3k-N8d">
-                                                <rect key="frame" x="80" y="14" width="10" height="15"/>
+                                                <rect key="frame" x="83" y="14" width="10" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="9Lp-cE-afI"/>
                                                     <constraint firstAttribute="width" constant="10" id="as4-hK-fmF"/>
@@ -2619,16 +2619,16 @@
                                         </constraints>
                                     </view>
                                     <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SyQ-uu-IHT">
-                                        <rect key="frame" x="360" y="0.0" width="120" height="42"/>
+                                        <rect key="frame" x="387" y="0.0" width="129" height="42"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="转发人数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpb-fB-Rnh">
-                                                <rect key="frame" x="30" y="12" width="60" height="18"/>
+                                                <rect key="frame" x="34" y="12" width="60" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconfont-jiantouxiangxiapaixu" translatesAutoresizingMaskIntoConstraints="NO" id="XQ1-YF-R7V">
-                                                <rect key="frame" x="92" y="14" width="10" height="15"/>
+                                                <rect key="frame" x="96" y="14" width="10" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="10" id="BF2-Oo-2B1"/>
                                                     <constraint firstAttribute="height" constant="15" id="poq-bF-D5T"/>
@@ -2643,16 +2643,16 @@
                                         </constraints>
                                     </view>
                                     <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pja-Sx-d1y">
-                                        <rect key="frame" x="240" y="0.0" width="120" height="42"/>
+                                        <rect key="frame" x="258" y="0.0" width="129" height="42"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="奖励积分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0di-QX-S88">
-                                                <rect key="frame" x="18" y="12" width="60" height="18"/>
+                                                <rect key="frame" x="22" y="12" width="60" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jt-3" translatesAutoresizingMaskIntoConstraints="NO" id="Cqy-7Q-J1G">
-                                                <rect key="frame" x="80" y="14" width="10" height="15"/>
+                                                <rect key="frame" x="84" y="14" width="10" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="10" id="E0D-lH-2BH"/>
                                                     <constraint firstAttribute="height" constant="15" id="SKj-RM-lpp"/>
@@ -2667,10 +2667,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Vm-Vv-Dvb">
-                                        <rect key="frame" x="480" y="0.0" width="120" height="44"/>
+                                        <rect key="frame" x="516" y="0.0" width="84" height="44"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="其它" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuZ-2k-5BR">
-                                                <rect key="frame" x="0.0" y="0.0" width="120" height="44"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="筛选" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuZ-2k-5BR">
+                                                <rect key="frame" x="0.0" y="0.0" width="84" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2702,6 +2702,7 @@
                                     <constraint firstAttribute="height" constant="44" id="A97-vU-dWX"/>
                                     <constraint firstAttribute="bottom" secondItem="PJL-be-FAV" secondAttribute="bottom" constant="2" id="ICF-oX-kdy"/>
                                     <constraint firstItem="eGA-6l-gyz" firstAttribute="top" secondItem="j29-Me-got" secondAttribute="top" id="Ilc-Nz-xPF"/>
+                                    <constraint firstItem="eGA-6l-gyz" firstAttribute="width" secondItem="j29-Me-got" secondAttribute="width" multiplier="140:650" id="J4t-bI-F0b"/>
                                     <constraint firstItem="Pja-Sx-d1y" firstAttribute="leading" secondItem="PJL-be-FAV" secondAttribute="trailing" id="T47-wJ-9tN"/>
                                     <constraint firstAttribute="bottom" secondItem="Pja-Sx-d1y" secondAttribute="bottom" constant="2" id="VGN-Af-Ktk"/>
                                     <constraint firstItem="Pja-Sx-d1y" firstAttribute="width" secondItem="eGA-6l-gyz" secondAttribute="width" id="VJB-0T-bc1"/>
@@ -2722,7 +2723,11 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="8l3-gl-pc3"/>
+                                        <exclude reference="T47-wJ-9tN"/>
                                         <exclude reference="1TD-aT-R1s"/>
+                                        <exclude reference="bQo-YT-BPP"/>
+                                        <exclude reference="YSM-nc-XWu"/>
                                     </mask>
                                 </variation>
                             </view>
