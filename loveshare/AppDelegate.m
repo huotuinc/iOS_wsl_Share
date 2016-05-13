@@ -34,7 +34,7 @@ static BOOL isProduction = FALSE;
     NSString* firstFlage = [defaults objectForKey:LAST_Flage_KEY]; //true
     
     
-    //极光推送
+    //极光s推送
     [self setJPush];
     
     if (!lastRunVersion || !firstFlage) {
@@ -135,7 +135,7 @@ static BOOL isProduction = FALSE;
 
 
 /**
- *  初始化接口
+ *  初始化git 测试接口
  *
  *  @param application <#application description#>
  *
@@ -233,8 +233,7 @@ static BOOL isProduction = FALSE;
     LWLog(@"%@", [deviceToken description]);
     NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     NSString * myDeviceToken = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
-    LWLog(@"deviceToken:%@", myDeviceToken);
-    
+    NSLog(@"%@",myDeviceToken);
     [JPUSHService registerDeviceToken:deviceToken];
 }
 
@@ -247,7 +246,7 @@ static BOOL isProduction = FALSE;
     
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    NSLog(@"收到通知:%@",[self logDic:userInfo]);
+    LWLog(@"收到通ss知:%@",[self logDic:userInfo]);
     
     LWLog(@"%@",userInfo);
     if ([[userInfo allKeys] containsObject:@"type"]) {
@@ -268,7 +267,7 @@ static BOOL isProduction = FALSE;
         LWLog(@"%@",self.TodayPredictingNumber);
         NSInteger a = [userInfo[@"type"] integerValue] + 1;
         
-        [self.TodayPredictingNumber setValue:[NSString stringWithFormat:@"%ld",a] forKey:@"today"];
+        [self.TodayPredictingNumber setValue:[NSString stringWithFormat:@"%ld",(long)a] forKey:@"today"];
         
 //        [self.TodayPredictingNumber setValue:@(a) forKey:@"type"];
         LWLog(@"%@",self.TodayPredictingNumber);

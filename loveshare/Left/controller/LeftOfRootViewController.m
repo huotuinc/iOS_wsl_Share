@@ -133,6 +133,8 @@
 
 
 - (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
     //判断是否为第一次进入
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *isFirstHome = [defaults objectForKey:@"isFirstHome"];

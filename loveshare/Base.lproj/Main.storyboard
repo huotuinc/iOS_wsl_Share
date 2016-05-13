@@ -2697,17 +2697,15 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="SyQ-uu-IHT" secondAttribute="trailing" id="1TD-aT-R1s"/>
                                     <constraint firstItem="SyQ-uu-IHT" firstAttribute="top" secondItem="j29-Me-got" secondAttribute="top" id="2qg-xs-QxE"/>
-                                    <constraint firstItem="3Vm-Vv-Dvb" firstAttribute="top" secondItem="j29-Me-got" secondAttribute="top" id="7ji-LO-sFa"/>
                                     <constraint firstItem="PJL-be-FAV" firstAttribute="leading" secondItem="eGA-6l-gyz" secondAttribute="trailing" id="8l3-gl-pc3"/>
-                                    <constraint firstAttribute="bottom" secondItem="3Vm-Vv-Dvb" secondAttribute="bottom" id="9wO-LK-bye"/>
                                     <constraint firstAttribute="height" constant="44" id="A97-vU-dWX"/>
+                                    <constraint firstAttribute="trailing" secondItem="SyQ-uu-IHT" secondAttribute="trailing" id="AHZ-Uo-D0q"/>
                                     <constraint firstAttribute="bottom" secondItem="PJL-be-FAV" secondAttribute="bottom" constant="2" id="ICF-oX-kdy"/>
                                     <constraint firstItem="eGA-6l-gyz" firstAttribute="top" secondItem="j29-Me-got" secondAttribute="top" id="Ilc-Nz-xPF"/>
                                     <constraint firstItem="eGA-6l-gyz" firstAttribute="width" secondItem="j29-Me-got" secondAttribute="width" multiplier="140:650" id="J4t-bI-F0b"/>
                                     <constraint firstItem="Pja-Sx-d1y" firstAttribute="leading" secondItem="PJL-be-FAV" secondAttribute="trailing" id="T47-wJ-9tN"/>
                                     <constraint firstAttribute="bottom" secondItem="Pja-Sx-d1y" secondAttribute="bottom" constant="2" id="VGN-Af-Ktk"/>
                                     <constraint firstItem="Pja-Sx-d1y" firstAttribute="width" secondItem="eGA-6l-gyz" secondAttribute="width" id="VJB-0T-bc1"/>
-                                    <constraint firstItem="3Vm-Vv-Dvb" firstAttribute="width" secondItem="eGA-6l-gyz" secondAttribute="width" id="YSM-nc-XWu"/>
                                     <constraint firstItem="SyQ-uu-IHT" firstAttribute="leading" secondItem="Pja-Sx-d1y" secondAttribute="trailing" id="bQo-YT-BPP"/>
                                     <constraint firstItem="PJL-be-FAV" firstAttribute="top" secondItem="j29-Me-got" secondAttribute="top" id="fBr-gf-ifj"/>
                                     <constraint firstItem="SyQ-uu-IHT" firstAttribute="width" secondItem="eGA-6l-gyz" secondAttribute="width" id="grx-s8-RKG"/>
@@ -2717,9 +2715,7 @@
                                     <constraint firstAttribute="bottom" secondItem="SyQ-uu-IHT" secondAttribute="bottom" constant="2" id="qtG-iQ-zJv"/>
                                     <constraint firstItem="SyQ-uu-IHT" firstAttribute="leading" secondItem="Pja-Sx-d1y" secondAttribute="trailing" id="sQS-Ge-9Rr"/>
                                     <constraint firstItem="PJL-be-FAV" firstAttribute="width" secondItem="eGA-6l-gyz" secondAttribute="width" id="tHB-Ec-Zd8"/>
-                                    <constraint firstItem="3Vm-Vv-Dvb" firstAttribute="leading" secondItem="SyQ-uu-IHT" secondAttribute="trailing" id="vbL-jN-tvc"/>
                                     <constraint firstItem="eGA-6l-gyz" firstAttribute="leading" secondItem="j29-Me-got" secondAttribute="leading" id="vpz-kb-ORw"/>
-                                    <constraint firstAttribute="trailing" secondItem="3Vm-Vv-Dvb" secondAttribute="trailing" id="xLV-73-nkw"/>
                                     <constraint firstItem="Pja-Sx-d1y" firstAttribute="leading" secondItem="PJL-be-FAV" secondAttribute="trailing" id="ySy-dY-gQX"/>
                                 </constraints>
                                 <variation key="default">
@@ -2754,8 +2750,6 @@
                         <outlet property="fourLable" destination="zpb-fB-Rnh" id="ynr-fV-XFd"/>
                         <outlet property="fourthImage" destination="XQ1-YF-R7V" id="AuN-Fb-Lcf"/>
                         <outlet property="fourthView" destination="SyQ-uu-IHT" id="ufS-HE-qIP"/>
-                        <outlet property="otherLabel" destination="kuZ-2k-5BR" id="5GA-zz-oAe"/>
-                        <outlet property="otherView" destination="3Vm-Vv-Dvb" id="HXa-1H-rLh"/>
                         <outlet property="secondImage" destination="8mf-3k-N8d" id="mbQ-5h-02D"/>
                         <outlet property="secondLable" destination="MCC-F6-z9e" id="gUT-Yo-Z8l"/>
                         <outlet property="secondView" destination="PJL-be-FAV" id="toI-Sg-R2g"/>

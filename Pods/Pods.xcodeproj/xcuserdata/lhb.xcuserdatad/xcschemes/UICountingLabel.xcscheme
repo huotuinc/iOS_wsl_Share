@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '95BAAAAC081D739940E3E145'
-               BlueprintName = 'iRate'
+               BlueprintIdentifier = '8C50DEEB2FCE781E099662E9'
+               BlueprintName = 'UICountingLabel'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libiRate.a'>
+               BuildableName = 'libUICountingLabel.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

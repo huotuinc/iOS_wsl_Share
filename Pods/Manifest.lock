@@ -42,9 +42,9 @@ PODS:
   - PNChart (0.8.8):
     - UICountingLabel (~> 1.2.0)
   - Reachability (3.1.1)
-  - SDWebImage (3.7.5):
-    - SDWebImage/Core (= 3.7.5)
-  - SDWebImage/Core (3.7.5)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
   - SVProgressHUD (HEAD based on 2.0.3)
   - UICountingLabel (1.2.0)
 
@@ -72,7 +72,7 @@ SPEC CHECKSUMS:
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   PNChart: 25f91e9c4688af49c3647489760624d037f5383f
   Reachability: dd9aa4fb6667b9f787690a74f53cb7634ce99893
-  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
 

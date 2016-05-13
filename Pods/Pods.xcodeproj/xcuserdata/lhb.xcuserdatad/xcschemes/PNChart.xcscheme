@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '95BAAAAC081D739940E3E145'
-               BlueprintName = 'iRate'
+               BlueprintIdentifier = '719FC9698C92AD816443C0CE'
+               BlueprintName = 'PNChart'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libiRate.a'>
+               BuildableName = 'libPNChart.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
