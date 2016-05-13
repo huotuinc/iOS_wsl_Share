@@ -17,6 +17,38 @@
             endingLineNumber = "301"
             landmarkName = "-GetDateWithOldTaskidPageSize:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PersonViewController GetDateWithOldTaskidPageSize:]"
+                  moduleName = "loveshare"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/che/Desktop/iOS_wsl_Share/loveshare/Vip/PersonViewController.m"
+                  timestampString = "484802187.730208"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "302"
+                  endingLineNumber = "302"
+                  offsetFromSymbolStart = "600">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__53-[PersonViewController GetDateWithOldTaskidPageSize:]_block_invoke"
+                  moduleName = "loveshare"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/che/Desktop/iOS_wsl_Share/loveshare/Vip/PersonViewController.m"
+                  timestampString = "484802187.730479"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "303"
+                  endingLineNumber = "303"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
