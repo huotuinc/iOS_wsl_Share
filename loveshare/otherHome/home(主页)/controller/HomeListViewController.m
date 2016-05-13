@@ -13,6 +13,7 @@
 #import "SearchViewController.h"
 
 #import "MJChiBaoZiHeader.h"
+#import "StoreSelectedViewController.h"
 
 #import "XYPopView.h"
 #define pageSize 10
@@ -74,8 +75,14 @@
 
 @property(nonatomic,strong) MJRefreshGifHeader * head;
 @property(nonatomic,strong) MJRefreshAutoFooter * footer;
+
 @property(nonatomic,strong) UISegmentedControl * segmentedControl;
+
 @property(nonatomic,strong) UIButton * searchButton;
+
+@property(nonatomic,assign) NSInteger homeStoreID;//ID为0为全部商户
+@property(nonatomic,assign) NSInteger homeTaskStaus;
+
 
 @end
 
@@ -87,7 +94,7 @@ static NSString * homeCellidentify = @"homeCellId";
 - (UIButton *)searchButton {
     if (_searchButton == nil) {
         _searchButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        [_searchButton setBackgroundImage:[UIImage imageNamed:@"geren"] forState:UIControlStateNormal];
+        [_searchButton setBackgroundImage:[UIImage imageNamed:@"homeSearch"] forState:UIControlStateNormal];
         [_searchButton bk_whenTapped:^{
             if (_popView) {
                 [_popView showPopView];
@@ -120,11 +127,19 @@ static NSString * homeCellidentify = @"homeCellId";
         if (_popView) {
             [_popView showPopView];
         }
+        _homeTaskStaus = 1;
+        [_taskLists removeAllObjects];
+        [_taskTableview reloadData];
+        [self.head beginRefreshing];
         LWLog(@"点击了已上架");
     } else {
         if (_popView) {
             [_popView showPopView];
         }
+        _homeTaskStaus = 0;
+        [_taskLists removeAllObjects];
+        [_taskTableview reloadData];
+        [self.head beginRefreshing];
         LWLog(@"点击了已下架");
     }
 }
@@ -176,50 +191,90 @@ static NSString * homeCellidentify = @"homeCellId";
     
     _pageIndex = 0;
     LWLog(@"%ld",(long)_currentTag);
-    if(_currentTag == 1){ //默认
-        [self getDateSortType:0 andOrderby:1 andPageIndex:_pageIndex];
-    }else if(_currentTag == 2){
-        [self getDateSortType:1 andOrderby:1 andPageIndex:_pageIndex];
-    }else if(_currentTag == 3){//特殊处理
-        if (_thirdLableNum == 1) {
-           [self getDateSortType:2 andOrderby:1 andPageIndex:_pageIndex];
-        }else{
-            [self getDateSortType:2 andOrderby:0 andPageIndex:_pageIndex];
-        }
-    }else if(_currentTag == 4){
-        [self getDateSortType:3 andOrderby:1 andPageIndex:_pageIndex];
-    }
+
+     [self getDateSortType: _currentTag - 1
+                andOrderby: 1
+              andPageIndex: _pageIndex
+              andTaskStaus: _homeTaskStaus
+                andStoreID: _homeStoreID];
+    
+//    if(_currentTag == 1){ //默认
+////        [self getDateSortType:0 andOrderby:1 andPageIndex:_pageIndex];
+//        [self getDateSortType:0 andOrderby:1 andPageIndex:_pageIndex andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
+//
+//    }else if(_currentTag == 2){
+////        [self getDateSortType:1 andOrderby:1 andPageIndex:_pageIndex];
+//        [self getDateSortType:1 andOrderby:1 andPageIndex:_pageIndex andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
+//    }else if(_currentTag == 3){//特殊处理
+//        if (_thirdLableNum == 1) {
+////           [self getDateSortType:2 andOrderby:1 andPageIndex:_pageIndex];
+//            [self getDateSortType:2 andOrderby:1 andPageIndex:_pageIndex andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
+//
+//        }else{
+////            [self getDateSortType:2 andOrderby:0 andPageIndex:_pageIndex];
+//            [self getDateSortType:2 andOrderby:0 andPageIndex:_pageIndex andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
+//        }
+//    }else if(_currentTag == 4){
+////        [self getDateSortType:3 andOrderby:1 andPageIndex:_pageIndex];
+//        [self getDateSortType:3 andOrderby:1 andPageIndex:_pageIndex andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
+//    }
     
 }
 
 - (void)footRefresh{
-    if(_currentTag == 1){ //默认
-        [self getDateSortType:0 andOrderby:1 andPageIndex:self.pageIndex+1];
-    }else if(_currentTag == 2){
-        [self getDateSortType:1 andOrderby:1 andPageIndex:_pageIndex+1];
-    }else if(_currentTag == 3){//特殊处理
-        if (_thirdLableNum == 1) {
-            [self getDateSortType:2 andOrderby:1 andPageIndex:_pageIndex+1];
-        }else{
-            [self getDateSortType:2 andOrderby:0 andPageIndex:_pageIndex+1];
-        }
-    }else if(_currentTag == 4){
-        [self getDateSortType:3 andOrderby:1 andPageIndex:_pageIndex+1];
-    }
+    [self getDateSortType: _currentTag - 1
+               andOrderby: 1
+             andPageIndex: _pageIndex + 1
+             andTaskStaus: _homeTaskStaus
+               andStoreID: _homeStoreID];
+//    if(_currentTag == 1){ //默认
+////        [self getDateSortType:0 andOrderby:1 andPageIndex:self.pageIndex+1];
+//        [self getDateSortType:0 andOrderby:1 andPageIndex:self.pageIndex + 1 andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
+//    }else if(_currentTag == 2){
+////        [self getDateSortType:1 andOrderby:1 andPageIndex:_pageIndex+1];
+//        [self getDateSortType:1 andOrderby:1 andPageIndex:_pageIndex + 1 andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
+//    }else if(_currentTag == 3){//特殊处理
+//        if (_thirdLableNum == 1) {
+////            [self getDateSortType:2 andOrderby:1 andPageIndex:_pageIndex+1];
+//            [self getDateSortType:2 andOrderby:1 andPageIndex:_pageIndex + 1 andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
+//        }else{
+////            [self getDateSortType:2 andOrderby:0 andPageIndex:_pageIndex+1];
+//            [self getDateSortType:2 andOrderby:0 andPageIndex:_pageIndex + 1 andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
+//        }
+//    }else if(_currentTag == 4){
+////        [self getDateSortType:3 andOrderby:1 andPageIndex:_pageIndex+1];
+//        [self getDateSortType:3 andOrderby:1 andPageIndex:_pageIndex + 1 andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
+//    }
 }
 
-
-- (void)getDateSortType:(NSInteger)SortType  andOrderby:(int)orderby andPageIndex:(NSInteger)PageIndex{
+/**
+ *  请求数据
+ *
+ *  @param SortType  1按剩余积分，2按奖励积分，3按转发人数，其他默认
+ *  @param orderby   1降序，0升序
+ *  @param PageIndex 	页码
+ *  @param taskStaus 默认1 0表示已下架任务
+ *  @param storeID   	商家ID，默认为0
+ */
+- (void)getDateSortType:(NSInteger)SortType  andOrderby:(int)orderby andPageIndex:(NSInteger)PageIndex andTaskStaus:(NSInteger)taskStaus andStoreID:(NSInteger)storeID{
     
     
     LWLog(@"%ld--%d---%ld",(long)SortType,orderby,(long)PageIndex);
     __weak HomeListViewController * wself = self;
     UserModel * user =  (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
+    
+    if (_thirdLableNum != 1 && SortType == 2) {
+        orderby = 0;
+    }
+    
     parame[@"loginCode"] = user.loginCode;
     parame[@"orderby"] = @(orderby);
     parame[@"pageIndex"] = @(PageIndex);
     parame[@"sortType"] = @(SortType);
+    parame[@"taskStaus"] = @(taskStaus);
+    parame[@"storeId"] = @(storeID);
+
     [UserLoginTool loginRequestGet:@"TaskList" parame:parame success:^(id json) {
         LWLog(@"%@",json);
     
@@ -255,11 +310,12 @@ static NSString * homeCellidentify = @"homeCellId";
                                 [MBProgressHUD showMessage:@"没有更多数据"];
                                 [_head endRefreshing];
                                 [_footer endRefreshing];
+
                                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                                     [MBProgressHUD hideHUD];
                                 });
                             }
-        }
+                        }
     
         }
     }failure:^(NSError *error) {
@@ -302,6 +358,8 @@ static NSString * homeCellidentify = @"homeCellId";
         wself.secondLable.textColor = [UIColor lightGrayColor];
         wself.thirdLable.textColor = [UIColor lightGrayColor];
         wself.fourLable.textColor = [UIColor lightGrayColor];
+        [_taskLists removeAllObjects];
+        [_taskTableview reloadData];
         [wself.head beginRefreshing];
 
     }];
@@ -323,6 +381,8 @@ static NSString * homeCellidentify = @"homeCellId";
         wself.secondLable.textColor = [UIColor orangeColor];
         wself.thirdLable.textColor = [UIColor lightGrayColor];
         wself.fourLable.textColor = [UIColor lightGrayColor];
+        [_taskLists removeAllObjects];
+        [_taskTableview reloadData];
         [wself.head beginRefreshing];
     }];
     self.thirdView.userInteractionEnabled = YES;
@@ -335,13 +395,14 @@ static NSString * homeCellidentify = @"homeCellId";
             wself.thirdImage.image = [UIImage imageNamed:@"jt-1"];
             _thirdLableNum = 1;
         }else{
-            if(_thirdLableNum == 1){
+//            if(_thirdLableNum == 1){
                 wself.thirdImage.image = [UIImage imageNamed:@"jt-2"];
-                _thirdLableNum = 2;
-            }else{
-                wself.thirdImage.image = [UIImage imageNamed:@"jt-1"];
-                _thirdLableNum = 1;
-            }
+                _thirdLableNum = 0;
+//            }
+//            else{
+//                wself.thirdImage.image = [UIImage imageNamed:@"jt-1"];
+//                _thirdLableNum = 1;
+//            }
         }
         
         self.secondImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu"];
@@ -355,6 +416,8 @@ static NSString * homeCellidentify = @"homeCellId";
         wself.secondLable.textColor = [UIColor lightGrayColor];
         wself.thirdLable.textColor = [UIColor orangeColor];
         wself.fourLable.textColor = [UIColor lightGrayColor];
+        [_taskLists removeAllObjects];
+        [_taskTableview reloadData];
         [wself.head beginRefreshing];
     }];
     self.fourthView.userInteractionEnabled = YES;
@@ -375,12 +438,17 @@ static NSString * homeCellidentify = @"homeCellId";
         wself.secondLable.textColor = [UIColor lightGrayColor];
         wself.thirdLable.textColor = [UIColor lightGrayColor];
         wself.fourLable.textColor = [UIColor orangeColor];
+        [_taskLists removeAllObjects];
+        [_taskTableview reloadData];
         [wself.head beginRefreshing];
     }];
     self.otherView.userInteractionEnabled = YES;
     [self.otherView bk_whenTapped:^{
-        [self.view addSubview:self.popView];
-        [self.popView showPopView];
+        StoreSelectedViewController *store = [[StoreSelectedViewController alloc] init];
+        store.delegate = self;
+        [self.navigationController pushViewController:store animated:YES];
+//        [self.view addSubview:self.popView];
+//        [self.popView showPopView];
     }];
     
     
@@ -399,6 +467,8 @@ static NSString * homeCellidentify = @"homeCellId";
     _currentTag = 1;
     _pageIndex = 0;
     _thirdLableNum = 0;
+    _homeStoreID = 0;
+    _homeTaskStaus = 1;
     
     CGFloat aa  = (ScreenWidth*1.0) * (140.f/650 );
     UIView * view = [[UIView alloc] init];
@@ -655,6 +725,15 @@ static NSString * homeCellidentify = @"homeCellId";
     
     return nil;
 }
+
+- (void)sendUserID:(NSInteger)userID {
+    _homeStoreID = userID;
+    [self.taskLists removeAllObjects];
+    [self.taskGroup removeAllObjects];
+    [self.taskTableview reloadData];
+
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 }

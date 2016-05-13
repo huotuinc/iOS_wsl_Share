@@ -1,21 +1,17 @@
 //
-//  SearchViewController.m
+//  VipSearchViewController.m
 //  loveshare
 //
-//  Created by che on 16/5/10.
+//  Created by che on 16/5/12.
 //  Copyright © 2016年 HT. All rights reserved.
 //
 
-#import "SearchViewController.h"
+#import "VipSearchViewController.h"
+#import "NewTaskDataModel.h"
 
-#import "detailViewController.h"
 
-#define COLOR_BACK_MAIN [UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1]
-#define COLOR_TEXT_TITILE [UIColor colorWithRed:225.0/255 green:128/255.0 blue:0/255.0 alpha:1.000]
-#define FONT_SIZE(i) SCREEN_WIDTH*((i)/750.0f)
-
-static NSString *cellSearch = @"cellSearch";
-@interface SearchViewController ()<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
+static NSString *cellVIPSearch = @"cellVIPSearch";
+@interface VipSearchViewController ()<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) NSString *searchKey;//搜索关键字
 
@@ -29,25 +25,21 @@ static NSString *cellSearch = @"cellSearch";
 
 @property (nonatomic, assign) NSInteger pageIndex;
 
-
-@property(nonatomic,strong) MJRefreshNormalHeader * head;
-@property(nonatomic,strong) MJRefreshAutoFooter * footer;
-
 @end
 
-@implementation SearchViewController
+@implementation VipSearchViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _pageIndex = 0;
     _dataArray = [NSMutableArray array];
-
-
+    
+    
     self.view.backgroundColor = [UIColor whiteColor];
-
+    
     [self.view addSubview:self.searchBar];
-//    [self.view addSubview:self.imageVNone];
+    //    [self.view addSubview:self.imageVNone];
     [self.view addSubview:self.tableView];
 }
 - (void)viewWillAppear:(BOOL)animated {
@@ -60,7 +52,7 @@ static NSString *cellSearch = @"cellSearch";
 - (UIImageView *)imageVNone {
     if (_imageVNone == nil) {
         _imageVNone = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT)];
-//        _imageVNone.image = [UIImage imageNamed:@"wss"];
+        //        _imageVNone.image = [UIImage imageNamed:@"wss"];
     }
     return _imageVNone;
 }
@@ -76,8 +68,8 @@ static NSString *cellSearch = @"cellSearch";
 }
 - (UITableView *)tableView {
     if (_tableView == nil) {
-        _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64 -44) style:UITableViewStylePlain];
-        [_tableView registerNib:[UINib nibWithNibName:@"HomeCell" bundle:nil] forCellReuseIdentifier:cellSearch];
+        _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64 ) style:UITableViewStylePlain];
+        [_tableView registerNib:[UINib nibWithNibName:@"HomeCell" bundle:nil] forCellReuseIdentifier:cellVIPSearch];
         _tableView.delegate=self;
         _tableView.dataSource=self;
         _tableView.rowHeight = 150.f;
@@ -87,7 +79,7 @@ static NSString *cellSearch = @"cellSearch";
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellSearch forIndexPath:indexPath];
+    HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellVIPSearch forIndexPath:indexPath];
     if (indexPath.section == 0) {
         NewTaskDataModel * model = self.dataArray[0][indexPath.row];
         cell.model = model;
@@ -115,7 +107,7 @@ static NSString *cellSearch = @"cellSearch";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    detailViewController * vc =(detailViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"detailViewController"];
+    AccountTableViewController* vc = [[AccountTableViewController alloc] initWithStyle:UITableViewStylePlain];
     if (indexPath.section == 0) {
         vc.taskModel = _dataArray[0][indexPath.row];
     } else {
@@ -123,7 +115,7 @@ static NSString *cellSearch = @"cellSearch";
     }
     [self.navigationController pushViewController:vc animated:YES];
 }
-#pragma mark 搜索方法
+//#pragma mark 搜索方法
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     _searchKey = searchBar.text;
     [self getDataArrayBySearchText:_searchKey andPageIndex:0];
@@ -137,10 +129,10 @@ static NSString *cellSearch = @"cellSearch";
     parame[@"loginCode"] = userInfo.loginCode;
     parame[@"pageIndex"] = @(PageIndex);
     parame[@"keyword"] = text;
-    [UserLoginTool loginRequestGet:@"TaskList" parame:parame success:^(id json) {
+    [UserLoginTool loginRequestGet:@"UserOrganizeAllTask" parame:parame success:^(id json) {
         LWLog(@"%@",json);
         if ([json[@"status"] integerValue]==1 && [json[@"resultCode"] integerValue] == 1) {
-            NSArray * array  =  [NewTaskDataModel mj_objectArrayWithKeyValuesArray:json[@"resultData"][@"taskData"]];
+            NSArray * array  =  [NewTaskDataModel mj_objectArrayWithKeyValuesArray:json[@"resultData"]];
             if (PageIndex == 0) {
                 [_dataArray removeAllObjects];
                 [_dataArray addObjectsFromArray:array];
@@ -149,14 +141,12 @@ static NSString *cellSearch = @"cellSearch";
             }
             [_searchBar resignFirstResponder];
             _dataArray = [self changeDataArrayByTaskStaus];
-            [_head endRefreshing];
-            [_footer endRefreshing];
+
             [_tableView reloadData];
         }
         LWLog(@"%@",json[@"description"]);
     }failure:^(NSError *error) {
-            [_head endRefreshing];
-            [_footer endRefreshing];
+        
     }];
 }
 
@@ -187,6 +177,7 @@ static NSString *cellSearch = @"cellSearch";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 /*
 #pragma mark - Navigation
 

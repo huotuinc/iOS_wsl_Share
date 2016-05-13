@@ -124,9 +124,9 @@
     __weak EnterpriseTableViewController * wself = self;
     UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
-    parame[@"level"] = @(self.model.level);
+//    parame[@"level"] = @(self.model.level);
     parame[@"loginCode"] = userInfo.loginCode;
-    parame[@"pid"] = @(self.model.orgid);
+    parame[@"orid"] = @(self.model.orgid);
     parame[@"taskId"] = self.taskId;
     
     [UserLoginTool loginRequestGet:@"UserOrganize" parame:parame success:^(id json) {
@@ -188,13 +188,25 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     JiTuan * model = self.SortArray[indexPath.row];
+
+    if ([model.children integerValue] == 1) {
+        EnterpriseTableViewController* vc = (EnterpriseTableViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"EnterpriseTableViewController"];
+        vc.model = model;
+        vc.title = model.name;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else {
+        DepartmentViewController* vc = (DepartmentViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"DepartmentViewController"];
+        vc.model = model;
+        vc.title = model.name;
+        vc.taskId = self.taskId;
+        vc.dilu = self.title;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }
+
     
-    DepartmentViewController* vc = (DepartmentViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"DepartmentViewController"];
-    vc.model = model;
-    vc.title = model.name;
-    vc.taskId = self.taskId;
-    vc.dilu = self.title;
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    
 }
 
 

@@ -7,11 +7,12 @@
 //
 
 #import "VipAccountViewController.h"
-
+#import "VipSearchViewController.h"
+#import "DepartmentViewController.h"
 
 #define homeCellidentify @"homeCellIdSH"
 
-@interface VipAccountViewController ()
+@interface VipAccountViewController ()<UISearchBarDelegate>
 
 
 /**
@@ -27,17 +28,39 @@
 
 @property(nonatomic,strong) UISegmentedControl * CTL;
 
-
+@property (nonatomic, strong) UISearchBar *searchBar;
 
 @property(nonatomic,strong) MJRefreshNormalHeader * head;
 @property(nonatomic,strong) MJRefreshAutoFooter * footer;
+
+@property(nonatomic,strong) UIButton * searchButton;
 
 
 @end
 
 @implementation VipAccountViewController
 
-
+- (UIButton *)searchButton {
+    if (_searchButton == nil) {
+        _searchButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        [_searchButton setBackgroundImage:[UIImage imageNamed:@"homeSearch"] forState:UIControlStateNormal];
+        [_searchButton bk_whenTapped:^{
+            VipSearchViewController *search = [[VipSearchViewController alloc] init];
+            [self.navigationController pushViewController:search animated:YES];
+        }];
+    }
+    return _searchButton;
+}
+- (UISearchBar *)searchBar {
+    if (_searchBar == nil) {
+        _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH , 44)];
+        _searchBar.placeholder=@"搜索";
+        _searchBar.delegate=self;
+        _searchBar.showsCancelButton=YES;
+        [_searchBar becomeFirstResponder];
+    }
+    return _searchBar;
+}
 - (NSMutableArray *)VipRenWudates{
     if (_VipRenWudates == nil) {
         _VipRenWudates = [NSMutableArray array];
@@ -55,7 +78,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     self.RenWupageIndex = 1;
     self.view.backgroundColor = [UIColor whiteColor];
     UISegmentedControl * CTL = [[UISegmentedControl alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
@@ -66,7 +88,8 @@
     CTL.selectedSegmentIndex = 0;
     self.navigationItem.titleView= CTL;
     // Do any additional setup after loading the view.
-    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
+
     
     self.tableView.tableFooterView = [[UIView alloc] init];
     
@@ -135,7 +158,7 @@
                 }
             }
         }
-     
+        LWLog(@"%@",json[@"tip"]);
     } failure:^(NSError *error) {
         [MBProgressHUD hideHUD];
         [wself.head endRefreshing];
@@ -265,10 +288,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.CTL.selectedSegmentIndex == 0) {
         JiTuan * model = self.JITuan[indexPath.row];
-        EnterpriseTableViewController* vc = (EnterpriseTableViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"EnterpriseTableViewController"];
-        vc.model = model;
-        vc.title = model.name;
-        [self.navigationController pushViewController:vc animated:YES];
+        if ([model.children integerValue] == 1) {
+            EnterpriseTableViewController* vc = (EnterpriseTableViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"EnterpriseTableViewController"];
+            vc.model = model;
+            vc.title = model.name;
+            [self.navigationController pushViewController:vc animated:YES];
+        } else {
+            DepartmentViewController* department = (DepartmentViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"DepartmentViewController"];
+            department.model = model;
+            department.taskId = @(0);
+            department.dilu = self.title;
+            [self.navigationController pushViewController:department animated:YES];
+
+        }
+        
         
     }else{
         NewTaskDataModel * model = self.VipRenWudates[indexPath.row];

@@ -47,6 +47,7 @@ static NSString *deCell = @"deCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
     [self setInit];
     [self setupRefresh];
     [self.listTableView registerNib:[UINib nibWithNibName:@"DepartmentTableViewCell" bundle:nil] forCellReuseIdentifier:deCell];

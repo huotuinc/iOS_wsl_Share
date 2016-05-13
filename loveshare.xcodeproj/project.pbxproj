@@ -166,6 +166,11 @@
 		EFFE36481CA01FE2000EA32D /* LeftTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFE36461CA01FE2000EA32D /* LeftTableViewCell.m */; };
 		EFFE36491CA01FE2000EA32D /* LeftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFFE36471CA01FE2000EA32D /* LeftTableViewCell.xib */; };
 		F21E319A1CE189840050F851 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21E31991CE189840050F851 /* SearchViewController.m */; };
+		F23FDF9C1CE42CFD00514279 /* StoreSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F23FDF9B1CE42CFD00514279 /* StoreSelectedViewController.m */; };
+		F23FDF9F1CE4344500514279 /* StoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F23FDF9E1CE4344500514279 /* StoreModel.m */; };
+		F23FDFA31CE452F900514279 /* StoreSelectedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F23FDFA11CE452F900514279 /* StoreSelectedTableViewCell.m */; };
+		F23FDFA41CE452F900514279 /* StoreSelectedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F23FDFA21CE452F900514279 /* StoreSelectedTableViewCell.xib */; };
+		F23FDFA71CE49E6900514279 /* VipSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F23FDFA61CE49E6900514279 /* VipSearchViewController.m */; };
 		F2748EA91CD21C10003C99CD /* DepartmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2748EA71CD21C10003C99CD /* DepartmentTableViewCell.m */; };
 		F2748EAA1CD21C10003C99CD /* DepartmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2748EA81CD21C10003C99CD /* DepartmentTableViewCell.xib */; };
 		F28CC0771CDB799300F4B72E /* BCCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F28CC0731CDB799300F4B72E /* BCCollectionViewCell.m */; };
@@ -478,6 +483,15 @@
 		EFFE36471CA01FE2000EA32D /* LeftTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftTableViewCell.xib; sourceTree = "<group>"; };
 		F21E31981CE189840050F851 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		F21E31991CE189840050F851 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		F23FDF9A1CE42CFD00514279 /* StoreSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreSelectedViewController.h; sourceTree = "<group>"; };
+		F23FDF9B1CE42CFD00514279 /* StoreSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreSelectedViewController.m; sourceTree = "<group>"; };
+		F23FDF9D1CE4344500514279 /* StoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreModel.h; sourceTree = "<group>"; };
+		F23FDF9E1CE4344500514279 /* StoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreModel.m; sourceTree = "<group>"; };
+		F23FDFA01CE452F900514279 /* StoreSelectedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreSelectedTableViewCell.h; sourceTree = "<group>"; };
+		F23FDFA11CE452F900514279 /* StoreSelectedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreSelectedTableViewCell.m; sourceTree = "<group>"; };
+		F23FDFA21CE452F900514279 /* StoreSelectedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreSelectedTableViewCell.xib; sourceTree = "<group>"; };
+		F23FDFA51CE49E6900514279 /* VipSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipSearchViewController.h; sourceTree = "<group>"; };
+		F23FDFA61CE49E6900514279 /* VipSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipSearchViewController.m; sourceTree = "<group>"; };
 		F2748EA61CD21C10003C99CD /* DepartmentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartmentTableViewCell.h; sourceTree = "<group>"; };
 		F2748EA71CD21C10003C99CD /* DepartmentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartmentTableViewCell.m; sourceTree = "<group>"; };
 		F2748EA81CD21C10003C99CD /* DepartmentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepartmentTableViewCell.xib; sourceTree = "<group>"; };
@@ -945,6 +959,8 @@
 				EF5A1EB91C8D7272002035FC /* HomeListViewController.m */,
 				F21E31981CE189840050F851 /* SearchViewController.h */,
 				F21E31991CE189840050F851 /* SearchViewController.m */,
+				F23FDF9A1CE42CFD00514279 /* StoreSelectedViewController.h */,
+				F23FDF9B1CE42CFD00514279 /* StoreSelectedViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -958,6 +974,8 @@
 				EF5A1EFC1C8D7CAD002035FC /* NewTaskDataModel.m */,
 				EF911F701C8EA10100BA7050 /* NewShareModel.h */,
 				EF911F711C8EA10100BA7050 /* NewShareModel.m */,
+				F23FDF9D1CE4344500514279 /* StoreModel.h */,
+				F23FDF9E1CE4344500514279 /* StoreModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -992,6 +1010,9 @@
 				EF23A7611C9A3F99005818CD /* DetailWebViewTopOption.h */,
 				EF23A7621C9A3F99005818CD /* DetailWebViewTopOption.m */,
 				EF23A7641C9A3FA7005818CD /* DetailWebViewTopOption.xib */,
+				F23FDFA01CE452F900514279 /* StoreSelectedTableViewCell.h */,
+				F23FDFA11CE452F900514279 /* StoreSelectedTableViewCell.m */,
+				F23FDFA21CE452F900514279 /* StoreSelectedTableViewCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1197,6 +1218,8 @@
 				EFAF470F1C96D6D000D5A5C4 /* model */,
 				EFAF470C1C96B62300D5A5C4 /* VipAccountViewController.h */,
 				EFAF470D1C96B62300D5A5C4 /* VipAccountViewController.m */,
+				F23FDFA51CE49E6900514279 /* VipSearchViewController.h */,
+				F23FDFA61CE49E6900514279 /* VipSearchViewController.m */,
 				EFAF47131C96E09100D5A5C4 /* EnterpriseTableViewController.h */,
 				EFAF47141C96E09100D5A5C4 /* EnterpriseTableViewController.m */,
 				EFAF47161C97B25600D5A5C4 /* DepartmentViewController.h */,
@@ -1454,6 +1477,7 @@
 				EFF072931C8939F000150FA2 /* Assets.xcassets in Resources */,
 				EF5A1EF71C8D7272002035FC /* ConversionCell.xib in Resources */,
 				EF5A1EF91C8D7272002035FC /* HomeCell.xib in Resources */,
+				F23FDFA41CE452F900514279 /* StoreSelectedTableViewCell.xib in Resources */,
 				EF6F97B91C8A737700D760EC /* ShareSDKUI.bundle in Resources */,
 				EF23A7761C9AF790005818CD /* MallBackViewController.xib in Resources */,
 				EFFE36491CA01FE2000EA32D /* LeftTableViewCell.xib in Resources */,
@@ -1569,11 +1593,14 @@
 				EF6F977D1C89755200D760EC /* README.md in Sources */,
 				EF3636BD1C926C28006AD6F1 /* TudiTableViewCell.m in Sources */,
 				EFF0728E1C8939F000150FA2 /* ViewController.m in Sources */,
+				F23FDFA71CE49E6900514279 /* VipSearchViewController.m in Sources */,
 				F2AAA2191CDAD9C3005709FE /* RAYNewFunctionGuideVC.m in Sources */,
 				EFA229791C99685600F5254F /* LWNewFeatureController.m in Sources */,
 				EF5A1EE41C8D7272002035FC /* detailViewController.m in Sources */,
 				EFF0728B1C8939F000150FA2 /* AppDelegate.m in Sources */,
+				F23FDFA31CE452F900514279 /* StoreSelectedTableViewCell.m in Sources */,
 				EF36367C1C911F97006AD6F1 /* FollowListTableViewController.m in Sources */,
+				F23FDF9F1CE4344500514279 /* StoreModel.m in Sources */,
 				EF5A1EF81C8D7272002035FC /* HomeCell.m in Sources */,
 				EF3636C61C92AEFA006AD6F1 /* MallUser.m in Sources */,
 				EF15C9801C993CCD00ABD2F6 /* TitleHead.m in Sources */,
@@ -1604,6 +1631,7 @@
 				EF3636A11C918EE5006AD6F1 /* PushWebViewController.m in Sources */,
 				EF5C0B761C8C1A3700C76019 /* LoginViewController.m in Sources */,
 				EF5A1EAC1C8D6A93002035FC /* OptionModel.m in Sources */,
+				F23FDF9C1CE42CFD00514279 /* StoreSelectedViewController.m in Sources */,
 				EF5A1EFD1C8D7CAD002035FC /* NewTaskDataModel.m in Sources */,
 				EF15C97A1C992C8E00ABD2F6 /* AwardList.m in Sources */,
 				EFFA36FB1C8AD9BD00D6AE4D /* UserModel.m in Sources */,

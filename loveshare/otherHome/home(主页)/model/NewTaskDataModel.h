@@ -59,6 +59,8 @@
 @property(nonatomic,assign) CGFloat  totalScore;
 /**任务类型*/
 @property(nonatomic,assign) int type;
+
+
 /**
  {
 

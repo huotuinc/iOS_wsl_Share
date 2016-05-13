@@ -26,5 +26,6 @@
 /**组织编号*/
 @property(nonatomic,assign)int totalTurnCount;
 
+@property (nonatomic, strong) NSNumber *children;//o没有，1有
 
 @end

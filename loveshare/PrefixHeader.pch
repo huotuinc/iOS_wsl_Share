@@ -99,8 +99,10 @@
 /**应用版本号*/
 #define AppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 
-#define MainUrl @"http://taskapi.silk08.com"
-//#define MainUrl @"http://192.168.1.6:8050/api.ashx"
+//#define MainUrl @"http://taskapi.silk08.com"
+//#define MainUrl @"api.guo.fancat.cn:8080/api.ashx"
+#define MainUrl @"http://api.guo.fancat.cn:8084/api.ashx"
+
 /**平台*/
 #define OPERATION_parame @"FH2016APP"
 /**应用版本号*/

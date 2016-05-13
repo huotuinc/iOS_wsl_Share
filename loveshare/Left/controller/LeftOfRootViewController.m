@@ -26,7 +26,10 @@
 @property (weak, nonatomic) IBOutlet UIView *ceter;
 
 @property (weak, nonatomic) IBOutlet UITableView *optionTable;
+@property (weak, nonatomic) IBOutlet UILabel *labelWatch;
 
+
+@property (nonatomic, copy) NSString *watchCounts;
 
 @property (strong, nonatomic) UILabel * aa;
 
@@ -55,6 +58,7 @@
     //    }
     //    [self.optionTable reloadData];
     [self setup];
+    [self getWatchCounts];
 }
 - (NSArray *)optionArray{
     if (_optionArray == nil) {
@@ -102,11 +106,29 @@
 }
 
 
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     
     _aa.hidden = NO;
     
     
+}
+
+- (void)getWatchCounts {
+    UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+    NSMutableDictionary * parame = [NSMutableDictionary dictionary];
+    parame[@"loginCode"] = userInfo.loginCode;
+    [UserLoginTool loginRequestGet:@"GetUserTodayBrowseCount" parame:parame success:^(id json) {
+        LWLog(@"%@",json);
+        if ([json[@"status"] integerValue]==1 && [json[@"resultCode"] integerValue] == 1) {
+            _watchCounts = json[@"resultData"][@"count"];
+            _labelWatch.text = [NSString stringWithFormat:@"今日浏览量:%@次",_watchCounts];
+
+        }
+        LWLog(@"%@",json[@"description"]);
+    }failure:^(NSError *error) {
+        
+    }];
 }
 
 

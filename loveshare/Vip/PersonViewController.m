@@ -298,7 +298,7 @@
     parame[@"date"] = @"";
     parame[@"pageSize"] = @(Pagesize);
     parame[@"currentUserId"] = @(self.model.userid);
-    [MBProgressHUD showMessage:nil];
+//    [MBProgressHUD showMessage:nil];
     [UserLoginTool loginRequestGet:@"NewTotalScoreList" parame:parame success:^(id json) {
         LWLog(@"%@",json);
 //         wself.setTag = 2;
@@ -312,7 +312,7 @@
                 [wself.dateArray addObjectsFromArray:array];
                 [wself.listLable.mj_header endRefreshing];
                 [wself.listLable reloadData];
-                [MBProgressHUD hideHUD];
+//                [MBProgressHUD hideHUD];
 
             }
         }
@@ -320,7 +320,7 @@
         
     } failure:^(NSError *error) {
         [wself.listLable.mj_header endRefreshing];
-        [MBProgressHUD hideHUD];
+//        [MBProgressHUD hideHUD];
     }];
     
     
