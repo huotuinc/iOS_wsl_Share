@@ -18,6 +18,9 @@
 #import "XYPopView.h"
 #define pageSize 10
 
+#define COLOR_BACK_SELECTED [UIColor colorWithRed:235/255.0f green:235/255.0f blue:235/255.0f alpha:1]
+
+
 @interface HomeListViewController ()<UITableViewDelegate,UITableViewDataSource,XYPopViewDelegate>
 
 /**第四个图片*/
@@ -55,6 +58,11 @@
 @property (weak, nonatomic) IBOutlet UIView *topHeadView;
 
 @property(nonatomic,strong)UIView * currentSelect;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelDoing;
+@property (weak, nonatomic) IBOutlet UILabel *labelDone;
+@property (weak, nonatomic) IBOutlet UIImageView *imageVLine;
+
 
 
 @property(nonatomic,assign) int thirdLableNum;
@@ -447,9 +455,36 @@ static NSString * homeCellidentify = @"homeCellId";
         StoreSelectedViewController *store = [[StoreSelectedViewController alloc] init];
         store.delegate = self;
         [self.navigationController pushViewController:store animated:YES];
-//        [self.view addSubview:self.popView];
-//        [self.popView showPopView];
     }];
+    
+    self.labelDoing.userInteractionEnabled = YES;
+    [self.labelDoing bk_whenTapped:^{
+        LWLog(@"点击了进行中");
+        _homeTaskStaus = 1;
+        self.labelDoing.textColor = [UIColor orangeColor];
+        self.labelDoing.backgroundColor = COLOR_BACK_SELECTED;
+        self.labelDone.textColor = [UIColor lightGrayColor];
+        self.labelDone.backgroundColor = [UIColor whiteColor];
+        [_taskLists removeAllObjects];
+        [_taskTableview reloadData];
+        [self.head beginRefreshing];
+
+    }];
+    self.labelDone.userInteractionEnabled = YES;
+    [self.labelDone bk_whenTapped:^{
+        LWLog(@"点击了已抢光");
+        self.labelDone.textColor = [UIColor orangeColor];
+        self.labelDone.backgroundColor = COLOR_BACK_SELECTED;
+        self.labelDoing.textColor = [UIColor lightGrayColor];
+        self.labelDoing.backgroundColor= [UIColor whiteColor];
+        _homeTaskStaus = 0;
+        [_taskLists removeAllObjects];
+        [_taskTableview reloadData];
+        [self.head beginRefreshing];
+
+    }];
+    
+    
     
     
 }
@@ -457,11 +492,13 @@ static NSString * homeCellidentify = @"homeCellId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"任务领取";
+    self.labelDoing.textColor = [UIColor orangeColor];
+    self.labelDoing.backgroundColor = COLOR_BACK_SELECTED;
 
-    
+    self.imageVLine.image = [UIImage imageNamed:@"imageVHomeLine"];
     self.taskTableview.delegate = self;
     self.taskTableview.dataSource = self;
-    self.navigationItem.titleView = self.segmentedControl;
+//    self.navigationItem.titleView = self.segmentedControl;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
     _currentSelect = self.firstView;
     _currentTag = 1;
