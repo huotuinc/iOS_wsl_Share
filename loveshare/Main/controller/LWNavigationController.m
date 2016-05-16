@@ -83,28 +83,40 @@
 }
 
 
-//- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
-//{
-//    if (self.viewControllers.count>0) {
-//       viewController.hidesBottomBarWhenPushed = YES;
-//        
-////        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithIcon:@"navigationbar_back" hightIcon:@"navigationbar_back_highlighted" target:self action:@selector(back)];
-////        
-////        viewController.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithIcon:@"navigationbar_more" hightIcon:@"navigationbar_more_highlighted" target:self action:@selector(more)];
-//        
-//       
-//    }
-//    
-//    [super pushViewController:viewController animated:YES];
-//}
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if (self.viewControllers.count>0) {
+       viewController.hidesBottomBarWhenPushed = YES;
+        
+        // 左上角
+        UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [backButton setImage:[UIImage imageNamed:@"Nav_Left_Return_Back"] forState:UIControlStateNormal];
+        [backButton setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
+        [backButton setTitle:@"返回" forState:UIControlStateNormal];
+        
+        [backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [backButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+        [backButton sizeToFit];
+        // 这句代码放在sizeToFit后面
+        backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
+        [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
 //
-//
-//- (void)back
-//{
-//    [self popViewControllerAnimated:YES];
-//}
-//- (void)more
-//{
-//    [self popToRootViewControllerAnimated:YES];
-//}
+//        viewController.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithIcon:@"navigationbar_more" hightIcon:@"navigationbar_more_highlighted" target:self action:@selector(more)];
+        
+       
+    }
+    
+    [super pushViewController:viewController animated:YES];
+}
+
+
+- (void)back
+{
+    [self popViewControllerAnimated:YES];
+}
+- (void)more
+{
+    [self popToRootViewControllerAnimated:YES];
+}
 @end

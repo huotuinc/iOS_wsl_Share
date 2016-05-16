@@ -101,7 +101,7 @@
     self.optionTable.backgroundColor = [UIColor clearColor];
     self.optionTable.scrollEnabled = NO;
     self.optionTable.tableFooterView = [[UIView alloc] init];
-    self.optionTable.rowHeight = 60;
+    self.optionTable.rowHeight = 55;
 
 }
 
