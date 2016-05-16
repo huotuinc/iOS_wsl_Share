@@ -210,7 +210,7 @@ static NSString *deCell = @"deCell";
 //    }
     [cell.imageVHead sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:[UIImage imageNamed:@"xiangxtouxiang"]];
     cell.labelName.text = model.name;
-    cell.labelDetails.text = [NSString stringWithFormat:@"转发%d次/浏览%d次/徒弟%d人",model.totalTurnCount,model.totalBrowseCount, model.prenticeCount];
+    cell.labelDetails.text = [NSString stringWithFormat:@"转发%d次/浏览%d次/伙伴%d人",model.totalTurnCount,model.totalBrowseCount, model.prenticeCount];
     cell.labelScore.text = [NSString stringWithFormat:@"%@积分",[NSString xiaoshudianweishudeal:[model.totalScore floatValue]]];
     return cell;
 //    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"jituan"];
