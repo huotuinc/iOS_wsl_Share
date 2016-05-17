@@ -520,8 +520,9 @@ static NSString * homeCellidentify = @"homeCellId";
     [self doselectSort];
     
     
-    UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [btn setBackgroundImage:[UIImage imageNamed:@"geren"] forState:UIControlStateNormal];
+    UIButton * btn = [[UIButton alloc] init];
+    [btn setImage:[UIImage imageNamed:@"geren"] forState:UIControlStateNormal];
+    [btn sizeToFit];
     [btn addTarget:self action:@selector(leftButton) forControlEvents:UIControlEventTouchDown];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     

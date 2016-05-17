@@ -36,6 +36,7 @@
 - (void)setModel:(NewTaskDataModel *)model{
     _model = model;
     
+    LWLog(@"%@",[model mj_keyValues]);
     [_showImage sd_setImageWithURL:[NSURL URLWithString:model.taskSmallImgUrl] placeholderImage:nil];
     
     _nameLabel.text = model.taskName;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -21,7 +21,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天欧冠巴萨激战尤文fads 发生的发生发放的是" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGH-4D-mst">
-                        <rect key="frame" x="95" y="8" width="198" height="41"/>
+                        <rect key="frame" x="95" y="20" width="198" height="41"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="150" id="JBz-xJ-n4i"/>
                             <constraint firstAttribute="height" constant="21" id="zdC-gL-DZe"/>
@@ -37,7 +37,7 @@
                         </variation>
                     </label>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-04-04" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFQ-QQ-8uU">
-                        <rect key="frame" x="95" y="68" width="70" height="15"/>
+                        <rect key="frame" x="95" y="80" width="70" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -53,7 +53,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已有" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ojb-Eg-SxG">
-                        <rect key="frame" x="95" y="74" width="24" height="21"/>
+                        <rect key="frame" x="92" y="74" width="24" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="114" id="2aK-Uv-kgp"/>
                             <constraint firstAttribute="height" constant="21" id="XV9-w6-tkB"/>
@@ -80,7 +80,7 @@
                         </variation>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="由[群乐饭店]提供" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKy-Gw-2hj">
-                        <rect key="frame" x="95" y="51" width="198" height="17"/>
+                        <rect key="frame" x="92" y="63" width="198" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="8QV-jB-NH9"/>
                             <constraint firstAttribute="width" constant="189" id="dqQ-Yj-CPz"/>
@@ -96,7 +96,7 @@
                         </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300人" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hle-dh-2f8">
-                        <rect key="frame" x="119" y="74" width="35" height="21"/>
+                        <rect key="frame" x="116" y="74" width="35" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="RdI-hR-BRi"/>
                             <constraint firstAttribute="width" constant="114" id="ud9-q3-BDy"/>
@@ -111,7 +111,7 @@
                         </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="参与" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSC-To-pVl">
-                        <rect key="frame" x="154" y="74" width="24" height="21"/>
+                        <rect key="frame" x="151" y="74" width="24" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="114" id="30v-tD-O1h"/>
                             <constraint firstAttribute="height" constant="21" id="6HC-yX-42e"/>
@@ -163,7 +163,7 @@
                     <constraint firstAttribute="bottom" secondItem="wf1-Ei-z0c" secondAttribute="bottom" constant="1" id="0MZ-fx-e44"/>
                     <constraint firstAttribute="trailing" secondItem="Q5K-0f-mjo" secondAttribute="trailing" constant="10" id="0xW-ts-y7x"/>
                     <constraint firstItem="0jK-cX-QNi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="2VK-yK-c5Q"/>
-                    <constraint firstItem="ZKy-Gw-2hj" firstAttribute="leading" secondItem="0jK-cX-QNi" secondAttribute="trailing" constant="5" id="2c1-JG-iyD"/>
+                    <constraint firstItem="ZKy-Gw-2hj" firstAttribute="leading" secondItem="0jK-cX-QNi" secondAttribute="trailing" constant="2" id="2c1-JG-iyD"/>
                     <constraint firstItem="UFQ-QQ-8uU" firstAttribute="top" secondItem="nGH-4D-mst" secondAttribute="bottom" id="4HG-mS-hFQ"/>
                     <constraint firstItem="9Hq-Gk-EiQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="4aR-PY-Y9x"/>
                     <constraint firstAttribute="centerY" secondItem="Q5K-0f-mjo" secondAttribute="centerY" constant="10" id="5Xd-mp-HP2"/>
@@ -194,7 +194,7 @@
                     <constraint firstItem="Hle-dh-2f8" firstAttribute="leading" secondItem="Ojb-Eg-SxG" secondAttribute="trailing" id="oga-nP-87a"/>
                     <constraint firstAttribute="bottom" secondItem="0jK-cX-QNi" secondAttribute="bottom" constant="10" id="oqa-XO-MJ8"/>
                     <constraint firstItem="UFQ-QQ-8uU" firstAttribute="top" secondItem="ZKy-Gw-2hj" secondAttribute="bottom" id="pxt-CE-TQZ"/>
-                    <constraint firstItem="0jK-cX-QNi" firstAttribute="top" secondItem="nGH-4D-mst" secondAttribute="top" constant="2" id="qBD-3U-J00"/>
+                    <constraint firstItem="0jK-cX-QNi" firstAttribute="top" secondItem="nGH-4D-mst" secondAttribute="top" constant="-10" id="qBD-3U-J00"/>
                     <constraint firstAttribute="trailingMargin" secondItem="nGH-4D-mst" secondAttribute="trailing" constant="19" id="sgG-ZC-Kf0"/>
                     <constraint firstItem="XbP-Z9-ED8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="uyW-km-6C4"/>
                     <constraint firstItem="Ojb-Eg-SxG" firstAttribute="leading" secondItem="ZKy-Gw-2hj" secondAttribute="leading" id="vQo-Ng-HUm"/>

@@ -83,7 +83,7 @@
     [UIApplication sharedApplication].keyWindow.backgroundColor = [UIColor whiteColor];
     
     self.contentWebView.scrollView.contentInset =
-    UIEdgeInsetsMake(40, 0, 0, 0);
+    UIEdgeInsetsMake(40, 0, 40, 0);
     self.title = @"任务详情";
     
     UIView * topView = [[UIView alloc] initWithFrame:CGRectMake(0, -40, ScreenWidth, 40)];
