@@ -76,7 +76,17 @@
 #import "AppDelegate.h"
 #import "JPUSHService.h"
 #import "AccountTableViewController.h"
-
+#import "UIView+XMGExtension.h"
+#import "HomeTitleOption.h"
+#import "HomeListTableController.h"
+#import "MoreTaskController.h"
+#import "StoreSelectedViewController.h"
+#import "SheYuTaskViewContrller.h"
+#import "ZhuangFaTaskController.h"
+#import "jiangliTaskController.h"
+#import "detailViewController.h"
+//#import "UITextField+XMGExtension.h"
+//#import "XMGLoginRegisterViewController.h"
 
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
@@ -105,8 +115,11 @@
 #define LWRandomColor LWColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
 
 
-#define MainUrl @"http://api.guo.fancat.cn:8084/api.ashx"
-//
+
+//#define MainUrl @"http://api.guo.fancat.cn:8084/api.ashx" taskapi.silkfh.com
+
+#define MainUrl @"http://taskapi.silkfh.com" //@"http://taskapi.fhsilk.com"
+
 /**平台*/
 #define OPERATION_parame @"FH2016APP"
 /**应用版本号*/

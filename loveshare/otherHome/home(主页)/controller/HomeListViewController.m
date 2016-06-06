@@ -11,7 +11,7 @@
 #import <MJRefresh.h>
 #import "RAYNewFunctionGuideVC.h"
 #import "SearchViewController.h"
-
+#import "HomeTitleButton.h"
 #import "MJChiBaoZiHeader.h"
 #import "StoreSelectedViewController.h"
 
@@ -21,7 +21,21 @@
 #define COLOR_BACK_SELECTED [UIColor colorWithRed:235/255.0f green:235/255.0f blue:235/255.0f alpha:1]
 
 
-@interface HomeListViewController ()<UITableViewDelegate,UITableViewDataSource,XYPopViewDelegate>
+@interface HomeListViewController ()<XYPopViewDelegate,HomeTitleOptionDelegate,UIScrollViewDelegate,storeSelectedDelegate>
+
+
+@property(nonatomic,strong) UIScrollView * scrollView;
+
+
+/**头部栏*/
+@property(nonatomic,strong) HomeTitleButton * optionCurrentBtn;
+
+/**luohaibo头部选项栏*/
+@property(nonatomic,strong) HomeTitleOption * titleView;
+
+
+@property (weak, nonatomic) IBOutlet HomeTitleOption *titleHeadOption;
+
 
 /**第四个图片*/
 @property (weak, nonatomic) IBOutlet UIImageView *fourthImage;
@@ -50,7 +64,11 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *fourLable;
 @property (weak, nonatomic) IBOutlet UILabel *otherLabel;
+
+
 @property (nonatomic, strong) XYPopView *popView;
+
+
 @property (nonatomic, strong) NSArray *otherArray;
 
 @property(nonatomic,strong)UIView * redView;
@@ -59,8 +77,10 @@
 
 @property(nonatomic,strong)UIView * currentSelect;
 
-@property (weak, nonatomic) IBOutlet UILabel *labelDoing;
-@property (weak, nonatomic) IBOutlet UILabel *labelDone;
+
+
+
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageVLine;
 
 
@@ -74,11 +94,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UITableView *taskTableview;
-/**分组模型*/
-@property(nonatomic,strong) NSMutableArray *taskGroup;
 
-/**分组模型*/
-@property(nonatomic,strong) NSMutableArray *taskLists;
 
 
 @property(nonatomic,strong) MJRefreshGifHeader * head;
@@ -89,6 +105,9 @@
 @property(nonatomic,strong) UIButton * searchButton;
 
 @property(nonatomic,assign) NSInteger homeStoreID;//ID为0为全部商户
+
+
+
 @property(nonatomic,assign) NSInteger homeTaskStaus;
 
 
@@ -113,44 +132,7 @@ static NSString * homeCellidentify = @"homeCellId";
     }
     return _searchButton;
 }
-- (UISegmentedControl *)segmentedControl {
-    if (_segmentedControl == nil) {
-        _segmentedControl = [[UISegmentedControl alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
-        [_segmentedControl addTarget:self action:@selector(segmentedControlChange:) forControlEvents:UIControlEventValueChanged];
-        //修改字体的默认颜色与选中颜色
-        _segmentedControl.layer.borderWidth = 0.0;
-        _segmentedControl.tintColor = [UIColor whiteColor];
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:225.0/255 green:128/255.0 blue:0/255.0 alpha:1.000],UITextAttributeTextColor,  [UIFont systemFontOfSize:16.f],UITextAttributeFont ,[UIColor whiteColor],UITextAttributeTextShadowColor ,nil];
-//        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:225.0/255 green:128/255.0 blue:0/255.0 alpha:1.000],NSForegroundColorAttributeName,  [UIFont systemFontOfSize:16.f],NSFontAttributeName ,[UIColor whiteColor],NSShadowAttributeName ,nil];
-        [_segmentedControl setTitleTextAttributes:dic forState:UIControlStateSelected];
-        [_segmentedControl setTitleTextAttributes:dic forState:UIControlStateSelected];
-        [_segmentedControl insertSegmentWithTitle:@"已上架" atIndex:0 animated:YES];
-        [_segmentedControl insertSegmentWithTitle:@"已下架" atIndex:1 animated:YES];
-        _segmentedControl.selectedSegmentIndex = 0;
-    }
-    return _segmentedControl;
-}
-- (void)segmentedControlChange:(UISegmentedControl *)sgc {
-    if (sgc.selectedSegmentIndex == 0) {
-        if (_popView) {
-            [_popView showPopView];
-        }
-        _homeTaskStaus = 1;
-        [_taskLists removeAllObjects];
-        [_taskTableview reloadData];
-        [self.head beginRefreshing];
-        LWLog(@"点击了已上架");
-    } else {
-        if (_popView) {
-            [_popView showPopView];
-        }
-        _homeTaskStaus = 0;
-        [_taskLists removeAllObjects];
-        [_taskTableview reloadData];
-        [self.head beginRefreshing];
-        LWLog(@"点击了已下架");
-    }
-}
+
 - (XYPopView *)popView {
     if (_popView == nil) {
         _popView = [[XYPopView alloc] initWXYPopViewWithImage:nil andTitle:nil andSuperView:self.otherView];
@@ -164,178 +146,8 @@ static NSString * homeCellidentify = @"homeCellId";
     }
     return _otherArray;
 }
-- (NSMutableArray *)taskGroup
-{
-    if (_taskGroup == nil) {
-        
-        _taskGroup = [NSMutableArray array];
-    }
-    return _taskGroup;
-}
 
-- (NSMutableArray *)taskLists{
-    if (_taskLists == nil) {
-        _taskLists =  [NSMutableArray array];
-    }
-    return _taskLists;
-}
 
-- (void)RefreshJicheng{
-    _head = [MJChiBaoZiHeader headerWithRefreshingTarget:self refreshingAction:@selector(headRefresh)];
-    //[MJRefreshGifHeader  headerWithRefreshingTarget:self refreshingAction:@selector(headRefresh)];
-    // 隐藏时间
-    _head.lastUpdatedTimeLabel.hidden = YES;
-    
-    // 隐藏状态
-    _head.stateLabel.hidden = YES;
-
-    self.taskTableview.mj_header = _head;
-    
-   _footer =  [MJRefreshAutoFooter footerWithRefreshingTarget:self refreshingAction:@selector(footRefresh)];
-    self.taskTableview.tableFooterView = _footer;
-}
-
-- (void)headRefresh{
-    
-    _pageIndex = 0;
-    LWLog(@"%ld",(long)_currentTag);
-
-     [self getDateSortType: _currentTag - 1
-                andOrderby: 1
-              andPageIndex: _pageIndex
-              andTaskStaus: _homeTaskStaus
-                andStoreID: _homeStoreID];
-    
-//    if(_currentTag == 1){ //默认
-////        [self getDateSortType:0 andOrderby:1 andPageIndex:_pageIndex];
-//        [self getDateSortType:0 andOrderby:1 andPageIndex:_pageIndex andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
-//
-//    }else if(_currentTag == 2){
-////        [self getDateSortType:1 andOrderby:1 andPageIndex:_pageIndex];
-//        [self getDateSortType:1 andOrderby:1 andPageIndex:_pageIndex andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
-//    }else if(_currentTag == 3){//特殊处理
-//        if (_thirdLableNum == 1) {
-////           [self getDateSortType:2 andOrderby:1 andPageIndex:_pageIndex];
-//            [self getDateSortType:2 andOrderby:1 andPageIndex:_pageIndex andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
-//
-//        }else{
-////            [self getDateSortType:2 andOrderby:0 andPageIndex:_pageIndex];
-//            [self getDateSortType:2 andOrderby:0 andPageIndex:_pageIndex andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
-//        }
-//    }else if(_currentTag == 4){
-////        [self getDateSortType:3 andOrderby:1 andPageIndex:_pageIndex];
-//        [self getDateSortType:3 andOrderby:1 andPageIndex:_pageIndex andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
-//    }
-    
-}
-
-- (void)footRefresh{
-    [self getDateSortType: _currentTag - 1
-               andOrderby: 1
-             andPageIndex: _pageIndex + 1
-             andTaskStaus: _homeTaskStaus
-               andStoreID: _homeStoreID];
-//    if(_currentTag == 1){ //默认
-////        [self getDateSortType:0 andOrderby:1 andPageIndex:self.pageIndex+1];
-//        [self getDateSortType:0 andOrderby:1 andPageIndex:self.pageIndex + 1 andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
-//    }else if(_currentTag == 2){
-////        [self getDateSortType:1 andOrderby:1 andPageIndex:_pageIndex+1];
-//        [self getDateSortType:1 andOrderby:1 andPageIndex:_pageIndex + 1 andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
-//    }else if(_currentTag == 3){//特殊处理
-//        if (_thirdLableNum == 1) {
-////            [self getDateSortType:2 andOrderby:1 andPageIndex:_pageIndex+1];
-//            [self getDateSortType:2 andOrderby:1 andPageIndex:_pageIndex + 1 andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
-//        }else{
-////            [self getDateSortType:2 andOrderby:0 andPageIndex:_pageIndex+1];
-//            [self getDateSortType:2 andOrderby:0 andPageIndex:_pageIndex + 1 andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
-//        }
-//    }else if(_currentTag == 4){
-////        [self getDateSortType:3 andOrderby:1 andPageIndex:_pageIndex+1];
-//        [self getDateSortType:3 andOrderby:1 andPageIndex:_pageIndex + 1 andTaskStaus:_homeTaskStaus andStoreID:_homeStoreID];
-//    }
-}
-
-/**
- *  请求数据
- *
- *  @param SortType  1按剩余积分，2按奖励积分，3按转发人数，其他默认
- *  @param orderby   1降序，0升序
- *  @param PageIndex 	页码
- *  @param taskStaus 默认1 0表示已下架任务
- *  @param storeID   	商家ID，默认为0
- */
-- (void)getDateSortType:(NSInteger)SortType  andOrderby:(int)orderby andPageIndex:(NSInteger)PageIndex andTaskStaus:(NSInteger)taskStaus andStoreID:(NSInteger)storeID{
-    
-    
-    LWLog(@"%ld--%d---%ld",(long)SortType,orderby,(long)PageIndex);
-    __weak HomeListViewController * wself = self;
-    UserModel * user =  (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
-    NSMutableDictionary * parame = [NSMutableDictionary dictionary];
-    
-    if (_thirdLableNum != 1 && SortType == 2) {
-        orderby = 0;
-    }
-    
-    parame[@"loginCode"] = user.loginCode;
-    parame[@"orderby"] = @(orderby);
-    parame[@"pageIndex"] = @(PageIndex);
-    parame[@"sortType"] = @(SortType);
-    parame[@"taskStaus"] = @(taskStaus);
-    parame[@"storeId"] = @(storeID);
-
-    [UserLoginTool loginRequestGet:@"TaskList" parame:parame success:^(id json) {
-        LWLog(@"%@",json);
-    
-        wself.pageIndex = [json[@"pageIndex"] integerValue];
-        if ([json[@"status"] integerValue]==1 && [json[@"resultCode"] integerValue] == 1) {
-            NSArray * tasks  =  [NewTaskDataModel mj_objectArrayWithKeyValuesArray:json[@"resultData"][@"taskData"]];
-                       if (tasks.count) {
-                           if (wself.currentSelect.tag == 1) {
-                               if (PageIndex == 0) {
-                                   [_head endRefreshing];
-                                   [wself.taskGroup removeAllObjects];
-                               }else{
-                                   [_footer endRefreshing];
-                               }
-                               [wself toGroupsByTime:tasks];
-                           }else{
-                               if (PageIndex ==0) {
-                                   [wself.taskLists removeAllObjects];
-                                   [wself.taskLists addObjectsFromArray:tasks];
-                                   [wself.head endRefreshing];
-                                   [wself.taskTableview reloadData];
-                               }else{
-                                  [wself.footer endRefreshing];
-                                  [wself.taskLists addObjectsFromArray:tasks];
-                                  [wself.taskTableview reloadData];
-                                }
-                            }
-                           
-                        }else{
-                            if (PageIndex == 0) {
-                                [_head endRefreshing];
-                            }else{
-                                [MBProgressHUD showMessage:@"没有更多数据"];
-                                [_head endRefreshing];
-                                [_footer endRefreshing];
-
-                                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                    [MBProgressHUD hideHUD];
-                                });
-                            }
-                        }
-    
-        }
-    }failure:^(NSError *error) {
-        if (PageIndex == 0) {
-            [_head endRefreshing];
-        }else{
-            [_footer endRefreshing];
-        }
-//
-    }];
-    
-}
 - (void)leftButton{
 //    if (_popView) {
 //        [_popView showPopView];
@@ -344,228 +156,151 @@ static NSString * homeCellidentify = @"homeCellId";
     }];
 }
 
-- (void)doselectSort{
-    __weak HomeListViewController * wself = self;
-    CGFloat aa  = (ScreenWidth*1.0) * (140.f/650);
-    self.firstView.userInteractionEnabled = YES;
-    [self.firstView bk_whenTapped:^{
-        if (_popView) {
-            [_popView showPopView];
-        }
-        LWLog(@"%ld", (long)wself.firstLable.tag);
-        _currentTag = 1;
-        _thirdLableNum = 0;
-        wself.secondImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu"];
-        wself.fourthImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu"];
-         wself.thirdImage.image = [UIImage imageNamed:@"jt-3"];
-        _currentSelect = wself.firstView;
-        CGRect bb = wself.redView.frame;
-        bb.origin.x = (aa - aa *4/5)*0.5;
-        wself.redView.frame = bb;
-        wself.firstLable.textColor = [UIColor orangeColor];
-        wself.secondLable.textColor = [UIColor lightGrayColor];
-        wself.thirdLable.textColor = [UIColor lightGrayColor];
-        wself.fourLable.textColor = [UIColor lightGrayColor];
-        [_taskLists removeAllObjects];
-        [_taskTableview reloadData];
-        [wself.head beginRefreshing];
 
-    }];
-    self.secondView.userInteractionEnabled = YES;
-    [self.secondView bk_whenTapped:^{
-        if (_popView) {
-            [_popView showPopView];
-        }
-        _thirdLableNum = 0;
-        wself.thirdImage.image = [UIImage imageNamed:@"jt-3"];
-         wself.fourthImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu"];
-        wself.secondImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu-1"];
-        _currentSelect = wself.secondView;
-        _currentTag = 2;
-        CGRect bb = wself.redView.frame;
-        bb.origin.x = (aa - aa *4/5)*0.5 + wself.secondView.frame.origin.x;
-        wself.redView.frame = bb;
-        wself.firstLable.textColor = [UIColor lightGrayColor];
-        wself.secondLable.textColor = [UIColor orangeColor];
-        wself.thirdLable.textColor = [UIColor lightGrayColor];
-        wself.fourLable.textColor = [UIColor lightGrayColor];
-        [_taskLists removeAllObjects];
-        [_taskTableview reloadData];
-        [wself.head beginRefreshing];
-    }];
-    self.thirdView.userInteractionEnabled = YES;
-    [self.thirdView bk_whenTapped:^{
-        if (_popView) {
-            [_popView showPopView];
-        }
-        LWLog(@"xxx");
-        if (_thirdLableNum == 0) {
-            wself.thirdImage.image = [UIImage imageNamed:@"jt-1"];
-            _thirdLableNum = 1;
-        }else{
-//            if(_thirdLableNum == 1){
-                wself.thirdImage.image = [UIImage imageNamed:@"jt-2"];
-                _thirdLableNum = 0;
-//            }
-//            else{
-//                wself.thirdImage.image = [UIImage imageNamed:@"jt-1"];
-//                _thirdLableNum = 1;
-//            }
-        }
-        
-        self.secondImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu"];
-        self.fourthImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu"];
-        _currentSelect = wself.thirdView;
-        _currentTag = 3;
-        CGRect bb = wself.redView.frame;
-        bb.origin.x = (aa - aa *4/5)*0.5 + wself.thirdView.frame.origin.x;
-        wself.redView.frame = bb;
-        wself.firstLable.textColor = [UIColor lightGrayColor];
-        wself.secondLable.textColor = [UIColor lightGrayColor];
-        wself.thirdLable.textColor = [UIColor orangeColor];
-        wself.fourLable.textColor = [UIColor lightGrayColor];
-        [_taskLists removeAllObjects];
-        [_taskTableview reloadData];
-        [wself.head beginRefreshing];
-    }];
-    self.fourthView.userInteractionEnabled = YES;
-    [self.fourthView bk_whenTapped:^{
-        if (_popView) {
-            [_popView showPopView];
-        }
-        _thirdLableNum = 0;
-         wself.thirdImage.image = [UIImage imageNamed:@"jt-3"];
-        wself.fourthImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu-1"];
-        wself.secondImage.image = [UIImage imageNamed:@"iconfont-jiantouxiangxiapaixu"];
-        _currentSelect = wself.fourthView;
-        _currentTag = 4;
-        CGRect bb = wself.redView.frame;
-        bb.origin.x = (aa - aa *4/5)*0.5 + wself.fourthView.frame.origin.x;
-        wself.redView.frame = bb;
-        wself.firstLable.textColor = [UIColor lightGrayColor];
-        wself.secondLable.textColor = [UIColor lightGrayColor];
-        wself.thirdLable.textColor = [UIColor lightGrayColor];
-        wself.fourLable.textColor = [UIColor orangeColor];
-        [_taskLists removeAllObjects];
-        [_taskTableview reloadData];
-        [wself.head beginRefreshing];
-    }];
-    self.otherView.userInteractionEnabled = YES;
-    [self.otherView bk_whenTapped:^{
-        StoreSelectedViewController *store = [[StoreSelectedViewController alloc] init];
-        store.delegate = self;
-        [self.navigationController pushViewController:store animated:YES];
-    }];
+- (void)setUpInit{
+    self.navigationItem.title = @"任务领取";
     
-    self.labelDoing.userInteractionEnabled = YES;
-    [self.labelDoing bk_whenTapped:^{
-        LWLog(@"点击了进行中");
-        _homeTaskStaus = 1;
-        self.labelDoing.textColor = [UIColor orangeColor];
-        self.labelDoing.backgroundColor = COLOR_BACK_SELECTED;
-        self.labelDone.textColor = [UIColor lightGrayColor];
-        self.labelDone.backgroundColor = [UIColor whiteColor];
-        [_taskLists removeAllObjects];
-        [_taskTableview reloadData];
-        [self.head beginRefreshing];
+//    self.imageVLine.image = [UIImage imageNamed:@"imageVHomeLine"];
+//    self.taskTableview.delegate = self;
+//    self.taskTableview.dataSource = self;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
+    self.titleHeadOption.delegate  = self;
+    UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [btn setBackgroundImage:[UIImage imageNamed:@"geren"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(leftButton) forControlEvents:UIControlEventTouchDown];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectController:) name:@"backToHomeView" object:nil];
+    [self.taskTableview registerNib:[UINib nibWithNibName:@"HomeCell" bundle:nil] forCellReuseIdentifier:homeCellidentify];
+    self.taskTableview.rowHeight = 150;
+    self.taskTableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.taskTableview.backgroundColor = [UIColor colorWithRed:0.884 green:0.890 blue:0.832 alpha:1.000]
+    ;
+}
 
-    }];
-    self.labelDone.userInteractionEnabled = YES;
-    [self.labelDone bk_whenTapped:^{
-        LWLog(@"点击了已抢光");
-        self.labelDone.textColor = [UIColor orangeColor];
-        self.labelDone.backgroundColor = COLOR_BACK_SELECTED;
-        self.labelDoing.textColor = [UIColor lightGrayColor];
-        self.labelDoing.backgroundColor= [UIColor whiteColor];
-        _homeTaskStaus = 0;
-        [_taskLists removeAllObjects];
-        [_taskTableview reloadData];
-        [self.head beginRefreshing];
 
-    }];
+- (void)setupChildViewControllers
+{
+    MoreTaskController  *voice = [[MoreTaskController alloc] init];
+    [self addChildViewController:voice];
+    
+    SheYuTaskViewContrller *all = [[SheYuTaskViewContrller alloc] init];
+    [self addChildViewController:all];
     
     
+//    ZhuangFaTaskController *picture = [[ZhuangFaTaskController alloc] init];
+//    [self addChildViewController:picture];
+//    
+//    jiangliTaskController *video = [[jiangliTaskController alloc] init];
+//    [self addChildViewController:video];
+//    
+//   
+//    StoreSelectedViewController *word = [[StoreSelectedViewController alloc] init];
+//    word.delegate = self;
+//    [self addChildViewController:word];
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    
+    [self setupChildViewControllers];
+ 
+    
+    [self setUpInit];
+    
+    [self setupScrollView];
+    
+    
+    [self setupTitlesView];
+    
+    
+    
+    [self addChildVcView];
     
     
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.title = @"任务领取";
-    self.labelDoing.textColor = [UIColor orangeColor];
-    self.labelDoing.backgroundColor = COLOR_BACK_SELECTED;
 
-    self.imageVLine.image = [UIImage imageNamed:@"imageVHomeLine"];
-    self.taskTableview.delegate = self;
-    self.taskTableview.dataSource = self;
-//    self.navigationItem.titleView = self.segmentedControl;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
-    _currentSelect = self.firstView;
-    _currentTag = 1;
-    _pageIndex = 0;
-    _thirdLableNum = 0;
-    _homeStoreID = 0;
-    _homeTaskStaus = 1;
+#pragma mark - 添加子控制器的view
+- (void)addChildVcView
+{
+    // 子控制器的索引
+    NSUInteger index = self.scrollView.contentOffset.x / self.scrollView.xmg_width;
     
-    CGFloat aa  = (ScreenWidth*1.0) * (140.f/650 );
-    UIView * view = [[UIView alloc] init];
-    view.backgroundColor = [UIColor orangeColor];
-    self.firstLable.textColor = [UIColor orangeColor];
-    view.frame = CGRectMake((aa - aa * 4/5)*0.5, _topHeadView.frame.size.height-2, aa*4/5 , 2);
-    [_topHeadView addSubview:view];
-    _redView = view;
+    // 取出子控制器
+    UIViewController *childVc = self.childViewControllers[index];
+    if ([childVc isViewLoaded]) return;
     
-    
-    //排序选择
-    [self doselectSort];
-    
-    
-    UIButton * btn = [[UIButton alloc] init];
-    [btn setImage:[UIImage imageNamed:@"geren"] forState:UIControlStateNormal];
-    [btn sizeToFit];
-    [btn addTarget:self action:@selector(leftButton) forControlEvents:UIControlEventTouchDown];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectController:) name:@"backToHomeView" object:nil];
-    
-    [self RefreshJicheng];
-    
-    [self.taskTableview registerNib:[UINib nibWithNibName:@"HomeCell" bundle:nil] forCellReuseIdentifier:homeCellidentify];
-    self.taskTableview.rowHeight = 150;
-    
-//    self.tableView.contentInset = UIEdgeInsetsMake(5, 5, 5, 5);
-    //    self.tableView.tableFooterView = [[UIView alloc] init];
-    self.taskTableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    childVc.view.frame = self.scrollView.bounds;
+    [self.scrollView addSubview:childVc.view];
+}
 
-    self.taskTableview.backgroundColor = [UIColor colorWithRed:0.884 green:0.890 blue:0.832 alpha:1.000]
-    ;
+- (void)TopOptionButtonClick:(HomeTitleButton *)Btn{
+    
+    if (Btn.tag == self.optionCurrentBtn.tag)
+        return;
+    Btn.selected = YES;
+    Btn.backgroundColor = LWColor(206, 206, 206);
+    self.optionCurrentBtn.selected = NO;
+    self.optionCurrentBtn.backgroundColor = LWColor(254, 254, 254);
+    self.optionCurrentBtn = Btn;
+}
+
+- (void)setupTitlesView
+{
+    
+    CGFloat Height = 44;
+    
+//    UIView * bigView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, Height)];
+//    bigView.backgroundColor = [UIColor colorWithRed:234/255.0 green:234/255.0 blue:234/255.0 alpha:1];
+//    
+//    HomeTitleButton * btn1 = [[HomeTitleButton alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth *0.5, Height)];
+//    btn1.selected = YES;
+//    self.optionCurrentBtn = btn1;
+//    self.optionCurrentBtn.backgroundColor = LWColor(206, 206, 206);
+//    btn1.tag = 100;
+//    [btn1 setTitle:@"进行中" forState:UIControlStateNormal];
+//    [btn1 addTarget:self action:@selector(TopOptionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+////    [btn1 setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.7]];
+////    btn1.backgroundColor = [UIColor colorWithHue:0.6 saturation:0.6 brightness:0.6 alpha:0.5];
+//    [bigView addSubview:btn1];
+//    
+//    HomeTitleButton * btn2= [[HomeTitleButton alloc] initWithFrame:CGRectMake(ScreenWidth *0.5, 0, ScreenWidth *0.5, Height)];
+//    [btn2 addTarget:self action:@selector(TopOptionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//    [btn2 setTitle:@"已抢光" forState:UIControlStateNormal];
+//    [bigView addSubview:btn2];
+//    btn1.tag = 200;
+//    [self.view addSubview:bigView];
     
     
-    AppDelegate * appde =  (AppDelegate * )[[UIApplication sharedApplication] delegate];
-    if (appde.isflag) {
-        
-        UIImageView * image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
-        image.userInteractionEnabled = YES;
-        
-        [image bk_whenTapped:^{
-           
-            [image removeFromSuperview];
-            
-        }];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
-            [image removeFromSuperview];
-        });
-        image.contentMode = UIViewContentModeScaleAspectFit;
-        image.image = [UIImage imageNamed:@"万事利引导图"];
-        UIWindow * win =  [UIApplication sharedApplication].keyWindow;
-        win.backgroundColor = [UIColor whiteColor];
-        [win addSubview:image];
-        
-    }
-    
- }
+    HomeTitleOption * titleView = [[HomeTitleOption alloc] initWithFrame:CGRectMake(0,0, ScreenWidth, Height)];
+    titleView.delegate = self;
+    _titleView = titleView;
+    [self.view addSubview:titleView];
+}
+
+
+
+- (void)setupScrollView
+{
+    // 不允许自动调整scrollView的内边距
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    scrollView.backgroundColor = LWRandomColor;
+    scrollView.frame = self.view.bounds;
+    scrollView.pagingEnabled = YES;
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.delegate = self;
+    // 添加所有子控制器的view到scrollView中
+    scrollView.contentSize = CGSizeMake(self.childViewControllers.count * scrollView.xmg_width, 0);
+    [self.view addSubview:scrollView];
+    self.scrollView = scrollView;
+}
+
+
+
 
 /**
  *  控制器选择
@@ -663,120 +398,57 @@ static NSString * homeCellidentify = @"homeCellId";
     [self presentViewController:vc animated:YES completion:nil];
     
 }
-/**
- *  把首页数据进行分组
- */
-- (void)toGroupsByTime:(NSArray *)tasks{
-    NewTaskDataModel * aaas = nil;
-    TaskGrouoModel * bbbs = [self.taskGroup lastObject];
-    for (NewTaskDataModel * task in tasks) {
-        LWLog(@"%@",task.orderTime);
-        LWLog(@"%@",[bbbs mj_keyValues]);
-        NSString * aaaaaa =  [[bbbs.timeSectionTitle componentsSeparatedByString:@" "] firstObject];
-        NSString * bbbbbb =  [[task.orderTime componentsSeparatedByString:@" "] firstObject];
-        if ([aaaaaa  isEqualToString:bbbbbb]) {//一样
-            aaas = task;
-            [bbbs.tasks addObject:task];
-        }else{//不一样
-            aaas = task;
-            TaskGrouoModel * group = [[TaskGrouoModel alloc] init];
-            group.timeSectionTitle = task.orderTime;
-            [group.tasks addObject:task];
-            bbbs = group;
-            [self.taskGroup addObject:group];
-        }
-    }
-    [self.taskTableview reloadData];
-}
+
 #pragma mark XYPopViewDelegate
 
 
 - (void)chooseItem:(NSString *)title andTag:(NSInteger)tag {
     NSLog(@"title ------ %@ title ------ %ld",title,(long)tag);
 }
-#pragma mark 协议方法
-
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    
-    if (self.currentSelect.tag == 1) {
-        return self.taskGroup.count;
-    }
-    return 1;
-    
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    
-    if (self.currentSelect.tag == 1) {
-        TaskGrouoModel * taskGroup  = self.taskGroup[section];
-        return taskGroup.tasks.count;
-    }
-    return self.taskLists.count;
-    
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:homeCellidentify];
-    if (cell == nil) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"HomeCell" owner:nil options:nil] lastObject];
-        cell.backgroundColor = [UIColor whiteColor];
-    }
-    if (self.currentSelect.tag == 1) {
-        TaskGrouoModel * taskGroup  = self.taskGroup[indexPath.section];
-        NewTaskDataModel *task = taskGroup.tasks[indexPath.row];
-        cell.model = task;
-        return cell;
-    }
-    NewTaskDataModel * model = self.taskLists[indexPath.row];
-    cell.model = model;
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    LWLog(@"%@",indexPath);
-    NewTaskDataModel *task =  nil;
-    
-    if (self.currentSelect.tag == 1) {
-        TaskGrouoModel * taskGroup  = self.taskGroup[indexPath.section];
-        task = taskGroup.tasks[indexPath.row];
-    }else{
-        task = self.taskLists[indexPath.row];
-    }
-    detailViewController * vc =(detailViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"detailViewController"];
-  
-    vc.taskModel = task;
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (self.currentSelect.tag == 1) {
-        TaskGrouoModel * aaaa = self.taskGroup[section];
-        return [[aaaa.timeSectionTitle componentsSeparatedByString:@" "] firstObject];;
-    }
-    
-    return nil;
-}
 
 - (void)sendUserID:(NSInteger)userID {
     _homeStoreID = userID;
-    [self.taskLists removeAllObjects];
-    [self.taskGroup removeAllObjects];
-    [self.taskTableview reloadData];
-
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
 }
 
 
+#pragma mark titleHeadOption
 
+- (void)selectCurrentOption:(NSInteger) index{
+    
+    // 让UIScrollView滚动到对应位置
+    CGPoint offset = self.scrollView.contentOffset;
+    offset.x = index * self.scrollView.xmg_width;
+    [self.scrollView setContentOffset:offset animated:YES];
+}
+
+
+#pragma mark - <UIScrollViewDelegate>
+/**
+ * 在scrollView滚动动画结束时, 就会调用这个方法
+ * 前提: 使用setContentOffset:animated:或者scrollRectVisible:animated:方法让scrollView产生滚动动画
+ */
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    [self addChildVcView];
+}
+
+/**
+ * 在scrollView滚动动画结束时, 就会调用这个方法
+ * 前提: 人为拖拽scrollView产生的滚动动画
+ */
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    // 选中\点击对应的按钮
+    NSUInteger index = scrollView.contentOffset.x / scrollView.xmg_width;
+    
+    HomeTitleButton *titleButton = self.titleView.subviews[index];
+    [self.titleView titleClick:titleButton];
+    
+    // 添加子控制器的view
+    [self addChildVcView];
+    
+    // 当index == 0时, viewWithTag:方法返回的就是self.titlesView
+    //    XMGTitleButton *titleButton = (XMGTitleButton *)[self.titlesView viewWithTag:index];
+}
 
 @end

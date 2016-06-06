@@ -200,12 +200,18 @@
 }
 - (IBAction)shareBtnClick:(id)sender {
     
+    
+    LWLog(@"xxxx%@",[_shareModel mj_keyValues]);
+    _shareModel.taskInfo = @"www.baidu.com";
+    LWLog(@"xxxx%@",[_shareModel mj_keyValues]);
     [UserLoginTool LoginToShareMessageByShareSdk:_shareModel success:^(int json) {
         NSMutableDictionary * parame = [NSMutableDictionary dictionary];
         UserModel *user =  (UserModel * )[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
         parame[@"loginCode"] = user.loginCode;
         parame[@"type"] = @(json);
         parame[@"taskId"] = @(_taskModel.taskId);
+        
+        LWLog(@"%@",parame);
         [UserLoginTool loginRequestGet:@"TurnTask" parame:parame success:^(id json) {
             LWLog(@"%@",json);
             if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1){

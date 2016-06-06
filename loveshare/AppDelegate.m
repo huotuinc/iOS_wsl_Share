@@ -33,10 +33,6 @@ static BOOL isProduction = FALSE;
     
     NSString* firstFlage = [defaults objectForKey:LAST_Flage_KEY]; //true
     
-    
-    //极光s推送
-    [self setJPush];
-    
     if (!lastRunVersion || !firstFlage) {
         [defaults setObject:currentVersion forKey:LAST_RUN_VERSION_KEY];
         [defaults setObject:@"yes" forKey:LAST_Flage_KEY];
@@ -68,32 +64,39 @@ static BOOL isProduction = FALSE;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     
+    
+    
+    
     self.TodayPredictingNumber = [NSMutableDictionary dictionaryWithObject:@(0) forKey:@"today"];
     
     [JPUSHService setupWithOption:launchOptions appKey:JPushAppKey
                           channel:channel apsForProduction:isProduction];
     
+    
+    
+    
     InitModel * initModel = [self AppInit:application];
+    
     if ([self isFirstLoad]) {
         self.isflag = YES;
-       
-        [self setupInitNew:initModel];
-       
     }else{
         self.isflag = NO;
-        if (initModel) {
-            if (![initModel.loginStatus intValue]) {
-                [self setUp:initModel];
-            }else{
-                [self SetupLoginIn];
-            }
-        }else{
-            [self setUp:initModel];
-        }
-        return YES;
+        
     }
     
+    LWLog(@"%@",[initModel mj_keyValues]);
+    
+    if (initModel) {
+        if (![initModel.loginStatus intValue]) {//没登入
+            [self setUp:initModel];
+        }else{//登入
+            [self SetupLoginIn];
+        }
+    }else{
+        [self setUp:initModel];
+    }
     return YES;
+    
 }
 
 
@@ -101,7 +104,7 @@ static BOOL isProduction = FALSE;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
 
-    LWNewFeatureController * nav = [[LWNewFeatureController alloc] init];
+    UINavigationController * nav = [[UINavigationController alloc] init];
     self.window.rootViewController = nav;
     
     
@@ -117,9 +120,13 @@ static BOOL isProduction = FALSE;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    UIStoryboard* story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    ViewController * vc = [story instantiateViewControllerWithIdentifier:@"ViewController"];
-    self.window.rootViewController = vc;
+    UIStoryboard* story = [UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
+    LoginViewController * login = [story instantiateViewControllerWithIdentifier:@"LoginViewController"];
+//    XMGLoginRegisterViewController * vc = [[XMGLoginRegisterViewController alloc] init];
+    UINavigationController * nac = [[UINavigationController alloc] initWithRootViewController:login];
+    
+//    ViewController * vc = [story instantiateViewControllerWithIdentifier:@"ViewController"];
+    self.window.rootViewController = nac;
 }
 
 
@@ -143,6 +150,12 @@ static BOOL isProduction = FALSE;
  */
 - (InitModel *)AppInit:(UIApplication *)application{
 
+    //极光s推送
+    [self setJPush];
+    
+    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
     [ShareSDK registerApp:WslShareSdkAppId
      
           activePlatforms:@[@(SSDKPlatformTypeWechat),
@@ -185,18 +198,23 @@ static BOOL isProduction = FALSE;
     NSMutableDictionary * parames =  [NSMutableDictionary dictionary];
     parames[@"userName"] = (usermodel?usermodel.userName:@"");
     parames[@"pwd"] = (usermodel?usermodel.UserPassword:@"");
-    LWLog(@"%@",(usermodel?usermodel.UserPassword:@""));
+    LWLog(@"%@",[parames mj_keyValues]);
     NSDictionary * dict = [UserLoginTool LogingetDateSyncWith:@"init" WithParame:parames];
-    LWLog(@"%@",dict);
+    LWLog(@"%@---%@",dict[@"description"],dict);
     UserModel * user = [UserModel mj_objectWithKeyValues:dict[@"resultData"][@"userData"]];
     [UserLoginTool LoginModelWriteToShaHe:user andFileName:RegistUserDate];
     InitModel * model = [InitModel mj_objectWithKeyValues:dict[@"resultData"]];
     [UserLoginTool LoginModelWriteToShaHe:model andFileName:InitModelCaches];
     LWLog(@"model _-- tesr%@",[model mj_keyValues]);
+    //商城地址
     if (dict[@"resultData"][@"website"]) {
         [[NSUserDefaults standardUserDefaults] setObject:(dict[@"resultData"][@"website"]) forKey:WebSit];
     }
-    if ([model.loginStatus integerValue]) {
+    
+    //判断登陆
+    self.isHaveLogin = model.loginStatus;
+    
+    if ([model.loginStatus integerValue]) {//获取支付参数
         NSMutableDictionary * parame = [NSMutableDictionary dictionary];
         parame[@"loginCode"] = usermodel.loginCode;
         //获取支付参数
@@ -217,11 +235,11 @@ static BOOL isProduction = FALSE;
             
         } failure:nil];
         
-       
-        
-           }
+    }
     return model;
 }
+
+
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     [application setApplicationIconBadgeNumber:0];

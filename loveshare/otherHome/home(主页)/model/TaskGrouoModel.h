@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class NewTaskDataModel;
+
 @interface TaskGrouoModel : NSObject
 
 @property(nonatomic,strong) NSString * timeSectionTitle;
 
-@property(nonatomic,strong) NSMutableArray * tasks;
+@property(nonatomic,strong) NSMutableArray<NewTaskDataModel *> * tasks;
 
 @end

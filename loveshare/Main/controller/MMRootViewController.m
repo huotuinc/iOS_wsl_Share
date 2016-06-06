@@ -26,7 +26,7 @@
     self.rightDrawerViewController = nil;
     
     
-    HomeListViewController * hone = (HomeListViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"HomeListViewController"];
+    HomeListViewController * hone = [[HomeListViewController alloc] init];
     self.centerViewController =[[LWNavigationController alloc] initWithRootViewController:hone];
     
     //设置手势范围

@@ -143,12 +143,17 @@
 -(void)startButtonClick
 {
     
-    UIWindow * wind =  [UIApplication sharedApplication].keyWindow;
+//    UIWindow * wind =  [UIApplication sharedApplication].keyWindow;
     UIStoryboard* story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    ViewController * vc = [story instantiateViewControllerWithIdentifier:@"ViewController"];
-//    wind = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    wind.rootViewController = vc;
-    [wind makeKeyAndVisible];
+    
+//    XMGLoginRegisterViewController * vc = [[XMGLoginRegisterViewController alloc] init];
+    
+   
+    AccountLoginViewController * vc = [story instantiateViewControllerWithIdentifier:@"AccountLoginViewController"];
+     UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:vc];
+//    wind.rootViewController = vc;
+//    [wind makeKeyAndVisible];
+    [self presentViewController:nav animated:YES completion:nil];
     
     
 }

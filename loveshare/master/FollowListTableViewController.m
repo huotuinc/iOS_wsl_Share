@@ -46,7 +46,7 @@
     
     [super viewWillAppear:animated];
     
-    self.navigationItem.title = @"伙伴列表";
+    self.title = @"徒弟列表";
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.tableView.rowHeight = 50;
     self.tableView.rowHeight = 60;

@@ -17,5 +17,7 @@
 
 @property (nonatomic,strong) NSMutableDictionary * TodayPredictingNumber;
 
+@property (nonatomic,assign) BOOL isHaveLogin;
+
 @end
 

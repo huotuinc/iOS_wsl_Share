@@ -10,6 +10,8 @@
 
 @interface NewTaskDataModel : NSObject
 
+
+
 @property(nonatomic,strong) NSString * advancedseconds;
 /**外链奖励*/
 @property(nonatomic,assign) CGFloat awardLink;
@@ -20,7 +22,13 @@
 @property(nonatomic,assign) CGFloat awardSend;
 @property(nonatomic,assign) int flagHaveIntro;
 @property(nonatomic,assign) int flagLimitCount;
+
+/**
+ 0、隐藏
+ 1、显示
+*/
 @property(nonatomic,assign) int flagShowSend;
+
 @property(nonatomic,assign) BOOL isFav;
 
 /**是否已转发*/

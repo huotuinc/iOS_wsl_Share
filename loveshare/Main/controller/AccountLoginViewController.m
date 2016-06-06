@@ -10,14 +10,11 @@
 
 @interface AccountLoginViewController ()
 
-/**邀请码*/
+/**获取邀请码邀请码*/
 @property (weak, nonatomic) IBOutlet UILabel *yaoQingMa;
 
 /**手机号*/
 @property (weak, nonatomic) IBOutlet UITextField *iphoneNumber;
-
-/**描述*/
-@property (weak, nonatomic) IBOutlet UILabel *des;
 
 /**登录点击*/
 - (IBAction)LoginButtonClick:(id)sender;
@@ -54,7 +51,8 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 20, 50, 30);
     [button setTitle:@"取消" forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor clearColor];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    button.backgroundColor = [UIColor clearColor];
     [button addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.leftBarButtonItem = left;
@@ -179,5 +177,10 @@
     UIWindow * win = [UIApplication sharedApplication].keyWindow;
     win.backgroundColor = [UIColor whiteColor];
     win.rootViewController = root;
+}
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
 }
 @end

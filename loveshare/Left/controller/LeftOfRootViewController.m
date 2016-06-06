@@ -13,6 +13,7 @@
 @interface LeftOfRootViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 
+
 @property (weak, nonatomic) IBOutlet UIImageView *headImage;
 
 @property (weak, nonatomic) IBOutlet UILabel *userName;
@@ -58,7 +59,7 @@
     //    }
     //    [self.optionTable reloadData];
     [self setup];
-    [self getWatchCounts];
+//    [self getWatchCounts];
 }
 - (NSArray *)optionArray{
     if (_optionArray == nil) {
@@ -85,6 +86,14 @@
     
     self.headImage.userInteractionEnabled = YES;
     [self.headImage bk_whenTapped:^{//个人中心
+        NSDictionary * objc = [NSDictionary dictionaryWithObject:@(8) forKey:@"option"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
+        MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+        [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+        [root toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    }];
+    
+    [self.infoView bk_whenTapped:^{
         NSDictionary * objc = [NSDictionary dictionaryWithObject:@(8) forKey:@"option"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
         MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;

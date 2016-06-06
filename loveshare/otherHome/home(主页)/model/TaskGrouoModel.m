@@ -11,6 +11,16 @@
 @implementation TaskGrouoModel
 
 
+- (NSString *)timeSectionTitle{
+    
+    if (_timeSectionTitle.length) {
+        
+       return [[_timeSectionTitle componentsSeparatedByString:@" "] firstObject];
+    }
+    
+    return _timeSectionTitle;
+    
+}
 - (instancetype)init{
     
     if (self = [super init]) {
