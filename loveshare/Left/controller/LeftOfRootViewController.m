@@ -94,7 +94,7 @@
     }];
     
     [self.infoView bk_whenTapped:^{
-        NSDictionary * objc = [NSDictionary dictionaryWithObject:@(8) forKey:@"option"];
+        NSDictionary * objc = [NSDictionary dictionaryWithObject:@(100) forKey:@"option"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
         MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
         [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
@@ -108,7 +108,7 @@
     self.ceter.hidden = YES;
     self.arrowImage.hidden = YES;
     self.optionTable.backgroundColor = [UIColor clearColor];
-    self.optionTable.scrollEnabled = NO;
+    self.optionTable.showsVerticalScrollIndicator = NO;
     self.optionTable.tableFooterView = [[UIView alloc] init];
     self.optionTable.rowHeight = 55;
 
@@ -275,6 +275,13 @@
         }
         case 7:{
             NSDictionary * objc = [NSDictionary dictionaryWithObject:@(7) forKey:@"option"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
+            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+            [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
+            break;
+        }
+        case 8:{
+            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(8) forKey:@"option"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
             MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
             [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];

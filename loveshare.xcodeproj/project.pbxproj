@@ -166,6 +166,13 @@
 		EFD2B0881CEC93D700F00431 /* SheYuTaskViewContrller.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD2B0871CEC93D700F00431 /* SheYuTaskViewContrller.m */; };
 		EFD2B08B1CEC941500F00431 /* jiangliTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD2B08A1CEC941500F00431 /* jiangliTaskController.m */; };
 		EFD2B08E1CEC943000F00431 /* ZhuangFaTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD2B08D1CEC943000F00431 /* ZhuangFaTaskController.m */; };
+		EFD8C8BB1D069924007922D6 /* TopTenListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD8C8BA1D069924007922D6 /* TopTenListTableViewController.m */; };
+		EFD8C8C21D069F1F007922D6 /* TopFitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD8C8C01D069F1F007922D6 /* TopFitTableViewCell.m */; };
+		EFD8C8C31D069F1F007922D6 /* TopFitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFD8C8C11D069F1F007922D6 /* TopFitTableViewCell.xib */; };
+		EFD8C8C71D06A2AF007922D6 /* TopTenOtherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD8C8C51D06A2AF007922D6 /* TopTenOtherTableViewCell.m */; };
+		EFD8C8C81D06A2AF007922D6 /* TopTenOtherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFD8C8C61D06A2AF007922D6 /* TopTenOtherTableViewCell.xib */; };
+		EFD8C8CB1D06A37B007922D6 /* OtherTenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD8C8CA1D06A37B007922D6 /* OtherTenModel.m */; };
+		EFD8C8CE1D06A546007922D6 /* TopTenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD8C8CD1D06A546007922D6 /* TopTenModel.m */; };
 		EFF072881C8939F000150FA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF072871C8939F000150FA2 /* main.m */; };
 		EFF0728B1C8939F000150FA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF0728A1C8939F000150FA2 /* AppDelegate.m */; };
 		EFF0728E1C8939F000150FA2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF0728D1C8939F000150FA2 /* ViewController.m */; };
@@ -495,6 +502,18 @@
 		EFD2B08A1CEC941500F00431 /* jiangliTaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jiangliTaskController.m; sourceTree = "<group>"; };
 		EFD2B08C1CEC943000F00431 /* ZhuangFaTaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhuangFaTaskController.h; sourceTree = "<group>"; };
 		EFD2B08D1CEC943000F00431 /* ZhuangFaTaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhuangFaTaskController.m; sourceTree = "<group>"; };
+		EFD8C8B91D069924007922D6 /* TopTenListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopTenListTableViewController.h; path = ../TopTenListTableViewController.h; sourceTree = "<group>"; };
+		EFD8C8BA1D069924007922D6 /* TopTenListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopTenListTableViewController.m; path = ../TopTenListTableViewController.m; sourceTree = "<group>"; };
+		EFD8C8BF1D069F1F007922D6 /* TopFitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopFitTableViewCell.h; sourceTree = "<group>"; };
+		EFD8C8C01D069F1F007922D6 /* TopFitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopFitTableViewCell.m; sourceTree = "<group>"; };
+		EFD8C8C11D069F1F007922D6 /* TopFitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopFitTableViewCell.xib; sourceTree = "<group>"; };
+		EFD8C8C41D06A2AF007922D6 /* TopTenOtherTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopTenOtherTableViewCell.h; sourceTree = "<group>"; };
+		EFD8C8C51D06A2AF007922D6 /* TopTenOtherTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopTenOtherTableViewCell.m; sourceTree = "<group>"; };
+		EFD8C8C61D06A2AF007922D6 /* TopTenOtherTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopTenOtherTableViewCell.xib; sourceTree = "<group>"; };
+		EFD8C8C91D06A37B007922D6 /* OtherTenModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherTenModel.h; sourceTree = "<group>"; };
+		EFD8C8CA1D06A37B007922D6 /* OtherTenModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherTenModel.m; sourceTree = "<group>"; };
+		EFD8C8CC1D06A546007922D6 /* TopTenModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopTenModel.h; sourceTree = "<group>"; };
+		EFD8C8CD1D06A546007922D6 /* TopTenModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopTenModel.m; sourceTree = "<group>"; };
 		EFF072831C8939F000150FA2 /* loveshare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loveshare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF072871C8939F000150FA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EFF072891C8939F000150FA2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1319,6 +1338,49 @@
 			path = controllersasew;
 			sourceTree = "<group>";
 		};
+		EFD8C8B81D0698F6007922D6 /*  TopTen */ = {
+			isa = PBXGroup;
+			children = (
+				EFD8C8BE1D069C71007922D6 /* view */,
+				EFD8C8BD1D069C6C007922D6 /* model */,
+				EFD8C8BC1D069C67007922D6 /* controller */,
+			);
+			path = " TopTen";
+			sourceTree = "<group>";
+		};
+		EFD8C8BC1D069C67007922D6 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				EFD8C8B91D069924007922D6 /* TopTenListTableViewController.h */,
+				EFD8C8BA1D069924007922D6 /* TopTenListTableViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		EFD8C8BD1D069C6C007922D6 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				EFD8C8C91D06A37B007922D6 /* OtherTenModel.h */,
+				EFD8C8CA1D06A37B007922D6 /* OtherTenModel.m */,
+				EFD8C8CC1D06A546007922D6 /* TopTenModel.h */,
+				EFD8C8CD1D06A546007922D6 /* TopTenModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		EFD8C8BE1D069C71007922D6 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				EFD8C8BF1D069F1F007922D6 /* TopFitTableViewCell.h */,
+				EFD8C8C01D069F1F007922D6 /* TopFitTableViewCell.m */,
+				EFD8C8C11D069F1F007922D6 /* TopFitTableViewCell.xib */,
+				EFD8C8C41D06A2AF007922D6 /* TopTenOtherTableViewCell.h */,
+				EFD8C8C51D06A2AF007922D6 /* TopTenOtherTableViewCell.m */,
+				EFD8C8C61D06A2AF007922D6 /* TopTenOtherTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		EFF0727A1C8939F000150FA2 = {
 			isa = PBXGroup;
 			children = (
@@ -1344,6 +1406,7 @@
 		EFF072851C8939F000150FA2 /* loveshare */ = {
 			isa = PBXGroup;
 			children = (
+				EFD8C8B81D0698F6007922D6 /*  TopTen */,
 				F202DAC11CD9988E0022E71F /* Library */,
 				EFA229751C99685600F5254F /* NewFeature(版本新特性) */,
 				EF15C96C1C99047200ABD2F6 /* History */,
@@ -1550,12 +1613,14 @@
 				EF15C96B1C98EECE00ABD2F6 /* TodayTableViewCell.xib in Resources */,
 				F2748EAA1CD21C10003C99CD /* DepartmentTableViewCell.xib in Resources */,
 				EFF072961C8939F000150FA2 /* LaunchScreen.storyboard in Resources */,
+				EFD8C8C31D069F1F007922D6 /* TopFitTableViewCell.xib in Resources */,
 				EF3636A01C918EE5006AD6F1 /* MidTabelViewCell.xib in Resources */,
 				EFF072931C8939F000150FA2 /* Assets.xcassets in Resources */,
 				EF5A1EF71C8D7272002035FC /* ConversionCell.xib in Resources */,
 				EF5A1EF91C8D7272002035FC /* HomeCell.xib in Resources */,
 				F23FDFA41CE452F900514279 /* StoreSelectedTableViewCell.xib in Resources */,
 				EF6F97B91C8A737700D760EC /* ShareSDKUI.bundle in Resources */,
+				EFD8C8C81D06A2AF007922D6 /* TopTenOtherTableViewCell.xib in Resources */,
 				EF23A7761C9AF790005818CD /* MallBackViewController.xib in Resources */,
 				EFFE36491CA01FE2000EA32D /* LeftTableViewCell.xib in Resources */,
 				F2AAA21A1CDAD9C3005709FE /* RAYNewFunctionGuideVC.xib in Resources */,
@@ -1698,13 +1763,16 @@
 				EF6F97D81C8AAF6700D760EC /* LWNavigationController.m in Sources */,
 				EF15C9631C98EA2700ABD2F6 /* TodayAdvance.m in Sources */,
 				EF3636791C911E67006AD6F1 /* MasterAndTudiViewController.m in Sources */,
+				EFD8C8BB1D069924007922D6 /* TopTenListTableViewController.m in Sources */,
 				EFAF47121C96D6E700D5A5C4 /* JiTuan.m in Sources */,
 				EF1B8A7F1C89557D003D230A /* UIViewController+NAV.m in Sources */,
 				EF3877C81C8FCC7E008279BD /* MD5Encryption.m in Sources */,
 				EF17BB311C9DADD20072856E /* MJChiBaoZiFooter2.m in Sources */,
 				EF3636B31C9190B8006AD6F1 /* NSDictionary+HuoBanMallSign.m in Sources */,
 				EF3636C21C926E2C006AD6F1 /* DownTudiTableViewCell.m in Sources */,
+				EFD8C8CB1D06A37B007922D6 /* OtherTenModel.m in Sources */,
 				EFA760CB1C98001C00EFCE9A /* BindDIngViewController.m in Sources */,
+				EFD8C8C21D069F1F007922D6 /* TopFitTableViewCell.m in Sources */,
 				EF15C96A1C98EECE00ABD2F6 /* TodayTableViewCell.m in Sources */,
 				EF6F97771C89755200D760EC /* AFNetworkReachabilityManager.m in Sources */,
 				EF5A1EF61C8D7272002035FC /* ConversionCell.m in Sources */,
@@ -1729,6 +1797,7 @@
 				EF6F977A1C89755200D760EC /* AFURLResponseSerialization.m in Sources */,
 				EF1B8A7D1C89557D003D230A /* UITableView+CJ.m in Sources */,
 				EF36369F1C918EE5006AD6F1 /* MidTabelViewCell.m in Sources */,
+				EFD8C8CE1D06A546007922D6 /* TopTenModel.m in Sources */,
 				EFAF471B1C97D96E00D5A5C4 /* JiTuanModel.m in Sources */,
 				EF3877AC1C8FB7B1008279BD /* JiFenToMallController.m in Sources */,
 				EF3636901C916BA7006AD6F1 /* TodayForesController.m in Sources */,
@@ -1746,6 +1815,7 @@
 				EF15C9771C992BE700ABD2F6 /* HistoryModel.m in Sources */,
 				EF6F97DF1C8AB3B800D760EC /* MBProgressHUD+MJ.m in Sources */,
 				EF5C0B6A1C8BFE5300C76019 /* LeftOfRootViewController.m in Sources */,
+				EFD8C8C71D06A2AF007922D6 /* TopTenOtherTableViewCell.m in Sources */,
 				EF1B8A781C89557D003D230A /* NSDictionary+EXTERN.m in Sources */,
 				EF3877CB1C8FD8CC008279BD /* NSString+Encryption.m in Sources */,
 				EF5A1EF41C8D7272002035FC /* BPCell.m in Sources */,

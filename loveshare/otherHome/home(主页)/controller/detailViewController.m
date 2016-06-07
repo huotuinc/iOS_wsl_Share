@@ -12,7 +12,7 @@
 
 @property(nonatomic,strong)IBOutlet UIWebView * contentWebView;
 
-@property(nonatomic,strong)IBOutlet UIButton * ShareBtn;
+//@property(nonatomic,strong)IBOutlet UIButton * ShareBtn;
 
 - (IBAction)shareBtnClick:(id)sender;
 
@@ -62,17 +62,17 @@
 - (void) setup{
    
     _contentWebView.delegate = self;
-    _ShareBtn.layer.cornerRadius = 5;
-    _ShareBtn.layer.masksToBounds = YES;
-//    _ShareBtn.hidden = YES;
     _contentWebView.scrollView.bounces = NO;
 }
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    if (self.loi==1) {
-        
-        self.ShareBtn.hidden = YES;
+    if (self.taskModel.flagShowSend) {
+        UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [backButton setImage:[UIImage imageNamed:@"ShareBtnDetail"] forState:UIControlStateNormal];
+        backButton.bounds = CGRectMake(0, 0, 30, 30);
+        [backButton addTarget:self action:@selector(shareBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.rightBarButtonItem =  [[UIBarButtonItem alloc] initWithCustomView:backButton];
     }
     
     self.contentWebView.scalesPageToFit = YES;
@@ -82,9 +82,9 @@
     [self.contentWebView.scrollView setShowsHorizontalScrollIndicator:NO];
     [UIApplication sharedApplication].keyWindow.backgroundColor = [UIColor whiteColor];
     
-    self.contentWebView.scrollView.contentInset =
-    UIEdgeInsetsMake(40, 0, 40, 0);
-    self.title = @"任务详情";
+//    self.contentWebView.scrollView.contentInset =
+//    UIEdgeInsetsMake(40, 0, 40, 0);
+    self.title = @"资讯详情";
     
     UIView * topView = [[UIView alloc] initWithFrame:CGRectMake(0, -40, ScreenWidth, 40)];
     topView.backgroundColor = [UIColor whiteColor];

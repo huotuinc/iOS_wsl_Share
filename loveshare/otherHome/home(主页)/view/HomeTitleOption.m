@@ -44,11 +44,11 @@
 
 - (void)setupTitlesView
 {
-    NSArray * dateArrays = @[@"综合排序",@"剩余积分",@"转发人数",@"奖励积分",@"筛选"];
+    NSArray * dateArrays = @[@"综合排序",@"转发人数"];
     // 标签栏内部的标签按钮
     NSUInteger count = dateArrays.count;
     CGFloat titleButtonH = self.xmg_height;
-    CGFloat titleButtonW = ScreenWidth / count;
+    CGFloat titleButtonW = (ScreenWidth-60) / count;
     for (int i = 0; i < count; i++) {
         // 创建
         HomeTitleButton *titleButton = [HomeTitleButton buttonWithType:UIButtonTypeCustom];

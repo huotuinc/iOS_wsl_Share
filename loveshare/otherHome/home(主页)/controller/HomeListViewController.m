@@ -14,8 +14,10 @@
 #import "HomeTitleButton.h"
 #import "MJChiBaoZiHeader.h"
 #import "StoreSelectedViewController.h"
-
+#import "UIButton+WebCache.h"
 #import "XYPopView.h"
+#import "TopTenListTableViewController.h"
+
 #define pageSize 10
 
 #define COLOR_BACK_SELECTED [UIColor colorWithRed:235/255.0f green:235/255.0f blue:235/255.0f alpha:1]
@@ -158,15 +160,18 @@ static NSString * homeCellidentify = @"homeCellId";
 
 
 - (void)setUpInit{
-    self.navigationItem.title = @"任务领取";
+    self.navigationItem.title = @"资讯";
     
-//    self.imageVLine.image = [UIImage imageNamed:@"imageVHomeLine"];
-//    self.taskTableview.delegate = self;
-//    self.taskTableview.dataSource = self;
+    UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
     self.titleHeadOption.delegate  = self;
-    UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [btn setBackgroundImage:[UIImage imageNamed:@"geren"] forState:UIControlStateNormal];
+    UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+    btn.layer.cornerRadius = 16;
+    btn.layer.masksToBounds = YES;
+    btn.layer.borderColor = [UIColor whiteColor].CGColor;
+    btn.layer.borderWidth = 1;
+    [btn sd_setImageWithURL:[NSURL URLWithString:userInfo.userHead] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"geren"]];
     [btn addTarget:self action:@selector(leftButton) forControlEvents:UIControlEventTouchDown];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectController:) name:@"backToHomeView" object:nil];
@@ -186,17 +191,7 @@ static NSString * homeCellidentify = @"homeCellId";
     SheYuTaskViewContrller *all = [[SheYuTaskViewContrller alloc] init];
     [self addChildViewController:all];
     
-    
-//    ZhuangFaTaskController *picture = [[ZhuangFaTaskController alloc] init];
-//    [self addChildViewController:picture];
-//    
-//    jiangliTaskController *video = [[jiangliTaskController alloc] init];
-//    [self addChildViewController:video];
-//    
-//   
-//    StoreSelectedViewController *word = [[StoreSelectedViewController alloc] init];
-//    word.delegate = self;
-//    [self addChildViewController:word];
+
 }
 
 
@@ -274,20 +269,34 @@ static NSString * homeCellidentify = @"homeCellId";
 //    [self.view addSubview:bigView];
     
     
-    HomeTitleOption * titleView = [[HomeTitleOption alloc] initWithFrame:CGRectMake(0,0, ScreenWidth, Height)];
+    HomeTitleOption * titleView = [[HomeTitleOption alloc] initWithFrame:CGRectMake(0,0, ScreenWidth-60, Height)];
+    UILabel * shaixuan = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth-60, 0, 60, Height)];
+    shaixuan.textAlignment = NSTextAlignmentCenter;
+    shaixuan.userInteractionEnabled = YES;
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(shaixuan)];
+    [shaixuan setText:@"筛选"];
+    [shaixuan addGestureRecognizer:tap];
+    [self.view addSubview:shaixuan];
+    
     titleView.delegate = self;
     _titleView = titleView;
     [self.view addSubview:titleView];
 }
 
-
+/**
+ *  筛选点击
+ */
+- (void)shaixuan{
+   
+    LWLog(@"xx");
+}
 
 - (void)setupScrollView
 {
     // 不允许自动调整scrollView的内边距
     self.automaticallyAdjustsScrollViewInsets = NO;
     UIScrollView *scrollView = [[UIScrollView alloc] init];
-    scrollView.backgroundColor = LWRandomColor;
+    scrollView.backgroundColor = [UIColor whiteColor];
     scrollView.frame = self.view.bounds;
     scrollView.pagingEnabled = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
@@ -312,13 +321,13 @@ static NSString * homeCellidentify = @"homeCellId";
     if([note.userInfo[@"option"] integerValue] == 0){//首页
         [self.navigationController popToRootViewControllerAnimated:NO];
         
-    }else if([note.userInfo[@"option"] integerValue] == 1){//历史收益
+    }else if([note.userInfo[@"option"] integerValue] == 1){//历史浏览量
        
         HostTableViewController * vc = [[HostTableViewController alloc] initWithStyle:UITableViewStylePlain];
         [self.navigationController pushViewController:vc animated:NO];
         
         
-    }else if([note.userInfo[@"option"] integerValue] == 2){//积分兑换
+    }else if([note.userInfo[@"option"] integerValue] == 2){//新手任务
         JiFenToMallController * vc = (JiFenToMallController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"JiFenToMallController"];
         [self.navigationController pushViewController:vc animated:NO];
         
@@ -335,11 +344,15 @@ static NSString * homeCellidentify = @"homeCellId";
     }else if([note.userInfo[@"option"] integerValue] == 5){//师徒联盟
         MasterAndTudiViewController * vc = (MasterAndTudiViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"MasterAndTudiViewController"];
         [self.navigationController pushViewController:vc animated:NO];
-    }else if([note.userInfo[@"option"] integerValue] == 6){
+    }else if([note.userInfo[@"option"] integerValue] == 6){//排行榜
+        TopTenListTableViewController * topten = [[TopTenListTableViewController alloc] init];
+        [self.navigationController pushViewController:topten animated:NO];
+        
+    }else if([note.userInfo[@"option"] integerValue] == 7){//更多设置
         MoreSetTableViewController * vc = (MoreSetTableViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"MoreSetTableViewController"];
         [self.navigationController pushViewController:vc animated:NO];
-    }else if([note.userInfo[@"option"] integerValue] == 7){
         
+    }else if([note.userInfo[@"option"] integerValue] == 8){
         VipAccountViewController * vip = [[VipAccountViewController alloc] initWithStyle:UITableViewStylePlain];
         [self.navigationController pushViewController:vip animated:NO];
         

@@ -18,11 +18,11 @@
     
     OptionModel * md2 = [[OptionModel alloc] init];
     md2.optionImageName = @"shouyi";
-    md2.OptionName = @"历史收益";
+    md2.OptionName = @"历史浏览量";
     
     OptionModel * md3 = [[OptionModel alloc] init];
     md3.optionImageName = @"jifen";
-    md3.OptionName = @"积分兑换";
+    md3.OptionName = @"新手任务";
     
     OptionModel * md4 = [[OptionModel alloc] init];
     md4.optionImageName = @"guanli";
@@ -37,12 +37,16 @@
     md6.OptionName = @"伙伴联盟";
     
     OptionModel * md7 = [[OptionModel alloc] init];
-    md7.optionImageName = @"gengduo";
-    md7.OptionName = @"更多选项";
+    md7.optionImageName = @"lianmeng";
+    md7.OptionName = @"排行榜";
     
     OptionModel * md8 = [[OptionModel alloc] init];
-    md8.optionImageName = @"vip";
-    md8.OptionName = @"监督管理";
-    return @[md1,md2,md3,md4,md5,md6,md7,md8];
+    md8.optionImageName = @"gengduo";
+    md8.OptionName = @"更多选项";
+    
+    OptionModel * md9 = [[OptionModel alloc] init];
+    md9.optionImageName = @"vip";
+    md9.OptionName = @"监督管理";
+    return @[md1,md2,md3,md4,md5,md6,md7,md8, md9];
 }
 @end

@@ -114,11 +114,10 @@
 #define LWColor(r, g, b) LWColorA((r), (g), (b), 255)
 #define LWRandomColor LWColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
 
+//
+//#define MainUrl @"http://api.guo.fancat.cn:8084"
 
-
-//#define MainUrl @"http://api.guo.fancat.cn:8084/api.ashx" taskapi.silkfh.com
-
-#define MainUrl @"http://taskapi.silkfh.com" //@"http://taskapi.fhsilk.com"
+#define MainUrl @"http://taskapi.fhsilk.com"
 
 /**平台*/
 #define OPERATION_parame @"FH2016APP"

@@ -322,33 +322,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="640"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3y0-c2-xWv">
-                                <rect key="frame" x="100" y="551" width="400" height="44"/>
-                                <color key="backgroundColor" red="1" green="0.49803921568627452" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Oe6-xX-0xK"/>
-                                </constraints>
-                                <state key="normal" title="立即转发">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="shareBtnClick:" destination="Jas-TG-NgS" eventType="touchUpInside" id="ra3-jJ-CoV"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3y0-c2-xWv" firstAttribute="centerX" secondItem="ZUQ-YE-MNS" secondAttribute="centerX" id="0lQ-M3-8OG"/>
                             <constraint firstItem="DN4-F5-Xp3" firstAttribute="top" secondItem="ZUQ-YE-MNS" secondAttribute="topMargin" id="9Sd-EZ-mmn"/>
                             <constraint firstItem="9uS-J2-GBZ" firstAttribute="top" secondItem="DN4-F5-Xp3" secondAttribute="bottom" constant="-40" id="Dre-l4-g3g"/>
                             <constraint firstAttribute="trailing" secondItem="DN4-F5-Xp3" secondAttribute="trailing" id="KL2-ee-2gK"/>
                             <constraint firstItem="DN4-F5-Xp3" firstAttribute="top" secondItem="fJQ-Lj-luk" secondAttribute="bottom" id="Mqo-Nl-myQ"/>
                             <constraint firstItem="DN4-F5-Xp3" firstAttribute="top" secondItem="fJQ-Lj-luk" secondAttribute="bottom" id="NqB-sA-iZa"/>
                             <constraint firstItem="DN4-F5-Xp3" firstAttribute="top" secondItem="ZUQ-YE-MNS" secondAttribute="top" id="Uaa-0Y-qsm"/>
-                            <constraint firstItem="9uS-J2-GBZ" firstAttribute="top" secondItem="3y0-c2-xWv" secondAttribute="bottom" constant="5" id="h0Z-Oa-mBF"/>
                             <constraint firstItem="DN4-F5-Xp3" firstAttribute="top" secondItem="fJQ-Lj-luk" secondAttribute="bottom" id="jLi-yM-4Dz"/>
                             <constraint firstItem="DN4-F5-Xp3" firstAttribute="leading" secondItem="ZUQ-YE-MNS" secondAttribute="leading" id="n9g-wb-qI4"/>
-                            <constraint firstItem="3y0-c2-xWv" firstAttribute="width" secondItem="ZUQ-YE-MNS" secondAttribute="width" multiplier="2:3" id="ujN-HO-yR2"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -360,7 +344,6 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="ShareBtn" destination="3y0-c2-xWv" id="ZIM-hV-1H9"/>
                         <outlet property="contentWebView" destination="DN4-F5-Xp3" id="xni-T1-qul"/>
                     </connections>
                 </viewController>
