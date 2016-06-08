@@ -12,4 +12,7 @@
 
 - (int)type;
 
+
+- (void)StoryRefreshDateWithStroryID:(NSInteger)stroryID;
+
 @end

@@ -11,7 +11,9 @@
 
 @interface AppDelegate ()<WXApiDelegate>
 
+@property(nonatomic,strong) UIButton * adButton;
 
+@property(nonatomic,strong) UIImageView * adImage;
 
 
 @end
@@ -294,10 +296,46 @@ static BOOL isProduction = FALSE;
     
 }
 
-//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
-//    
-//}
-//
+- (void)applicationDidBecomeActive:(UIApplication *)application{
+    
+    
+    
+    UIImageView * ad = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"414x736-3"]];
+    [ad sizeToFit];
+    [[UIApplication sharedApplication].keyWindow addSubview:ad];
+    
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.layer.cornerRadius = 5;
+    btn.layer.masksToBounds = YES;
+    _adButton = btn;
+    _adImage = ad;
+    btn.frame = CGRectMake(ScreenWidth - 100, 20, 80, 30);
+    btn.alpha = 0.7;
+    [btn setBackgroundColor:[UIColor blackColor]];
+    [btn addTarget:self action:@selector(JumpAd) forControlEvents:UIControlEventTouchUpInside];
+    [btn setTitle:@"跳过广告" forState:UIControlStateNormal];
+    [[UIApplication sharedApplication].keyWindow addSubview:btn];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:2.0 animations:^{
+            ad.alpha = 0.0;
+            btn.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            
+            [btn removeFromSuperview];
+            [ad removeFromSuperview];
+        }];
+    });
+}
+
+-(void)JumpAd{
+    
+    [_adImage removeFromSuperview];
+    [_adButton removeFromSuperview];
+    
+}
+
+
 
 // log NSSet with UTF8
 // if not ,log will be \Uxxx

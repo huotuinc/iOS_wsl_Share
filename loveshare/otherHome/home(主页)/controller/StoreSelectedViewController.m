@@ -76,7 +76,7 @@ static NSString *cellStore = @"cellStore";
     self.tableView.mj_footer = _footer;
 }
 - (void)getNewStoreList {
-    LWLog(@"%ld",_pageNumber);
+    LWLog(@"%ld",(long)_pageNumber);
     UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
     parame[@"loginCode"] = userInfo.loginCode;
@@ -99,7 +99,7 @@ static NSString *cellStore = @"cellStore";
 
 }
 - (void)getMoreStoreListWithPageIndex:(NSInteger)pageIndex{
-    LWLog(@"%ld",pageIndex);
+    LWLog(@"%ld",(long)pageIndex);
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
     UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     parame[@"pageIndex"] = @(pageIndex);

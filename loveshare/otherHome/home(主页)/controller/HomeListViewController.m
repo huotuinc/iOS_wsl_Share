@@ -161,9 +161,7 @@ static NSString * homeCellidentify = @"homeCellId";
 
 - (void)setUpInit{
     self.navigationItem.title = @"资讯";
-    
     UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
-    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
     self.titleHeadOption.delegate  = self;
     UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
@@ -246,29 +244,6 @@ static NSString * homeCellidentify = @"homeCellId";
 {
     
     CGFloat Height = 44;
-    
-//    UIView * bigView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, Height)];
-//    bigView.backgroundColor = [UIColor colorWithRed:234/255.0 green:234/255.0 blue:234/255.0 alpha:1];
-//    
-//    HomeTitleButton * btn1 = [[HomeTitleButton alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth *0.5, Height)];
-//    btn1.selected = YES;
-//    self.optionCurrentBtn = btn1;
-//    self.optionCurrentBtn.backgroundColor = LWColor(206, 206, 206);
-//    btn1.tag = 100;
-//    [btn1 setTitle:@"进行中" forState:UIControlStateNormal];
-//    [btn1 addTarget:self action:@selector(TopOptionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-////    [btn1 setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.7]];
-////    btn1.backgroundColor = [UIColor colorWithHue:0.6 saturation:0.6 brightness:0.6 alpha:0.5];
-//    [bigView addSubview:btn1];
-//    
-//    HomeTitleButton * btn2= [[HomeTitleButton alloc] initWithFrame:CGRectMake(ScreenWidth *0.5, 0, ScreenWidth *0.5, Height)];
-//    [btn2 addTarget:self action:@selector(TopOptionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//    [btn2 setTitle:@"已抢光" forState:UIControlStateNormal];
-//    [bigView addSubview:btn2];
-//    btn1.tag = 200;
-//    [self.view addSubview:bigView];
-    
-    
     HomeTitleOption * titleView = [[HomeTitleOption alloc] initWithFrame:CGRectMake(0,0, ScreenWidth-60, Height)];
     UILabel * shaixuan = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth-60, 0, 60, Height)];
     shaixuan.textAlignment = NSTextAlignmentCenter;
@@ -288,7 +263,9 @@ static NSString * homeCellidentify = @"homeCellId";
  */
 - (void)shaixuan{
    
-    LWLog(@"xx");
+    StoreSelectedViewController *store = [[StoreSelectedViewController alloc] init];
+    store.delegate = self;
+    [self.navigationController pushViewController:store animated:YES];
 }
 
 - (void)setupScrollView
@@ -419,8 +396,28 @@ static NSString * homeCellidentify = @"homeCellId";
     NSLog(@"title ------ %@ title ------ %ld",title,(long)tag);
 }
 
+
+
+/**
+ *  店铺选择
+ *
+ *  @param userID <#userID description#>
+ */
 - (void)sendUserID:(NSInteger)userID {
     _homeStoreID = userID;
+    
+    // 子控制器的索引
+    NSUInteger index = self.scrollView.contentOffset.x / self.scrollView.xmg_width;
+    LWLog(@"%ld---%ud",(long)self.homeStoreID,index);
+    
+   
+    [[NSUserDefaults standardUserDefaults] setObject:@(userID) forKey:@"storyID"];
+    
+    // 取出子控制器
+    for (int i = 0; i<self.childViewControllers.count; i++) {
+        HomeListTableController *childVc = self.childViewControllers[index] ;
+        [childVc StoryRefreshDateWithStroryID:userID];
+    }
 }
 
 

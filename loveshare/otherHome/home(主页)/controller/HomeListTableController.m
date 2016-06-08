@@ -29,6 +29,9 @@
 @property(nonatomic,strong) MJRefreshBackNormalFooter * footer;
 
 
+/**商家id*/
+@property(nonatomic,assign) NSInteger storyID;
+
 @end
 
 @implementation HomeListTableController
@@ -75,6 +78,8 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    self.storyID = 0;
+    
     self.tableView.contentInset = UIEdgeInsetsMake(44, 0, 64, 0);
     
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
@@ -90,7 +95,16 @@
     LWLog(@"%@",NSStringFromCGRect(self.tableView.frame));
 
 
-//    [self getDateSortType:0 andOrderby:0 andPageIndex:1 andTaskStaus:0 andStoreID:0];
+    
+    
+
+}
+
+
+- (void)StoryRefreshDateWithStroryID:(NSInteger)stroryID{
+    
+    self.storyID = stroryID;
+    [_header beginRefreshing];
 }
 
 
@@ -119,14 +133,22 @@
 /**刷新任务*/
 - (void)NewTask{
 //    LWLog(@"xxxxx%d",self.type);
-    [self getDateSortType:self.type andOrderby:1 andPageIndex:1 andTaskStaus:1 andStoreID:0 isHead:YES];
+    
+    
+    NSNumber * storyID = [[NSUserDefaults standardUserDefaults] objectForKey:@"storyID"];
+    
+
+    
+    [self getDateSortType:self.type andOrderby:1 andPageIndex:1 andTaskStaus:1 andStoreID:storyID?[storyID integerValue]:0 isHead:YES];
     [_header endRefreshing];
 }
 
 /**刷新任务*/
 - (void)GetMoreTask{
     LWLog(@"xxxxx");
-    [self getDateSortType:self.type andOrderby:1 andPageIndex:self.pageIndex+1 andTaskStaus:1 andStoreID:0 isHead:NO];
+    NSNumber * storyID = [[NSUserDefaults standardUserDefaults] objectForKey:@"storyID"];
+
+    [self getDateSortType:self.type andOrderby:1 andPageIndex:self.pageIndex+1 andTaskStaus:1 andStoreID:storyID?[storyID integerValue]:0 isHead:NO];
     [_footer endRefreshing];
 }
 
@@ -170,7 +192,7 @@
 - (void)getDateSortType:(NSInteger)SortType andOrderby:(int)orderby andPageIndex:(NSInteger)PageIndex andTaskStaus:(NSInteger)taskStaus andStoreID:(NSInteger)storeID isHead:(BOOL)head{
     
     
-    LWLog(@"%ld--%d---%ld",(long)SortType,orderby,(long)PageIndex);
+    LWLog(@"%ld--%d---%ld---%d",(long)SortType,orderby,(long)PageIndex,storeID);
     __weak HomeListTableController * wself = self;
     UserModel * user =  (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
