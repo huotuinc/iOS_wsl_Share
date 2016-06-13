@@ -318,7 +318,7 @@ static BOOL isProduction = YES;
         [btn addTarget:self action:@selector(JumpAd) forControlEvents:UIControlEventTouchUpInside];
         [btn setTitle:@"跳过广告" forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:10];
-        
+        [[UIApplication sharedApplication].keyWindow addSubview:btn];
         
         SDWebImageManager * manager = [SDWebImageManager sharedManager];
         
@@ -327,8 +327,8 @@ static BOOL isProduction = YES;
             
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             [ad setImage:image];
-            [[UIApplication sharedApplication].keyWindow addSubview:btn];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [UIView animateWithDuration:1.0 animations:^{
                     ad.alpha = 0.0;
                     btn.alpha = 0.0;

@@ -9,6 +9,7 @@
 #import "HomeListTableController.h"
 #import <MJRefresh.h>
 #import "HomeCell.h"
+#import "UIImage+LHB.h"
 
 
 @interface HomeListTableController()
@@ -212,12 +213,16 @@
                 if (head) {//头部刷新
                     [self.taskGroup  removeAllObjects];
                     [self toGroupsByTime:tasks];
+                    [self showNewStatuseCounts:tasks.count andIsHead:YES];
                     [self.tableView reloadData];
                 }else{
                     [wself toGroupsByTime:tasks];
+                    [self showNewStatuseCounts:tasks.count andIsHead:NO];
                     [self.tableView reloadData];
                     
                 }
+            }else{
+                [self showNewStatuseCounts:0 andIsHead:NO];
             }
             
         }
@@ -276,5 +281,59 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+
+/**
+ *  设置刷新按钮的数亮
+ *
+ *  @param count <#count description#>
+ */
+-(void)showNewStatuseCounts:(NSUInteger)count andIsHead:(BOOL)head
+{
+    UIButton * showBtn = [[UIButton alloc] init];
+    showBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+    [self.navigationController.view insertSubview:showBtn belowSubview:self.navigationController.navigationBar];
+    showBtn.userInteractionEnabled = NO;
+    [showBtn setBackgroundImage:[UIImage resizedWithName:@"timeline_new_status_background"] forState:UIControlStateNormal];
+//    showBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+    [showBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    NSString * title = nil;
+    if (count) {
+        if (head) {
+             title = [NSString stringWithFormat:@"刷新最新%lu条资讯",(unsigned long)count];
+        }else{
+             title = [NSString stringWithFormat:@"加载了%lu条资讯",(unsigned long)count];
+        }
+       
+        [showBtn setTitle:title forState:UIControlStateNormal];
+    }else{
+        
+        [showBtn setTitle:@"没有资讯可加载" forState:UIControlStateNormal];
+    }
+    
+    //设置Frame
+    CGFloat btnX = 0;
+    CGFloat btnH = 44;
+    CGFloat btnY = 64 - btnH;
+    CGFloat btnW = self.view.frame.size.width - 2*btnX;
+    
+    showBtn.frame = CGRectMake(btnX, btnY, btnW, btnH);
+    
+    //向下走
+    [UIView animateWithDuration:0.7 animations:^{
+        
+        showBtn.transform = CGAffineTransformMakeTranslation(0, btnH+2);
+    } completion:^(BOOL finished) {
+        
+        [UIView  animateKeyframesWithDuration:0.7 delay:1.0 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
+            //清空transform
+            showBtn.transform = CGAffineTransformIdentity;
+            
+        } completion:^(BOOL finished) {
+            
+            [showBtn removeFromSuperview];
+        }];
+    }];
+    
+}
 
 @end

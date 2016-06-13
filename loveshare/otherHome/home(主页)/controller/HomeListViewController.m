@@ -435,7 +435,7 @@ static NSString * homeCellidentify = @"homeCellId";
     
     // 子控制器的索引
     NSUInteger index = self.scrollView.contentOffset.x / self.scrollView.xmg_width;
-    LWLog(@"%ld---%ud",(long)self.homeStoreID,index);
+    LWLog(@"%ld---%lud",(long)self.homeStoreID,(unsigned long)index);
     
    
     [[NSUserDefaults standardUserDefaults] setObject:@(userID) forKey:@"storyID"];
