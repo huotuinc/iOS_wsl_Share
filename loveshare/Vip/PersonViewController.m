@@ -119,6 +119,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    
     [self getPersonData];
     
 }
@@ -152,7 +154,7 @@
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
     
     
-    self.headImage.layer.cornerRadius = self.headImage.frame.size.height * 0.5;
+    self.headImage.layer.cornerRadius = 35;
     self.headImage.layer.masksToBounds = YES;
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:self.model.logo] placeholderImage:nil];
     

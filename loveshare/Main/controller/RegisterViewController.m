@@ -23,6 +23,12 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *yanzhen;
 
+/**去控制找回密码的控制*/
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containViewHeight;
+
+/**账号邀请码*/
+@property (weak, nonatomic) IBOutlet UITextField *invitationCodeText;
+
 @end
 
 @implementation RegisterViewController
@@ -38,7 +44,12 @@
 
 - (void)setup{
     
-    self.title = @"注册";
+    self.title = self.isForgerPasswd?@"忘记密码":@"注册";
+    if (self.isForgerPasswd) {
+        [self.loginButton setTitle:@"修改密码" forState:UIControlStateNormal];
+        self.containViewHeight.constant = 136;
+    }
+    
     self.yanzhen.layer.cornerRadius = 5;
     self.yanzhen.layer.masksToBounds = YES;
     
@@ -51,11 +62,11 @@
     self.loginButton.layer.masksToBounds = YES;
     // 左上角
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setImage:[UIImage imageNamed:@"New_Nav_Left_Return_Back"] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:@"Nav_Left_Return_Back"] forState:UIControlStateNormal];
     [backButton setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
     [backButton setTitle:@"返回" forState:UIControlStateNormal];
     
-    [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [backButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     [backButton sizeToFit];
     // 这句代码放在sizeToFit后面
@@ -117,8 +128,10 @@
 - (IBAction)LoginClick:(id)sender {
     [self.view endEditing:YES];
     
+    
+    
     if(!self.yanzhen.text.length){
-        [MBProgressHUD showError:@"验证码不能为空"];
+        [MBProgressHUD showError:@"手机验证码不能为空"];
         return;
     }else if(!self.passwdText.text.length){
         [MBProgressHUD showError:@"密码不能为空"];
@@ -128,13 +141,26 @@
         p[@"mobile"] = self.phoneText.text;
         p[@"password"] = [MD5Encryption md5by32:self.passwdText.text];
         p[@"verifyCode"] = self.yanzheng.text;
+        if (self.isForgerPasswd) {
+            p[@"isUpdate"] = @"1";
+        }else{
+            if (!self.invitationCodeText.text.length) {
+                [MBProgressHUD showError:@"账号邀请码不能为空"];
+                return;
+            }
+            p[@"invitationCode"] = self.invitationCodeText.text;
+        }
         [MBProgressHUD showMessage:nil];
         NSDictionary * dict = [UserLoginTool LogingetDateSyncWith:@"MobileRegister" WithParame:p];
         LWLog(@"%@",dict);
         [MBProgressHUD hideHUD];
-        
         if ([[dict objectForKey:@"status"] integerValue] == 1 && [[dict objectForKey:@"resultCode"] integerValue] == 1) {
-            
+            [MBProgressHUD showSuccess:[dict objectForKey:@"tip"]];
+            UserModel * userModel = [UserModel mj_objectWithKeyValues:dict[@"resultData"]];
+            [UserLoginTool LoginModelWriteToShaHe:userModel andFileName:RegistUserDate];
+            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",userModel.mallUserId] forKey:ChoneMallAccount];
+            [[NSUserDefaults standardUserDefaults] setObject:userModel.unionId forKey:PhoneLoginunionid];
+            [self SetupLoginIn];
         }else{
             
             [MBProgressHUD showError:[dict objectForKey:@"tip"]];
@@ -205,5 +231,14 @@
     dispatch_resume(_timer);
 }
 
+/**
+ *  2、程序启动控制器的选择
+ */
+- (void)SetupLoginIn{
+    MMRootViewController * root = [[MMRootViewController alloc] init];
+    UIWindow * win = [UIApplication sharedApplication].keyWindow;
+    win.backgroundColor = [UIColor whiteColor];
+    win.rootViewController = root;
+}
 
 @end

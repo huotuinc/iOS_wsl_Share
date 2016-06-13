@@ -85,6 +85,8 @@
 #import "ZhuangFaTaskController.h"
 #import "jiangliTaskController.h"
 #import "detailViewController.h"
+#import "LoginViewController.h"
+#import "AdViewController.h"
 //#import "UITextField+XMGExtension.h"
 //#import "XMGLoginRegisterViewController.h"
 

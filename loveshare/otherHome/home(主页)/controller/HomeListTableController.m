@@ -192,7 +192,7 @@
 - (void)getDateSortType:(NSInteger)SortType andOrderby:(int)orderby andPageIndex:(NSInteger)PageIndex andTaskStaus:(NSInteger)taskStaus andStoreID:(NSInteger)storeID isHead:(BOOL)head{
     
     
-    LWLog(@"%ld--%d---%ld---%d",(long)SortType,orderby,(long)PageIndex,storeID);
+    LWLog(@"%ld--%d---%ld---%ld",(long)SortType,orderby,(long)PageIndex,(long)storeID);
     __weak HomeListTableController * wself = self;
     UserModel * user =  (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];

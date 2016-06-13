@@ -79,7 +79,7 @@
 //    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
 //    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     
-    [NavBar setBarTintColor:[UIColor colorWithRed:11.0/255 green:89/255.0 blue:104/255.0 alpha:1.000]];
+    [NavBar setBarTintColor:[UIColor colorWithRed:225.0/255 green:128/255.0 blue:0/255.0 alpha:1.000]];
 }
 
 

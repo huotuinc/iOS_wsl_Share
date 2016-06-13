@@ -186,5 +186,10 @@
 @property(nonatomic,copy)NSString * weixinKey;
 @property(nonatomic,copy)NSString * wxVersionCode;
 
+/**广告图片地址*/
+@property(nonatomic,copy)NSString *  adimg;
+
+/**广告链接详情*/
+@property(nonatomic,copy)NSString * adclick;
 
 @end

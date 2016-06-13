@@ -12,7 +12,7 @@
 
 - (int)type
 {
-    return 1;
+    return 3;
 }
 
 - (void)viewDidLoad{

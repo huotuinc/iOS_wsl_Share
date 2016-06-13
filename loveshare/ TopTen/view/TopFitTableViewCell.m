@@ -28,8 +28,8 @@
 - (void)setDate:(NSDictionary *)date{
     _date = date;
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:[date objectForKey:@"logo"]] placeholderImage:nil options:SDWebImageProgressiveDownload];
-    UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
-    self.nameLable.text = userInfo.userName;
+//    UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+    self.nameLable.text = @"我";
     self.des.text = [NSString stringWithFormat:@"累计浏览量:%@",[date objectForKey:@"value"]];
     self.nuber.text = [NSString stringWithFormat:@"第%@名",[date objectForKey:@"rankValue"]];
 }

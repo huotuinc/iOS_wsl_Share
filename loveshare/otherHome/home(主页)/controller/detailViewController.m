@@ -12,7 +12,7 @@
 
 @property(nonatomic,strong)IBOutlet UIWebView * contentWebView;
 
-//@property(nonatomic,strong)IBOutlet UIButton * ShareBtn;
+@property(nonatomic,strong) UIButton * ShareBtn;
 
 - (IBAction)shareBtnClick:(id)sender;
 
@@ -41,13 +41,18 @@
         [defaults synchronize];
         [self makeGuideView];
     }
+//    [self makeGuideView];
+    
+    
+  
 
 }
 - (void)makeGuideView{
     RAYNewFunctionGuideVC *vc = [[RAYNewFunctionGuideVC alloc]init];
-    vc.titles = @[@"新手任务: 首次转发即可获得积分奖励"];
+    vc.titles = @[@"分享: 点击分享按钮可以对文章进行分享"];
     //这个页面的.y传1000就行  内部已算好
-    vc.frames = @[@"{{0, 1000},{350,100}}"];
+   
+    vc.frames = @[@"{{310, 10},{50,50}}"];
     
     [self presentViewController:vc animated:YES completion:nil];
     
@@ -71,6 +76,7 @@
         UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [backButton setImage:[UIImage imageNamed:@"ShareBtnDetail"] forState:UIControlStateNormal];
         backButton.bounds = CGRectMake(0, 0, 30, 30);
+        _ShareBtn = backButton;
         [backButton addTarget:self action:@selector(shareBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem =  [[UIBarButtonItem alloc] initWithCustomView:backButton];
     }
@@ -198,7 +204,7 @@
     }];
     
 }
-- (IBAction)shareBtnClick:(id)sender {
+- (void)shareBtnClick:(UIButton*)sender {
     
     
     LWLog(@"xxxx%@",[_shareModel mj_keyValues]);

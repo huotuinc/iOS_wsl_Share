@@ -21,7 +21,7 @@
 #import <CoreLocation/CoreLocation.h>
 //#import "PinYin4Objc.h"
 
-@interface PersonMessageTableViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate,ProfessionalControllerDelegate,ProfessionalControllerDelegate,NameControllerdelegate,HobbyControllerDelegate,UIActionSheetDelegate,SexControllerdelegate>
+@interface PersonMessageTableViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate,ProfessionalControllerDelegate,ProfessionalControllerDelegate,NameControllerdelegate,HobbyControllerDelegate,UIActionSheetDelegate,SexControllerdelegate,UIAlertViewDelegate>
 
 @property(nonatomic,strong)NSArray * messages;
 /**1用户头像*/
@@ -612,13 +612,37 @@
     // Return the new image.
     return newImage;
 }
+
+/**
+ *  账号退出提醒框
+ *
+ *  @param sender <#sender description#>
+ */
 - (IBAction)asdsdfsqfgqwerewrqew:(id)sender {
-    NSString * path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSFileManager * manger = [NSFileManager defaultManager];
-    [manger removeItemAtPath:path error:nil];
     
-    ViewController *  vc = (ViewController * )[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"ViewController"];
-    [self presentViewController:vc animated:YES completion:nil];
+    
+    UIAlertController * ac = [UIAlertController alertControllerWithTitle:@"注销" message:@"你确定退出当前账号" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * at = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSString * path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+        NSFileManager * manger = [NSFileManager defaultManager];
+        [manger removeItemAtPath:path error:nil];
+        
+        UIStoryboard* story = [UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
+        LoginViewController * login = [story instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        //    XMGLoginRegisterViewController * vc = [[XMGLoginRegisterViewController alloc] init];
+        UINavigationController * nac = [[UINavigationController alloc] initWithRootViewController:login];
+        
+        [UIApplication sharedApplication].keyWindow.rootViewController = nac;
+    }];
+    [ac addAction:at];
+    
+    UIAlertAction * ag = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+    [ac addAction:ag];
+    [self presentViewController:ac animated:YES completion:nil];
+    
     
 }
+
+
 @end

@@ -10,4 +10,5 @@
 
 @interface RegisterViewController : UIViewController
 
+@property(nonatomic,assign) BOOL isForgerPasswd;
 @end

@@ -16,13 +16,14 @@
 @property(nonatomic,strong) UIImageView * adImage;
 
 
+
 @end
 
 @implementation AppDelegate
 
 
 static NSString *channel = @"Publish channel";
-static BOOL isProduction = FALSE;
+static BOOL isProduction = YES;
 
 
 
@@ -66,7 +67,7 @@ static BOOL isProduction = FALSE;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     
-    
+     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;;
     
     
     self.TodayPredictingNumber = [NSMutableDictionary dictionaryWithObject:@(0) forKey:@"today"];
@@ -125,7 +126,7 @@ static BOOL isProduction = FALSE;
     UIStoryboard* story = [UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
     LoginViewController * login = [story instantiateViewControllerWithIdentifier:@"LoginViewController"];
 //    XMGLoginRegisterViewController * vc = [[XMGLoginRegisterViewController alloc] init];
-    UINavigationController * nac = [[UINavigationController alloc] initWithRootViewController:login];
+    LWNavigationController * nac = [[LWNavigationController alloc] initWithRootViewController:login];
     
 //    ViewController * vc = [story instantiateViewControllerWithIdentifier:@"ViewController"];
     self.window.rootViewController = nac;
@@ -155,9 +156,7 @@ static BOOL isProduction = FALSE;
     //极光s推送
     [self setJPush];
     
-    
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    
+ 
     [ShareSDK registerApp:WslShareSdkAppId
      
           activePlatforms:@[@(SSDKPlatformTypeWechat),
@@ -207,6 +206,7 @@ static BOOL isProduction = FALSE;
     [UserLoginTool LoginModelWriteToShaHe:user andFileName:RegistUserDate];
     InitModel * model = [InitModel mj_objectWithKeyValues:dict[@"resultData"]];
     [UserLoginTool LoginModelWriteToShaHe:model andFileName:InitModelCaches];
+    
     LWLog(@"model _-- tesr%@",[model mj_keyValues]);
     //商城地址
     if (dict[@"resultData"][@"website"]) {
@@ -298,34 +298,67 @@ static BOOL isProduction = FALSE;
 
 - (void)applicationDidBecomeActive:(UIApplication *)application{
     
-    
-    
-    UIImageView * ad = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"414x736-3"]];
-    [ad sizeToFit];
-    [[UIApplication sharedApplication].keyWindow addSubview:ad];
-    
-    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.layer.cornerRadius = 5;
-    btn.layer.masksToBounds = YES;
-    _adButton = btn;
-    _adImage = ad;
-    btn.frame = CGRectMake(ScreenWidth - 100, 20, 80, 30);
-    btn.alpha = 0.7;
-    [btn setBackgroundColor:[UIColor blackColor]];
-    [btn addTarget:self action:@selector(JumpAd) forControlEvents:UIControlEventTouchUpInside];
-    [btn setTitle:@"跳过广告" forState:UIControlStateNormal];
-    [[UIApplication sharedApplication].keyWindow addSubview:btn];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [UIView animateWithDuration:2.0 animations:^{
-            ad.alpha = 0.0;
-            btn.alpha = 0.0;
-        } completion:^(BOOL finished) {
+    InitModel * model = (InitModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:InitModelCaches];
+    if (model.adimg.length && [model.loginStatus intValue]) {
+        
+        UIImageView * ad = [[UIImageView alloc] initWithFrame:self.window.bounds];
+        ad.userInteractionEnabled = YES;
+        [ad addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(AdClick)]];
+        [ad setImage:[UIImage imageNamed:@"LocalADImage"]];
+        ad.contentMode = UIViewContentModeScaleAspectFit;
+        [[UIApplication sharedApplication].keyWindow addSubview:ad];
+        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.layer.cornerRadius = 5;
+        btn.layer.masksToBounds = YES;
+        _adButton = btn;
+        _adImage = ad;
+        btn.frame = CGRectMake(ScreenWidth - 80, 20, 50, 30);
+        btn.alpha = 0.7;
+        [btn setBackgroundColor:[UIColor blackColor]];
+        [btn addTarget:self action:@selector(JumpAd) forControlEvents:UIControlEventTouchUpInside];
+        [btn setTitle:@"跳过广告" forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:10];
+        
+        
+        SDWebImageManager * manager = [SDWebImageManager sharedManager];
+        
+        [manager downloadImageWithURL:[NSURL URLWithString:model.adimg] options:SDWebImageRefreshCached progress:^(NSInteger receivedSize, NSInteger expectedSize) {
             
-            [btn removeFromSuperview];
-            [ad removeFromSuperview];
+            
+        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            [ad setImage:image];
+            [[UIApplication sharedApplication].keyWindow addSubview:btn];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [UIView animateWithDuration:1.0 animations:^{
+                    ad.alpha = 0.0;
+                    btn.alpha = 0.0;
+                } completion:^(BOOL finished) {
+                    
+                    [btn removeFromSuperview];
+                    [ad removeFromSuperview];
+                }];
+            });
+            
         }];
-    });
+        
+     
+        
+//        [ad sd_setImageWithURL:[NSURL URLWithString:model.adimg] completed:nil];
+        
+        
+        
+        
+    }
+    
+    
+}
+
+- (void)AdClick{
+    [_adImage removeFromSuperview];
+    [_adButton removeFromSuperview];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"AdClick" object:self];
+    
 }
 
 -(void)JumpAd{

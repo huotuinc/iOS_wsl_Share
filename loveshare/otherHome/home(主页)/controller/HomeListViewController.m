@@ -97,7 +97,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *taskTableview;
 
-
+/**头像*/
+@property (nonatomic,strong) UIButton * leftBtn;
 
 @property(nonatomic,strong) MJRefreshGifHeader * head;
 @property(nonatomic,strong) MJRefreshAutoFooter * footer;
@@ -112,6 +113,7 @@
 
 @property(nonatomic,assign) NSInteger homeTaskStaus;
 
+@property(nonatomic,assign)  NSNotificationCenter * centerNot;
 
 @end
 
@@ -161,7 +163,7 @@ static NSString * homeCellidentify = @"homeCellId";
 
 - (void)setUpInit{
     self.navigationItem.title = @"资讯";
-    UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+//    UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
     self.titleHeadOption.delegate  = self;
     UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
@@ -169,7 +171,8 @@ static NSString * homeCellidentify = @"homeCellId";
     btn.layer.masksToBounds = YES;
     btn.layer.borderColor = [UIColor whiteColor].CGColor;
     btn.layer.borderWidth = 1;
-    [btn sd_setImageWithURL:[NSURL URLWithString:userInfo.userHead] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"geren"]];
+    self.leftBtn = btn;
+//    [btn sd_setImageWithURL:[NSURL URLWithString:userInfo.userHead] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"geren"]];
     [btn addTarget:self action:@selector(leftButton) forControlEvents:UIControlEventTouchDown];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectController:) name:@"backToHomeView" object:nil];
@@ -212,8 +215,27 @@ static NSString * homeCellidentify = @"homeCellId";
     [self addChildVcView];
     
     
+    NSNotificationCenter * centerNot = [NSNotificationCenter defaultCenter];
+    _centerNot = centerNot;
+    [centerNot addObserver:self selector:@selector(GoADDetail) name:@"AdClick" object:nil];
+    
+    
 }
 
+
+/**
+ *  进入广告详情
+ */
+- (void)GoADDetail{
+
+   InitModel * model = (InitModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:InitModelCaches];
+    if (model.adclick.length) {
+        AdViewController * ad = [[AdViewController alloc] init];
+        ad.adLink = model.adclick;
+        [self.navigationController pushViewController:ad animated:YES];
+        
+    }
+}
 
 #pragma mark - 添加子控制器的view
 - (void)addChildVcView
@@ -247,6 +269,7 @@ static NSString * homeCellidentify = @"homeCellId";
     HomeTitleOption * titleView = [[HomeTitleOption alloc] initWithFrame:CGRectMake(0,0, ScreenWidth-60, Height)];
     UILabel * shaixuan = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth-60, 0, 60, Height)];
     shaixuan.textAlignment = NSTextAlignmentCenter;
+    shaixuan.backgroundColor = [UIColor colorWithRed:234/255.0 green:234/255.0 blue:234/255.0 alpha:1];
     shaixuan.userInteractionEnabled = YES;
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(shaixuan)];
     [shaixuan setText:@"筛选"];
@@ -344,6 +367,10 @@ static NSString * homeCellidentify = @"homeCellId";
     [super viewWillAppear:animated];
     [self.view endEditing:YES];
 
+    UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+    [self.leftBtn sd_setImageWithURL:[NSURL URLWithString:userInfo.userHead] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"geren"]];
+    
+    
     self.navigationController.navigationBarHidden = NO;
     [_head beginRefreshing];
 

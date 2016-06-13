@@ -8,7 +8,7 @@
 
 #import "LoginViewController.h"
 #import "MD5Encryption.h"
-
+#import "RegisterViewController.h"
 @interface LoginViewController ()
 
 
@@ -41,7 +41,7 @@
     self.title = @"登录";
     //设置标题样式
     NSMutableDictionary * textAttr = [NSMutableDictionary dictionary];
-    textAttr[NSForegroundColorAttributeName] = [UIColor blackColor];
+    textAttr[NSForegroundColorAttributeName] = [UIColor whiteColor];
     [self.navigationController.navigationBar setTitleTextAttributes:textAttr];
     
 }
@@ -50,12 +50,14 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.phoneNumberText becomeFirstResponder];
+//    [self.phoneNumberText becomeFirstResponder];
 }
 
 - (IBAction)forgetButton:(id)sender {
-    
-    
+    RegisterViewController * login = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"RegisterViewController"];
+    login.isForgerPasswd = YES;
+    [self.navigationController pushViewController:login animated:YES];
+    LWLog(@"忘记密码");
 }
 
 - (IBAction)loginButton:(id)sender {

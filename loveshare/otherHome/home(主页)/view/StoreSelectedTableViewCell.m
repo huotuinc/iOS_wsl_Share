@@ -17,7 +17,7 @@
 
 - (void)loadData:(StoreModel *)model {
     [_imageVLogo sd_setImageWithURL:[NSURL URLWithString:model.Logo]];
-    _labelName.text = model.UserName;
+    _labelName.text = model.UserNickName;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

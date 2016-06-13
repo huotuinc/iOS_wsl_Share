@@ -161,6 +161,7 @@
 		EFAF471B1C97D96E00D5A5C4 /* JiTuanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EFAF471A1C97D96E00D5A5C4 /* JiTuanModel.m */; };
 		EFC24B491D01730100F4A796 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFC24B481D01730100F4A796 /* Login.storyboard */; };
 		EFC24B4C1D01837500F4A796 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC24B4B1D01837500F4A796 /* RegisterViewController.m */; };
+		EFC253E21D0E9F4B00E33E24 /* AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC253E11D0E9F4B00E33E24 /* AdViewController.m */; };
 		EFD2B0811CEC77D000F00431 /* TopOptionTableViewContion.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD2B0801CEC77CF00F00431 /* TopOptionTableViewContion.m */; };
 		EFD2B0851CEC93BD00F00431 /* MoreTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD2B0841CEC93BD00F00431 /* MoreTaskController.m */; };
 		EFD2B0881CEC93D700F00431 /* SheYuTaskViewContrller.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD2B0871CEC93D700F00431 /* SheYuTaskViewContrller.m */; };
@@ -492,6 +493,8 @@
 		EFC24B481D01730100F4A796 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		EFC24B4A1D01837500F4A796 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		EFC24B4B1D01837500F4A796 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		EFC253E01D0E9F4B00E33E24 /* AdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewController.h; sourceTree = "<group>"; };
+		EFC253E11D0E9F4B00E33E24 /* AdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdViewController.m; sourceTree = "<group>"; };
 		EFD2B07F1CEC77CF00F00431 /* TopOptionTableViewContion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopOptionTableViewContion.h; sourceTree = "<group>"; };
 		EFD2B0801CEC77CF00F00431 /* TopOptionTableViewContion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopOptionTableViewContion.m; sourceTree = "<group>"; };
 		EFD2B0831CEC93BD00F00431 /* MoreTaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTaskController.h; sourceTree = "<group>"; };
@@ -1321,6 +1324,15 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		EFC253DF1D0E9F3600E33E24 /* ad */ = {
+			isa = PBXGroup;
+			children = (
+				EFC253E01D0E9F4B00E33E24 /* AdViewController.h */,
+				EFC253E11D0E9F4B00E33E24 /* AdViewController.m */,
+			);
+			path = ad;
+			sourceTree = "<group>";
+		};
 		EFD2B0821CEC937A00F00431 /* controllersasew */ = {
 			isa = PBXGroup;
 			children = (
@@ -1406,6 +1418,7 @@
 		EFF072851C8939F000150FA2 /* loveshare */ = {
 			isa = PBXGroup;
 			children = (
+				EFC253DF1D0E9F3600E33E24 /* ad */,
 				EFD8C8B81D0698F6007922D6 /*  TopTen */,
 				F202DAC11CD9988E0022E71F /* Library */,
 				EFA229751C99685600F5254F /* NewFeature(版本新特性) */,
@@ -1815,6 +1828,7 @@
 				EF15C9771C992BE700ABD2F6 /* HistoryModel.m in Sources */,
 				EF6F97DF1C8AB3B800D760EC /* MBProgressHUD+MJ.m in Sources */,
 				EF5C0B6A1C8BFE5300C76019 /* LeftOfRootViewController.m in Sources */,
+				EFC253E21D0E9F4B00E33E24 /* AdViewController.m in Sources */,
 				EFD8C8C71D06A2AF007922D6 /* TopTenOtherTableViewCell.m in Sources */,
 				EF1B8A781C89557D003D230A /* NSDictionary+EXTERN.m in Sources */,
 				EF3877CB1C8FD8CC008279BD /* NSString+Encryption.m in Sources */,

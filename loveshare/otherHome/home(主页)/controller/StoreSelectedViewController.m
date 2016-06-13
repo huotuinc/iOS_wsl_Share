@@ -39,6 +39,7 @@ static NSString *cellStore = @"cellStore";
     _storeList = [NSMutableArray array];
     _searchList = [NSMutableArray array];
     // Do any additional setup after loading the view
+    self.title = @"商户筛选";
     self.view.backgroundColor = [UIColor whiteColor];
     _pageNumber = 1;
     [self RefreshJicheng];
