@@ -76,7 +76,7 @@
     NSDictionary * dict = [UserLoginTool LogingetDateSyncWith:@"Login" WithParame:p];
     LWLog(@"%@",dict);
     [MBProgressHUD hideHUD];
-    if ([[dict objectForKey:@"status"] integerValue] && [[dict objectForKey:@"resultCode"] integerValue]) {
+    if ([[dict objectForKey:@"status"] integerValue] == 1 && [[dict objectForKey:@"resultCode"] integerValue] == 1) {
         UserModel * userModel = [UserModel mj_objectWithKeyValues:dict[@"resultData"]];
         [UserLoginTool LoginModelWriteToShaHe:userModel andFileName:RegistUserDate];
         [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",userModel.mallUserId] forKey:ChoneMallAccount];
