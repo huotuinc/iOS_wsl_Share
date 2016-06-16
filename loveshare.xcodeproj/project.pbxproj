@@ -83,6 +83,7 @@
 		EF3877D91C8FFAFE008279BD /* NameController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3877D41C8FFAFE008279BD /* NameController.m */; };
 		EF3877DA1C8FFAFE008279BD /* SexController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3877D61C8FFAFE008279BD /* SexController.m */; };
 		EF3877DD1C8FFB14008279BD /* ProfessionalController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3877DC1C8FFB14008279BD /* ProfessionalController.m */; };
+		EF41EEA31D114BAD006786F8 /* SetNewPasswdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF41EEA21D114BAD006786F8 /* SetNewPasswdViewController.m */; };
 		EF5A1EAC1C8D6A93002035FC /* OptionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5A1EAB1C8D6A93002035FC /* OptionModel.m */; };
 		EF5A1EE41C8D7272002035FC /* detailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5A1EB51C8D7272002035FC /* detailViewController.m */; };
 		EF5A1EE61C8D7272002035FC /* HomeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5A1EB91C8D7272002035FC /* HomeListViewController.m */; };
@@ -148,6 +149,7 @@
 		EFAF47151C96E09100D5A5C4 /* EnterpriseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFAF47141C96E09100D5A5C4 /* EnterpriseTableViewController.m */; };
 		EFAF47181C97B25600D5A5C4 /* DepartmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFAF47171C97B25600D5A5C4 /* DepartmentViewController.m */; };
 		EFAF471B1C97D96E00D5A5C4 /* JiTuanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EFAF471A1C97D96E00D5A5C4 /* JiTuanModel.m */; };
+		EFBD4F971D124DF700EFEEC8 /* EnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFBD4F961D124DF700EFEEC8 /* EnViewController.m */; };
 		EFC24B491D01730100F4A796 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFC24B481D01730100F4A796 /* Login.storyboard */; };
 		EFC24B4C1D01837500F4A796 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC24B4B1D01837500F4A796 /* RegisterViewController.m */; };
 		EFC253E21D0E9F4B00E33E24 /* AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC253E11D0E9F4B00E33E24 /* AdViewController.m */; };
@@ -175,6 +177,7 @@
 		EFD8C8C81D06A2AF007922D6 /* TopTenOtherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFD8C8C61D06A2AF007922D6 /* TopTenOtherTableViewCell.xib */; };
 		EFD8C8CB1D06A37B007922D6 /* OtherTenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD8C8CA1D06A37B007922D6 /* OtherTenModel.m */; };
 		EFD8C8CE1D06A546007922D6 /* TopTenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD8C8CD1D06A546007922D6 /* TopTenModel.m */; };
+		EFEA712C1D1127A900629F8C /* LoginChangePasswdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFEA712B1D1127A900629F8C /* LoginChangePasswdViewController.m */; };
 		EFF072881C8939F000150FA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF072871C8939F000150FA2 /* main.m */; };
 		EFF0728B1C8939F000150FA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF0728A1C8939F000150FA2 /* AppDelegate.m */; };
 		EFF0728E1C8939F000150FA2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF0728D1C8939F000150FA2 /* ViewController.m */; };
@@ -358,6 +361,8 @@
 		EF3877D61C8FFAFE008279BD /* SexController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SexController.m; sourceTree = "<group>"; };
 		EF3877DB1C8FFB14008279BD /* ProfessionalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalController.h; sourceTree = "<group>"; };
 		EF3877DC1C8FFB14008279BD /* ProfessionalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalController.m; sourceTree = "<group>"; };
+		EF41EEA11D114BAD006786F8 /* SetNewPasswdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetNewPasswdViewController.h; sourceTree = "<group>"; };
+		EF41EEA21D114BAD006786F8 /* SetNewPasswdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetNewPasswdViewController.m; sourceTree = "<group>"; };
 		EF5A1EAA1C8D6A93002035FC /* OptionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionModel.h; sourceTree = "<group>"; };
 		EF5A1EAB1C8D6A93002035FC /* OptionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionModel.m; sourceTree = "<group>"; };
 		EF5A1EB41C8D7272002035FC /* detailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailViewController.h; sourceTree = "<group>"; };
@@ -477,6 +482,8 @@
 		EFAF47171C97B25600D5A5C4 /* DepartmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartmentViewController.m; sourceTree = "<group>"; };
 		EFAF47191C97D96E00D5A5C4 /* JiTuanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiTuanModel.h; sourceTree = "<group>"; };
 		EFAF471A1C97D96E00D5A5C4 /* JiTuanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiTuanModel.m; sourceTree = "<group>"; };
+		EFBD4F951D124DF700EFEEC8 /* EnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnViewController.h; sourceTree = "<group>"; };
+		EFBD4F961D124DF700EFEEC8 /* EnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnViewController.m; sourceTree = "<group>"; };
 		EFC24B481D01730100F4A796 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		EFC24B4A1D01837500F4A796 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		EFC24B4B1D01837500F4A796 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
@@ -520,6 +527,8 @@
 		EFD8C8CA1D06A37B007922D6 /* OtherTenModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherTenModel.m; sourceTree = "<group>"; };
 		EFD8C8CC1D06A546007922D6 /* TopTenModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopTenModel.h; sourceTree = "<group>"; };
 		EFD8C8CD1D06A546007922D6 /* TopTenModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopTenModel.m; sourceTree = "<group>"; };
+		EFEA712A1D1127A900629F8C /* LoginChangePasswdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginChangePasswdViewController.h; sourceTree = "<group>"; };
+		EFEA712B1D1127A900629F8C /* LoginChangePasswdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginChangePasswdViewController.m; sourceTree = "<group>"; };
 		EFF072831C8939F000150FA2 /* loveshare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loveshare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF072871C8939F000150FA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EFF072891C8939F000150FA2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1193,6 +1202,10 @@
 				EF5C0B661C8BFD1000C76019 /* MMRootViewController.m */,
 				EFC24B4A1D01837500F4A796 /* RegisterViewController.h */,
 				EFC24B4B1D01837500F4A796 /* RegisterViewController.m */,
+				EFEA712A1D1127A900629F8C /* LoginChangePasswdViewController.h */,
+				EFEA712B1D1127A900629F8C /* LoginChangePasswdViewController.m */,
+				EF41EEA11D114BAD006786F8 /* SetNewPasswdViewController.h */,
+				EF41EEA21D114BAD006786F8 /* SetNewPasswdViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1267,6 +1280,16 @@
 				EFAF471A1C97D96E00D5A5C4 /* JiTuanModel.m */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		EFBD4F941D124C1E00EFEEC8 /* enterprise(企业专区) */ = {
+			isa = PBXGroup;
+			children = (
+				EFBD4F951D124DF700EFEEC8 /* EnViewController.h */,
+				EFBD4F961D124DF700EFEEC8 /* EnViewController.m */,
+			);
+			name = "enterprise(企业专区)";
+			path = enterprise;
 			sourceTree = "<group>";
 		};
 		EFC253DF1D0E9F3600E33E24 /* ad */ = {
@@ -1423,6 +1446,7 @@
 		EFF072851C8939F000150FA2 /* loveshare */ = {
 			isa = PBXGroup;
 			children = (
+				EFBD4F941D124C1E00EFEEC8 /* enterprise(企业专区) */,
 				EFC253DF1D0E9F3600E33E24 /* ad */,
 				EFD8C8B81D0698F6007922D6 /*  TopTen */,
 				F202DAC11CD9988E0022E71F /* Library */,
@@ -1763,6 +1787,7 @@
 				EFA229791C99685600F5254F /* LWNewFeatureController.m in Sources */,
 				EF5A1EE41C8D7272002035FC /* detailViewController.m in Sources */,
 				EFF0728B1C8939F000150FA2 /* AppDelegate.m in Sources */,
+				EFBD4F971D124DF700EFEEC8 /* EnViewController.m in Sources */,
 				EFC24B4C1D01837500F4A796 /* RegisterViewController.m in Sources */,
 				F23FDFA31CE452F900514279 /* StoreSelectedTableViewCell.m in Sources */,
 				EF36367C1C911F97006AD6F1 /* FollowListTableViewController.m in Sources */,
@@ -1816,6 +1841,7 @@
 				EF6F977A1C89755200D760EC /* AFURLResponseSerialization.m in Sources */,
 				EF1B8A7D1C89557D003D230A /* UITableView+CJ.m in Sources */,
 				EF36369F1C918EE5006AD6F1 /* MidTabelViewCell.m in Sources */,
+				EFEA712C1D1127A900629F8C /* LoginChangePasswdViewController.m in Sources */,
 				EFD8C8CE1D06A546007922D6 /* TopTenModel.m in Sources */,
 				EFAF471B1C97D96E00D5A5C4 /* JiTuanModel.m in Sources */,
 				EF3877AC1C8FB7B1008279BD /* JiFenToMallController.m in Sources */,
@@ -1858,6 +1884,7 @@
 				EF15C97D1C99307D00ABD2F6 /* ContainArray.m in Sources */,
 				EF3877A91C8EFEE6008279BD /* PersonAccountViewController.m in Sources */,
 				EF15C96F1C9906C700ABD2F6 /* HostTableViewController.m in Sources */,
+				EF41EEA31D114BAD006786F8 /* SetNewPasswdViewController.m in Sources */,
 				EF5A1EF21C8D7272002035FC /* RequestTasks.m in Sources */,
 				EF3636751C9046A3006AD6F1 /* TwoOption.m in Sources */,
 				EFFE36481CA01FE2000EA32D /* LeftTableViewCell.m in Sources */,
@@ -2029,7 +2056,7 @@
 					"$(PROJECT_DIR)/loveshare/Other/JPushlib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshare;
+				PRODUCT_BUNDLE_IDENTIFIER = hz.huotu.wsl.aifenxiang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -2062,7 +2089,7 @@
 					"$(PROJECT_DIR)/loveshare/Other/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/loveshare/Other/JPushlib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wsl.loveshare;
+				PRODUCT_BUNDLE_IDENTIFIER = hz.huotu.wsl.aifenxiang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

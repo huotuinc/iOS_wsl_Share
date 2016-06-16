@@ -45,7 +45,7 @@
     _nameLabel.text = model.taskName;
    
     _joinLabel.text = [NSString stringWithFormat:@"%@",model.sendCount];
-    _introduceLabel.text = [NSString stringWithFormat:@"由[%@]提供",model.storeName?model.storeName:@"万事利"];
+    _introduceLabel.text = [NSString stringWithFormat:@"由[%@]提供",model.storeName?model.storeName:@"分红"];
     
     if (model.sendList.length) {
         _getImage.image = [UIImage imageNamed:@"已完成"];
@@ -55,7 +55,8 @@
         _getImage.image = nil;
     }
    
-    _lastLabel.text = [NSString stringWithFormat:@"%@", [NSString xiaoshudianweishudeal:model.lastScore]];
+    _joinLabel.text = [NSString stringWithFormat:@"%@", model.browseCount];
+    _lastLabel.text = [NSString stringWithFormat:@"%@", model.sendCount];
 }
 //
 //

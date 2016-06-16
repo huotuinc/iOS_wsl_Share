@@ -7,8 +7,11 @@
 //  ss
 #import "detailViewController.h"
 #import "RAYNewFunctionGuideVC.h"
+#import "NJKWebViewProgress.h"
+#import "NJKWebViewProgressView.h"
 
-@interface detailViewController ()<UIWebViewDelegate>
+
+@interface detailViewController ()<UIWebViewDelegate,NJKWebViewProgressDelegate>
 
 @property(nonatomic,strong)IBOutlet UIWebView * contentWebView;
 
@@ -23,7 +26,8 @@
 @property(nonatomic,strong) UILabel * left;
 @property(nonatomic,strong) UILabel * right;
 
-
+@property (nonatomic, strong) NJKWebViewProgressView *webViewProgressView;
+@property (nonatomic, strong) NJKWebViewProgress *webViewProgress;
 
 @end
 
@@ -49,10 +53,10 @@
 }
 - (void)makeGuideView{
     RAYNewFunctionGuideVC *vc = [[RAYNewFunctionGuideVC alloc]init];
-    vc.titles = @[@"分享: 点击分享按钮可以对文章进行分享"];
+    vc.titles = @[@"温馨提示: 点击分享按钮可以对你喜欢的文章进行分享"];
     //这个页面的.y传1000就行  内部已算好
    
-    vc.frames = @[@"{{310, 10},{50,50}}"];
+    vc.frames = @[@"{{310, 10},{50,60}}"];
     
     [self presentViewController:vc animated:YES completion:nil];
     
@@ -69,12 +73,31 @@
     _contentWebView.delegate = self;
     _contentWebView.scrollView.bounces = NO;
 }
+
+- (void) addProgramess{
+    _webViewProgress = [[NJKWebViewProgress alloc] init];
+    _webViewProgress.webViewProxyDelegate = self;
+    _webViewProgress.progressDelegate = self;
+    CGRect navBounds = self.navigationController.navigationBar.bounds;
+    CGRect barFrame = CGRectMake(0,
+                                 navBounds.size.height - 2,
+                                 navBounds.size.width,
+                                 2);
+    _webViewProgressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
+    _webViewProgressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    [_webViewProgressView setProgress:0 animated:YES];
+    [self.navigationController.navigationBar addSubview:_webViewProgressView];
+    self.contentWebView.delegate = _webViewProgress;
+
+}
+
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    
     if (self.taskModel.flagShowSend) {
         UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [backButton setImage:[UIImage imageNamed:@"ShareBtnDetail"] forState:UIControlStateNormal];
+        [backButton setImage:[UIImage imageNamed:@"home_title_right_share"] forState:UIControlStateNormal];
         backButton.bounds = CGRectMake(0, 0, 30, 30);
         _ShareBtn = backButton;
         [backButton addTarget:self action:@selector(shareBtnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -156,6 +179,7 @@
 //    
     [self setup];
     
+    [self addProgramess];
 }
 
 
@@ -240,6 +264,19 @@
      } failure:^(id error) {
         [MBProgressHUD showError:@"分享失败"];
     }];
+}
+
+#pragma mark - NJKWebViewProgressDelegate
+-(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
+{
+    [_webViewProgressView setProgress:progress animated:YES];
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    [_webViewProgressView removeFromSuperview];
+    
 }
 
 

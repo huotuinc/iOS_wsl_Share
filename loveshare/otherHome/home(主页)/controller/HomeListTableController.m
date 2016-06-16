@@ -87,6 +87,9 @@
     
     self.tableView.rowHeight = 120;
     
+    
+//    self.tableView.tableHeaderView.backgroundColor = [UIColor redColor];
+    
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeCell" bundle:nil] forCellReuseIdentifier:@"xxxxxxx"];
@@ -213,12 +216,12 @@
                 if (head) {//头部刷新
                     [self.taskGroup  removeAllObjects];
                     [self toGroupsByTime:tasks];
-                    [self showNewStatuseCounts:tasks.count andIsHead:YES];
                     [self.tableView reloadData];
+                    [self showNewStatuseCounts:tasks.count andIsHead:YES];
                 }else{
                     [wself toGroupsByTime:tasks];
-                    [self showNewStatuseCounts:tasks.count andIsHead:NO];
                     [self.tableView reloadData];
+                    [self showNewStatuseCounts:tasks.count andIsHead:NO];
                     
                 }
             }else{

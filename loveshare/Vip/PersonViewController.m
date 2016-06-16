@@ -160,10 +160,10 @@
     
     self.sssssss.text = self.xixi;
     
-    self.turnLable.text = [NSString stringWithFormat:@" 转发%d次",self.model.totalTurnCount];
-    self.browsLable.text = [NSString stringWithFormat:@" 浏览%d次",self.model.totalBrowseCount];
-    self.tudiLable.text = [NSString stringWithFormat:@" 徒弟%d人",self.model.prenticeCount];
-    self.scoreJifen.text = [NSString stringWithFormat:@"%@积分",[NSString xiaoshudianweishudeal:[self.model.totalScore floatValue]]];
+    self.turnLable.text = [NSString stringWithFormat:@" %d",self.model.totalTurnCount];
+    self.browsLable.text = [NSString stringWithFormat:@" %d",self.model.totalBrowseCount];
+    self.tudiLable.text = [NSString stringWithFormat:@" %d",self.model.prenticeCount];
+    self.scoreJifen.text = [NSString stringWithFormat:@" %@",[NSString xiaoshudianweishudeal:[self.model.totalScore floatValue]]];
     self.firstLable.userInteractionEnabled = YES;
     self.secondLable.userInteractionEnabled = YES;
     

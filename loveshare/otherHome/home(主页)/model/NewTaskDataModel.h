@@ -69,6 +69,9 @@
 @property(nonatomic,assign) int type;
 
 
+@property(nonatomic,strong) NSNumber *browseCount;
+
+
 /**
  {
 

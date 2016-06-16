@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.8.0</string>
+	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -25,7 +25,15 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wx369cdeb338051de5</string>
+				<string>wsl2015fanmoreOEM</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wx4f8eacaca1317fdd</string>
 			</array>
 		</dict>
 		<dict>
@@ -36,13 +44,12 @@
 				<string>QQ41DEB0AC</string>
 			</array>
 		</dict>
-		<dict/>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wsl2015fanmoreOEM</string>
+				<string>tencent1105113260</string>
 			</array>
 		</dict>
 	</array>

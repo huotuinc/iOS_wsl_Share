@@ -87,6 +87,7 @@
 #import "detailViewController.h"
 #import "LoginViewController.h"
 #import "AdViewController.h"
+#import "SetNewPasswdViewController.h"
 //#import "UITextField+XMGExtension.h"
 //#import "XMGLoginRegisterViewController.h"
 
@@ -146,11 +147,11 @@
 #define LAST_Flage_KEY @"LAST_Flage_KEY"
 
 
-#define WslShareSdkAppId @"dc6acbc29fe8"
+#define WslShareSdkAppId @"ea679394ddf4"
 
 
-#define WxAppID @"wx369cdeb338051de5"
-#define WxAppSecret @"0dcbc62b9a4724e89097bb00a0bd0ae2"
+#define WxAppID @"wx4f8eacaca1317fdd"
+#define WxAppSecret @"5b98fc8e84e27e79a9341d4c6e85f57d"
 
 #define Sina @"56985861"  //wb56985861
 #define SinaKey @"a2cf67a9f6666f09dfa4c69202ebfabb"

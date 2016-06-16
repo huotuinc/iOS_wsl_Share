@@ -14,23 +14,23 @@
 + (NSArray *)OptionModelBringBackArray{
     OptionModel * md1 = [[OptionModel alloc] init];
     md1.optionImageName = @"领取任务";
-    md1.OptionName = @"领取任务";
+    md1.OptionName = @"资讯";
     
     OptionModel * md2 = [[OptionModel alloc] init];
     md2.optionImageName = @"历史浏览";
     md2.OptionName = @"历史浏览量";
     
-    OptionModel * md3 = [[OptionModel alloc] init];
-    md3.optionImageName = @"新手任务";
-    md3.OptionName = @"新手任务";
+//    OptionModel * md3 = [[OptionModel alloc] init];
+//    md3.optionImageName = @"新手任务";
+//    md3.OptionName = @"新手任务";
     
     OptionModel * md4 = [[OptionModel alloc] init];
     md4.optionImageName = @"进入商城";
     md4.OptionName = @"进入商城";
     
-    OptionModel * md5 = [[OptionModel alloc] init];
-    md5.optionImageName = @"最新预告";
-    md5.OptionName = @"最新预告";
+//    OptionModel * md5 = [[OptionModel alloc] init];
+//    md5.optionImageName = @"最新预告";
+//    md5.OptionName = @"最新预告";
     
     OptionModel * md6 = [[OptionModel alloc] init];
     md6.optionImageName = @"伙伴联盟";
@@ -47,6 +47,6 @@
     OptionModel * md9 = [[OptionModel alloc] init];
     md9.optionImageName = @"监督管理";
     md9.OptionName = @"监督管理";
-    return @[md1,md2,md3,md4,md5,md6,md7,md8, md9];
+    return @[md1,md2,md4,md6,md7,md8, md9];
 }
 @end

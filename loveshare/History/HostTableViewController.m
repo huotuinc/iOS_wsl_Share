@@ -185,7 +185,7 @@
     TitleHead * view = [[[NSBundle mainBundle] loadNibNamed:@"TitleHead" owner:nil options:nil] lastObject];
     view.timeLable.text = time;
     LWLog(@"--------%d",model.browseAmount);
-    time = [NSString stringWithFormat:@" 浏览量: %d 总积分: %@ ",model.browseAmount,[NSString xiaoshudianweishudeal:[model.totalScore floatValue]]];
+    time = [NSString stringWithFormat:@" 浏览量: %d次",model.browseAmount];
     view.rightLable.text = time;
     return view;
 }

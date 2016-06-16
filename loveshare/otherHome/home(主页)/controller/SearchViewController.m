@@ -88,39 +88,27 @@ static NSString *cellSearch = @"cellSearch";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellSearch forIndexPath:indexPath];
-    if (indexPath.section == 0) {
-        NewTaskDataModel * model = self.dataArray[0][indexPath.row];
-        cell.model = model;
-    } else {
-        NewTaskDataModel * model = self.dataArray[1][indexPath.row];
-        cell.model = model;
-    }
+    
+    
+    NewTaskDataModel * model = [_dataArray objectAtIndex:indexPath.row];
+    LWLog(@"%@",[model mj_keyValues]);
+    cell.model = [_dataArray objectAtIndex:indexPath.row];
+
     return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return [_dataArray[0] count];
-    }
-    return [_dataArray[1] count];
-}
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+
     return _dataArray.count;
 }
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (section == 0) {
-        return @"已上架";
-    }
-    return @"已下架";
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    return _dataArray.count;
+//}
+//
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     detailViewController * vc =(detailViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"detailViewController"];
-    if (indexPath.section == 0) {
-        vc.taskModel = _dataArray[0][indexPath.row];
-    } else {
-        vc.taskModel = _dataArray[1][indexPath.row];
-    }
+
+    vc.taskModel = [_dataArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
 #pragma mark 搜索方法
@@ -141,14 +129,23 @@ static NSString *cellSearch = @"cellSearch";
         LWLog(@"%@",json);
         if ([json[@"status"] integerValue]==1 && [json[@"resultCode"] integerValue] == 1) {
             NSArray * array  =  [NewTaskDataModel mj_objectArrayWithKeyValuesArray:json[@"resultData"][@"taskData"]];
-            if (PageIndex == 0) {
+            
+            
+            
+            if (array.count) {
+                
                 [_dataArray removeAllObjects];
                 [_dataArray addObjectsFromArray:array];
-            } else {
-                [_dataArray addObjectsFromArray:array];
             }
+//            LWLog(@"%lu",(unsigned long)array.count);
+//            if (PageIndex == 0) {
+//                [_dataArray removeAllObjects];
+//                [_dataArray addObjectsFromArray:array];
+//            } else {
+//                [_dataArray addObjectsFromArray:array];
+//            }
             [_searchBar resignFirstResponder];
-            _dataArray = [self changeDataArrayByTaskStaus];
+//            _dataArray = [self changeDataArrayByTaskStaus];
             [_head endRefreshing];
             [_footer endRefreshing];
             [_tableView reloadData];
@@ -160,22 +157,6 @@ static NSString *cellSearch = @"cellSearch";
     }];
 }
 
-- (NSMutableArray *)changeDataArrayByTaskStaus {
-    NSMutableArray *freshArray = [NSMutableArray array];
-    NSMutableArray *oldArray = [NSMutableArray array];
-    for (NewTaskDataModel *model in _dataArray) {
-        if (model.flagShowSend == 1) {
-            [freshArray addObject:model];
-        } else {
-            [oldArray addObject:model];
-        }
-    }
-    [_dataArray removeAllObjects];
-    [_dataArray addObject:freshArray];
-    [_dataArray addObject:oldArray];
-    return _dataArray;
-    
-}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -187,14 +168,6 @@ static NSString *cellSearch = @"cellSearch";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

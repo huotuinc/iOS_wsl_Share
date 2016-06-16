@@ -17,6 +17,8 @@
 #import "UIButton+WebCache.h"
 #import "XYPopView.h"
 #import "TopTenListTableViewController.h"
+#import "EnViewController.h"
+
 
 #define pageSize 10
 
@@ -115,6 +117,7 @@
 
 @property(nonatomic,assign)  NSNotificationCenter * centerNot;
 
+
 @end
 
 
@@ -186,6 +189,11 @@ static NSString * homeCellidentify = @"homeCellId";
 
 - (void)setupChildViewControllers
 {
+    
+    
+//    EnViewController * ac  = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"EnViewController"];
+//    [self addChildViewController:ac];
+    
     MoreTaskController  *voice = [[MoreTaskController alloc] init];
     [self addChildViewController:voice];
     
@@ -266,15 +274,15 @@ static NSString * homeCellidentify = @"homeCellId";
 {
     
     CGFloat Height = 44;
-    HomeTitleOption * titleView = [[HomeTitleOption alloc] initWithFrame:CGRectMake(0,0, ScreenWidth-60, Height)];
-    UILabel * shaixuan = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth-60, 0, 60, Height)];
-    shaixuan.textAlignment = NSTextAlignmentCenter;
-    shaixuan.backgroundColor = [UIColor colorWithRed:234/255.0 green:234/255.0 blue:234/255.0 alpha:1];
-    shaixuan.userInteractionEnabled = YES;
-    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(shaixuan)];
-    [shaixuan setText:@"筛选"];
-    [shaixuan addGestureRecognizer:tap];
-    [self.view addSubview:shaixuan];
+    HomeTitleOption * titleView = [[HomeTitleOption alloc] initWithFrame:CGRectMake(0,0, ScreenWidth, Height)];
+//    UILabel * shaixuan = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth-60, 0, 60, Height)];
+//    shaixuan.textAlignment = NSTextAlignmentCenter;
+//    shaixuan.backgroundColor = [UIColor colorWithRed:234/255.0 green:234/255.0 blue:234/255.0 alpha:1];
+//    shaixuan.userInteractionEnabled = YES;
+//    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(shaixuan)];
+//    [shaixuan setText:@"筛选"];
+//    [shaixuan addGestureRecognizer:tap];
+//    [self.view addSubview:shaixuan];
     
     titleView.delegate = self;
     _titleView = titleView;
@@ -336,23 +344,25 @@ static NSString * homeCellidentify = @"homeCellId";
 #warning 缺商城账号选中
        HomeViewController * vc =  (HomeViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"HomeViewController"];
       [self.navigationController pushViewController:vc animated:NO];
-    }else if([note.userInfo[@"option"] integerValue] == 4){//最新预告
-        
-        TodayForesController * vc =  (TodayForesController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"TodayForesController"];
-        [self.navigationController pushViewController:vc animated:NO];
-        
-    }else if([note.userInfo[@"option"] integerValue] == 5){//师徒联盟
+    }
+//        else if([note.userInfo[@"option"] integerValue] == 4){//最新预告
+//
+//        TodayForesController * vc =  (TodayForesController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"TodayForesController"];
+//        [self.navigationController pushViewController:vc animated:NO];
+//        
+//    }
+    else if([note.userInfo[@"option"] integerValue] == 4){//师徒联盟
         MasterAndTudiViewController * vc = (MasterAndTudiViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"MasterAndTudiViewController"];
         [self.navigationController pushViewController:vc animated:NO];
-    }else if([note.userInfo[@"option"] integerValue] == 6){//排行榜
+    }else if([note.userInfo[@"option"] integerValue] == 5){//排行榜
         TopTenListTableViewController * topten = [[TopTenListTableViewController alloc] init];
         [self.navigationController pushViewController:topten animated:NO];
         
-    }else if([note.userInfo[@"option"] integerValue] == 7){//更多设置
+    }else if([note.userInfo[@"option"] integerValue] == 6){//更多设置
         MoreSetTableViewController * vc = (MoreSetTableViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"MoreSetTableViewController"];
         [self.navigationController pushViewController:vc animated:NO];
         
-    }else if([note.userInfo[@"option"] integerValue] == 8){
+    }else if([note.userInfo[@"option"] integerValue] == 7){
         VipAccountViewController * vip = [[VipAccountViewController alloc] initWithStyle:UITableViewStylePlain];
         [self.navigationController pushViewController:vip animated:NO];
         
@@ -401,7 +411,7 @@ static NSString * homeCellidentify = @"homeCellId";
 }
 - (void)makeGuideShareView{
     RAYNewFunctionGuideVC *vc = [[RAYNewFunctionGuideVC alloc]init];
-    vc.titles = @[@"转发成功后在这里查看奖励"];
+    vc.titles = @[@"温馨提示:点击头像去菜单选项"];
     vc.frames = @[@"{{5,10},{50,50}}"];
     
     [self presentViewController:vc animated:YES completion:nil];
@@ -409,7 +419,7 @@ static NSString * homeCellidentify = @"homeCellId";
 }
 - (void)makeGuideView{
     RAYNewFunctionGuideVC *vc = [[RAYNewFunctionGuideVC alloc]init];
-    vc.titles = @[@"新手任务: 首次转发即可获得积分奖励"];
+    vc.titles = @[@"温馨提示: 点击咨询查看咨询详情"];
     vc.frames = @[@"{{0,  140},{130,140}}"];
     
     [self presentViewController:vc animated:YES completion:nil];

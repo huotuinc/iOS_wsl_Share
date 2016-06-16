@@ -77,6 +77,7 @@ static BOOL isProduction = YES;
     
     
     
+    [self addAd];
     
     InitModel * initModel = [self AppInit:application];
     
@@ -86,6 +87,8 @@ static BOOL isProduction = YES;
         self.isflag = NO;
         
     }
+    
+    
     
     LWLog(@"%@",[initModel mj_keyValues]);
     
@@ -296,10 +299,15 @@ static BOOL isProduction = YES;
     
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application{
+
+- (void) addAd{
+    
     
     InitModel * model = (InitModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:InitModelCaches];
-    if (model.adimg.length && [model.loginStatus intValue]) {
+    
+    
+    LWLog(@"%lu",(unsigned long)model.adimg.length);
+    if (model.adimg.length) {// && [model.loginStatus intValue]
         
         UIImageView * ad = [[UIImageView alloc] initWithFrame:self.window.bounds];
         ad.userInteractionEnabled = YES;
@@ -341,17 +349,11 @@ static BOOL isProduction = YES;
             
         }];
         
-     
-        
-//        [ad sd_setImageWithURL:[NSURL URLWithString:model.adimg] completed:nil];
-        
-        
-        
         
     }
-    
-    
+
 }
+
 
 - (void)AdClick{
     [_adImage removeFromSuperview];

@@ -34,8 +34,10 @@
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
     parame[@"loginCode"] = userInfo.loginCode;
     parame[@"type"] = @(1);
+    [MBProgressHUD showMessage:nil];
     [UserLoginTool loginRequestGet:@"ranking" parame:parame success:^(id json) {
         LWLog(@"%@",json);
+        [MBProgressHUD hideHUD];
         if ([[json objectForKey:@"resultCode"] integerValue]== 1 && [[json objectForKey:@"status"] integerValue] == 1) {
             [TopTenModel mj_setupObjectClassInArray:^NSDictionary *{
                 return @{@"rankList":@"OtherTenModel"};
@@ -45,7 +47,9 @@
         }
         
         
-    } failure:nil];
+    } failure:^(NSError *error) {
+       [MBProgressHUD hideHUD];
+    }];
 }
 
 
@@ -68,7 +72,7 @@
     }else{
        
         TopTenOtherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"second" forIndexPath:indexPath];
-        cell.number.text = [NSString stringWithFormat:@"%d",indexPath.row];
+        cell.number.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
         OtherTenModel * model = [self.model.rankList objectAtIndex:indexPath.row-1];
         
         cell.date = model;

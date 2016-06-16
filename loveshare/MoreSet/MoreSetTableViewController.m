@@ -7,6 +7,7 @@
 //
 
 #import "MoreSetTableViewController.h"
+#import "LoginChangePasswdViewController.h"
 
 @interface MoreSetTableViewController ()
 
@@ -56,15 +57,18 @@
         self.imageCache.text = [NSString stringWithFormat:@"%@M",[NSString xiaoshudianweishudeal:([[SDImageCache sharedImageCache] getSize]) /1024.0/1024]];
         LWLog(@"xxx");
     }else if(indexPath.row == 2){
-#warning xxxx
-        BindDIngViewController * vc = (BindDIngViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"BindDIngViewController"];
+
+        
+        
+        LoginChangePasswdViewController * vc = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginChangePasswdViewController"];
+        vc.Islogin = YES;
         LWNavigationController * nav = [[LWNavigationController alloc] initWithRootViewController:vc];
         [self presentViewController:nav animated:YES completion:nil];
-//        [self.navigationController pushViewController:vc animated:YES];
+        
     }else if(indexPath.row == 3){
-        ChangePasswdViewController * vc = (ChangePasswdViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"ChangePasswdViewController"];
-        LWNavigationController * nav = [[LWNavigationController alloc] initWithRootViewController:vc];
-        [self presentViewController:nav animated:YES completion:nil];
+//        LoginChangePasswdViewController * vc = (LoginChangePasswdViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"LoginChangePasswdViewController"];
+//        LWNavigationController * nav = [[LWNavigationController alloc] initWithRootViewController:vc];
+//        [self presentViewController:nav animated:YES completion:nil];
     }
 }
 

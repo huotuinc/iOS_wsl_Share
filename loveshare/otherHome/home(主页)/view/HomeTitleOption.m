@@ -35,7 +35,8 @@
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor colorWithRed:234/255.0 green:234/255.0 blue:234/255.0 alpha:1];
+//        self.backgroundColor = [UIColor colorWithRed:234/255.0 green:234/255.0 blue:234/255.0 alpha:1];
+        self.backgroundColor = [UIColor whiteColor];
         [self setupTitlesView];
     }
     return self;
@@ -44,11 +45,11 @@
 
 - (void)setupTitlesView
 {
-    NSArray * dateArrays = @[@"综合排序",@"转发人数"];
+    NSArray * dateArrays = @[@"即使资讯",@"品牌专区"];
     // 标签栏内部的标签按钮
     NSUInteger count = dateArrays.count;
     CGFloat titleButtonH = self.xmg_height;
-    CGFloat titleButtonW = (ScreenWidth-60) / count;
+    CGFloat titleButtonW = (ScreenWidth) / count;
     for (int i = 0; i < count; i++) {
         // 创建
         HomeTitleButton *titleButton = [HomeTitleButton buttonWithType:UIButtonTypeCustom];

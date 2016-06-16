@@ -233,23 +233,23 @@
             }];
             break;
         }
+//        case 2:{
+//            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(2) forKey:@"option"];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
+//            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+//            [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+//            [root toggleDrawerSide:MMDrawerSideLeft animated:YES completion:^(BOOL finished) {
+//            }];
+//            break;
+//        }
         case 2:{
-            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(2) forKey:@"option"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
-            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
-            [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-            [root toggleDrawerSide:MMDrawerSideLeft animated:YES completion:^(BOOL finished) {
-            }];
-            break;
-        }
-        case 3:{
             NSDictionary * objc = [NSDictionary dictionaryWithObject:@(3) forKey:@"option"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
             MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
             [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
             break;
         }
-        case 4:{
+        case 3:{
             
             _aa.hidden = YES;
             NSDictionary * objc = [NSDictionary dictionaryWithObject:@(4) forKey:@"option"];
@@ -259,28 +259,28 @@
             [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
             break;
         }
-        case 5:{
+        case 4:{
             NSDictionary * objc = [NSDictionary dictionaryWithObject:@(5) forKey:@"option"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
             MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
             [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
             break;
         }
-        case 6:{
+        case 5:{
             NSDictionary * objc = [NSDictionary dictionaryWithObject:@(6) forKey:@"option"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
             MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
             [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
             break;
         }
-        case 7:{
+        case 6:{
             NSDictionary * objc = [NSDictionary dictionaryWithObject:@(7) forKey:@"option"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
             MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
             [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
             break;
         }
-        case 8:{
+        case 7:{
             NSDictionary * objc = [NSDictionary dictionaryWithObject:@(8) forKey:@"option"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
             MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;

@@ -84,7 +84,7 @@
     _CTL = CTL;
     [CTL addTarget:self action:@selector(ctlChange:) forControlEvents:UIControlEventValueChanged];
     [CTL insertSegmentWithTitle:@"架构" atIndex:0 animated:YES];
-    [CTL insertSegmentWithTitle:@"任务" atIndex:1 animated:YES];
+    [CTL insertSegmentWithTitle:@"资讯" atIndex:1 animated:YES];
     CTL.selectedSegmentIndex = 0;
     self.navigationItem.titleView= CTL;
     // Do any additional setup after loading the view.
@@ -181,7 +181,7 @@
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
     parame[@"level"] = @(0);
     parame[@"loginCode"] = userInfo.loginCode;
-    parame[@"pid"] = @(1);
+    parame[@"orid"] = @(0);
     parame[@"taskId"] = @(0);
     [MBProgressHUD showMessage:nil];
     [UserLoginTool loginRequestGet:@"UserOrganize" parame:parame success:^(id json) {

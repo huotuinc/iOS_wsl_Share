@@ -9,6 +9,9 @@
 #import "LoginViewController.h"
 #import "MD5Encryption.h"
 #import "RegisterViewController.h"
+#import "RAYNewFunctionGuideVC.h"
+#import "LoginChangePasswdViewController.h"
+
 @interface LoginViewController ()
 
 
@@ -50,12 +53,40 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-//    [self.phoneNumberText becomeFirstResponder];
+    
+    
+    NSString * phoneNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"localPhoneNumber"];
+    if (phoneNumber.length) {
+        self.phoneNumberText.text = phoneNumber;
+    }
+    
+   
+//    //判断是否为第一次进入
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    
+//    NSString *isFirstDatail = [defaults stringForKey:@"isFirstDatail"];
+//    if (![isFirstDatail isEqualToString:@"1"]){
+//        [defaults setObject:@"1" forKey:@"isFirstDatail"];
+//        [defaults synchronize];
+//        [self makeGuideView];
+//    }
 }
 
+//- (void)makeGuideView{
+//    RAYNewFunctionGuideVC *vc = [[RAYNewFunctionGuideVC alloc]init];
+//    vc.titles = @[@"分享: 点击分享按钮可以对你喜欢的文章进行分享文章进行分享"];
+//    //这个页面的.y传1000就行  内部已算好
+//    
+//    
+//    
+//    vc.frames = @[@"{{310, 10},{50,50}}"];
+//    
+//    [self presentViewController:vc animated:YES completion:nil];
+//    
+//}
+
 - (IBAction)forgetButton:(id)sender {
-    RegisterViewController * login = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"RegisterViewController"];
-    login.isForgerPasswd = YES;
+    LoginChangePasswdViewController * login = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginChangePasswdViewController"];
     [self.navigationController pushViewController:login animated:YES];
     LWLog(@"忘记密码");
 }
@@ -69,6 +100,9 @@
         [MBProgressHUD showError:@"密码为空"];
         return;
     }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:self.phoneNumberText.text forKey:@"localPhoneNumber"];
+    
     NSMutableDictionary* p = [NSMutableDictionary dictionary];
     p[@"userName"] = self.phoneNumberText.text;
     p[@"pwd"] = [MD5Encryption md5by32:self.passwdText.text];

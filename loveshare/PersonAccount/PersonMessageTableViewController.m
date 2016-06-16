@@ -91,6 +91,10 @@
 
 - (void)setInitDate{
     
+    
+    self.iconView.layer.cornerRadius = self.iconView.frame.size.width * 0.5;
+    self.iconView.layer.masksToBounds = YES;
+    
     __weak PersonMessageTableViewController * wself = self;
     
     UserModel *user = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
@@ -271,18 +275,18 @@
 //            [self.navigationController pushViewController:pro animated:YES];
 //        }
     }
-    if (indexPath.section == 2) {
-        if (indexPath.row == 0) { //职业
-            
-            NSString * path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-            NSFileManager * manger = [NSFileManager defaultManager];
-            [manger removeItemAtPath:path error:nil];
-            
-            ViewController *  vc = (ViewController * )[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"ViewController"];
-            [self presentViewController:vc animated:YES completion:nil];
-            
-        }
-    }
+//    if (indexPath.section == 2) {
+//        if (indexPath.row == 0) { //职业
+//            
+//            NSString * path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//            NSFileManager * manger = [NSFileManager defaultManager];
+//            [manger removeItemAtPath:path error:nil];
+//            
+//            ViewController *  vc = (ViewController * )[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"ViewController"];
+//            [self presentViewController:vc animated:YES completion:nil];
+//            
+//        }
+//    }
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
