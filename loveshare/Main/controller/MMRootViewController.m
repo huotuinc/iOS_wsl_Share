@@ -7,6 +7,7 @@
 //
 
 #import "MMRootViewController.h"
+#import "EnViewController.h"
 
 
 @interface MMRootViewController ()
@@ -26,9 +27,12 @@
     self.rightDrawerViewController = nil;
     
     
-    HomeListViewController * hone = [[HomeListViewController alloc] init];
-    self.centerViewController =[[LWNavigationController alloc] initWithRootViewController:hone];
+    EnViewController * ac  = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"EnViewController"];
     
+    
+//    HomeListViewController * hone = [[HomeListViewController alloc] init];
+//    self.centerViewController =[[LWNavigationController alloc] initWithRootViewController:hone];
+    self.centerViewController = ac;
     //设置手势范围
     [self setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [self setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
