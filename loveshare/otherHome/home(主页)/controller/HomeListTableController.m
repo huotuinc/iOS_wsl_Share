@@ -81,7 +81,7 @@
     
     self.storyID = 0;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(44, 0, 64, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(44, 0, 110, 0);
     
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     
@@ -207,9 +207,11 @@
     parame[@"taskStaus"] = @(taskStaus);
     parame[@"storeId"] = @(storeID);
     
+//    [MBProgressHUD showMessage:nil];
     [UserLoginTool loginRequestGet:@"TaskList" parame:parame success:^(NSDictionary *  json) {
         LWLog(@"%@",json);
         wself.pageIndex = [json[@"pageIndex"] integerValue];
+//        [MBProgressHUD hideHUD];
         if ([json[@"status"] integerValue]==1 && [json[@"resultCode"] integerValue] == 1) {
             NSArray * tasks  =  [NewTaskDataModel mj_objectArrayWithKeyValuesArray:json[@"resultData"][@"taskData"]];
             if (tasks.count > 0) {
@@ -231,7 +233,7 @@
         }
     }failure:^(NSError *error) {
         LWLog(@"%ld",(long)error.code);
-
+//        [MBProgressHUD hideHUD];
     }];
     
 }

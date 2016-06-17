@@ -15,9 +15,13 @@
 
 @property(nonatomic,strong)IBOutlet UIWebView * contentWebView;
 
-@property(nonatomic,strong) UIButton * ShareBtn;
 
-- (IBAction)shareBtnClick:(id)sender;
+
+
+
+@property (weak, nonatomic) IBOutlet UIButton *toppottn;
+
+
 
 
 @property(nonatomic,strong) NewShareModel * shareModel;
@@ -35,6 +39,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    
+    
     
     //判断是否为第一次进入
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -56,11 +63,12 @@
     vc.titles = @[@"温馨提示: 点击分享按钮可以对你喜欢的文章进行分享"];
     //这个页面的.y传1000就行  内部已算好
    
-    vc.frames = @[@"{{310, 10},{50,60}}"];
+    vc.frames = @[@"{{0, 1000},{350,100}}"];
     
     [self presentViewController:vc animated:YES completion:nil];
     
 }
+
 - (NewShareModel *)shareModel{
     if (_shareModel == nil) {
         _shareModel = [[NewShareModel alloc] init];
@@ -95,14 +103,12 @@
     [super viewDidLoad];
     
     
-    if (self.taskModel.flagShowSend) {
-        UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [backButton setImage:[UIImage imageNamed:@"home_title_right_share"] forState:UIControlStateNormal];
-        backButton.bounds = CGRectMake(0, 0, 30, 30);
-        _ShareBtn = backButton;
-        [backButton addTarget:self action:@selector(shareBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        self.navigationItem.rightBarButtonItem =  [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    }
+    self.toppottn.hidden = NO;
+    
+    
+    self.toppottn.layer.cornerRadius = 5;
+    self.toppottn.layer.masksToBounds = YES;
+    
     
     self.contentWebView.scalesPageToFit = YES;
     
@@ -111,8 +117,8 @@
     [self.contentWebView.scrollView setShowsHorizontalScrollIndicator:NO];
     [UIApplication sharedApplication].keyWindow.backgroundColor = [UIColor whiteColor];
     
-//    self.contentWebView.scrollView.contentInset =
-//    UIEdgeInsetsMake(40, 0, 40, 0);
+    self.contentWebView.scrollView.contentInset =
+    UIEdgeInsetsMake(0, 0, 40, 0);
     self.title = @"资讯详情";
     
     UIView * topView = [[UIView alloc] initWithFrame:CGRectMake(0, -40, ScreenWidth, 40)];
@@ -228,7 +234,7 @@
     }];
     
 }
-- (void)shareBtnClick:(UIButton*)sender {
+- (IBAction)shareBtnClick:(UIButton*)sender {
     
     
     LWLog(@"xxxx%@",[_shareModel mj_keyValues]);
@@ -279,5 +285,11 @@
     
 }
 
-
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    if(!self.taskModel.flagShowSend) {
+        
+        self.toppottn.hidden = NO;
+        
+    }
+}
 @end

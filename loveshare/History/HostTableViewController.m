@@ -11,7 +11,7 @@
 
 #import "BCPNChartView.h"
 
-@interface HostTableViewController ()
+@interface HostTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong) MJRefreshNormalHeader * head;
 @property(nonatomic,strong) MJRefreshAutoFooter * footer;
 
@@ -20,11 +20,32 @@
 
 @property(nonatomic, strong) BCPNChartView *bcChartView;
 
+
+@property(nonatomic, strong) UITableView * tableView;
+
+
+@property(nonatomic,strong) LinePoint  * dateLine;
+
+
 @end
 
 @implementation HostTableViewController
 
 
+- (void)setup{
+    
+    _dateLine = [[LinePoint alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight * 0.3+20)];
+//    _dateLine.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:_dateLine];
+    
+    UITableView * table = [[UITableView  alloc] initWithFrame:CGRectMake(0, ScreenHeight * 0.3+20, ScreenWidth, ScreenHeight * 0.7-20) style:UITableViewStyleGrouped];
+    _tableView = table;
+    table.dataSource = self;
+    table.delegate = self;
+    [self.view addSubview:table];
+    
+    
+}
 
 - (BCPNChartView *)bcChartView {
     if (_bcChartView == nil) {
@@ -55,10 +76,13 @@
     [super viewDidLoad];
     
     
+    [self setup];
+    
     [UIApplication sharedApplication].keyWindow.backgroundColor = [UIColor whiteColor];
     self.title = @"历史收益";
     self.tableView.tableHeaderView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT / 3);
 
+    self.tableView.userInteractionEnabled = NO;
     self.tableView.rowHeight = 167;
     self.tableView.userInteractionEnabled = YES;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -120,13 +144,19 @@
         if ([json[@"resultCode"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
             NSArray * array = [HistoryModel mj_objectArrayWithKeyValuesArray:json[@"resultData"][@"itemData"]];
             LWLog(@"%lu",(unsigned long)array.count);
+            wself.dateLine.max = [json[@"resultData"][@"maxScore"] longValue];
+//            wself.dateLine.min = [json[@"resultData"][@"minScore"] in];
+            wself.dateLine.totalCount = [json[@"resultData"][@"minScore"] longValue];
             if (array.count) {
                 [wself.dateArray removeAllObjects];
                 [wself.dateArray addObjectsFromArray:array];
                 [wself.head endRefreshing];
 //                [_bcChartView removeFromSuperview];
 //                _bcChartView = nil;
-                self.tableView.tableHeaderView = self.bcChartView;
+//                self.tableView.tableHeaderView = self.bcChartView;
+                
+                wself.dateLine.datas = wself.dateArray;
+            
                 [wself.tableView reloadData];
             }
             [wself.head endRefreshing];
@@ -162,6 +192,9 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    self.dateLine.index = indexPath;
     
     HostTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HostTableViewCell"];
     if (cell == nil) {

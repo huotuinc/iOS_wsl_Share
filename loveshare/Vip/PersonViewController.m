@@ -156,6 +156,8 @@
     
     self.headImage.layer.cornerRadius = 35;
     self.headImage.layer.masksToBounds = YES;
+    self.headImage.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.headImage.layer.borderWidth = 2;
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:self.model.logo] placeholderImage:nil];
     
     self.sssssss.text = self.xixi;
@@ -388,7 +390,7 @@
         TitleHead * view = [[[NSBundle mainBundle] loadNibNamed:@"TitleHead" owner:nil options:nil] lastObject];
         view.timeLable.text = time;
         LWLog(@"--------%d",model.browseAmount);
-        time = [NSString stringWithFormat:@" 浏览量: %d 总积分: %@ ",model.browseAmount,[NSString xiaoshudianweishudeal:[model.totalScore floatValue]]];
+        time = [NSString stringWithFormat:@" 浏览量: %d ",model.browseAmount];
         view.rightLable.text = time;
         return view;
     }

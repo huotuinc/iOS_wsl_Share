@@ -322,15 +322,32 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="640"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgv-F2-SLa">
+                                <rect key="frame" x="100" y="551" width="400" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="OTR-Ie-5zv"/>
+                                </constraints>
+                                <state key="normal" title="立即转发">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareBtnClick:" destination="Jas-TG-NgS" eventType="touchUpInside" id="7Rz-dc-AQS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="9uS-J2-GBZ" firstAttribute="top" secondItem="bgv-F2-SLa" secondAttribute="bottom" constant="5" id="3qs-qu-WDA"/>
                             <constraint firstItem="DN4-F5-Xp3" firstAttribute="top" secondItem="ZUQ-YE-MNS" secondAttribute="topMargin" id="9Sd-EZ-mmn"/>
                             <constraint firstItem="9uS-J2-GBZ" firstAttribute="top" secondItem="DN4-F5-Xp3" secondAttribute="bottom" constant="-40" id="Dre-l4-g3g"/>
                             <constraint firstAttribute="trailing" secondItem="DN4-F5-Xp3" secondAttribute="trailing" id="KL2-ee-2gK"/>
+                            <constraint firstItem="9uS-J2-GBZ" firstAttribute="top" secondItem="bgv-F2-SLa" secondAttribute="bottom" constant="5" id="MeC-RL-0yt"/>
                             <constraint firstItem="DN4-F5-Xp3" firstAttribute="top" secondItem="fJQ-Lj-luk" secondAttribute="bottom" id="Mqo-Nl-myQ"/>
                             <constraint firstItem="DN4-F5-Xp3" firstAttribute="top" secondItem="fJQ-Lj-luk" secondAttribute="bottom" id="NqB-sA-iZa"/>
+                            <constraint firstItem="bgv-F2-SLa" firstAttribute="width" secondItem="ZUQ-YE-MNS" secondAttribute="width" multiplier="2:3" id="Sz0-DA-LEG"/>
                             <constraint firstItem="DN4-F5-Xp3" firstAttribute="top" secondItem="ZUQ-YE-MNS" secondAttribute="top" id="Uaa-0Y-qsm"/>
+                            <constraint firstItem="bgv-F2-SLa" firstAttribute="centerX" secondItem="ZUQ-YE-MNS" secondAttribute="centerX" id="g0Q-8y-6RY"/>
                             <constraint firstItem="DN4-F5-Xp3" firstAttribute="top" secondItem="fJQ-Lj-luk" secondAttribute="bottom" id="jLi-yM-4Dz"/>
                             <constraint firstItem="DN4-F5-Xp3" firstAttribute="leading" secondItem="ZUQ-YE-MNS" secondAttribute="leading" id="n9g-wb-qI4"/>
                         </constraints>
@@ -340,11 +357,13 @@
                                 <exclude reference="NqB-sA-iZa"/>
                                 <exclude reference="Uaa-0Y-qsm"/>
                                 <exclude reference="jLi-yM-4Dz"/>
+                                <exclude reference="MeC-RL-0yt"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="contentWebView" destination="DN4-F5-Xp3" id="xni-T1-qul"/>
+                        <outlet property="toppottn" destination="bgv-F2-SLa" id="Cnc-BL-Rnr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Vf-zi-Pm2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2620,7 +2639,7 @@
         <image name="WeiXinIIconViewDefaule" width="300" height="30"/>
         <image name="jb" width="30" height="30"/>
         <image name="left" width="40" height="40"/>
-        <image name="login_bg_414x736" width="414" height="736"/>
+        <image name="login_bg_414x736" width="300" height="30"/>
         <image name="login_bg_bottom_414x736" width="828" height="1472"/>
         <image name="login_rgister_textfield_bg" width="3" height="3"/>
         <image name="my_change" width="20" height="20"/>

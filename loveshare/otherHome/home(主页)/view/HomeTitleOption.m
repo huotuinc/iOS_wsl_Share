@@ -45,7 +45,7 @@
 
 - (void)setupTitlesView
 {
-    NSArray * dateArrays = @[@"即使资讯",@"品牌专区"];
+    NSArray * dateArrays = @[@"即时资讯",@"往期资讯"];
     // 标签栏内部的标签按钮
     NSUInteger count = dateArrays.count;
     CGFloat titleButtonH = self.xmg_height;

@@ -88,6 +88,8 @@
 #import "LoginViewController.h"
 #import "AdViewController.h"
 #import "SetNewPasswdViewController.h"
+#import "LinePoint.h"
+
 //#import "UITextField+XMGExtension.h"
 //#import "XMGLoginRegisterViewController.h"
 

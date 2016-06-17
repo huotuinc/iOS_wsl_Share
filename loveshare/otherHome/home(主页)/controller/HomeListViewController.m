@@ -140,6 +140,34 @@ static NSString * homeCellidentify = @"homeCellId";
     return _searchButton;
 }
 
+
+- (UISegmentedControl *)segmentedControl {
+    if (_segmentedControl == nil) {
+        _segmentedControl = [[UISegmentedControl alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+        [_segmentedControl addTarget:self action:@selector(segmentedControlChange:) forControlEvents:UIControlEventValueChanged];
+        //修改字体的默认颜色与选中颜色
+        _segmentedControl.layer.borderWidth = 0.0;
+        _segmentedControl.tintColor = [UIColor whiteColor];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:225.0/255 green:128/255.0 blue:0/255.0 alpha:1.000],UITextAttributeTextColor,  [UIFont systemFontOfSize:16.f],UITextAttributeFont ,[UIColor whiteColor],UITextAttributeTextShadowColor ,nil];
+        [_segmentedControl setTitleTextAttributes:dic forState:UIControlStateSelected];
+//        [_segmentedControl setTitleTextAttributes:dic forState:UIControlStateSelected];
+        [_segmentedControl insertSegmentWithTitle:@"及时任务" atIndex:0 animated:YES];
+        [_segmentedControl insertSegmentWithTitle:@"企业专区" atIndex:1 animated:YES];
+        _segmentedControl.selectedSegmentIndex = 0;
+    }
+    return _segmentedControl;
+}
+
+- (void)segmentedControlChange:(UISegmentedControl *)sgc {
+    
+    // 让UIScrollView滚动到对应位置
+    CGPoint offset = self.scrollView.contentOffset;
+    offset.x = sgc.selectedSegmentIndex * self.scrollView.xmg_width;
+    [self.scrollView setContentOffset:offset animated:YES];
+    
+}
+
+
 - (XYPopView *)popView {
     if (_popView == nil) {
         _popView = [[XYPopView alloc] initWXYPopViewWithImage:nil andTitle:nil andSuperView:self.otherView];
@@ -165,7 +193,9 @@ static NSString * homeCellidentify = @"homeCellId";
 
 
 - (void)setUpInit{
-    self.navigationItem.title = @"资讯";
+    
+    
+    self.navigationItem.titleView = self.segmentedControl;
 //    UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
     self.titleHeadOption.delegate  = self;
@@ -216,7 +246,7 @@ static NSString * homeCellidentify = @"homeCellId";
     [self setupScrollView];
     
     
-    [self setupTitlesView];
+//    [self setupTitlesView];
     
     
     
@@ -329,44 +359,45 @@ static NSString * homeCellidentify = @"homeCellId";
     if([note.userInfo[@"option"] integerValue] == 0){//首页
         [self.navigationController popToRootViewControllerAnimated:NO];
         
-    }else if([note.userInfo[@"option"] integerValue] == 1){//历史浏览量
+    }else if([note.userInfo[@"option"] integerValue] == 1){//历史浏览
        
-        HostTableViewController * vc = [[HostTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        HostTableViewController * vc = [[HostTableViewController alloc] init];
         [self.navigationController pushViewController:vc animated:NO];
         
         
-    }else if([note.userInfo[@"option"] integerValue] == 2){//新手任务
-        JiFenToMallController * vc = (JiFenToMallController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"JiFenToMallController"];
-        [self.navigationController pushViewController:vc animated:NO];
+    }else if([note.userInfo[@"option"] integerValue] == 2){//排行榜
         
-    }else if([note.userInfo[@"option"] integerValue] == 3){//进入商城
-        
-#warning 缺商城账号选中
-       HomeViewController * vc =  (HomeViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"HomeViewController"];
-      [self.navigationController pushViewController:vc animated:NO];
-    }
-//        else if([note.userInfo[@"option"] integerValue] == 4){//最新预告
-//
-//        TodayForesController * vc =  (TodayForesController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"TodayForesController"];
-//        [self.navigationController pushViewController:vc animated:NO];
-//        
-//    }
-    else if([note.userInfo[@"option"] integerValue] == 4){//师徒联盟
-        MasterAndTudiViewController * vc = (MasterAndTudiViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"MasterAndTudiViewController"];
-        [self.navigationController pushViewController:vc animated:NO];
-    }else if([note.userInfo[@"option"] integerValue] == 5){//排行榜
         TopTenListTableViewController * topten = [[TopTenListTableViewController alloc] init];
         [self.navigationController pushViewController:topten animated:NO];
         
-    }else if([note.userInfo[@"option"] integerValue] == 6){//更多设置
+        
+        
+        
+    }else if([note.userInfo[@"option"] integerValue] == 3){//本周任务
+        
+        NSLog(@"本周人物");
+    }else if([note.userInfo[@"option"] integerValue] == 4){//师徒联盟
+        MasterAndTudiViewController * vc = (MasterAndTudiViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"MasterAndTudiViewController"];
+        [self.navigationController pushViewController:vc animated:NO];
+    }else if([note.userInfo[@"option"] integerValue] == 5){//内购商城
+        HomeViewController * vc =  (HomeViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"HomeViewController"];
+        [self.navigationController pushViewController:vc animated:NO];
+        
+    }else if([note.userInfo[@"option"] integerValue] == 6){//监督管理
+        
+        UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+        if (userInfo.isSuper) {
+            VipAccountViewController * vip = [[VipAccountViewController alloc] initWithStyle:UITableViewStylePlain];
+            [self.navigationController pushViewController:vip animated:NO];
+        }else{
+            MoreSetTableViewController * vc = (MoreSetTableViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"MoreSetTableViewController"];
+            [self.navigationController pushViewController:vc animated:NO];
+        }
+    }else if([note.userInfo[@"option"] integerValue] == 7){//更多设置
         MoreSetTableViewController * vc = (MoreSetTableViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"MoreSetTableViewController"];
         [self.navigationController pushViewController:vc animated:NO];
         
-    }else if([note.userInfo[@"option"] integerValue] == 7){
-        VipAccountViewController * vip = [[VipAccountViewController alloc] initWithStyle:UITableViewStylePlain];
-        [self.navigationController pushViewController:vip animated:NO];
-        
-    }else{
+    }else if([note.userInfo[@"option"] integerValue] == 100){
         PersonMessageTableViewController * pers = (PersonMessageTableViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"PersonMessageTableViewController"];
         [self.navigationController pushViewController:pers animated:NO];
     }

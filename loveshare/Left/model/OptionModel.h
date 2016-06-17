@@ -16,5 +16,5 @@
 
 
 
-+ (NSArray *)OptionModelBringBackArray;
++ (NSMutableArray *)OptionModelBringBackArray;
 @end

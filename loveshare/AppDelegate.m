@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "LBLaunchImageAdView.h"
 
 @interface AppDelegate ()<WXApiDelegate>
 
@@ -65,20 +66,11 @@ static BOOL isProduction = YES;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    
-     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;;
-    
-    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;;
     self.TodayPredictingNumber = [NSMutableDictionary dictionaryWithObject:@(0) forKey:@"today"];
-    
     [JPUSHService setupWithOption:launchOptions appKey:JPushAppKey
                           channel:channel apsForProduction:isProduction];
-    
-    
-    
     [self addAd];
-    
     InitModel * initModel = [self AppInit:application];
     
     if ([self isFirstLoad]) {
@@ -87,16 +79,12 @@ static BOOL isProduction = YES;
         self.isflag = NO;
         
     }
-    
-    
-    
     LWLog(@"%@",[initModel mj_keyValues]);
-    
     if (initModel) {
         if (![initModel.loginStatus intValue]) {//没登入
             [self setUp:initModel];
         }else{//登入
-            [self SetupLoginIn];
+            [self SetupLoginIn:initModel];
         }
     }else{
         [self setUp:initModel];
@@ -109,12 +97,11 @@ static BOOL isProduction = YES;
 - (void)setupInitNew:(InitModel *) model{
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
-
     UINavigationController * nav = [[UINavigationController alloc] init];
     self.window.rootViewController = nav;
-    
-    
 }
+
+
 
 /**
  *  1、程序启动控制器的选择
@@ -125,25 +112,40 @@ static BOOL isProduction = YES;
     [UserLoginTool LoginModelWriteToShaHe:model andFileName:InitModelCaches];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
-    UIStoryboard* story = [UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
-    LoginViewController * login = [story instantiateViewControllerWithIdentifier:@"LoginViewController"];
-//    XMGLoginRegisterViewController * vc = [[XMGLoginRegisterViewController alloc] init];
-    LWNavigationController * nac = [[LWNavigationController alloc] initWithRootViewController:login];
-    
-//    ViewController * vc = [story instantiateViewControllerWithIdentifier:@"ViewController"];
-    self.window.rootViewController = nac;
+    if (self.isflag) {
+        LWNewFeatureController * new = [[LWNewFeatureController alloc] init];
+        self.window.rootViewController = new;
+        [self.window makeKeyAndVisible];
+    }else{
+        UIStoryboard* story = [UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
+        LoginViewController * login = [story instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        LWNavigationController * nac = [[LWNavigationController alloc] initWithRootViewController:login];
+        self.window.rootViewController = nac;
+        
+        LWLog(@"%@",model.adimg);
+        if(model.adimg.length){
+            [self addAd];
+        }
+        [self.window makeKeyAndVisible];
+    }
 }
 
 
 /**
  *  2、程序启动控制器的选择
  */
-- (void)SetupLoginIn{
+- (void)SetupLoginIn:(InitModel *) model{
     MMRootViewController * root = [[MMRootViewController alloc] init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.window makeKeyAndVisible];
     self.window.rootViewController = root;
+    [self.window makeKeyAndVisible];
+    
+    LWLog(@"%@",model.adimg);
+    if(model.adimg.length){
+//        [self addAD:model.adimg andDetailUrl:model.adclick];
+        [self addAd];
+        
+    }
 }
 
 
@@ -217,7 +219,7 @@ static BOOL isProduction = YES;
     }
     
     //判断登陆
-    self.isHaveLogin = model.loginStatus;
+    self.isHaveLogin = [model.loginStatus boolValue];
     
     if ([model.loginStatus integerValue]) {//获取支付参数
         NSMutableDictionary * parame = [NSMutableDictionary dictionary];
@@ -273,7 +275,6 @@ static BOOL isProduction = YES;
     
     LWLog(@"%@",userInfo);
     if ([[userInfo allKeys] containsObject:@"type"]) {
-        
         LWLog(@"xxx");
         NSInteger a = [userInfo[@"type"] integerValue] + 1;
         [self.TodayPredictingNumber  setValue:@(a) forKey:@"today"];
@@ -291,8 +292,6 @@ static BOOL isProduction = YES;
         NSInteger a = [userInfo[@"type"] integerValue] + 1;
         
         [self.TodayPredictingNumber setValue:[NSString stringWithFormat:@"%ld",(long)a] forKey:@"today"];
-        
-//        [self.TodayPredictingNumber setValue:@(a) forKey:@"type"];
         LWLog(@"%@",self.TodayPredictingNumber);
     }
      completionHandler(UIBackgroundFetchResultNewData);
@@ -301,18 +300,29 @@ static BOOL isProduction = YES;
 
 
 - (void) addAd{
-    
-    
     InitModel * model = (InitModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:InitModelCaches];
-    
-    
     LWLog(@"%lu",(unsigned long)model.adimg.length);
     if (model.adimg.length) {// && [model.loginStatus intValue]
-        
+        //获取启动图片
+        CGSize viewSize = self.window.bounds.size;
+        //横屏请设置成 @"Landscape"
+        NSString *viewOrientation = @"Portrait";
+        NSString *launchImageName = nil;
+        NSArray* imagesDict = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
+        for (NSDictionary* dict in imagesDict)
+        {
+            CGSize imageSize = CGSizeFromString(dict[@"UILaunchImageSize"]);
+            if (CGSizeEqualToSize(imageSize, viewSize) && [viewOrientation isEqualToString:dict[@"UILaunchImageOrientation"]])
+            {
+                launchImageName = dict[@"UILaunchImageName"];
+            }
+            
+        }
+        LWLog(@"%@",launchImageName);
         UIImageView * ad = [[UIImageView alloc] initWithFrame:self.window.bounds];
         ad.userInteractionEnabled = YES;
         [ad addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(AdClick)]];
-        [ad setImage:[UIImage imageNamed:@"LocalADImage"]];
+        [ad setImage:[UIImage imageNamed:launchImageName]];
         ad.contentMode = UIViewContentModeScaleAspectFit;
         [[UIApplication sharedApplication].keyWindow addSubview:ad];
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -322,20 +332,17 @@ static BOOL isProduction = YES;
         _adImage = ad;
         btn.frame = CGRectMake(ScreenWidth - 80, 20, 50, 30);
         btn.alpha = 0.7;
+        btn.hidden = YES;
         [btn setBackgroundColor:[UIColor blackColor]];
         [btn addTarget:self action:@selector(JumpAd) forControlEvents:UIControlEventTouchUpInside];
         [btn setTitle:@"跳过广告" forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:10];
         [[UIApplication sharedApplication].keyWindow addSubview:btn];
-        
         SDWebImageManager * manager = [SDWebImageManager sharedManager];
-        
         [manager downloadImageWithURL:[NSURL URLWithString:model.adimg] options:SDWebImageRefreshCached progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-            
-            
-        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             [ad setImage:image];
-            
+            btn.hidden = NO;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [UIView animateWithDuration:1.0 animations:^{
                     ad.alpha = 0.0;
@@ -358,13 +365,11 @@ static BOOL isProduction = YES;
 - (void)AdClick{
     [_adImage removeFromSuperview];
     [_adButton removeFromSuperview];
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"AdClick" object:self];
     
 }
 
 -(void)JumpAd{
-    
     [_adImage removeFromSuperview];
     [_adButton removeFromSuperview];
     

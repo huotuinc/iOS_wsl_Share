@@ -150,6 +150,12 @@
 		EFAF47181C97B25600D5A5C4 /* DepartmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFAF47171C97B25600D5A5C4 /* DepartmentViewController.m */; };
 		EFAF471B1C97D96E00D5A5C4 /* JiTuanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EFAF471A1C97D96E00D5A5C4 /* JiTuanModel.m */; };
 		EFBD4F971D124DF700EFEEC8 /* EnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFBD4F961D124DF700EFEEC8 /* EnViewController.m */; };
+		EFBD4F9B1D1285F800EFEEC8 /* LinePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = EFBD4F9A1D1285F800EFEEC8 /* LinePoint.m */; };
+		EFBD4F9E1D1287E600EFEEC8 /* PLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFBD4F9D1D1287E600EFEEC8 /* PLineView.m */; };
+		EFBD4FB91D12ABC700EFEEC8 /* LBLaunchImageAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFBD4FB81D12ABC700EFEEC8 /* LBLaunchImageAdView.m */; };
+		EFBD4FBC1D13A9C500EFEEC8 /* EnViewControllerInCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFBD4FBB1D13A9C500EFEEC8 /* EnViewControllerInCollectionViewController.m */; };
+		EFBD4FC11D13DD3D00EFEEC8 /* EnViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFBD4FBF1D13DD3D00EFEEC8 /* EnViewCollectionViewCell.m */; };
+		EFBD4FC21D13DD3D00EFEEC8 /* EnViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFBD4FC01D13DD3D00EFEEC8 /* EnViewCollectionViewCell.xib */; };
 		EFC24B491D01730100F4A796 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFC24B481D01730100F4A796 /* Login.storyboard */; };
 		EFC24B4C1D01837500F4A796 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC24B4B1D01837500F4A796 /* RegisterViewController.m */; };
 		EFC253E21D0E9F4B00E33E24 /* AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC253E11D0E9F4B00E33E24 /* AdViewController.m */; };
@@ -484,6 +490,17 @@
 		EFAF471A1C97D96E00D5A5C4 /* JiTuanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiTuanModel.m; sourceTree = "<group>"; };
 		EFBD4F951D124DF700EFEEC8 /* EnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnViewController.h; sourceTree = "<group>"; };
 		EFBD4F961D124DF700EFEEC8 /* EnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnViewController.m; sourceTree = "<group>"; };
+		EFBD4F991D1285F800EFEEC8 /* LinePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinePoint.h; sourceTree = "<group>"; };
+		EFBD4F9A1D1285F800EFEEC8 /* LinePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinePoint.m; sourceTree = "<group>"; };
+		EFBD4F9C1D1287E600EFEEC8 /* PLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLineView.h; sourceTree = "<group>"; };
+		EFBD4F9D1D1287E600EFEEC8 /* PLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLineView.m; sourceTree = "<group>"; };
+		EFBD4FB71D12ABC700EFEEC8 /* LBLaunchImageAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBLaunchImageAdView.h; sourceTree = "<group>"; };
+		EFBD4FB81D12ABC700EFEEC8 /* LBLaunchImageAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBLaunchImageAdView.m; sourceTree = "<group>"; };
+		EFBD4FBA1D13A9C500EFEEC8 /* EnViewControllerInCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnViewControllerInCollectionViewController.h; sourceTree = "<group>"; };
+		EFBD4FBB1D13A9C500EFEEC8 /* EnViewControllerInCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnViewControllerInCollectionViewController.m; sourceTree = "<group>"; };
+		EFBD4FBE1D13DD3D00EFEEC8 /* EnViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnViewCollectionViewCell.h; sourceTree = "<group>"; };
+		EFBD4FBF1D13DD3D00EFEEC8 /* EnViewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnViewCollectionViewCell.m; sourceTree = "<group>"; };
+		EFBD4FC01D13DD3D00EFEEC8 /* EnViewCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnViewCollectionViewCell.xib; sourceTree = "<group>"; };
 		EFC24B481D01730100F4A796 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		EFC24B4A1D01837500F4A796 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		EFC24B4B1D01837500F4A796 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
@@ -669,6 +686,7 @@
 		EF15C96C1C99047200ABD2F6 /* History */ = {
 			isa = PBXGroup;
 			children = (
+				EFBD4F981D1285DE00EFEEC8 /* lineView */,
 				EF15C96D1C9906C700ABD2F6 /* HostTableViewController.h */,
 				EF15C96E1C9906C700ABD2F6 /* HostTableViewController.m */,
 				EF15C9701C9907DA00ABD2F6 /* HostTableViewCell.h */,
@@ -1285,11 +1303,44 @@
 		EFBD4F941D124C1E00EFEEC8 /* enterprise(企业专区) */ = {
 			isa = PBXGroup;
 			children = (
+				EFBD4FBD1D13C0F100EFEEC8 /* view */,
 				EFBD4F951D124DF700EFEEC8 /* EnViewController.h */,
 				EFBD4F961D124DF700EFEEC8 /* EnViewController.m */,
+				EFBD4FBA1D13A9C500EFEEC8 /* EnViewControllerInCollectionViewController.h */,
+				EFBD4FBB1D13A9C500EFEEC8 /* EnViewControllerInCollectionViewController.m */,
 			);
 			name = "enterprise(企业专区)";
 			path = enterprise;
+			sourceTree = "<group>";
+		};
+		EFBD4F981D1285DE00EFEEC8 /* lineView */ = {
+			isa = PBXGroup;
+			children = (
+				EFBD4F991D1285F800EFEEC8 /* LinePoint.h */,
+				EFBD4F9A1D1285F800EFEEC8 /* LinePoint.m */,
+				EFBD4F9C1D1287E600EFEEC8 /* PLineView.h */,
+				EFBD4F9D1D1287E600EFEEC8 /* PLineView.m */,
+			);
+			name = lineView;
+			sourceTree = "<group>";
+		};
+		EFBD4FB61D12ABC700EFEEC8 /* LBLaunchImageAd */ = {
+			isa = PBXGroup;
+			children = (
+				EFBD4FB71D12ABC700EFEEC8 /* LBLaunchImageAdView.h */,
+				EFBD4FB81D12ABC700EFEEC8 /* LBLaunchImageAdView.m */,
+			);
+			path = LBLaunchImageAd;
+			sourceTree = "<group>";
+		};
+		EFBD4FBD1D13C0F100EFEEC8 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				EFBD4FBE1D13DD3D00EFEEC8 /* EnViewCollectionViewCell.h */,
+				EFBD4FBF1D13DD3D00EFEEC8 /* EnViewCollectionViewCell.m */,
+				EFBD4FC01D13DD3D00EFEEC8 /* EnViewCollectionViewCell.xib */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 		EFC253DF1D0E9F3600E33E24 /* ad */ = {
@@ -1507,6 +1558,7 @@
 		F202DAC11CD9988E0022E71F /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				EFBD4FB61D12ABC700EFEEC8 /* LBLaunchImageAd */,
 				F28CC0711CDB799300F4B72E /* XYPopView */,
 				F2AAA2151CDAD9C3005709FE /* WBGuide */,
 			);
@@ -1658,6 +1710,7 @@
 				EFD8C8C31D069F1F007922D6 /* TopFitTableViewCell.xib in Resources */,
 				EF3636A01C918EE5006AD6F1 /* MidTabelViewCell.xib in Resources */,
 				EFF072931C8939F000150FA2 /* Assets.xcassets in Resources */,
+				EFBD4FC21D13DD3D00EFEEC8 /* EnViewCollectionViewCell.xib in Resources */,
 				EFC253F91D0EAA6600E33E24 /* ShareSDKUI.bundle in Resources */,
 				EF5A1EF71C8D7272002035FC /* ConversionCell.xib in Resources */,
 				EF5A1EF91C8D7272002035FC /* HomeCell.xib in Resources */,
@@ -1821,6 +1874,7 @@
 				EF6F97771C89755200D760EC /* AFNetworkReachabilityManager.m in Sources */,
 				EF5A1EF61C8D7272002035FC /* ConversionCell.m in Sources */,
 				EF5A1EFA1C8D7272002035FC /* optionView.m in Sources */,
+				EFBD4F9E1D1287E600EFEEC8 /* PLineView.m in Sources */,
 				EF1B8A791C89557D003D230A /* NSString+EXTERN.m in Sources */,
 				EF3877C61C8FCC7E008279BD /* Base64Util.m in Sources */,
 				F2996D2A1CDC3BD300680725 /* BCPNChartView.m in Sources */,
@@ -1842,6 +1896,7 @@
 				EF1B8A7D1C89557D003D230A /* UITableView+CJ.m in Sources */,
 				EF36369F1C918EE5006AD6F1 /* MidTabelViewCell.m in Sources */,
 				EFEA712C1D1127A900629F8C /* LoginChangePasswdViewController.m in Sources */,
+				EFBD4F9B1D1285F800EFEEC8 /* LinePoint.m in Sources */,
 				EFD8C8CE1D06A546007922D6 /* TopTenModel.m in Sources */,
 				EFAF471B1C97D96E00D5A5C4 /* JiTuanModel.m in Sources */,
 				EF3877AC1C8FB7B1008279BD /* JiFenToMallController.m in Sources */,
@@ -1865,6 +1920,7 @@
 				EF1B8A781C89557D003D230A /* NSDictionary+EXTERN.m in Sources */,
 				EF3877CB1C8FD8CC008279BD /* NSString+Encryption.m in Sources */,
 				EF5A1EF41C8D7272002035FC /* BPCell.m in Sources */,
+				EFBD4FB91D12ABC700EFEEC8 /* LBLaunchImageAdView.m in Sources */,
 				EF3636A91C918FE2006AD6F1 /* ApiXml.mm in Sources */,
 				F2748EA91CD21C10003C99CD /* DepartmentTableViewCell.m in Sources */,
 				EF6F97861C89755200D760EC /* UIWebView+AFNetworking.m in Sources */,
@@ -1877,6 +1933,7 @@
 				EF1B8A7A1C89557D003D230A /* UIButton+CountDown.m in Sources */,
 				EF3636871C91539B006AD6F1 /* MoreSetTableViewController.m in Sources */,
 				EF6F977F1C89755200D760EC /* AFImageDownloader.m in Sources */,
+				EFBD4FC11D13DD3D00EFEEC8 /* EnViewCollectionViewCell.m in Sources */,
 				EFAF47181C97B25600D5A5C4 /* DepartmentViewController.m in Sources */,
 				EF907CBB1CEABAA2007884A8 /* HomeTitleOption.m in Sources */,
 				EF907CB81CEAB816007884A8 /* LiuXSegmentView.m in Sources */,
@@ -1888,6 +1945,7 @@
 				EF5A1EF21C8D7272002035FC /* RequestTasks.m in Sources */,
 				EF3636751C9046A3006AD6F1 /* TwoOption.m in Sources */,
 				EFFE36481CA01FE2000EA32D /* LeftTableViewCell.m in Sources */,
+				EFBD4FBC1D13A9C500EFEEC8 /* EnViewControllerInCollectionViewController.m in Sources */,
 				EF5A1EF01C8D7272002035FC /* TaskGrouoModel.m in Sources */,
 				F28CC0771CDB799300F4B72E /* BCCollectionViewCell.m in Sources */,
 				EF3877DA1C8FFAFE008279BD /* SexController.m in Sources */,
