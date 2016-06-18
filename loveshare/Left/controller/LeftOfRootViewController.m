@@ -12,6 +12,8 @@
 #import <UIViewController+MMDrawerController.h>
 @interface LeftOfRootViewController ()<UITableViewDelegate, UITableViewDataSource>
 
+/**等级*/
+@property (weak, nonatomic) IBOutlet UILabel *leveLable;
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImage;
@@ -54,6 +56,10 @@
 
 - (void)setup{
     self.navigationController.navigationBarHidden = YES;
+    
+    self.leveLable.layer.cornerRadius = 5;
+    self.leveLable.layer.masksToBounds = YES;
+    
     self.headImage.layer.cornerRadius = self.headImage.frame.size.height * 0.5;
     self.headImage.layer.masksToBounds = YES;
     self.headImage.layer.borderWidth = 2;
@@ -123,7 +129,7 @@
         LWLog(@"%@",json);
         if ([json[@"status"] integerValue]==1 && [json[@"resultCode"] integerValue] == 1) {
             _watchCounts = json[@"resultData"][@"count"];
-            _labelWatch.text = [NSString stringWithFormat:@"今日浏览量:%@次",_watchCounts];
+            _labelWatch.text = [NSString stringWithFormat:@"今日浏览量 : %@",_watchCounts];
 
         }
         LWLog(@"%@",json[@"description"]);

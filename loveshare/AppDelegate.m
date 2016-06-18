@@ -66,7 +66,7 @@ static BOOL isProduction = YES;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;;
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;;
     self.TodayPredictingNumber = [NSMutableDictionary dictionaryWithObject:@(0) forKey:@"today"];
     [JPUSHService setupWithOption:launchOptions appKey:JPushAppKey
                           channel:channel apsForProduction:isProduction];
@@ -259,7 +259,19 @@ static BOOL isProduction = YES;
     NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     NSString * myDeviceToken = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSLog(@"%@",myDeviceToken);
-    [JPUSHService registerDeviceToken:deviceToken];
+    if (myDeviceToken.length) {
+        
+        UserModel * usermodel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+        NSMutableDictionary * parame = [NSMutableDictionary dictionary];
+        parame[@"loginCode"] = usermodel.loginCode;
+        parame[@"type"] = @"0";
+        parame[@"token"] = myDeviceToken;
+        //获取支付参数
+        [UserLoginTool loginRequestGet:@"AddDeviceToken" parame:parame success:^(id json) {
+            LWLog(@"%@",json);
+        } failure:nil];
+        [JPUSHService registerDeviceToken:deviceToken];
+    }
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{

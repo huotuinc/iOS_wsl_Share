@@ -22,6 +22,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.number.layer.cornerRadius = self.number.frame.size.width * 0.5;
+    self.number.layer.masksToBounds = YES;
     // Initialization code
 }
 

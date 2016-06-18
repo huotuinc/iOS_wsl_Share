@@ -105,7 +105,7 @@
 @property(nonatomic,strong) MJRefreshGifHeader * head;
 @property(nonatomic,strong) MJRefreshAutoFooter * footer;
 
-@property(nonatomic,strong) UISegmentedControl * segmentedControl;
+//@property(nonatomic,strong) UISegmentedControl * segmentedControl;
 
 @property(nonatomic,strong) UIButton * searchButton;
 
@@ -140,23 +140,23 @@ static NSString * homeCellidentify = @"homeCellId";
     return _searchButton;
 }
 
-
-- (UISegmentedControl *)segmentedControl {
-    if (_segmentedControl == nil) {
-        _segmentedControl = [[UISegmentedControl alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
-        [_segmentedControl addTarget:self action:@selector(segmentedControlChange:) forControlEvents:UIControlEventValueChanged];
-        //修改字体的默认颜色与选中颜色
-        _segmentedControl.layer.borderWidth = 0.0;
-        _segmentedControl.tintColor = [UIColor whiteColor];
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:225.0/255 green:128/255.0 blue:0/255.0 alpha:1.000],UITextAttributeTextColor,  [UIFont systemFontOfSize:16.f],UITextAttributeFont ,[UIColor whiteColor],UITextAttributeTextShadowColor ,nil];
-        [_segmentedControl setTitleTextAttributes:dic forState:UIControlStateSelected];
+//
+//- (UISegmentedControl *)segmentedControl {
+//    if (_segmentedControl == nil) {
+//        _segmentedControl = [[UISegmentedControl alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+//        [_segmentedControl addTarget:self action:@selector(segmentedControlChange:) forControlEvents:UIControlEventValueChanged];
+//        //修改字体的默认颜色与选中颜色
+//        _segmentedControl.layer.borderWidth = 0.0;
+//        _segmentedControl.tintColor = [UIColor whiteColor];
+//        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:225.0/255 green:128/255.0 blue:0/255.0 alpha:1.000],UITextAttributeTextColor,  [UIFont systemFontOfSize:16.f],UITextAttributeFont ,[UIColor whiteColor],UITextAttributeTextShadowColor ,nil];
 //        [_segmentedControl setTitleTextAttributes:dic forState:UIControlStateSelected];
-        [_segmentedControl insertSegmentWithTitle:@"及时任务" atIndex:0 animated:YES];
-        [_segmentedControl insertSegmentWithTitle:@"企业专区" atIndex:1 animated:YES];
-        _segmentedControl.selectedSegmentIndex = 0;
-    }
-    return _segmentedControl;
-}
+////        [_segmentedControl setTitleTextAttributes:dic forState:UIControlStateSelected];
+//        [_segmentedControl insertSegmentWithTitle:@"及时任务" atIndex:0 animated:YES];
+//        [_segmentedControl insertSegmentWithTitle:@"企业专区" atIndex:1 animated:YES];
+//        _segmentedControl.selectedSegmentIndex = 0;
+//    }
+//    return _segmentedControl;
+//}
 
 - (void)segmentedControlChange:(UISegmentedControl *)sgc {
     
@@ -195,7 +195,9 @@ static NSString * homeCellidentify = @"homeCellId";
 - (void)setUpInit{
     
     
-    self.navigationItem.titleView = self.segmentedControl;
+    [self.navigationController.navigationBar  setBarTintColor:[UIColor colorWithRed:255/255.0 green:78/255.0 blue:0 alpha:1]];
+    
+    self.title = @"资讯动态";
 //    UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
     self.titleHeadOption.delegate  = self;
@@ -238,6 +240,7 @@ static NSString * homeCellidentify = @"homeCellId";
     [super viewDidLoad];
     
     
+    
     [self setupChildViewControllers];
  
     
@@ -246,7 +249,7 @@ static NSString * homeCellidentify = @"homeCellId";
     [self setupScrollView];
     
     
-//    [self setupTitlesView];
+    [self setupTitlesView];
     
     
     

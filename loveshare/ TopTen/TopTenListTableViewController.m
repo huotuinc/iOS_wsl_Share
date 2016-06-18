@@ -24,7 +24,7 @@
     
     self.title = @"累计浏览排行榜";
     
-    
+//    self.tableView.userInteractionEnabled = NO;
     self.tableView.rowHeight = 60;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TopFitTableViewCell" bundle:nil]  forCellReuseIdentifier:@"first"];
@@ -68,10 +68,21 @@
         
         TopFitTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"first" forIndexPath:indexPath];
         cell.date = self.model.myRank;
+        cell.userInteractionEnabled = NO;
         return cell;
     }else{
-       
         TopTenOtherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"second" forIndexPath:indexPath];
+        
+        cell.userInteractionEnabled = NO;
+        if (indexPath.row < 4) {
+            
+            cell.number.backgroundColor = [UIColor colorWithRed:255/255.0 green:78/255.0 blue:0 alpha:1];
+            cell.number.textColor = [UIColor whiteColor];
+        }else{
+            cell.number.backgroundColor = [UIColor whiteColor];
+            cell.number.textColor = [UIColor lightGrayColor];
+        }
+        
         cell.number.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
         OtherTenModel * model = [self.model.rankList objectAtIndex:indexPath.row-1];
         

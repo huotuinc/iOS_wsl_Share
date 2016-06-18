@@ -15,8 +15,10 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        
+        
         [self setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        [self setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
+        [self setTitleColor:[UIColor colorWithRed:255/255.0 green:78/255.0 blue:0 alpha:1] forState:UIControlStateSelected];
         self.titleLabel.font = [UIFont systemFontOfSize:14];
         self.backgroundColor = [UIColor clearColor];
     }

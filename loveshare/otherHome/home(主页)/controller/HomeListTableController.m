@@ -81,7 +81,7 @@
     
     self.storyID = 0;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(44, 0, 110, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(44, 0, 64, 0);
     
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     

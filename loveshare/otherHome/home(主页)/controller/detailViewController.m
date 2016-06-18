@@ -108,7 +108,7 @@
     
     self.toppottn.layer.cornerRadius = 5;
     self.toppottn.layer.masksToBounds = YES;
-    
+    self.toppottn.backgroundColor = [UIColor colorWithRed:255/255.0 green:78/255.0 blue:0 alpha:1];
     
     self.contentWebView.scalesPageToFit = YES;
     

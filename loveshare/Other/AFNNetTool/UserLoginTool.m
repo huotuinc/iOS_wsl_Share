@@ -46,7 +46,7 @@
         LWLog(@"%@",task.currentRequest);
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        LWLog(@"%@",task);
+        LWLog(@"%@",task.currentRequest);
         failure(error);
     }];
     

@@ -45,7 +45,7 @@
 
 - (void)setupTitlesView
 {
-    NSArray * dateArrays = @[@"即时资讯",@"往期资讯"];
+    NSArray * dateArrays = @[@"即时任务",@"企业专区"];
     // 标签栏内部的标签按钮
     NSUInteger count = dateArrays.count;
     CGFloat titleButtonH = self.xmg_height;
@@ -100,9 +100,10 @@
 {
     // 控制按钮状态
     self.selectedTitleButton.selected = NO;
+    self.selectedTitleButton.backgroundColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1];
     titleButton.selected = YES;
     self.selectedTitleButton = titleButton;
-    
+    titleButton.backgroundColor = [UIColor whiteColor];
     // 底部控件的位置和尺寸
     [UIView animateWithDuration:0.25 animations:^{
         self.titleBottomView.xmg_width = titleButton.titleLabel.xmg_width;

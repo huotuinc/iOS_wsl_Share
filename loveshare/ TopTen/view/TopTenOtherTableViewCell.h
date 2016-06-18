@@ -11,8 +11,8 @@
 
 @interface TopTenOtherTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *number;
 
+@property (weak, nonatomic) IBOutlet UILabel *number;
 @property(nonatomic,strong) OtherTenModel * date;
 
 @end
