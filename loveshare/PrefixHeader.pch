@@ -89,7 +89,10 @@
 #import "AdViewController.h"
 #import "SetNewPasswdViewController.h"
 #import "LinePoint.h"
-
+#import "WeekTaskTableViewController.h"
+#import "EAColourfulProgressView.h"
+#import "EnViewControllerInCollectionViewController.h"
+#import "PersonCenterViewController.h"
 //#import "UITextField+XMGExtension.h"
 //#import "XMGLoginRegisterViewController.h"
 

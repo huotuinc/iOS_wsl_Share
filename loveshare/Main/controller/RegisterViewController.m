@@ -12,6 +12,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *phoneText;
 @property (weak, nonatomic) IBOutlet UITextField *passwdText;
 
+@property (weak, nonatomic) IBOutlet UITextField *confimepasswd;
+
 @property (weak, nonatomic) IBOutlet UITextField *yanzheng;
 
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -38,9 +40,30 @@
     
     
     [self setup];
+    [self leftBtn];
 }
 
 
+- (void)leftBtn{
+    // 左上角
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setImage:[UIImage imageNamed:@"Nav_Left_Return_Back"] forState:UIControlStateNormal];
+//    [backButton setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
+    [backButton setTitle:@"返回" forState:UIControlStateNormal];
+    
+    [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    //        [backButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    [backButton sizeToFit];
+    // 这句代码放在sizeToFit后面
+    backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
+    [backButton addTarget:self action:@selector(backss) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+}
+
+- (void)backss{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)setup{
     
@@ -60,19 +83,19 @@
     
     self.loginButton.layer.cornerRadius =5;
     self.loginButton.layer.masksToBounds = YES;
-    // 左上角
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setImage:[UIImage imageNamed:@"Nav_Left_Return_Back"] forState:UIControlStateNormal];
-    [backButton setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
-    [backButton setTitle:@"返回" forState:UIControlStateNormal];
-    
-    [backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [backButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    [backButton sizeToFit];
-    // 这句代码放在sizeToFit后面
-    backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
-    [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+//    // 左上角
+//    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [backButton setImage:[UIImage imageNamed:@"Nav_Left_Return_Back"] forState:UIControlStateNormal];
+//    [backButton setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
+//    [backButton setTitle:@"返回" forState:UIControlStateNormal];
+//    
+//    [backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [backButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+//    [backButton sizeToFit];
+//    // 这句代码放在sizeToFit后面
+//    backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
+//    [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     
     
     self.yanzhen.userInteractionEnabled = YES;
@@ -89,7 +112,7 @@
         return;
     }
     
-    [self.passwdText becomeFirstResponder];
+//    [self.passwdText becomeFirstResponder];
     [self settime];
     
     NSMutableDictionary * dict = [NSMutableDictionary dictionary];
@@ -135,6 +158,9 @@
         return;
     }else if(!self.passwdText.text.length){
         [MBProgressHUD showError:@"密码不能为空"];
+        return;
+    }else if(![self.passwdText.text isEqualToString:self.confimepasswd.text]){
+        [MBProgressHUD showError:@"密码不一致"];
         return;
     }else{
         NSMutableDictionary* p = [NSMutableDictionary dictionary];

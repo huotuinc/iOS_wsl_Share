@@ -156,6 +156,12 @@
 		EFBD4FBC1D13A9C500EFEEC8 /* EnViewControllerInCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFBD4FBB1D13A9C500EFEEC8 /* EnViewControllerInCollectionViewController.m */; };
 		EFBD4FC11D13DD3D00EFEEC8 /* EnViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFBD4FBF1D13DD3D00EFEEC8 /* EnViewCollectionViewCell.m */; };
 		EFBD4FC21D13DD3D00EFEEC8 /* EnViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFBD4FC01D13DD3D00EFEEC8 /* EnViewCollectionViewCell.xib */; };
+		EFC015CF1D15362F00869BA1 /* WeekTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC015CE1D15362F00869BA1 /* WeekTaskTableViewController.m */; };
+		EFC015D41D15389F00869BA1 /* WeekModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC015D31D15389F00869BA1 /* WeekModel.m */; };
+		EFC015D91D153BFC00869BA1 /* WeekTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC015D71D153BFC00869BA1 /* WeekTableViewCell.m */; };
+		EFC015DA1D153BFC00869BA1 /* WeekTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFC015D81D153BFC00869BA1 /* WeekTableViewCell.xib */; };
+		EFC015DE1D153FC200869BA1 /* EAColourfulProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC015DD1D153FC200869BA1 /* EAColourfulProgressView.m */; };
+		EFC015E41D1695D300869BA1 /* PersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC015E31D1695D300869BA1 /* PersonCenterViewController.m */; };
 		EFC24B491D01730100F4A796 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFC24B481D01730100F4A796 /* Login.storyboard */; };
 		EFC24B4C1D01837500F4A796 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC24B4B1D01837500F4A796 /* RegisterViewController.m */; };
 		EFC253E21D0E9F4B00E33E24 /* AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC253E11D0E9F4B00E33E24 /* AdViewController.m */; };
@@ -501,6 +507,17 @@
 		EFBD4FBE1D13DD3D00EFEEC8 /* EnViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnViewCollectionViewCell.h; sourceTree = "<group>"; };
 		EFBD4FBF1D13DD3D00EFEEC8 /* EnViewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnViewCollectionViewCell.m; sourceTree = "<group>"; };
 		EFBD4FC01D13DD3D00EFEEC8 /* EnViewCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnViewCollectionViewCell.xib; sourceTree = "<group>"; };
+		EFC015CD1D15362F00869BA1 /* WeekTaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekTaskTableViewController.h; sourceTree = "<group>"; };
+		EFC015CE1D15362F00869BA1 /* WeekTaskTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekTaskTableViewController.m; sourceTree = "<group>"; };
+		EFC015D21D15389F00869BA1 /* WeekModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekModel.h; sourceTree = "<group>"; };
+		EFC015D31D15389F00869BA1 /* WeekModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekModel.m; sourceTree = "<group>"; };
+		EFC015D61D153BFC00869BA1 /* WeekTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekTableViewCell.h; sourceTree = "<group>"; };
+		EFC015D71D153BFC00869BA1 /* WeekTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekTableViewCell.m; sourceTree = "<group>"; };
+		EFC015D81D153BFC00869BA1 /* WeekTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekTableViewCell.xib; sourceTree = "<group>"; };
+		EFC015DC1D153FC200869BA1 /* EAColourfulProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAColourfulProgressView.h; sourceTree = "<group>"; };
+		EFC015DD1D153FC200869BA1 /* EAColourfulProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAColourfulProgressView.m; sourceTree = "<group>"; };
+		EFC015E21D1695D300869BA1 /* PersonCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCenterViewController.h; sourceTree = "<group>"; };
+		EFC015E31D1695D300869BA1 /* PersonCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCenterViewController.m; sourceTree = "<group>"; };
 		EFC24B481D01730100F4A796 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		EFC24B4A1D01837500F4A796 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		EFC24B4B1D01837500F4A796 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
@@ -571,8 +588,8 @@
 		F21E31991CE189840050F851 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		F23FDF9A1CE42CFD00514279 /* StoreSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreSelectedViewController.h; sourceTree = "<group>"; };
 		F23FDF9B1CE42CFD00514279 /* StoreSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreSelectedViewController.m; sourceTree = "<group>"; };
-		F23FDF9D1CE4344500514279 /* StoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreModel.h; sourceTree = "<group>"; };
-		F23FDF9E1CE4344500514279 /* StoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreModel.m; sourceTree = "<group>"; };
+		F23FDF9D1CE4344500514279 /* StoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoreModel.h; path = "../otherHome/home(主页)/model/StoreModel.h"; sourceTree = "<group>"; };
+		F23FDF9E1CE4344500514279 /* StoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoreModel.m; path = "../otherHome/home(主页)/model/StoreModel.m"; sourceTree = "<group>"; };
 		F23FDFA01CE452F900514279 /* StoreSelectedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreSelectedTableViewCell.h; sourceTree = "<group>"; };
 		F23FDFA11CE452F900514279 /* StoreSelectedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreSelectedTableViewCell.m; sourceTree = "<group>"; };
 		F23FDFA21CE452F900514279 /* StoreSelectedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreSelectedTableViewCell.xib; sourceTree = "<group>"; };
@@ -1069,8 +1086,6 @@
 				EF5A1EFC1C8D7CAD002035FC /* NewTaskDataModel.m */,
 				EF911F701C8EA10100BA7050 /* NewShareModel.h */,
 				EF911F711C8EA10100BA7050 /* NewShareModel.m */,
-				F23FDF9D1CE4344500514279 /* StoreModel.h */,
-				F23FDF9E1CE4344500514279 /* StoreModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1303,11 +1318,9 @@
 		EFBD4F941D124C1E00EFEEC8 /* enterprise(企业专区) */ = {
 			isa = PBXGroup;
 			children = (
+				EFC015E01D166FC600869BA1 /* controller */,
+				EFC015DF1D166FC000869BA1 /* model */,
 				EFBD4FBD1D13C0F100EFEEC8 /* view */,
-				EFBD4F951D124DF700EFEEC8 /* EnViewController.h */,
-				EFBD4F961D124DF700EFEEC8 /* EnViewController.m */,
-				EFBD4FBA1D13A9C500EFEEC8 /* EnViewControllerInCollectionViewController.h */,
-				EFBD4FBB1D13A9C500EFEEC8 /* EnViewControllerInCollectionViewController.m */,
 			);
 			name = "enterprise(企业专区)";
 			path = enterprise;
@@ -1341,6 +1354,84 @@
 				EFBD4FC01D13DD3D00EFEEC8 /* EnViewCollectionViewCell.xib */,
 			);
 			name = view;
+			sourceTree = "<group>";
+		};
+		EFC015CC1D15360700869BA1 /* WeekTask(本周任务) */ = {
+			isa = PBXGroup;
+			children = (
+				EFC015D51D153BDD00869BA1 /* view */,
+				EFC015D11D15388C00869BA1 /* model */,
+				EFC015D01D15387F00869BA1 /* controller */,
+			);
+			name = "WeekTask(本周任务)";
+			path = WeekTask;
+			sourceTree = "<group>";
+		};
+		EFC015D01D15387F00869BA1 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				EFC015CD1D15362F00869BA1 /* WeekTaskTableViewController.h */,
+				EFC015CE1D15362F00869BA1 /* WeekTaskTableViewController.m */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		EFC015D11D15388C00869BA1 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				EFC015D21D15389F00869BA1 /* WeekModel.h */,
+				EFC015D31D15389F00869BA1 /* WeekModel.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		EFC015D51D153BDD00869BA1 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				EFC015D61D153BFC00869BA1 /* WeekTableViewCell.h */,
+				EFC015D71D153BFC00869BA1 /* WeekTableViewCell.m */,
+				EFC015D81D153BFC00869BA1 /* WeekTableViewCell.xib */,
+				EFC015DB1D153FC200869BA1 /* EAColourfulProgressView */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		EFC015DB1D153FC200869BA1 /* EAColourfulProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				EFC015DC1D153FC200869BA1 /* EAColourfulProgressView.h */,
+				EFC015DD1D153FC200869BA1 /* EAColourfulProgressView.m */,
+			);
+			path = EAColourfulProgressView;
+			sourceTree = "<group>";
+		};
+		EFC015DF1D166FC000869BA1 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F23FDF9D1CE4344500514279 /* StoreModel.h */,
+				F23FDF9E1CE4344500514279 /* StoreModel.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		EFC015E01D166FC600869BA1 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				EFBD4F951D124DF700EFEEC8 /* EnViewController.h */,
+				EFBD4F961D124DF700EFEEC8 /* EnViewController.m */,
+				EFBD4FBA1D13A9C500EFEEC8 /* EnViewControllerInCollectionViewController.h */,
+				EFBD4FBB1D13A9C500EFEEC8 /* EnViewControllerInCollectionViewController.m */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		EFC015E11D1693E600869BA1 /* PersonCenter */ = {
+			isa = PBXGroup;
+			children = (
+				EFC015E21D1695D300869BA1 /* PersonCenterViewController.h */,
+				EFC015E31D1695D300869BA1 /* PersonCenterViewController.m */,
+			);
+			path = PersonCenter;
 			sourceTree = "<group>";
 		};
 		EFC253DF1D0E9F3600E33E24 /* ad */ = {
@@ -1497,6 +1588,8 @@
 		EFF072851C8939F000150FA2 /* loveshare */ = {
 			isa = PBXGroup;
 			children = (
+				EFC015E11D1693E600869BA1 /* PersonCenter */,
+				EFC015CC1D15360700869BA1 /* WeekTask(本周任务) */,
 				EFBD4F941D124C1E00EFEEC8 /* enterprise(企业专区) */,
 				EFC253DF1D0E9F3600E33E24 /* ad */,
 				EFD8C8B81D0698F6007922D6 /*  TopTen */,
@@ -1723,6 +1816,7 @@
 				F2AAA21A1CDAD9C3005709FE /* RAYNewFunctionGuideVC.xib in Resources */,
 				EF3636921C916BA7006AD6F1 /* ForeshowTableViewCell.xib in Resources */,
 				EF6F97E01C8AB3B800D760EC /* MBProgressHUD.bundle in Resources */,
+				EFC015DA1D153BFC00869BA1 /* WeekTableViewCell.xib in Resources */,
 				EF15C9821C993DD100ABD2F6 /* TitleHead.xib in Resources */,
 				EF23A7651C9A3FA7005818CD /* DetailWebViewTopOption.xib in Resources */,
 				EF3636C31C926E2C006AD6F1 /* DownTudiTableViewCell.xib in Resources */,
@@ -1815,6 +1909,7 @@
 				EFD2B0881CEC93D700F00431 /* SheYuTaskViewContrller.m in Sources */,
 				EF23A7631C9A3F99005818CD /* DetailWebViewTopOption.m in Sources */,
 				EF6F97831C89755200D760EC /* UIImageView+AFNetworking.m in Sources */,
+				EFC015CF1D15362F00869BA1 /* WeekTaskTableViewController.m in Sources */,
 				EF6F97821C89755200D760EC /* UIButton+AFNetworking.m in Sources */,
 				EF907CC11CEABCB8007884A8 /* UIView+XMGExtension.m in Sources */,
 				EFA760C51C97E2B200EFCE9A /* PersonViewController.m in Sources */,
@@ -1826,6 +1921,7 @@
 				EF5C0B671C8BFD1000C76019 /* MMRootViewController.m in Sources */,
 				EF3877D71C8FFAFE008279BD /* HobbyController.m in Sources */,
 				EF3636AF1C91902D006AD6F1 /* PayModel.m in Sources */,
+				EFC015D41D15389F00869BA1 /* WeekModel.m in Sources */,
 				EF3636911C916BA7006AD6F1 /* ForeshowTableViewCell.m in Sources */,
 				EFAF470E1C96B62300D5A5C4 /* VipAccountViewController.m in Sources */,
 				EFD2B08E1CEC943000F00431 /* ZhuangFaTaskController.m in Sources */,
@@ -1847,6 +1943,7 @@
 				F23FDF9F1CE4344500514279 /* StoreModel.m in Sources */,
 				EF5A1EF81C8D7272002035FC /* HomeCell.m in Sources */,
 				EF3636C61C92AEFA006AD6F1 /* MallUser.m in Sources */,
+				EFC015DE1D153FC200869BA1 /* EAColourfulProgressView.m in Sources */,
 				EF15C9801C993CCD00ABD2F6 /* TitleHead.m in Sources */,
 				EF17BB301C9DADD20072856E /* MJChiBaoZiFooter.m in Sources */,
 				EF5C0B701C8C193100C76019 /* WeiXinBackViewController.m in Sources */,
@@ -1904,6 +2001,7 @@
 				EF15C9731C9907DA00ABD2F6 /* HostTableViewCell.m in Sources */,
 				EF6F97791C89755200D760EC /* AFURLRequestSerialization.m in Sources */,
 				EF6F97781C89755200D760EC /* AFSecurityPolicy.m in Sources */,
+				EFC015D91D153BFC00869BA1 /* WeekTableViewCell.m in Sources */,
 				EF6F97851C89755200D760EC /* UIRefreshControl+AFNetworking.m in Sources */,
 				EF6F97D51C8AAC4800D760EC /* AccountLoginViewController.m in Sources */,
 				EF5A1EE61C8D7272002035FC /* HomeListViewController.m in Sources */,
@@ -1913,6 +2011,7 @@
 				EF3877D91C8FFAFE008279BD /* NameController.m in Sources */,
 				F28CC0791CDB799300F4B72E /* XYPopView.m in Sources */,
 				EF15C9771C992BE700ABD2F6 /* HistoryModel.m in Sources */,
+				EFC015E41D1695D300869BA1 /* PersonCenterViewController.m in Sources */,
 				EF6F97DF1C8AB3B800D760EC /* MBProgressHUD+MJ.m in Sources */,
 				EF5C0B6A1C8BFE5300C76019 /* LeftOfRootViewController.m in Sources */,
 				EFC253E21D0E9F4B00E33E24 /* AdViewController.m in Sources */,

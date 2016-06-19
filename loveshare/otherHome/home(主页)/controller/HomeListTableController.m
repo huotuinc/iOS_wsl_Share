@@ -326,10 +326,10 @@
     //向下走
     [UIView animateWithDuration:0.7 animations:^{
         
-        showBtn.transform = CGAffineTransformMakeTranslation(0, btnH+2);
+        showBtn.transform = CGAffineTransformMakeTranslation(0, btnH);
     } completion:^(BOOL finished) {
         
-        [UIView  animateKeyframesWithDuration:0.7 delay:1.0 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
+        [UIView  animateKeyframesWithDuration:0.7 delay:0.7 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
             //清空transform
             showBtn.transform = CGAffineTransformIdentity;
             

@@ -10,4 +10,6 @@
 
 @interface EnViewControllerInCollectionViewController : UICollectionViewController
 
+
++ (instancetype)EnMyInit;
 @end

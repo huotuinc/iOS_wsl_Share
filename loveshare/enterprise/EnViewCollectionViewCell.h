@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "StoreModel.h"
 @interface EnViewCollectionViewCell : UICollectionViewCell
+
+@property(nonatomic,strong) StoreModel * model;
 
 @end

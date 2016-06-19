@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface StoreModel : NSObject
-
+@property (nonatomic, strong) NSNumber * BrowseAmount;
+@property (nonatomic, strong) NSNumber * LinkAmount;
 @property (nonatomic, copy) NSString *Logo;
 @property (nonatomic, copy) NSString *UserName;
 @property (nonatomic, copy) NSString *UserNickName;

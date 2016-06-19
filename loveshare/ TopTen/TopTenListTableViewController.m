@@ -69,6 +69,7 @@
         TopFitTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"first" forIndexPath:indexPath];
         cell.date = self.model.myRank;
         cell.userInteractionEnabled = NO;
+        cell.backgroundColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1];
         return cell;
     }else{
         TopTenOtherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"second" forIndexPath:indexPath];
@@ -78,9 +79,11 @@
             
             cell.number.backgroundColor = [UIColor colorWithRed:255/255.0 green:78/255.0 blue:0 alpha:1];
             cell.number.textColor = [UIColor whiteColor];
+            cell.backgroundColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1];
         }else{
             cell.number.backgroundColor = [UIColor whiteColor];
             cell.number.textColor = [UIColor lightGrayColor];
+            cell.backgroundColor = [UIColor whiteColor];
         }
         
         cell.number.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];

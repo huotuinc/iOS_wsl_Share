@@ -7,8 +7,19 @@
 //
 
 #import "EnViewControllerInCollectionViewController.h"
+#import "StoreModel.h"
+#import "EnViewCollectionViewCell.h"
+#define Margin 5
 
 @interface EnViewControllerInCollectionViewController ()
+
+@property(nonatomic,strong) NSMutableArray * datesArray;
+
+@property(nonatomic,strong) MJRefreshNormalHeader  *mjHeader;
+
+@property(nonatomic,strong) MJRefreshFooter * mjFooter;
+
+@property(nonatomic,assign) int pageIndex;
 
 @end
 
@@ -16,62 +27,124 @@
 
 static NSString * const reuseIdentifier = @"Cell";
 
+- (NSMutableArray *)datesArray{
+    if (_datesArray == nil) {
+        _datesArray = [NSMutableArray array];
+    }
+    return _datesArray;
+}
+
++ (instancetype)EnMyInit{
+    
+    UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc
+                                        ] init];
+    CGFloat with =  (ScreenWidth - 5 * Margin) * 0.25;
+    CGFloat height = with * 100 / 80.0;
+    layout.minimumLineSpacing = Margin;
+    layout.minimumInteritemSpacing = Margin;
+    layout.itemSize = CGSizeMake(with, height);
+    return  [[self alloc] initWithCollectionViewLayout:layout];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    self.pageIndex = 1;
     
-    // Do any additional setup after loading the view.
+//    [self getNewStoreList];
+    
+    self.collectionView.backgroundColor = [UIColor colorWithRed:241/255.0 green:242/255.0 blue:243/255.0 alpha:1];
+    
+    self.collectionView.contentInset = UIEdgeInsetsMake(44+Margin, Margin, 64, Margin);    // Register cell classes
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"EnViewCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
+    
+    
+    _mjHeader = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getNewStoreList)];
+    self.collectionView.mj_header = self.mjHeader;
+    [self.mjHeader beginRefreshing];
+    
+    
+    _mjFooter = [MJRefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(getMoreStoreListWithPageIndex)];
+    self.collectionView.mj_footer = self.mjFooter;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)getNewStoreList {
+//    LWLog(@"%ld",_pageNumber);
+    UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+    NSMutableDictionary * parame = [NSMutableDictionary dictionary];
+    parame[@"loginCode"] = userInfo.loginCode;
+    parame[@"pageIndex"] = @(self.pageIndex);
+    [UserLoginTool loginRequestGet:@"StoreList" parame:parame success:^(id json) {
+        LWLog(@"%@",json);
+        if ([json[@"status"] integerValue] ==1 && [json[@"resultCode"] integerValue] ==1){
+            self.pageIndex = [[json objectForKey:@"pageIndex"] intValue];
+            NSArray *array = [StoreModel mj_objectArrayWithKeyValuesArray:json[@"resultData"]];
+            if (array.count) {
+                [self.datesArray removeAllObjects];
+                [self.datesArray addObjectsFromArray:array];
+                [self.collectionView reloadData];
+                
+            }
+        }
+        [self.mjHeader endRefreshing];
+    } failure:^(NSError *error) {
+        [self.mjHeader endRefreshing];
+    }];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)getMoreStoreListWithPageIndex{
+    NSMutableDictionary * parame = [NSMutableDictionary dictionary];
+    UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+    parame[@"pageIndex"] = @(self.pageIndex);
+    parame[@"loginCode"] = userInfo.loginCode;
+    [UserLoginTool loginRequestGet:@"UserOrganizeAllTask" parame:parame success:^(id json) {
+        LWLog(@"%@",json);
+        if ([json[@"status"] integerValue] ==1 && [json[@"resultCode"] integerValue] ==1){
+            NSArray *array = [StoreModel mj_objectArrayWithKeyValuesArray:json[@"resultData"]];
+            if (array.count) {
+               [self.datesArray addObjectsFromArray:array];
+               [self.collectionView reloadData];
+            }
+            
+        }
+        [self.mjFooter endRefreshing];
+    } failure:^(NSError *error) {
+        [self.mjFooter endRefreshing];
+    }];
+    
 }
-*/
 
 #pragma mark <UICollectionViewDataSource>
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
-    return 0;
+
+    return self.datesArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    EnViewCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    // Configure the cell
-    
+//    cell.backgroundColor = [UIColor lightGrayColor];
+    LWLog(@"%@",cell);
+    StoreModel * model = [self.datesArray objectAtIndex:indexPath.row];
+    LWLog(@"%@",[model mj_keyValues]);
+    cell.model = model;
     return cell;
 }
 
 #pragma mark <UICollectionViewDelegate>
 
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    StoreModel * model = [self.datesArray objectAtIndex:indexPath.row];
+    LWLog(@"%@",[model mj_keyValues]);
 }
-*/
 
 /*
 // Uncomment this method to specify if the specified item should be selected

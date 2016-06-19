@@ -223,13 +223,12 @@ static NSString * homeCellidentify = @"homeCellId";
 {
     
     
-//    EnViewController * ac  = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"EnViewController"];
-//    [self addChildViewController:ac];
-    
     MoreTaskController  *voice = [[MoreTaskController alloc] init];
     [self addChildViewController:voice];
     
-    SheYuTaskViewContrller *all = [[SheYuTaskViewContrller alloc] init];
+    
+    
+    EnViewControllerInCollectionViewController *all = [EnViewControllerInCollectionViewController EnMyInit];
     [self addChildViewController:all];
     
 
@@ -377,7 +376,8 @@ static NSString * homeCellidentify = @"homeCellId";
         
         
     }else if([note.userInfo[@"option"] integerValue] == 3){//本周任务
-        
+        WeekTaskTableViewController * vc = [[WeekTaskTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        [self.navigationController pushViewController:vc animated:NO];
         NSLog(@"本周人物");
     }else if([note.userInfo[@"option"] integerValue] == 4){//师徒联盟
         MasterAndTudiViewController * vc = (MasterAndTudiViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"MasterAndTudiViewController"];
@@ -401,8 +401,15 @@ static NSString * homeCellidentify = @"homeCellId";
         [self.navigationController pushViewController:vc animated:NO];
         
     }else if([note.userInfo[@"option"] integerValue] == 100){
-        PersonMessageTableViewController * pers = (PersonMessageTableViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"PersonMessageTableViewController"];
-        [self.navigationController pushViewController:pers animated:NO];
+        
+        PersonCenterViewController * VC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"PersonCenterViewController"];
+        
+        
+        
+        
+        
+//        PersonMessageTableViewController * pers = (PersonMessageTableViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"PersonMessageTableViewController"];
+        [self.navigationController pushViewController:VC animated:NO];
     }
     
 }

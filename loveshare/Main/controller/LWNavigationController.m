@@ -95,7 +95,7 @@
         [backButton setTitle:@"返回" forState:UIControlStateNormal];
         
         [backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [backButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+//        [backButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
         [backButton sizeToFit];
         // 这句代码放在sizeToFit后面
         backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);

@@ -12,7 +12,12 @@
 #import "FollowListTableViewController.h"
 
 
-@interface MasterAndTudiViewController ()
+@interface MasterAndTudiViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+
+@property (weak, nonatomic) IBOutlet UITableView *optionList;
+
+
 
 
 @property(nonatomic,copy) NSString * shareUrl;
@@ -52,11 +57,27 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *masterRuleDes;
 
+@property(nonatomic,strong) NSArray * opt;
+
+@property(nonatomic,strong) NSArray * optImage;
 @end
 
 @implementation MasterAndTudiViewController
 
 
+- (NSArray *)optImage{
+    if (_optImage == nil) {
+        _optImage = @[@"chb",@"cll",@"czf"];
+    }
+    return _optImage;
+}
+
+- (NSArray *)opt{
+    if (_opt == nil) {
+        _opt = @[@"伙伴总数",@"昨日/历史浏览量",@"昨日/历史转发量"];
+    }
+    return _opt;
+}
 
 +(instancetype)pushMaster:(UIViewController*)controller{
     MasterAndTudiViewController * mc = [[self alloc] init];
@@ -74,15 +95,48 @@
     self.iconView.layer.borderWidth = 2;
     self.iconView.layer.borderColor = [UIColor whiteColor].CGColor;
     
+    self.optionList.dataSource = self;
+    self.optionList.delegate = self;
+    self.optionList.rowHeight = 60;
+    self.optionList.scrollEnabled = NO;
+    [self shareBtn];
+}
+
+
+- (void)shareBtn{
+    UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+//    btn.layer.cornerRadius = 16;
+////    btn.layer.masksToBounds = YES;
+//    btn.layer.borderColor = [UIColor whiteColor].CGColor;
+//    btn.layer.borderWidth = 1;
+    
+    [btn setImage:[UIImage imageNamed:@"main_title_left_refresh"] forState:UIControlStateNormal];
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    self.navigationItem.rightBarButtonItem = left;
+
+    //    [btn sd_setImageWithURL:[NSURL URLWithString:userInfo.userHead] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"geren"]];
+    [btn addTarget:self action:@selector(shareBtnclick) forControlEvents:UIControlEventTouchDown];
+}
+
+- (void)shareBtnclick{
+    LWLog(@"%@",self.shareUrl);
+    NewShareModel * aa = [[NewShareModel alloc] init];
+    aa.taskInfo = self.shareUrl;
+    aa.taskName = self.des;
+    aa.taskSmallImgUrl = nil;
+    [UserLoginTool LoginToShareTextMessageByShareSdk:self.des andUrl:self.shareUrl success:^(int json) {
+        [MBProgressHUD showSuccess:@"分享成功"];
+        LWLog(@"%d",json);
+    } failure:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setup];
-    self.iconView.layer.cornerRadius = 30;
+    self.iconView.layer.cornerRadius = self.iconView.frame.size.height * 0.5;
     [self.iconView layoutIfNeeded];
     self.iconView.layer.masksToBounds = YES;
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+//    [self.navigationController setNavigationBarHidden:YES animated:YES];
     
 }
 
@@ -104,7 +158,7 @@
         wself.des =json[@"resultData"][@"shareDesc"];
         wself.shareUrl = json[@"resultData"][@"shareUrl"];
         [MBProgressHUD hideHUD];
-        wself.nameLable.text = [NSString stringWithFormat:@"邀请码:%@",json[@"resultData"][@"inviteCode"]];
+        wself.nameLable.text = [NSString stringWithFormat:@"%@",json[@"resultData"][@"inviteCode"]];
         self.tuDiCount.text = [NSString stringWithFormat:@"%ld",[json[@"resultData"][@"prenticeAmount"] integerValue]];
         self.firstLable.text = [NSString xiaoshudianweishudeal:[json[@"resultData"][@"totalScore"] floatValue]];
         self.secondLable.text = [NSString xiaoshudianweishudeal:[json[@"resultData"][@"yesterdayTotalScore"] floatValue]];
@@ -117,7 +171,7 @@
             
            
             self.masterRuleDes.hidden = NO;
-            self.masterRuleDes.text =[NSString stringWithFormat:@" %@",json[@"resultData"][@"desc"]] ;
+            self.masterRuleDes.text =[NSString stringWithFormat:@"  %@",json[@"resultData"][@"desc"]] ;
         }else{
             self.masterRuleDes.hidden = YES;
         }
@@ -152,7 +206,7 @@
 
 - (IBAction)backClick:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (IBAction)shareYaoqinMa:(id)sender {
@@ -165,5 +219,28 @@
         [MBProgressHUD showSuccess:@"分享成功"];
         LWLog(@"%d",json);
     } failure:nil];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return self.opt.count;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"123"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"123"];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    
+    cell.textLabel.text = [self.opt objectAtIndex:indexPath.row];
+    cell.imageView.image = [UIImage imageNamed:[self.optImage objectAtIndex:indexPath.row]];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 @end

@@ -16,6 +16,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
 - (IBAction)btnclick:(id)sender;
 
+
+@property (weak, nonatomic) IBOutlet UIButton *firstRightBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *secondRightBtn;
+
 @end
 
 @implementation SetNewPasswdViewController
@@ -24,8 +29,72 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = @"设置密码";
+    
     self.confirmBtn.layer.cornerRadius = 5;
     self.confirmBtn.layer.masksToBounds = YES;
+    
+    self.firstRightBtn.tag = 0;
+    
+    self.firstRightBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.firstRightBtn setImage:[[UIImage imageNamed:@"by30X30"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+    [self.firstRightBtn addTarget:self action:@selector(firstLeftBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.secondRightBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.secondRightBtn setImage:[[UIImage imageNamed:@"by30X30"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+    self.firstRightBtn.tag = 100;
+    [self.secondRightBtn addTarget:self action:@selector(secondLeftBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [self leftBtn];
+}
+- (void)leftBtn{
+    
+    
+    // 左上角
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setImage:[UIImage imageNamed:@"Nav_Left_Return_Back"] forState:UIControlStateNormal];
+    //    [backButton setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
+    [backButton setTitle:@"返回" forState:UIControlStateNormal];
+    
+    [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    //        [backButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    [backButton sizeToFit];
+    // 这句代码放在sizeToFit后面
+    backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
+    [backButton addTarget:self action:@selector(backss) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+}
+
+- (void)backss{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)firstLeftBtnClick:(UIButton *)btn{
+    
+    if (btn.tag == 0) {
+        [self.firstRightBtn setImage:[[UIImage imageNamed:@"zy30X30"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+        self.first.secureTextEntry = NO;
+        btn.tag = 1;
+    }else{
+        [self.firstRightBtn setImage:[[UIImage imageNamed:@"by30X30"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+        self.first.secureTextEntry = YES;
+        btn.tag = 0;
+    }
+    
+}
+- (void)secondLeftBtnClick:(UIButton *)btn{
+    
+    if (btn.tag == 100) {
+        [self.secondRightBtn setImage:[[UIImage imageNamed:@"zy30X30"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+        self.second.secureTextEntry = NO;
+        btn.tag = 101;
+    }else{
+        [self.secondRightBtn setImage:[[UIImage imageNamed:@"by30X30"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+        self.second.secureTextEntry = YES;
+        btn.tag = 100;
+    }
     
 }
 
@@ -34,15 +103,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)btnclick:(id)sender {
     
