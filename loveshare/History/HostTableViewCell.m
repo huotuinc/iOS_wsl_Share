@@ -39,9 +39,11 @@
     _model = model;
     NSDictionary * dict = [model mj_keyValues];
    
+    
+    
     NSString * time = [dict objectForKey:@"date"];
     time = [[time componentsSeparatedByString:@" "] firstObject];
-    self.timeLable.text = [NSString stringWithFormat:@"%@ 收益",time];
+    self.timeLable.text = [NSString stringWithFormat:@"%@ ",time];
     
     [self.HeadimageView sd_setImageWithURL:[NSURL URLWithString:[dict objectForKey:@"imageUrl"]] placeholderImage:nil];
     

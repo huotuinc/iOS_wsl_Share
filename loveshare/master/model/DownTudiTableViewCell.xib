@@ -64,6 +64,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" red="0.92549019607843142" green="0.92941176470588238" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="xpJ-5C-Cbp" firstAttribute="bottom" secondItem="7vg-KZ-CPf" secondAttribute="bottom" id="DLF-TB-QPO"/>
                     <constraint firstItem="dMj-gz-gbp" firstAttribute="top" secondItem="y1n-NR-9mT" secondAttribute="top" id="Dts-3D-deX"/>

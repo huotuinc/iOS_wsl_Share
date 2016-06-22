@@ -10,7 +10,7 @@
 #import "ViewController.h"
 #import "LBLaunchImageAdView.h"
 #import "RedBagController.h"
-
+#import "NewTaskDataModel.h"
 
 @interface AppDelegate ()<WXApiDelegate>
 
@@ -81,6 +81,9 @@ static BOOL isProduction = NO;
         self.isflag = NO;
         
     }
+    
+    application.applicationIconBadgeNumber = 0;
+    
     LWLog(@"%@",[initModel mj_keyValues]);
     if (initModel) {
         if (![initModel.loginStatus intValue]) {//没登入
@@ -163,6 +166,7 @@ static BOOL isProduction = NO;
     //极光s推送
     [self setJPush];
     
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
  
     [ShareSDK registerApp:WslShareSdkAppId
      
@@ -283,22 +287,22 @@ static BOOL isProduction = NO;
     LWLog(@"%@----%s",[error description],__func__);
 }
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
-    
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    LWLog(@"收到通ss知:%@",[self logDic:userInfo]);
-    
-    LWLog(@"%@",userInfo);
-    if ([[userInfo allKeys] containsObject:@"type"]) {
-        LWLog(@"xxx");
-        NSInteger a = [userInfo[@"type"] integerValue] + 1;
-        [self.TodayPredictingNumber  setValue:@(a) forKey:@"today"];
-        LWLog(@"%@",self.TodayPredictingNumber);
-    }
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"推送通知" message:userInfo[@"aps"][@"alert"] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
-    [alert show];
-}
+//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+//    
+//    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+//    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+//    LWLog(@"收到通ss知:%@",[self logDic:userInfo]);
+//    
+//    LWLog(@"%@",userInfo);
+//    if ([[userInfo allKeys] containsObject:@"type"]) {
+//        LWLog(@"xxx");
+//        NSInteger a = [userInfo[@"type"] integerValue] + 1;
+//        [self.TodayPredictingNumber  setValue:@(a) forKey:@"today"];
+//        LWLog(@"%@",self.TodayPredictingNumber);
+//    }
+//    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"推送通知" message:userInfo[@"aps"][@"alert"] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+//    [alert show];
+//}
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
     
@@ -309,9 +313,34 @@ static BOOL isProduction = NO;
         switch ([[userInfo objectForKey:@"type"] intValue]) {
             case 0: //红包
                 break;
-            case 1: //任务
+            case 1:{ //任务
                 
+                NSDictionary * dict = [userInfo objectForKey:@"aps"];
+                
+                UIAlertController * vc = [UIAlertController alertControllerWithTitle:@"资讯推送" message:dict[@"alert"] preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction * a1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    NewTaskDataModel * aa = [[NewTaskDataModel alloc] init];
+                    aa.taskId =  [[userInfo objectForKey:@"id"] intValue];
+                    detailViewController * vc =(detailViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"detailViewController"];
+                    vc.taskModel = aa;
+                    [self.currentVC.navigationController pushViewController:vc animated:YES];
+                }];
+                
+                UIAlertAction * a2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                [vc addAction:a1];
+                [vc addAction:a2];
+                
+                [self.currentVC presentViewController:vc animated:YES completion:nil];
+                
+//                NewTaskDataModel * aa = [[NewTaskDataModel alloc] init];
+//                aa.taskId =  [[userInfo objectForKey:@"id"] intValue];
+//                detailViewController * vc =(detailViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"detailViewController"];
+//                vc.taskModel = aa;
+////                [self.navigationController pushViewController:vc animated:YES];
                 break;
+            }
             case 2: //任务
                 
                 break;

@@ -113,6 +113,9 @@
     self.optionList.rowHeight = 60;
     self.optionList.scrollEnabled = NO;
     [self shareBtn];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
 }
 
 

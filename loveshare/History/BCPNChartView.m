@@ -21,12 +21,17 @@
         self.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT / 3);
         [self lineChart];
     }
+    
+  
     return self;
 }
 
 - (PNLineChart *)lineChart {
     if (_lineChart == nil) {
-        PNLineChart * lineChart = [[PNLineChart alloc]initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT / 3)];
+        PNLineChart * lineChart = [[PNLineChart alloc]initWithFrame:CGRectMake(5,0,SCREEN_WIDTH-10,SCREEN_HEIGHT / 3-35)];
+        
+        
+        
         //X轴数据
         [lineChart setXLabels:self.bcTitleArray];
         

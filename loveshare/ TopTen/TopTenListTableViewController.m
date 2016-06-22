@@ -50,6 +50,9 @@
     } failure:^(NSError *error) {
        [MBProgressHUD hideHUD];
     }];
+    
+    MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+    [root setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeNone];
 }
 
 

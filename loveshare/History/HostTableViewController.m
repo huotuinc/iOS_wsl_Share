@@ -81,7 +81,8 @@
     [UIApplication sharedApplication].keyWindow.backgroundColor = [UIColor whiteColor];
     self.title = @"历史浏览";
     self.tableView.tableHeaderView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT / 3);
-
+    
+    self.tableView.tableHeaderView.backgroundColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1];
     self.tableView.userInteractionEnabled = NO;
     self.tableView.rowHeight = 167;
     self.tableView.userInteractionEnabled = YES;
@@ -96,6 +97,9 @@
     
     //集成刷新控件
     [self setupRefresh];
+    
+    
+    self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
 
 }
 /**

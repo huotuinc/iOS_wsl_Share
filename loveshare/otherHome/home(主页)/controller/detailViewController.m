@@ -43,11 +43,7 @@
     
     LWLog(@"%d",self.taskModel.flagShowSend);
     
-    if (self.taskModel.flagShowSend) {
-        self.toppottn.hidden = NO;
-    }else{
-        self.toppottn.hidden = YES;
-    }
+    
     
     
     
@@ -110,9 +106,11 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    
-    self.toppottn.hidden = YES;
-    
+    if (self.taskModel.ShowTurnButton) {
+        self.toppottn.hidden = NO;
+    }else{
+        self.toppottn.hidden = YES;
+    }
     
     self.toppottn.layer.cornerRadius = 5;
     self.toppottn.layer.masksToBounds = YES;
@@ -292,11 +290,4 @@
     
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
-    if(!self.taskModel.flagShowSend) {
-        
-        self.toppottn.hidden = NO;
-        
-    }
-}
 @end

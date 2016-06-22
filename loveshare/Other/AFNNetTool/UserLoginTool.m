@@ -28,8 +28,10 @@
     }else if(ScreenWidth == 375){
         return [UIImage imageNamed:@"tbg375x667"];
     }
-    return [UIImage imageNamed:@"tbg621x1104"];
+    return [UIImage imageNamed:@"tbg414x736"];
 }
+
+
 + (void)loginRequestGet:(NSString *)urlStr parame:(NSMutableDictionary *)params success:(void (^)(id json))success failure:(void (^)(NSError *error))failure{
     
     NSMutableDictionary * paramsOption = [NSMutableDictionary dictionary];

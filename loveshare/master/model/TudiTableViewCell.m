@@ -29,7 +29,7 @@
     
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:model.headFace] placeholderImage:[UIImage imageNamed:@"xiangxtouxiang"]];
     
-    self.name.text = [NSString stringWithFormat:@"我的徒弟:%@",model.userName];
+    self.name.text = [NSString stringWithFormat:@"我的伙伴:%@",model.userName];
     
     self.score.text = [NSString stringWithFormat:@"昨日贡献%@积分",[NSString xiaoshudianweishudeal:[model.recentScore floatValue]]];
     

@@ -139,10 +139,13 @@
     [self.listLable registerNib:[UINib nibWithNibName:@"DownTudiTableViewCell" bundle:nil]  forCellReuseIdentifier:@"down"];
     
     
-    
+    self.listLable.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self setUp];
 //    [self.head beginRefreshing];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
     
     
 }
@@ -333,7 +336,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     LWLog(@"%d",self.setTag);
-    if (self.setTag== 1) {
+    if (self.setTag== 1) {//徒弟
         return  self.dateArray.count;
     }else{
         LWLog(@"%lu",(unsigned long)self.lists.count);
@@ -401,7 +404,7 @@
         _sectionFollowerView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 60);
         FollowList * fol =  self.lists[section];
         FollowModel * mod = (FollowModel *)fol.list[0];
-        _sectionFollowerView.backgroundColor = [UIColor lightGrayColor];
+//        _sectionFollowerView.backgroundColor = [UIColor lightGrayColor];
         _sectionFollowerView.arrow.image = [UIImage imageNamed:@"downArrow"];
         _sectionFollowerView.model = mod;
         [_sectionFollowerView bk_whenTapped:^{

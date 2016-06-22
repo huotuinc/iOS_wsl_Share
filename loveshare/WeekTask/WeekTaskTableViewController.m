@@ -63,6 +63,8 @@
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     self.title = @"本周任务";
    
+    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
 }
 
 
@@ -102,6 +104,7 @@
     WeekTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"programe" forIndexPath:indexPath];
     WeekModel * model = [self.dateArray objectAtIndex:indexPath.row];
     cell.model = model;
+    cell.userInteractionEnabled = NO;
     return cell;
 }
 
