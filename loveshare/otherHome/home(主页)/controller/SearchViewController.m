@@ -33,9 +33,36 @@ static NSString *cellSearch = @"cellSearch";
 @property(nonatomic,strong) MJRefreshNormalHeader * head;
 @property(nonatomic,strong) MJRefreshAutoFooter * footer;
 
+
+@property(nonatomic,strong) UIView * overView;
+
 @end
 
 @implementation SearchViewController
+
+
+- (UIView *)overView{
+    
+    if (_overView == nil) {
+        
+        _overView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+        _overView.backgroundColor = [UIColor blackColor];
+        _overView.alpha = 0.7;
+        
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(remoteOver)];
+        [_overView addGestureRecognizer:tap];
+    
+    }
+    return _overView;
+}
+
+
+
+- (void)remoteOver{
+    
+    [self.overView removeFromSuperview];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,15 +72,17 @@ static NSString *cellSearch = @"cellSearch";
 
 
     self.view.backgroundColor = [UIColor whiteColor];
-
-    [self.view addSubview:self.searchBar];
+    
+    self.navigationItem.titleView = [self searchBar];
+//    [self.view addSubview:self.searchBar];
 //    [self.view addSubview:self.imageVNone];
-    [self.view addSubview:self.tableView];
+    [self.view addSubview:[self tableView]];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-    self.navigationController.navigationBar.translucent=NO;
+
+    UIWindow * win = [[UIApplication sharedApplication] keyWindow];
+    [win addSubview:[self overView]];
 }
 
 
@@ -70,14 +99,15 @@ static NSString *cellSearch = @"cellSearch";
         _searchBar.placeholder=@"搜索";
         _searchBar.delegate=self;
         _searchBar.showsCancelButton=YES;
-        [_searchBar becomeFirstResponder];
+//        [_searchBar becomeFirstResponder];
     }
     return _searchBar;
 }
 - (UITableView *)tableView {
     if (_tableView == nil) {
-        _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64 -44) style:UITableViewStylePlain];
+        _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStylePlain];
         [_tableView registerNib:[UINib nibWithNibName:@"HomeCell" bundle:nil] forCellReuseIdentifier:cellSearch];
+//        _tableView.backgroundColor = [UIColor redColor];
         _tableView.delegate=self;
         _tableView.dataSource=self;
         _tableView.rowHeight = 150.f;
@@ -112,12 +142,22 @@ static NSString *cellSearch = @"cellSearch";
     [self.navigationController pushViewController:vc animated:YES];
 }
 #pragma mark 搜索方法
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    
+    [self.navigationItem setHidesBackButton:YES]; 
+    [self.overView removeFromSuperview];
+}
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     _searchKey = searchBar.text;
+    [_searchBar resignFirstResponder];
     [self getDataArrayBySearchText:_searchKey andPageIndex:0];
 }
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    [_searchBar resignFirstResponder];
+//    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)getDataArrayBySearchText:(NSString *)text andPageIndex:(NSInteger)PageIndex {
     UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
@@ -157,10 +197,22 @@ static NSString *cellSearch = @"cellSearch";
     }];
 }
 
+- (void)back{
+   
+    
+    [self.searchBar resignFirstResponder];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.navigationController popViewControllerAnimated:YES];
+    });
+    
+}
+
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
+//    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.overView removeFromSuperview];
+    [self.view endEditing:YES];
     
 }
 
@@ -169,5 +221,10 @@ static NSString *cellSearch = @"cellSearch";
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+    
+}
 
 @end
