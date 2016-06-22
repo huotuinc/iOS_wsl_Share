@@ -25,6 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
 }
 
 - (void)didReceiveMemoryWarning {

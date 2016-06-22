@@ -51,6 +51,10 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewDidLoad];
     
     
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
+    
     self.pageIndex = 1;
     
 //    [self getNewStoreList];

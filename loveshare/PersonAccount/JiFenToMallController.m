@@ -64,6 +64,9 @@
     [self toGetNewWorkDate];
     self.title = @"积分兑换";
     
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
 //    //获取用户列表
 //    [self toGetTheGlodToMallAccountList];
     

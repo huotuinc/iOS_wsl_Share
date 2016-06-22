@@ -76,6 +76,10 @@
     [super viewDidLoad];
     
     
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
+    
     [self setup];
     
     [UIApplication sharedApplication].keyWindow.backgroundColor = [UIColor whiteColor];

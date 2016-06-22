@@ -45,6 +45,10 @@ static NSString *cellStore = @"cellStore";
     [self RefreshJicheng];
     [self.view addSubview:self.searchBar];
     [self.view addSubview:self.tableView];
+    
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

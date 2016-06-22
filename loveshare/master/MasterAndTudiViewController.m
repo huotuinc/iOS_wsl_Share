@@ -100,6 +100,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
     
     self.title = @"伙伴联盟";
     

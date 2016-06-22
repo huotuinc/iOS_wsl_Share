@@ -38,6 +38,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
+    
     self.title =@"消息中心";
     //集成刷新控件
     [self setupRefresh];

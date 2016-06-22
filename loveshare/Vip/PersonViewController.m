@@ -128,6 +128,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
     self.setTag = 1;
     self.listLable.delegate = self;
     self.listLable.dataSource = self;

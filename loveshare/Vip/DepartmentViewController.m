@@ -46,6 +46,11 @@ static NSString *deCell = @"deCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
+    
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     [self setInit];

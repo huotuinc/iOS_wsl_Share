@@ -34,7 +34,8 @@
     UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.leftBarButtonItem = left;
     
-    
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
     
     __weak  BindDIngViewController *wself = self;
     

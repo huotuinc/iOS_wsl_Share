@@ -42,6 +42,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
+    
     [self setInit];
     self.defaultLable.userInteractionEnabled = YES;
     self.turnLable.userInteractionEnabled = YES;

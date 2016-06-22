@@ -27,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
     
 //    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:237.0/255 green:237/255.0 blue:237/255.0 alpha:1.000]];
 //    NSMutableDictionary * textAttr = [NSMutableDictionary dictionary];

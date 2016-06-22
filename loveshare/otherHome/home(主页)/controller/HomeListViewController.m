@@ -238,7 +238,8 @@ static NSString * homeCellidentify = @"homeCellId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
     
     [self setupChildViewControllers];
  

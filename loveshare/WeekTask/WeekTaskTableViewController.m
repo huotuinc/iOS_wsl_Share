@@ -33,6 +33,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
     
     self.iconView.layer.cornerRadius = self.iconView.frame.size.width * 0.5;
     self.iconView.layer.masksToBounds = YES;

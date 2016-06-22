@@ -106,6 +106,9 @@
     [self RefreshJicheng];
     
     [self.head beginRefreshing];
+    
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
 }
 
 

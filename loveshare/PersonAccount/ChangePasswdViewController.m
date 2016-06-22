@@ -29,6 +29,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
+    
     self.title = @"修改商城密码";
     self.first.layer.cornerRadius = 5;
     self.first.layer.masksToBounds = YES;

@@ -32,6 +32,11 @@
     self.tableView.tableFooterView = [[UIView alloc] init];
     [self RefreshJicheng];
     
+    
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
+    
     self.title = @"架构";
     [self.head beginRefreshing];
 }

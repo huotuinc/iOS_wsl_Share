@@ -26,6 +26,10 @@ static NSString *hobbyIdentify = @"hobbyCellId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
+    
 //    if (_favs == nil) {
 //        _favs = [NSArray array];
 //        NSString * path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];

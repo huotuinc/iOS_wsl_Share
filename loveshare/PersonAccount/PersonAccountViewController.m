@@ -68,6 +68,8 @@
     [super viewDidLoad];
      [self setup];
     
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
     // Do any additional setup after loading the view.
 }
 

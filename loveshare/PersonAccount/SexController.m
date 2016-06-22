@@ -34,6 +34,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"性别";
+    
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
+    
     UITableView * tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     self.tableView = tableView;
     self.tableView.dataSource = self;

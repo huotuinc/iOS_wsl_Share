@@ -75,6 +75,10 @@ static NSString *professionalIdentify = @"pfCellId";
        titleName = @"爱好";
     }
     
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
+    
     self.title = titleName;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:professionalIdentify];
     self.tableView.tableFooterView = [[UIView alloc] init];

@@ -316,7 +316,6 @@ static BOOL isProduction = NO;
             case 1:{ //任务
                 
                 NSDictionary * dict = [userInfo objectForKey:@"aps"];
-                
                 UIAlertController * vc = [UIAlertController alertControllerWithTitle:@"资讯推送" message:dict[@"alert"] preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction * a1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     NewTaskDataModel * aa = [[NewTaskDataModel alloc] init];

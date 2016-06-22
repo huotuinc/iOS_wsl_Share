@@ -70,7 +70,8 @@ static NSString *cellSearch = @"cellSearch";
     _pageIndex = 0;
     _dataArray = [NSMutableArray array];
 
-
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.navigationItem.titleView = [self searchBar];

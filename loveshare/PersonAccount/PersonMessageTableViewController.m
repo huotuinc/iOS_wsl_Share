@@ -150,6 +150,9 @@
     _datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
     self.birDate.inputView= _datePicker;
     [self setupDatePicker];
+    
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
 
 }
 

@@ -45,6 +45,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
     
     self.iconview.layer.cornerRadius = self.iconview.frame.size.height*0.5;
     self.iconview.layer.masksToBounds = YES;

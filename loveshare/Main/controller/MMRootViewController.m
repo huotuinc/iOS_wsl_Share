@@ -34,8 +34,7 @@
     self.centerViewController =[[LWNavigationController alloc] initWithRootViewController:hone];
 //    self.centerViewController = ac;
     
-    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    ad.currentVC = self.centerViewController;
+    
     
     //设置手势范围
     [self setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];

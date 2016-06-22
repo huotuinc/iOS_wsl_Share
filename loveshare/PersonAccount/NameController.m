@@ -19,6 +19,10 @@
     self.nameLabel.delegate = self;
     self.title = @"姓名";
     [self.nameLabel becomeFirstResponder];
+    
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
 
 }
 

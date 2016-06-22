@@ -106,11 +106,10 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    if (self.taskModel.ShowTurnButton) {
-        self.toppottn.hidden = NO;
-    }else{
-        self.toppottn.hidden = YES;
-    }
+    self.toppottn.hidden = YES;
+
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
     
     self.toppottn.layer.cornerRadius = 5;
     self.toppottn.layer.masksToBounds = YES;
@@ -222,12 +221,16 @@
         
         LWLog(@"%@",json);
         if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
+            
+            
+            
             wself.shareModel.taskInfo = json[@"resultData"][@"taskInfo"];
             wself.shareModel.taskSmallImgUrl = json[@"resultData"][@"taskSmallImgUrl"];
             wself.shareModel.taskName = json[@"resultData"][@"taskName"];
            wself.left.text = [NSString stringWithFormat:@"浏览奖励:%@",json[@"resultData"][@"awardScan"]];
             wself.right.text = [NSString stringWithFormat:@"转发奖励:%@",[NSString xiaoshudianweishudeal:[json[@"resultData"][@"awardSend"] floatValue]]];
 //            _ShareBtn.hidden = NO;
+            self.toppottn.hidden =  !([json[@"resultData"][@"ShowTurnButton"] boolValue]);
             
             NSURL * url = [NSURL URLWithString:json[@"resultData"][@"taskInfo"]];
             NSURLRequest * req = [NSURLRequest requestWithURL:url];
