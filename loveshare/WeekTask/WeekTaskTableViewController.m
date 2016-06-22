@@ -10,10 +10,21 @@
 #import "WeekModel.h"
 #import "WeekTableViewCell.h"
 
+
+
 @interface WeekTaskTableViewController ()
 
 
+@property (weak, nonatomic) IBOutlet UIImageView *iconView;
+@property (weak, nonatomic) IBOutlet UILabel *nickName;
+
+@property (weak, nonatomic) IBOutlet UILabel *levelName;
+
+
+
 @property(nonatomic,strong) NSArray * dateArray;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -22,6 +33,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    self.iconView.layer.cornerRadius = self.iconView.frame.size.width * 0.5;
+    self.iconView.layer.masksToBounds = YES;
+    
+    self.levelName.layer.cornerRadius = 4;
+    
+    self.levelName.layer.masksToBounds = YES;
+
     
     UserModel * usermodel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
@@ -41,9 +60,33 @@
         LWLog(@"%@",json);
     } failure:nil];
     
-    
+    self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     self.title = @"本周任务";
    
+}
+
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+    
+    [self.iconView sd_setImageWithURL:[NSURL URLWithString:userInfo.userHead] placeholderImage:[UIImage imageNamed:@"xiangxtouxiang"] completed:nil];
+    
+    NSString * name = nil;
+    if (userInfo.RealName.length) {
+        name = userInfo.RealName;
+    }else if(userInfo.UserNickName.length){
+        name = userInfo.UserNickName;
+    }else{
+        name = userInfo.userName;
+    }
+    self.nickName.text =  name;
+    
+    
+    self.levelName.text = [NSString stringWithFormat:@"  %@  ",userInfo.levelName];
+    
 }
 
 
@@ -61,6 +104,9 @@
     cell.model = model;
     return cell;
 }
+
+
+
 
 
 /*

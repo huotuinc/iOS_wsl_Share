@@ -66,8 +66,20 @@
     self.headImage.layer.borderColor = [UIColor whiteColor].CGColor;
     UserModel * userModel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:userModel.userHead] placeholderImage:nil completed:nil];
-    self.userName.text= userModel.UserNickName;
+    
+    
+    NSString * name = nil;
+    if (userModel.RealName.length) {
+        name = userModel.RealName;
+    }else if(userModel.UserNickName.length){
+        name = userModel.UserNickName;
+    }else{
+        name = userModel.userName;
+    }
+    
+    self.userName.text= name;
     self.userScore.text =[NSString stringWithFormat:@"可用分红%@",[NSString xiaoshudianweishudeal:userModel.score]] ;
+    self.leveLable.text = [NSString stringWithFormat:@" %@ ",userModel.levelName];
     
 }
 
@@ -77,7 +89,7 @@
     
     UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     if (self.optionArray.count && !userInfo.isSuper) {
-        [self.optionArray removeObjectAtIndex:self.optionArray.count-2];
+        [self.optionArray removeLastObject];
     }
     
     
@@ -239,7 +251,6 @@
             break;
         }
         case 3:{//本周任务
-            
             _aa.hidden = YES;
             NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
@@ -256,6 +267,8 @@
             break;
         }
         case 5:{//内购商城
+            
+             
             NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
             MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
@@ -263,12 +276,12 @@
             break;
         }
         case 6:{//监督管理
-//            UserModel * userModel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
             NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
             MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
             [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
             break;
+           
         }
         case 7:{//更多选项
             NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];

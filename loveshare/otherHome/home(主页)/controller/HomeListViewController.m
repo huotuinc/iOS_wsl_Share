@@ -197,7 +197,7 @@ static NSString * homeCellidentify = @"homeCellId";
     
     [self.navigationController.navigationBar  setBarTintColor:[UIColor colorWithRed:255/255.0 green:78/255.0 blue:0 alpha:1]];
     
-    self.title = @"资讯动态";
+    self.title = @"乐享资讯";
 //    UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
     self.titleHeadOption.delegate  = self;
@@ -260,6 +260,7 @@ static NSString * homeCellidentify = @"homeCellId";
     [centerNot addObserver:self selector:@selector(GoADDetail) name:@"AdClick" object:nil];
     
     
+    AppDelegate * de = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
 
@@ -376,7 +377,9 @@ static NSString * homeCellidentify = @"homeCellId";
         
         
     }else if([note.userInfo[@"option"] integerValue] == 3){//本周任务
-        WeekTaskTableViewController * vc = [[WeekTaskTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        
+        
+        WeekTaskTableViewController * vc = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"WeekTaskTableViewController"];
         [self.navigationController pushViewController:vc animated:NO];
         NSLog(@"本周人物");
     }else if([note.userInfo[@"option"] integerValue] == 4){//师徒联盟
@@ -386,30 +389,19 @@ static NSString * homeCellidentify = @"homeCellId";
         HomeViewController * vc =  (HomeViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"HomeViewController"];
         [self.navigationController pushViewController:vc animated:NO];
         
-    }else if([note.userInfo[@"option"] integerValue] == 6){//监督管理
+    }else if([note.userInfo[@"option"] integerValue] == 6){//更多设置
         
-        UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
-        if (userInfo.isSuper) {
-            VipAccountViewController * vip = [[VipAccountViewController alloc] initWithStyle:UITableViewStylePlain];
-            [self.navigationController pushViewController:vip animated:NO];
-        }else{
-            MoreSetTableViewController * vc = (MoreSetTableViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"MoreSetTableViewController"];
-            [self.navigationController pushViewController:vc animated:NO];
-        }
-    }else if([note.userInfo[@"option"] integerValue] == 7){//更多设置
         MoreSetTableViewController * vc = (MoreSetTableViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"MoreSetTableViewController"];
         [self.navigationController pushViewController:vc animated:NO];
+    
+    }else if([note.userInfo[@"option"] integerValue] == 7){//监督管理
+        VipAccountViewController * vip = [[VipAccountViewController alloc] initWithStyle:UITableViewStylePlain];
+        [self.navigationController pushViewController:vip animated:NO];
         
     }else if([note.userInfo[@"option"] integerValue] == 100){
         
-        PersonCenterViewController * VC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"PersonCenterViewController"];
-        
-        
-        
-        
-        
-//        PersonMessageTableViewController * pers = (PersonMessageTableViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"PersonMessageTableViewController"];
-        [self.navigationController pushViewController:VC animated:NO];
+        PersonMessageTableViewController * pers = (PersonMessageTableViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"PersonMessageTableViewController"];
+        [self.navigationController pushViewController:pers animated:NO];
     }
     
 }

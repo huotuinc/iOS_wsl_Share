@@ -19,7 +19,7 @@
     if (self = [super init]) {
         _bcDataArray = dataArray;
         self.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT / 3);
-        [self addSubview:self.lineChart];
+        [self lineChart];
     }
     return self;
 }
@@ -33,7 +33,7 @@
         //Y轴数据
         NSArray * data01Array =self.bcPointArray;
         PNLineChartData *data01 = [PNLineChartData new];
-        data01.color = PNFreshGreen;
+        data01.color = [UIColor colorWithRed:0 green:193/255.0 blue:208/255 alpha:1];
         data01.itemCount = lineChart.xLabels.count;
 //        data01.getData =
         

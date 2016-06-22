@@ -28,6 +28,11 @@
     [super viewDidLoad];
     
     
+//    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:237.0/255 green:237/255.0 blue:237/255.0 alpha:1.000]];
+//    NSMutableDictionary * textAttr = [NSMutableDictionary dictionary];
+//    textAttr[NSForegroundColorAttributeName] = [UIColor blackColor];
+//    [self.navigationController.navigationBar setTitleTextAttributes:textAttr];
+    
     self.title = @"设置";
     self.versionNum.text = [NSString stringWithFormat:@"v%@",AppVersion];
     self.tableView.tableFooterView = [[UIView alloc] init];
@@ -61,9 +66,12 @@
         
         
         LoginChangePasswdViewController * vc = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginChangePasswdViewController"];
-        vc.Islogin = YES;
-        LWNavigationController * nav = [[LWNavigationController alloc] initWithRootViewController:vc];
-        [self presentViewController:nav animated:YES completion:nil];
+        vc.IsRegist = NO;
+        vc.isInapp = YES;
+//        LWNavigationController * nav = [[LWNavigationController alloc] initWithRootViewController:vc];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+//        [self presentViewController:nav animated:YES completion:nil];
         
     }else if(indexPath.row == 3){
 //        LoginChangePasswdViewController * vc = (LoginChangePasswdViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"LoginChangePasswdViewController"];

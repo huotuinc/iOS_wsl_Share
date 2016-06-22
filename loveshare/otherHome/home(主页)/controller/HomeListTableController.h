@@ -15,4 +15,10 @@
 
 - (void)StoryRefreshDateWithStroryID:(NSInteger)stroryID;
 
+
+@property(nonatomic,assign) BOOL ISEnter;
+
+
+@property(nonatomic,assign) int userenterId;
+
 @end

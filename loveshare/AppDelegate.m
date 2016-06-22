@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "LBLaunchImageAdView.h"
+#import "RedBagController.h"
+
 
 @interface AppDelegate ()<WXApiDelegate>
 
@@ -24,7 +26,7 @@
 
 
 static NSString *channel = @"Publish channel";
-static BOOL isProduction = YES;
+static BOOL isProduction = NO;
 
 
 
@@ -259,8 +261,10 @@ static BOOL isProduction = YES;
     NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     NSString * myDeviceToken = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSLog(@"%@",myDeviceToken);
+    
+    [[NSUserDefaults standardUserDefaults] setObject:myDeviceToken forKey:@"DeviceToken"];
+    
     if (myDeviceToken.length) {
-        
         UserModel * usermodel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
         NSMutableDictionary * parame = [NSMutableDictionary dictionary];
         parame[@"loginCode"] = usermodel.loginCode;
@@ -270,8 +274,8 @@ static BOOL isProduction = YES;
         [UserLoginTool loginRequestGet:@"AddDeviceToken" parame:parame success:^(id json) {
             LWLog(@"%@",json);
         } failure:nil];
-        [JPUSHService registerDeviceToken:deviceToken];
     }
+    [JPUSHService registerDeviceToken:deviceToken];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
@@ -299,12 +303,23 @@ static BOOL isProduction = YES;
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
     
     LWLog(@"%@",userInfo);
+    
     if ([[userInfo allKeys] containsObject:@"type"]) {
-        LWLog(@"%@",self.TodayPredictingNumber);
-        NSInteger a = [userInfo[@"type"] integerValue] + 1;
+       
+        switch ([[userInfo objectForKey:@"type"] intValue]) {
+            case 0: //红包
+                break;
+            case 1: //任务
+                
+                break;
+            case 2: //任务
+                
+                break;
+                
+            default:
+                break;
+        }
         
-        [self.TodayPredictingNumber setValue:[NSString stringWithFormat:@"%ld",(long)a] forKey:@"today"];
-        LWLog(@"%@",self.TodayPredictingNumber);
     }
      completionHandler(UIBackgroundFetchResultNewData);
     

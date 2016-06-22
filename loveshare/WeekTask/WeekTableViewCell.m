@@ -45,7 +45,7 @@
     
     self.programView.maximumValue = model.target;
     
-    [self.programView updateToCurrentValue:(model.target-model.myFinishCount) animated:YES];
+    [self.programView updateToCurrentValue:(model.myFinishCount) animated:YES];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

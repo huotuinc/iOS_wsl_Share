@@ -19,5 +19,8 @@
 
 @property (nonatomic,assign) BOOL isHaveLogin;
 
+
+@property (nonatomic,strong) UIViewController * currentVC;
+
 @end
 

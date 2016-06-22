@@ -35,6 +35,8 @@
 		EF17BB341C9DADD20072856E /* MJDIYBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = EF17BB2D1C9DADD20072856E /* MJDIYBackFooter.m */; };
 		EF17BB351C9DADD20072856E /* MJDIYHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EF17BB2F1C9DADD20072856E /* MJDIYHeader.m */; };
 		EF17BB381C9E74530072856E /* AccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF17BB371C9E74530072856E /* AccountTableViewController.m */; };
+		EF1979691D1A29610061A718 /* HeadVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1979681D1A29610061A718 /* HeadVIew.m */; };
+		EF19796B1D1A29770061A718 /* HeadVIew.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF19796A1D1A29770061A718 /* HeadVIew.xib */; };
 		EF1B8A661C894054003D230A /* UserLoginTool.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A651C894054003D230A /* UserLoginTool.m */; };
 		EF1B8A781C89557D003D230A /* NSDictionary+EXTERN.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A691C89557D003D230A /* NSDictionary+EXTERN.m */; };
 		EF1B8A791C89557D003D230A /* NSString+EXTERN.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A6B1C89557D003D230A /* NSString+EXTERN.m */; };
@@ -84,6 +86,20 @@
 		EF3877DA1C8FFAFE008279BD /* SexController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3877D61C8FFAFE008279BD /* SexController.m */; };
 		EF3877DD1C8FFB14008279BD /* ProfessionalController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3877DC1C8FFB14008279BD /* ProfessionalController.m */; };
 		EF41EEA31D114BAD006786F8 /* SetNewPasswdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF41EEA21D114BAD006786F8 /* SetNewPasswdViewController.m */; };
+		EF5763BC1D179F0F00A3C039 /* MastListMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5763BB1D179F0F00A3C039 /* MastListMenu.m */; };
+		EF5763CA1D17DB4E00A3C039 /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5763BF1D17DB4E00A3C039 /* UUBar.m */; };
+		EF5763CB1D17DB4E00A3C039 /* UUBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5763C11D17DB4E00A3C039 /* UUBarChart.m */; };
+		EF5763CC1D17DB4E00A3C039 /* UUChart.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5763C31D17DB4E00A3C039 /* UUChart.m */; };
+		EF5763CD1D17DB4E00A3C039 /* UUChartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5763C51D17DB4E00A3C039 /* UUChartLabel.m */; };
+		EF5763CE1D17DB4E00A3C039 /* UUColor.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5763C71D17DB4E00A3C039 /* UUColor.m */; };
+		EF5763CF1D17DB4E00A3C039 /* UULineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5763C91D17DB4E00A3C039 /* UULineChart.m */; };
+		EF5764081D180E0A00A3C039 /* ANDBackgroundChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5764031D180E0A00A3C039 /* ANDBackgroundChartView.m */; };
+		EF5764091D180E0A00A3C039 /* ANDInternalLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5764051D180E0A00A3C039 /* ANDInternalLineChartView.m */; };
+		EF57640A1D180E0A00A3C039 /* ANDLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5764071D180E0A00A3C039 /* ANDLineChartView.m */; };
+		EF57640D1D18F1C000A3C039 /* NSMutableDictionary+WSLLOVESHARE.m in Sources */ = {isa = PBXBuildFile; fileRef = EF57640C1D18F1C000A3C039 /* NSMutableDictionary+WSLLOVESHARE.m */; };
+		EF5764111D192FD700A3C039 /* RedBagController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5764101D192FD700A3C039 /* RedBagController.m */; };
+		EF5764141D1933BF00A3C039 /* HomeGetRedPocketCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF5764131D1933BF00A3C039 /* HomeGetRedPocketCView.xib */; };
+		EF5764161D19340200A3C039 /* HomeGetRedPocketCView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5764151D19340200A3C039 /* HomeGetRedPocketCView.m */; };
 		EF5A1EAC1C8D6A93002035FC /* OptionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5A1EAB1C8D6A93002035FC /* OptionModel.m */; };
 		EF5A1EE41C8D7272002035FC /* detailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5A1EB51C8D7272002035FC /* detailViewController.m */; };
 		EF5A1EE61C8D7272002035FC /* HomeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5A1EB91C8D7272002035FC /* HomeListViewController.m */; };
@@ -281,6 +297,9 @@
 		EF17BB2F1C9DADD20072856E /* MJDIYHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDIYHeader.m; sourceTree = "<group>"; };
 		EF17BB361C9E74530072856E /* AccountTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountTableViewController.h; sourceTree = "<group>"; };
 		EF17BB371C9E74530072856E /* AccountTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTableViewController.m; sourceTree = "<group>"; };
+		EF1979671D1A29610061A718 /* HeadVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadVIew.h; sourceTree = "<group>"; };
+		EF1979681D1A29610061A718 /* HeadVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadVIew.m; sourceTree = "<group>"; };
+		EF19796A1D1A29770061A718 /* HeadVIew.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadVIew.xib; sourceTree = "<group>"; };
 		EF1B8A641C894054003D230A /* UserLoginTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoginTool.h; sourceTree = "<group>"; };
 		EF1B8A651C894054003D230A /* UserLoginTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoginTool.m; sourceTree = "<group>"; };
 		EF1B8A681C89557D003D230A /* NSDictionary+EXTERN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+EXTERN.h"; sourceTree = "<group>"; };
@@ -375,6 +394,33 @@
 		EF3877DC1C8FFB14008279BD /* ProfessionalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalController.m; sourceTree = "<group>"; };
 		EF41EEA11D114BAD006786F8 /* SetNewPasswdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetNewPasswdViewController.h; sourceTree = "<group>"; };
 		EF41EEA21D114BAD006786F8 /* SetNewPasswdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetNewPasswdViewController.m; sourceTree = "<group>"; };
+		EF5763BA1D179F0F00A3C039 /* MastListMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MastListMenu.h; sourceTree = "<group>"; };
+		EF5763BB1D179F0F00A3C039 /* MastListMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MastListMenu.m; sourceTree = "<group>"; };
+		EF5763BE1D17DB4E00A3C039 /* UUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBar.h; sourceTree = "<group>"; };
+		EF5763BF1D17DB4E00A3C039 /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBar.m; sourceTree = "<group>"; };
+		EF5763C01D17DB4E00A3C039 /* UUBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBarChart.h; sourceTree = "<group>"; };
+		EF5763C11D17DB4E00A3C039 /* UUBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBarChart.m; sourceTree = "<group>"; };
+		EF5763C21D17DB4E00A3C039 /* UUChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChart.h; sourceTree = "<group>"; };
+		EF5763C31D17DB4E00A3C039 /* UUChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChart.m; sourceTree = "<group>"; };
+		EF5763C41D17DB4E00A3C039 /* UUChartLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChartLabel.h; sourceTree = "<group>"; };
+		EF5763C51D17DB4E00A3C039 /* UUChartLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChartLabel.m; sourceTree = "<group>"; };
+		EF5763C61D17DB4E00A3C039 /* UUColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUColor.h; sourceTree = "<group>"; };
+		EF5763C71D17DB4E00A3C039 /* UUColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUColor.m; sourceTree = "<group>"; };
+		EF5763C81D17DB4E00A3C039 /* UULineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UULineChart.h; sourceTree = "<group>"; };
+		EF5763C91D17DB4E00A3C039 /* UULineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UULineChart.m; sourceTree = "<group>"; };
+		EF5764021D180E0A00A3C039 /* ANDBackgroundChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANDBackgroundChartView.h; sourceTree = "<group>"; };
+		EF5764031D180E0A00A3C039 /* ANDBackgroundChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANDBackgroundChartView.m; sourceTree = "<group>"; };
+		EF5764041D180E0A00A3C039 /* ANDInternalLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANDInternalLineChartView.h; sourceTree = "<group>"; };
+		EF5764051D180E0A00A3C039 /* ANDInternalLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANDInternalLineChartView.m; sourceTree = "<group>"; };
+		EF5764061D180E0A00A3C039 /* ANDLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANDLineChartView.h; sourceTree = "<group>"; };
+		EF5764071D180E0A00A3C039 /* ANDLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANDLineChartView.m; sourceTree = "<group>"; };
+		EF57640B1D18F1C000A3C039 /* NSMutableDictionary+WSLLOVESHARE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+WSLLOVESHARE.h"; sourceTree = "<group>"; };
+		EF57640C1D18F1C000A3C039 /* NSMutableDictionary+WSLLOVESHARE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+WSLLOVESHARE.m"; sourceTree = "<group>"; };
+		EF57640F1D192FD700A3C039 /* RedBagController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedBagController.h; sourceTree = "<group>"; };
+		EF5764101D192FD700A3C039 /* RedBagController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedBagController.m; sourceTree = "<group>"; };
+		EF5764121D19339F00A3C039 /* HomeGetRedPocketCView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeGetRedPocketCView.h; sourceTree = "<group>"; };
+		EF5764131D1933BF00A3C039 /* HomeGetRedPocketCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeGetRedPocketCView.xib; sourceTree = "<group>"; };
+		EF5764151D19340200A3C039 /* HomeGetRedPocketCView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeGetRedPocketCView.m; sourceTree = "<group>"; };
 		EF5A1EAA1C8D6A93002035FC /* OptionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionModel.h; sourceTree = "<group>"; };
 		EF5A1EAB1C8D6A93002035FC /* OptionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionModel.m; sourceTree = "<group>"; };
 		EF5A1EB41C8D7272002035FC /* detailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailViewController.h; sourceTree = "<group>"; };
@@ -703,6 +749,7 @@
 		EF15C96C1C99047200ABD2F6 /* History */ = {
 			isa = PBXGroup;
 			children = (
+				EF5764011D180E0A00A3C039 /* ANDLineChartView */,
 				EFBD4F981D1285DE00EFEEC8 /* lineView */,
 				EF15C96D1C9906C700ABD2F6 /* HostTableViewController.h */,
 				EF15C96E1C9906C700ABD2F6 /* HostTableViewController.m */,
@@ -755,6 +802,7 @@
 		EF1B8A621C894054003D230A /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				EF5763BD1D17DB4E00A3C039 /* UUChart */,
 				EF17BB231C9DADD20072856E /* DIY */,
 				EF17BB0D1C9D9B210072856E /* JPushlib */,
 				EF3877BE1C8FCC7E008279BD /* Encryption */,
@@ -797,6 +845,8 @@
 				EF1B8A751C89557D003D230A /* UIViewController+MonitorNetWork.m */,
 				EF1B8A761C89557D003D230A /* UIViewController+NAV.h */,
 				EF1B8A771C89557D003D230A /* UIViewController+NAV.m */,
+				EF57640B1D18F1C000A3C039 /* NSMutableDictionary+WSLLOVESHARE.h */,
+				EF57640C1D18F1C000A3C039 /* NSMutableDictionary+WSLLOVESHARE.m */,
 			);
 			path = "扩展";
 			sourceTree = "<group>";
@@ -875,6 +925,8 @@
 				EF3636BF1C926E2C006AD6F1 /* DownTudiTableViewCell.h */,
 				EF3636C01C926E2C006AD6F1 /* DownTudiTableViewCell.m */,
 				EF3636C11C926E2C006AD6F1 /* DownTudiTableViewCell.xib */,
+				EF5763BA1D179F0F00A3C039 /* MastListMenu.h */,
+				EF5763BB1D179F0F00A3C039 /* MastListMenu.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1039,6 +1091,50 @@
 			path = Encryption;
 			sourceTree = "<group>";
 		};
+		EF5763BD1D17DB4E00A3C039 /* UUChart */ = {
+			isa = PBXGroup;
+			children = (
+				EF5763BE1D17DB4E00A3C039 /* UUBar.h */,
+				EF5763BF1D17DB4E00A3C039 /* UUBar.m */,
+				EF5763C01D17DB4E00A3C039 /* UUBarChart.h */,
+				EF5763C11D17DB4E00A3C039 /* UUBarChart.m */,
+				EF5763C21D17DB4E00A3C039 /* UUChart.h */,
+				EF5763C31D17DB4E00A3C039 /* UUChart.m */,
+				EF5763C41D17DB4E00A3C039 /* UUChartLabel.h */,
+				EF5763C51D17DB4E00A3C039 /* UUChartLabel.m */,
+				EF5763C61D17DB4E00A3C039 /* UUColor.h */,
+				EF5763C71D17DB4E00A3C039 /* UUColor.m */,
+				EF5763C81D17DB4E00A3C039 /* UULineChart.h */,
+				EF5763C91D17DB4E00A3C039 /* UULineChart.m */,
+			);
+			path = UUChart;
+			sourceTree = "<group>";
+		};
+		EF5764011D180E0A00A3C039 /* ANDLineChartView */ = {
+			isa = PBXGroup;
+			children = (
+				EF5764021D180E0A00A3C039 /* ANDBackgroundChartView.h */,
+				EF5764031D180E0A00A3C039 /* ANDBackgroundChartView.m */,
+				EF5764041D180E0A00A3C039 /* ANDInternalLineChartView.h */,
+				EF5764051D180E0A00A3C039 /* ANDInternalLineChartView.m */,
+				EF5764061D180E0A00A3C039 /* ANDLineChartView.h */,
+				EF5764071D180E0A00A3C039 /* ANDLineChartView.m */,
+			);
+			path = ANDLineChartView;
+			sourceTree = "<group>";
+		};
+		EF57640E1D192FB400A3C039 /* redBag */ = {
+			isa = PBXGroup;
+			children = (
+				EF5764151D19340200A3C039 /* HomeGetRedPocketCView.m */,
+				EF5764131D1933BF00A3C039 /* HomeGetRedPocketCView.xib */,
+				EF5764121D19339F00A3C039 /* HomeGetRedPocketCView.h */,
+				EF57640F1D192FD700A3C039 /* RedBagController.h */,
+				EF5764101D192FD700A3C039 /* RedBagController.m */,
+			);
+			path = redBag;
+			sourceTree = "<group>";
+		};
 		EF5A1EAD1C8D7272002035FC /* otherHome */ = {
 			isa = PBXGroup;
 			children = (
@@ -1127,6 +1223,9 @@
 				F23FDFA01CE452F900514279 /* StoreSelectedTableViewCell.h */,
 				F23FDFA11CE452F900514279 /* StoreSelectedTableViewCell.m */,
 				F23FDFA21CE452F900514279 /* StoreSelectedTableViewCell.xib */,
+				EF1979671D1A29610061A718 /* HeadVIew.h */,
+				EF1979681D1A29610061A718 /* HeadVIew.m */,
+				EF19796A1D1A29770061A718 /* HeadVIew.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1588,6 +1687,7 @@
 		EFF072851C8939F000150FA2 /* loveshare */ = {
 			isa = PBXGroup;
 			children = (
+				EF57640E1D192FB400A3C039 /* redBag */,
 				EFC015E11D1693E600869BA1 /* PersonCenter */,
 				EFC015CC1D15360700869BA1 /* WeekTask(本周任务) */,
 				EFBD4F941D124C1E00EFEEC8 /* enterprise(企业专区) */,
@@ -1797,6 +1897,7 @@
 			files = (
 				EF3636BE1C926C28006AD6F1 /* TudiTableViewCell.xib in Resources */,
 				EF15C96B1C98EECE00ABD2F6 /* TodayTableViewCell.xib in Resources */,
+				EF5764141D1933BF00A3C039 /* HomeGetRedPocketCView.xib in Resources */,
 				F2748EAA1CD21C10003C99CD /* DepartmentTableViewCell.xib in Resources */,
 				EFF072961C8939F000150FA2 /* LaunchScreen.storyboard in Resources */,
 				EFC253FC1D0EAA6600E33E24 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
@@ -1806,6 +1907,7 @@
 				EFBD4FC21D13DD3D00EFEEC8 /* EnViewCollectionViewCell.xib in Resources */,
 				EFC253F91D0EAA6600E33E24 /* ShareSDKUI.bundle in Resources */,
 				EF5A1EF71C8D7272002035FC /* ConversionCell.xib in Resources */,
+				EF19796B1D1A29770061A718 /* HeadVIew.xib in Resources */,
 				EF5A1EF91C8D7272002035FC /* HomeCell.xib in Resources */,
 				F23FDFA41CE452F900514279 /* StoreSelectedTableViewCell.xib in Resources */,
 				EFC253FE1D0EAA6600E33E24 /* README.txt in Resources */,
@@ -1901,6 +2003,7 @@
 			files = (
 				EF1B8A7E1C89557D003D230A /* UIViewController+MonitorNetWork.m in Sources */,
 				EF3877DD1C8FFB14008279BD /* ProfessionalController.m in Sources */,
+				EF1979691D1A29610061A718 /* HeadVIew.m in Sources */,
 				EF23A7751C9AF790005818CD /* MallBackViewController.m in Sources */,
 				EF17BB381C9E74530072856E /* AccountTableViewController.m in Sources */,
 				EF17BB341C9DADD20072856E /* MJDIYBackFooter.m in Sources */,
@@ -1909,8 +2012,10 @@
 				EFD2B0881CEC93D700F00431 /* SheYuTaskViewContrller.m in Sources */,
 				EF23A7631C9A3F99005818CD /* DetailWebViewTopOption.m in Sources */,
 				EF6F97831C89755200D760EC /* UIImageView+AFNetworking.m in Sources */,
+				EF57640D1D18F1C000A3C039 /* NSMutableDictionary+WSLLOVESHARE.m in Sources */,
 				EFC015CF1D15362F00869BA1 /* WeekTaskTableViewController.m in Sources */,
 				EF6F97821C89755200D760EC /* UIButton+AFNetworking.m in Sources */,
+				EF5763CC1D17DB4E00A3C039 /* UUChart.m in Sources */,
 				EF907CC11CEABCB8007884A8 /* UIView+XMGExtension.m in Sources */,
 				EFA760C51C97E2B200EFCE9A /* PersonViewController.m in Sources */,
 				EF36369E1C918EE5006AD6F1 /* HomeViewController.m in Sources */,
@@ -1919,6 +2024,7 @@
 				EF3877D81C8FFAFE008279BD /* MCController.m in Sources */,
 				EF1B8A661C894054003D230A /* UserLoginTool.m in Sources */,
 				EF5C0B671C8BFD1000C76019 /* MMRootViewController.m in Sources */,
+				EF5764081D180E0A00A3C039 /* ANDBackgroundChartView.m in Sources */,
 				EF3877D71C8FFAFE008279BD /* HobbyController.m in Sources */,
 				EF3636AF1C91902D006AD6F1 /* PayModel.m in Sources */,
 				EFC015D41D15389F00869BA1 /* WeekModel.m in Sources */,
@@ -1951,6 +2057,7 @@
 				EF6F97E11C8AB3B800D760EC /* MBProgressHUD.m in Sources */,
 				EF3877CE1C8FFA64008279BD /* PersonMessageTableViewController.m in Sources */,
 				EF6F97811C89755200D760EC /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				EF5764161D19340200A3C039 /* HomeGetRedPocketCView.m in Sources */,
 				EF6F97761C89755200D760EC /* AFHTTPSessionManager.m in Sources */,
 				EF907CBE1CEABBAF007884A8 /* HomeTitleButton.m in Sources */,
 				EF5C0B641C8BF9DA00C76019 /* WeiQAuthModel.m in Sources */,
@@ -1980,7 +2087,9 @@
 				EF5A1EAC1C8D6A93002035FC /* OptionModel.m in Sources */,
 				F23FDF9C1CE42CFD00514279 /* StoreSelectedViewController.m in Sources */,
 				EF5A1EFD1C8D7CAD002035FC /* NewTaskDataModel.m in Sources */,
+				EF5763CA1D17DB4E00A3C039 /* UUBar.m in Sources */,
 				EF15C97A1C992C8E00ABD2F6 /* AwardList.m in Sources */,
+				EF57640A1D180E0A00A3C039 /* ANDLineChartView.m in Sources */,
 				EFD2B08B1CEC941500F00431 /* jiangliTaskController.m in Sources */,
 				EFFA36FB1C8AD9BD00D6AE4D /* UserModel.m in Sources */,
 				EF6F977B1C89755200D760EC /* AFURLSessionManager.m in Sources */,
@@ -1992,7 +2101,9 @@
 				EF6F977A1C89755200D760EC /* AFURLResponseSerialization.m in Sources */,
 				EF1B8A7D1C89557D003D230A /* UITableView+CJ.m in Sources */,
 				EF36369F1C918EE5006AD6F1 /* MidTabelViewCell.m in Sources */,
+				EF5763CF1D17DB4E00A3C039 /* UULineChart.m in Sources */,
 				EFEA712C1D1127A900629F8C /* LoginChangePasswdViewController.m in Sources */,
+				EF5764111D192FD700A3C039 /* RedBagController.m in Sources */,
 				EFBD4F9B1D1285F800EFEEC8 /* LinePoint.m in Sources */,
 				EFD8C8CE1D06A546007922D6 /* TopTenModel.m in Sources */,
 				EFAF471B1C97D96E00D5A5C4 /* JiTuanModel.m in Sources */,
@@ -2005,10 +2116,12 @@
 				EF6F97851C89755200D760EC /* UIRefreshControl+AFNetworking.m in Sources */,
 				EF6F97D51C8AAC4800D760EC /* AccountLoginViewController.m in Sources */,
 				EF5A1EE61C8D7272002035FC /* HomeListViewController.m in Sources */,
+				EF5763CB1D17DB4E00A3C039 /* UUBarChart.m in Sources */,
 				EFAF47151C96E09100D5A5C4 /* EnterpriseTableViewController.m in Sources */,
 				EF3636AA1C918FE2006AD6F1 /* payRequsestHandler.mm in Sources */,
 				EF6F97841C89755200D760EC /* UIProgressView+AFNetworking.m in Sources */,
 				EF3877D91C8FFAFE008279BD /* NameController.m in Sources */,
+				EF5763CE1D17DB4E00A3C039 /* UUColor.m in Sources */,
 				F28CC0791CDB799300F4B72E /* XYPopView.m in Sources */,
 				EF15C9771C992BE700ABD2F6 /* HistoryModel.m in Sources */,
 				EFC015E41D1695D300869BA1 /* PersonCenterViewController.m in Sources */,
@@ -2022,14 +2135,17 @@
 				EFBD4FB91D12ABC700EFEEC8 /* LBLaunchImageAdView.m in Sources */,
 				EF3636A91C918FE2006AD6F1 /* ApiXml.mm in Sources */,
 				F2748EA91CD21C10003C99CD /* DepartmentTableViewCell.m in Sources */,
+				EF5763CD1D17DB4E00A3C039 /* UUChartLabel.m in Sources */,
 				EF6F97861C89755200D760EC /* UIWebView+AFNetworking.m in Sources */,
 				EF907CC71CEAEB7E007884A8 /* HomeListTableController.m in Sources */,
 				EF17BB321C9DADD20072856E /* MJChiBaoZiHeader.m in Sources */,
 				EFF072881C8939F000150FA2 /* main.m in Sources */,
 				EF3636721C90448B006AD6F1 /* PersonCenterModel.m in Sources */,
+				EF5764091D180E0A00A3C039 /* ANDInternalLineChartView.m in Sources */,
 				EF3636821C914D07006AD6F1 /* FollowList.m in Sources */,
 				EF5A1EF11C8D7272002035FC /* GetHomeDataTool.m in Sources */,
 				EF1B8A7A1C89557D003D230A /* UIButton+CountDown.m in Sources */,
+				EF5763BC1D179F0F00A3C039 /* MastListMenu.m in Sources */,
 				EF3636871C91539B006AD6F1 /* MoreSetTableViewController.m in Sources */,
 				EF6F977F1C89755200D760EC /* AFImageDownloader.m in Sources */,
 				EFBD4FC11D13DD3D00EFEEC8 /* EnViewCollectionViewCell.m in Sources */,

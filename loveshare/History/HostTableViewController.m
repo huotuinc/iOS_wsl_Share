@@ -79,7 +79,7 @@
     [self setup];
     
     [UIApplication sharedApplication].keyWindow.backgroundColor = [UIColor whiteColor];
-    self.title = @"历史收益";
+    self.title = @"历史浏览";
     self.tableView.tableHeaderView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT / 3);
 
     self.tableView.userInteractionEnabled = NO;
@@ -200,6 +200,7 @@
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"HostTableViewCell" owner:nil options:nil] lastObject];
     }
+    cell.userInteractionEnabled = NO;
     HistoryModel * model =  self.dateArray[indexPath.section];
     AwardList * models = model.awardList[indexPath.row];
     LWLog(@"%@", [models mj_keyValues]);
@@ -214,7 +215,7 @@
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     HistoryModel * model =  self.dateArray[section];
     LWLog(@"%@",[model mj_keyValues]);
-    NSString * time = [NSString stringWithFormat:@"%@ 收益",[[model.date componentsSeparatedByString:@" "] firstObject]];
+    NSString * time = [NSString stringWithFormat:@"%@ 浏览",[[model.date componentsSeparatedByString:@" "] firstObject]];
     TitleHead * view = [[[NSBundle mainBundle] loadNibNamed:@"TitleHead" owner:nil options:nil] lastObject];
     view.timeLable.text = time;
     LWLog(@"--------%d",model.browseAmount);

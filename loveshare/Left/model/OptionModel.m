@@ -17,7 +17,7 @@
 + (NSMutableArray *)OptionModelBringBackArray{
     OptionModel * md1 = [[OptionModel alloc] init];
     md1.optionImageName = @"zx";
-    md1.OptionName = @"资讯动态";
+    md1.OptionName = @"乐享资讯";
     
     OptionModel * md2 = [[OptionModel alloc] init];
     md2.optionImageName = @"ls";
@@ -46,12 +46,15 @@
     
     
     OptionModel * md7 = [[OptionModel alloc] init];
-    md7.optionImageName = @"jd";
-    md7.OptionName = @"监督管理";
+    md7.optionImageName = @"gd60X60";
+    md7.OptionName = @"更多选项";
+    
     
     OptionModel * md8 = [[OptionModel alloc] init];
-    md8.optionImageName = @"gd";
-    md8.OptionName = @"更多选项";
+    md8.optionImageName = @"jd";
+    md8.OptionName = @"监督管理";
+    
+    
     
     NSMutableArray * option = [NSMutableArray arrayWithArray:@[md1,md2,md3,md4,md5,md6, md7, md8]];
     return option;

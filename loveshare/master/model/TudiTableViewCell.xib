@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -26,15 +26,9 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的徒弟:13857560740" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGn-AH-bRX">
-                                <rect key="frame" x="60" y="7" width="170" height="20"/>
+                                <rect key="frame" x="60" y="20" width="170" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.36078431370000003" green="0.36078431370000003" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昨日贡献12积分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q18-z7-7QQ">
-                                <rect key="frame" x="60" y="30" width="106" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.84313725490196079" green="0.35686274509803922" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lE5-EV-R0u">
@@ -45,17 +39,22 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.42352941179999998" green="0.7843137255" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="YGn-AH-bRX" firstAttribute="leading" secondItem="SA7-xE-qSd" secondAttribute="trailing" constant="5" id="1fz-bv-Vix"/>
+                            <constraint firstItem="YGn-AH-bRX" firstAttribute="leading" secondItem="SA7-xE-qSd" secondAttribute="trailing" constant="5" id="1uV-5q-4xp"/>
                             <constraint firstItem="YGn-AH-bRX" firstAttribute="top" secondItem="SA7-xE-qSd" secondAttribute="top" id="9Yx-dw-XrS"/>
                             <constraint firstItem="lE5-EV-R0u" firstAttribute="centerY" secondItem="lya-hp-Vwr" secondAttribute="centerY" id="A9I-7n-xvS"/>
-                            <constraint firstItem="Q18-z7-7QQ" firstAttribute="leading" secondItem="YGn-AH-bRX" secondAttribute="leading" id="O0r-55-0He"/>
-                            <constraint firstItem="Q18-z7-7QQ" firstAttribute="top" secondItem="YGn-AH-bRX" secondAttribute="bottom" constant="3" id="P5E-si-wE4"/>
                             <constraint firstAttribute="trailing" secondItem="lE5-EV-R0u" secondAttribute="trailing" constant="10" id="SNu-be-aa6"/>
                             <constraint firstItem="SA7-xE-qSd" firstAttribute="centerY" secondItem="lya-hp-Vwr" secondAttribute="centerY" id="V3T-F2-YuZ"/>
                             <constraint firstItem="SA7-xE-qSd" firstAttribute="leading" secondItem="lya-hp-Vwr" secondAttribute="leading" constant="10" id="rnD-Lu-XAs"/>
+                            <constraint firstItem="YGn-AH-bRX" firstAttribute="centerY" secondItem="lya-hp-Vwr" secondAttribute="centerY" id="tQg-11-TS8"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1fz-bv-Vix"/>
+                                <exclude reference="9Yx-dw-XrS"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
                 <constraints>
@@ -69,7 +68,6 @@
                 <outlet property="arrow" destination="lE5-EV-R0u" id="wAk-NP-VHZ"/>
                 <outlet property="headImage" destination="SA7-xE-qSd" id="kv2-R2-DeA"/>
                 <outlet property="name" destination="YGn-AH-bRX" id="qc2-1d-SLe"/>
-                <outlet property="score" destination="Q18-z7-7QQ" id="pIt-fM-ihB"/>
             </connections>
             <point key="canvasLocation" x="344" y="421"/>
         </tableViewCell>

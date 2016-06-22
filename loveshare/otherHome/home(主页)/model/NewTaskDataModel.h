@@ -71,6 +71,7 @@
 
 @property(nonatomic,strong) NSNumber *browseCount;
 
+@property(nonatomic,assign) int ShowTurnButton;
 
 /**
  {

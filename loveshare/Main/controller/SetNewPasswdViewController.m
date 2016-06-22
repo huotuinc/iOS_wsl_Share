@@ -21,6 +21,15 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *secondRightBtn;
 
+
+@property (weak, nonatomic) IBOutlet UITextField *revercode;
+
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *Containheight;
+
+@property (weak, nonatomic) IBOutlet UIView *thirdDiv;
+@property (weak, nonatomic) IBOutlet UIView *foutD;
+
 @end
 
 @implementation SetNewPasswdViewController
@@ -45,15 +54,32 @@
     self.firstRightBtn.tag = 100;
     [self.secondRightBtn addTarget:self action:@selector(secondLeftBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
+    if (!_isRegist) {
+        
+        self.Containheight.constant = 123;
+        
+        self.thirdDiv.hidden = YES;
+        
+        
+        self.foutD.hidden = YES;
+        
+        
+        
+    }else{
+        [self.confirmBtn setTitle:@"注册" forState:UIControlStateNormal];
+    }
     
-    [self leftBtn];
+    if(!self.isInApp){
+        [self leftBtn];
+    }
+    
 }
+
+
 - (void)leftBtn{
-    
-    
     // 左上角
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setImage:[UIImage imageNamed:@"Nav_Left_Return_Back"] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:@"Nav_Left_Return_White_Back"] forState:UIControlStateNormal];
     //    [backButton setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
     [backButton setTitle:@"返回" forState:UIControlStateNormal];
     
@@ -115,6 +141,49 @@
         return;
     }
     
+    if (self.isRegist) {
+        
+        
+        if (!self.revercode.text.length) {
+            [MBProgressHUD showError:@"邀请码为空"];
+            return;
+        }
+        NSMutableDictionary* p = [NSMutableDictionary dictionary];
+        p[@"mobile"] = self.phone;
+        p[@"password"] = [MD5Encryption md5by32:self.first.text];
+        p[@"verifyCode"] = self.vercode;
+        p[@"invitationCode"] = self.revercode.text;
+        [MBProgressHUD showMessage:nil];
+        NSDictionary * dict = [UserLoginTool LogingetDateSyncWith:@"MobileRegister" WithParame:p];
+        LWLog(@"%@",dict);
+        [MBProgressHUD hideHUD];
+        if ([[dict objectForKey:@"status"] integerValue] == 1 && [[dict objectForKey:@"resultCode"] integerValue] == 1) {
+            [MBProgressHUD showSuccess:[dict objectForKey:@"tip"]];
+            UserModel * userModel = [UserModel mj_objectWithKeyValues:dict[@"resultData"]];
+            [UserLoginTool LoginModelWriteToShaHe:userModel andFileName:RegistUserDate];
+            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",userModel.mallUserId] forKey:ChoneMallAccount];
+            [[NSUserDefaults standardUserDefaults] setObject:userModel.unionId forKey:PhoneLoginunionid];
+            
+            
+            UserModel * usermodel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+            NSMutableDictionary * parame = [NSMutableDictionary dictionary];
+            parame[@"loginCode"] = usermodel.loginCode;
+            parame[@"type"] = @"0";
+            parame[@"token"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceToken"];
+            //获取支付参数
+            [UserLoginTool loginRequestGet:@"AddDeviceToken" parame:parame success:^(id json) {
+                LWLog(@"%@",json);
+            } failure:nil];
+            
+            
+            [self SetupLoginIn];
+        }else{
+            
+            [MBProgressHUD showError:[dict objectForKey:@"tip"]];
+        }
+
+        
+    }else{
         NSMutableDictionary* p = [NSMutableDictionary dictionary];
         p[@"mobile"] = self.phone;
         p[@"password"] = [MD5Encryption md5by32:self.first.text];
@@ -123,16 +192,26 @@
         NSDictionary * dict = [UserLoginTool LogingetDateSyncWith:@"MobileRegister" WithParame:p];
         if ([[dict objectForKey:@"status"] integerValue] == 1 && [[dict objectForKey:@"resultCode"] integerValue] == 1) {
             [MBProgressHUD showSuccess:[dict objectForKey:@"tip"]];
-//            UserModel * userModel = [UserModel mj_objectWithKeyValues:dict[@"resultData"]];
-//            [UserLoginTool LoginModelWriteToShaHe:userModel andFileName:RegistUserDate];
-//            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",userModel.mallUserId] forKey:ChoneMallAccount];
-//            [[NSUserDefaults standardUserDefaults] setObject:userModel.unionId forKey:PhoneLoginunionid];
+            
             [self.navigationController popToRootViewControllerAnimated:YES];
             
         }else{
             
             [MBProgressHUD showError:[dict objectForKey:@"tip"]];
         }
+    }
+    
+    
+}
+
+/**
+ *  2、程序启动控制器的选择
+ */
+- (void)SetupLoginIn{
+    MMRootViewController * root = [[MMRootViewController alloc] init];
+    UIWindow * win = [UIApplication sharedApplication].keyWindow;
+    win.backgroundColor = [UIColor whiteColor];
+    win.rootViewController = root;
 }
     
 @end

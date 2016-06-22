@@ -10,7 +10,14 @@
 
 @interface SetNewPasswdViewController : UIViewController
 
+
+@property(nonatomic,assign) BOOL isRegist;
+
 @property(nonatomic,strong) NSString * phone;
 @property(nonatomic,strong) NSString * vercode;
+
+
+@property(nonatomic,assign) BOOL isInApp;
+
 
 @end

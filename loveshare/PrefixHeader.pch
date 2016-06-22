@@ -100,8 +100,8 @@
 #define SCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
 
 /**极光推送*/
-#define JPushAppKey @"26326d560507983df9217c39"
-#define JPushSecret @"f0a441832e28d1c69ba94093"
+#define JPushAppKey @"88d262e559be8cd7d6bec30c"
+#define JPushSecret @"9894e370784be3649e158bb4"
 
 
 //luohaibo 万事利到商城
@@ -126,6 +126,10 @@
 //#define MainUrl @"http://api.guo.fancat.cn:8084"
 
 #define MainUrl @"http://taskapi.fhsilk.com"
+
+
+#define MallPhoneLogin @"http://cosytest.51flashmall.com"
+
 
 /**平台*/
 #define OPERATION_parame @"FH2016APP"
@@ -152,11 +156,11 @@
 #define LAST_Flage_KEY @"LAST_Flage_KEY"
 
 
-#define WslShareSdkAppId @"ea679394ddf4"
+#define WslShareSdkAppId @"dc6acbc29fe8"//@"ea679394ddf4"
 
 
-#define WxAppID @"wx4f8eacaca1317fdd"
-#define WxAppSecret @"5b98fc8e84e27e79a9341d4c6e85f57d"
+#define WxAppID @"wx369cdeb338051de5"//@"wx4f8eacaca1317fdd"
+#define WxAppSecret @"0dcbc62b9a4724e89097bb00a0bd0ae2"//@"5b98fc8e84e27e79a9341d4c6e85f57d"
 
 #define Sina @"56985861"  //wb56985861
 #define SinaKey @"a2cf67a9f6666f09dfa4c69202ebfabb"

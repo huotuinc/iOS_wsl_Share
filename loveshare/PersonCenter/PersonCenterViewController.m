@@ -19,6 +19,10 @@
 
 @property (nonatomic,strong) NSArray * optionImageName;
 
+
+/**个人信息*/
+@property (weak, nonatomic) IBOutlet UIView *personMessage;
+
 @end
 
 @implementation PersonCenterViewController
@@ -49,7 +53,7 @@
     self.leveLable.layer.cornerRadius = 5;
     self.leveLable.layer.masksToBounds = YES;
     
-    
+    self.option.userInteractionEnabled = NO;
     self.option.tableFooterView = [[UIView alloc] init];
     
     self.option.rowHeight = 60;
@@ -65,10 +69,21 @@
     
     [self.iconview sd_setImageWithURL:[NSURL URLWithString:usermodel.userHead] placeholderImage:nil options:SDWebImageRetryFailed];
     self.nickName.text = usermodel.RealName;
+    
+    
+    
+    self.personMessage.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer * ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(enterPersonMessage)];
+    [self.personMessage addGestureRecognizer:ges];
+    
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (void)enterPersonMessage{
+    PersonMessageTableViewController * pers = (PersonMessageTableViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"PersonMessageTableViewController"];
+    [self.navigationController pushViewController:pers animated:NO];
+    
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

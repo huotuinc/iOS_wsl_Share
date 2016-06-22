@@ -38,7 +38,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc
                                         ] init];
-    CGFloat with =  (ScreenWidth - 5 * Margin) * 0.25;
+    CGFloat with =  (ScreenWidth - 2 * Margin) /3.0;
     CGFloat height = with * 100 / 80.0;
     layout.minimumLineSpacing = Margin;
     layout.minimumInteritemSpacing = Margin;
@@ -144,6 +144,13 @@ static NSString * const reuseIdentifier = @"Cell";
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     StoreModel * model = [self.datesArray objectAtIndex:indexPath.row];
     LWLog(@"%@",[model mj_keyValues]);
+    
+    
+    HomeListTableController * vc = [[HomeListTableController alloc] init];
+    vc.ISEnter = YES;
+    vc.title = model.UserNickName;
+    vc.userenterId = [model.UserId intValue];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*

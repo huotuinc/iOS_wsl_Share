@@ -9,7 +9,8 @@
 #import "HomeViewController.h"
 #import <NJKWebViewProgress.h>
 #import <NJKWebViewProgressView.h>
-
+#import "NSDictionary+EXTERN.h"
+#import "NSMutableDictionary+WSLLOVESHARE.h"
 #import "UIViewController+MMDrawerController.h"
 
 @interface HomeViewController()<UIWebViewDelegate,UIActionSheetDelegate,NJKWebViewProgressDelegate>
@@ -233,31 +234,43 @@
     InitModel * initM = (InitModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:InitModelCaches];
     NSString * ddd = [NSString stringWithFormat:@"%@/%@/index.aspx?back=1",[[NSUserDefaults standardUserDefaults] objectForKey:WebSit],initM.customerId];
     LWLog(@"%@",ddd);
-    NSURL * urlStr = [NSURL URLWithString:[NSDictionary ToSignUrlWithString:ddd]];
+
+    NSMutableDictionary * signDict = [NSMutableDictionary dictionary];
+    signDict[@"redirecturl"] = [[NSUserDefaults standardUserDefaults] objectForKey:WebSit];
+    signDict[@"customerid"] = [NSString stringWithFormat:@"%@",initM.customerId];
+    
+    UserModel * usermodel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+    signDict[@"userid"] = [NSString stringWithFormat:@"%d",usermodel.mallUserId];
+    LWLog(@"%@",[NSString stringWithFormat:@"%@",usermodel.loginCode]);
+    signDict[@"moblie"] =  [[usermodel.loginCode componentsSeparatedByString:@"^"] firstObject];
+    LWLog(@"%@",usermodel.mobile);
+    NSDate * timestamp = [[NSDate alloc] init];
+    NSString *timeSp = [NSString stringWithFormat:@"%lld", (long long)[timestamp timeIntervalSince1970] * 1000];  //转化为UNIX时间戳
+    signDict[@"timestamp"] = timeSp;
+     NSString * newUrl =  [signDict WSLFenHongSignWithDict:signDict withURl:[NSString stringWithFormat:@"%@/OAuth2/WSLAuthorize.aspx?",[[NSUserDefaults standardUserDefaults] objectForKey:WebSit]]];
+    
+    LWLog(@"%@",newUrl);
+//    NSString *unicodeStr = [NSString stringWithCString:[newUrl UTF8String] encoding:NSUTF8StringEncoding];
+//     LWLog(@"%@",unicodeStr);
+    
+    NSURL * urlStr = [NSURL URLWithString:newUrl];
     NSURLRequest * req = [[NSURLRequest alloc] initWithURL:urlStr];
     self.homeWebView.scalesPageToFit = YES;
     self.homeWebView.tag = 100;
     self.homeWebView.delegate = _webViewProgress;
-//    self.homeWebView.scrollView.bounces = NO;
     [self.homeWebView loadRequest:req];
-    
-    
     InitModel * ini = (InitModel * )[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:InitModelCaches];
-//    NSString * uraaaaa = [[NSUserDefaults standardUserDefaults] objectForKey:AppMainUrl];
     NSString * cc = [NSString stringWithFormat:@"%@%@%@",[[NSUserDefaults standardUserDefaults] objectForKey:WebSit],@"/bottom.aspx?customerid=",ini.customerId];
     LWLog(@"%@",cc);
     NSURLRequest * Bottomreq = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:cc]];
     self.homeBottonWebView.scalesPageToFit = YES;
     self.homeBottonWebView.delegate = self;
     self.homeBottonWebView.tag = 20;
-//    self.homeBottonWebView.hidden = YES;
     self.homeBottonWebView.scrollView.bounces = NO;
     self.homeBottonWebView.scrollView.scrollEnabled = NO;
     [self.homeBottonWebView loadRequest:Bottomreq];
-
     //集成刷新控件
     [self AddMjRefresh];
-    
     self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithCustomView:self.shareBtn]];
 
 }
@@ -354,7 +367,7 @@
             }];
         }else{
             [UIView animateWithDuration:0.05 animations:^{
-                self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.backArrow];
+                self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.leftOption];
             }];
         }
     }

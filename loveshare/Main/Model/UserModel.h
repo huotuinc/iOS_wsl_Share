@@ -12,6 +12,8 @@
 
 @property(nonatomic,copy) NSString * RealName;
 @property(nonatomic,copy) NSString * UserNickName;
+@property(nonatomic,copy) NSString *userName;
+
 @property(nonatomic,assign) BOOL IsBindMobile;
 @property(nonatomic,assign) int checkInDays;
 @property(nonatomic,assign) int city;
@@ -41,7 +43,6 @@
 @property(nonatomic,assign) int turnUserId;
 @property(nonatomic,copy) NSString *unionId;
 @property(nonatomic,copy) NSString *userHead;
-@property(nonatomic,copy) NSString *userName;
 @property(nonatomic,assign) int welfareCount;
 @property(nonatomic,copy) NSString * withdrawalPassword;
 @property(nonatomic,assign) CGFloat yesScore;
@@ -50,4 +51,21 @@
 @property(nonatomic,assign) BOOL isSuper;
 /**用户密码*/
 @property(nonatomic,copy)NSString * UserPassword;
+
+
+/**等级名称*/
+@property(nonatomic,copy) NSString * levelName;
+
+
+/**徒弟数*/
+@property(nonatomic,strong) NSNumber * PrenticeAmount;
+
+
+/**历史总转发量*/
+@property(nonatomic,strong) NSNumber * TotalTurnAmount;
+
+/**历史总浏览量*/
+@property(nonatomic,strong) NSNumber * TotalBrowseAmount;
+
+
 @end

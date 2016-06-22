@@ -42,7 +42,7 @@
 
 - (void) setupInit{
     
-    self.title = @"修改密码";
+    self.title = @"获取验证码";
     
     
     self.first.alpha = 0.7;
@@ -62,19 +62,40 @@
     [self.yanzheng addGestureRecognizer:tap];
     
     
-    if (_Islogin) {
-        
+
+    
+    
+    if (!self.isInapp) {
         // 左上角
-        UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        backButton.frame = CGRectMake(0, 0, 40, 80);
-       [backButton setTitle:@"取消" forState:UIControlStateNormal];
-        [backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [backButton addTarget:self action:@selector(backdismiss) forControlEvents:UIControlEventTouchUpInside];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+        [self leftBtn];
     }
+    
+    
+    
+    
     
 }
 
+- (void)leftBtn{
+    // 左上角
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setImage:[UIImage imageNamed:@"Nav_Left_Return_White_Back"] forState:UIControlStateNormal];
+    //    [backButton setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
+    [backButton setTitle:@"返回" forState:UIControlStateNormal];
+    
+    [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    //        [backButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    [backButton sizeToFit];
+    // 这句代码放在sizeToFit后面
+    backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
+    [backButton addTarget:self action:@selector(backss) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+}
+
+- (void)backss{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -162,9 +183,11 @@
         
        [[NSUserDefaults standardUserDefaults] setObject:self.phoneNumberText.text forKey:@"localPhoneNumber"];
         
-       SetNewPasswdViewController * con =  [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"SetNewPasswdViewController"];
+        SetNewPasswdViewController * con =  [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"SetNewPasswdViewController"];
         con.phone = self.phoneNumberText.text;
         con.vercode = self.phomecode.text;
+        con.isRegist = self.IsRegist;
+        con.isInApp = self.isInapp;
         [self.navigationController pushViewController:con animated:YES];
     }else{
         

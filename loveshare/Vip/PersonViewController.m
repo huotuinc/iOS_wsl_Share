@@ -158,13 +158,14 @@
     self.headImage.layer.masksToBounds = YES;
     self.headImage.layer.borderColor = [UIColor whiteColor].CGColor;
     self.headImage.layer.borderWidth = 2;
-    [self.headImage sd_setImageWithURL:[NSURL URLWithString:self.model.logo] placeholderImage:nil];
+    
+    [self.headImage sd_setImageWithURL:[NSURL URLWithString:self.model.logo] placeholderImage:[UIImage imageNamed:@"xiangxtouxiang"]];
     
     self.sssssss.text = self.xixi;
     
-    self.turnLable.text = [NSString stringWithFormat:@" %d",self.model.totalTurnCount];
-    self.browsLable.text = [NSString stringWithFormat:@" %d",self.model.totalBrowseCount];
-    self.tudiLable.text = [NSString stringWithFormat:@" %d",self.model.prenticeCount];
+    self.turnLable.text = [NSString stringWithFormat:@" %d次",self.model.totalTurnCount];
+    self.browsLable.text = [NSString stringWithFormat:@" %d次",self.model.totalBrowseCount];
+    self.tudiLable.text = [NSString stringWithFormat:@" %d人",self.model.prenticeCount];
     self.scoreJifen.text = [NSString stringWithFormat:@" %@",[NSString xiaoshudianweishudeal:[self.model.totalScore floatValue]]];
     self.firstLable.userInteractionEnabled = YES;
     self.secondLable.userInteractionEnabled = YES;

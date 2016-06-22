@@ -87,6 +87,7 @@
 
 - (IBAction)forgetButton:(id)sender {
     LoginChangePasswdViewController * login = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginChangePasswdViewController"];
+    login.IsRegist = NO;
     [self.navigationController pushViewController:login animated:YES];
     LWLog(@"忘记密码");
 }
@@ -126,7 +127,11 @@
  }
 
 - (IBAction)registerButton:(id)sender {
-    
+
+    LoginChangePasswdViewController * login = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginChangePasswdViewController"];
+    login.IsRegist = YES;
+    [self.navigationController pushViewController:login animated:YES];
+    LWLog(@"忘记密码");
 }
 
 
@@ -134,4 +139,9 @@
     [self.view endEditing:YES];
 }
 
+
+- (void)dealloc{
+    
+    LWLog(@"%s",__func__);
+}
 @end

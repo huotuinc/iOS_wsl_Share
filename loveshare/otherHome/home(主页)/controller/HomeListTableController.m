@@ -81,7 +81,10 @@
     
     self.storyID = 0;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(44, 0, 64, 0);
+    if (!self.ISEnter) {
+        self.tableView.contentInset = UIEdgeInsetsMake(44, 0, 64, 0);
+    }
+    
     
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     
@@ -139,11 +142,14 @@
 //    LWLog(@"xxxxx%d",self.type);
     
     
-    NSNumber * storyID = [[NSUserDefaults standardUserDefaults] objectForKey:@"storyID"];
+//    NSNumber * storyID = [[NSUserDefaults standardUserDefaults] objectForKey:@"storyID"];
     
-
-    
-    [self getDateSortType:self.type andOrderby:1 andPageIndex:1 andTaskStaus:1 andStoreID:storyID?[storyID integerValue]:0 isHead:YES];
+    NSInteger strory = 0;
+    if (self.ISEnter) {
+        
+        strory = self.userenterId;
+    }
+    [self getDateSortType:self.type andOrderby:1 andPageIndex:1 andTaskStaus:1 andStoreID:strory isHead:YES];
     [_header endRefreshing];
 }
 
@@ -207,6 +213,7 @@
     parame[@"taskStaus"] = @(taskStaus);
     parame[@"storeId"] = @(storeID);
     
+    LWLog(@"%@",parame);
 //    [MBProgressHUD showMessage:nil];
     [UserLoginTool loginRequestGet:@"TaskList" parame:parame success:^(NSDictionary *  json) {
         LWLog(@"%@",json);
@@ -267,6 +274,15 @@
     cell.model = model;
     return cell;
 }
+
+//- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    
+//    
+//    
+//    
+//}
+
+
 
 
 - (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{

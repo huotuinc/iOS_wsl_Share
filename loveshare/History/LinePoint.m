@@ -8,8 +8,13 @@
 
 #import "LinePoint.h"
 #import "PLineView.h"
+
+#import "ANDLineChartView.h"
 #import "BCPNChartView.h"
-@interface LinePoint ()
+
+
+@interface LinePoint ()<ANDLineChartViewDataSource,ANDLineChartViewDelegate>
+
 
 
 @property(nonatomic,strong) UILabel *score;
@@ -20,7 +25,14 @@
 @property(nonatomic,assign) int cureSecontion;
 
 
-@property(nonatomic,strong) PLineView * aa;
+@property (nonatomic,strong) BCPNChartView * chartView;
+
+
+@property (nonatomic,strong) NSMutableArray * countaaa;
+
+@property (nonatomic,strong) NSMutableArray * date;
+
+
 
 @end
 
@@ -28,21 +40,38 @@
 @implementation LinePoint
 
 
+- (NSMutableArray *)date{
+    if (_date == nil) {
+        
+        _date = [NSMutableArray array];
+    }
+    return _date;
+    
+}
+
+
+- (NSMutableArray *)countaaa{
+    if (_countaaa == nil) {
+        
+        _countaaa = [NSMutableArray array];
+    }
+    
+    return _countaaa;
+}
+
+
 - (instancetype)initWithFrame:(CGRect)frame{
     
     
     if (self = [super initWithFrame:frame]) {
         
-        self.backgroundColor = [UIColor blueColor];
+        self.backgroundColor = [UIColor colorWithRed:0 green:193/255.0 blue:208/255 alpha:1];
         _cureSecontion = -1;
         
-        PLineView * aa = [[PLineView alloc] init];
-        _aa = aa;
-        aa.backgroundColor = [UIColor greenColor];
-        [self addSubview:aa];
+        
         
         UILabel * score = [[UILabel alloc] init];
-        score.backgroundColor = [UIColor clearColor];
+        score.backgroundColor = [UIColor colorWithRed:0 green:193/255.0 blue:208/255 alpha:1];
         _score = score;
         score.adjustsFontSizeToFitWidth = YES;
         score.textAlignment = NSTextAlignmentCenter;
@@ -51,7 +80,7 @@
         [score setTextColor:[UIColor whiteColor]];
         
         UILabel * time = [[UILabel alloc] init];
-        time.backgroundColor = [UIColor clearColor];
+        time.backgroundColor = [UIColor colorWithRed:0 green:193/255.0 blue:208/255 alpha:1];
         _time = time;
         time.adjustsFontSizeToFitWidth = YES;
         time.textAlignment = NSTextAlignmentCenter;
@@ -66,50 +95,90 @@
 
 
 - (void)setDatas:(NSArray<HistoryModel *> *)datas{
-    
-    
-    
-    
-    _aa.max = _max;
-    
+   
     _datas = datas;
-    NSMutableArray * count = [NSMutableArray array];
-    if (datas.count) {
-        for (int i = 0; i<datas.count; i++) {
-            HistoryModel * model = [datas objectAtIndex:i];
-            [count addObject:@(model.browseAmount)];
-            
-        }
-        
-        _aa.date = count;
-    }
+    
+    self.chartView = [[BCPNChartView alloc] initBCPNChartViewWithArray:self.datas];
+     self.chartView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 30);
+    
+    self.score.frame = CGRectMake(0, CGRectGetMaxY(self.chartView.frame), self.frame.size.width, 15);
+    self.time.frame = CGRectMake(0, CGRectGetMaxY(self.score.frame), self.frame.size.width, 15);
+    
+    [self addSubview:_chartView];
+    
+//    LWLog(@"%lu",(unsigned long)datas.count);
+//    if (datas.count) {
+//        for (int i = 0; i<datas.count; i++) {
+//            HistoryModel * model = [datas objectAtIndex:i];
+//            LWLog(@"%@",[model mj_keyValues]);
+//            
+//            LWLog(@"%d",model.browseAmount);
+//            
+//            [self.countaaa addObject:[NSString stringWithFormat:@"%d",model.browseAmount]];
+//            [self.date addObject:[[model.date componentsSeparatedByString:@" "] firstObject]];
+//        }
+//        
+//        LWLog(@"-----%lu",(unsigned long)self.countaaa.count);
+//        LWLog(@"------%lu",(unsigned long)self.date.count);
+//        [self.chartView reloadData];
+//
+//    }
     
     
 }
 
 - (void)setIndex:(NSIndexPath *)index{ //to 刷新数据
     _index = index;
-    
     if (_cureSecontion != index.section) {
         HistoryModel * model = [self.datas objectAtIndex:index.section];
         
         LWLog(@"%@",[model mj_keyValues]);
-         _score.text = [NSString stringWithFormat:@"%@",model.totalScore];
+         _score.text = [NSString stringWithFormat:@"%d",model.browseAmount];
         
         _time.text = [NSString stringWithFormat:@"时间:%@",[[model.date componentsSeparatedByString:@" "] firstObject]];
         _cureSecontion = index.section;
     }
     
+    
 }
 
-- (void)layoutSubviews{
+- (NSUInteger)numberOfElementsInChartView:(ANDLineChartView *)chartView{
     
-    [super layoutSubviews];
-    
-    LWLog(@"%@",NSStringFromCGRect(self.frame));
-    _aa.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 30);
-    _score.frame = CGRectMake(0, self.frame.size.height - 30, self.frame.size.width, 15);
-    _time.frame = CGRectMake(0, self.frame.size.height - 15, self.frame.size.width, 15);
+    if (self.date.count) {
+         return self.date.count;
+    }
+    return 0;
 }
+
+
+- (CGFloat)minValueForGridIntervalInChartView:(ANDLineChartView *)chartView{
+    
+    return 0.0;
+}
+
+- (CGFloat)chartView:(ANDLineChartView *)chartView valueForElementAtRow:(NSUInteger)row{
+    
+    if (self.countaaa.count) {
+        return [[self.countaaa objectAtIndex:row] floatValue];
+    }
+    
+    return 0;
+    
+}
+
+
+- (CGFloat)maxValueForGridIntervalInChartView:(ANDLineChartView *)chartView{
+    
+    return self.max;
+}
+//- (void)layoutSubviews{
+//    
+//    [super layoutSubviews];
+//    
+//    LWLog(@"%@",NSStringFromCGRect(self.frame));
+//   
+////    _score.frame = CGRectMake(0, self.frame.size.height - 30, self.frame.size.width, 15);
+////    _time.frame = CGRectMake(0, self.frame.size.height - 15, self.frame.size.width, 15);
+//}
 
 @end

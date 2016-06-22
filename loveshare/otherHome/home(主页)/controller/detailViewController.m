@@ -41,6 +41,14 @@
     [super viewDidAppear:animated];
     
     
+    LWLog(@"%d",self.taskModel.flagShowSend);
+    
+    if (self.taskModel.flagShowSend) {
+        self.toppottn.hidden = NO;
+    }else{
+        self.toppottn.hidden = YES;
+    }
+    
     
     
     //判断是否为第一次进入
@@ -103,7 +111,7 @@
     [super viewDidLoad];
     
     
-    self.toppottn.hidden = NO;
+    self.toppottn.hidden = YES;
     
     
     self.toppottn.layer.cornerRadius = 5;
@@ -219,8 +227,7 @@
             wself.shareModel.taskInfo = json[@"resultData"][@"taskInfo"];
             wself.shareModel.taskSmallImgUrl = json[@"resultData"][@"taskSmallImgUrl"];
             wself.shareModel.taskName = json[@"resultData"][@"taskName"];
-           
-            wself.left.text = [NSString stringWithFormat:@"浏览奖励:%@",json[@"resultData"][@"awardScan"]];
+           wself.left.text = [NSString stringWithFormat:@"浏览奖励:%@",json[@"resultData"][@"awardScan"]];
             wself.right.text = [NSString stringWithFormat:@"转发奖励:%@",[NSString xiaoshudianweishudeal:[json[@"resultData"][@"awardSend"] floatValue]]];
 //            _ShareBtn.hidden = NO;
             

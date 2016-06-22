@@ -11,6 +11,9 @@
 @interface LoginChangePasswdViewController : UIViewController
 
 
-@property(nonatomic,assign) BOOL Islogin;
+@property(nonatomic,assign) BOOL IsRegist;
+
+
+@property(nonatomic,assign) BOOL isInapp;
 
 @end

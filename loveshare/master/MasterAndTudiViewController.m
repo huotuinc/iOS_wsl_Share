@@ -11,6 +11,8 @@
 //#import "FollowerListController.h"
 #import "FollowListTableViewController.h"
 
+#import "MastListMenu.h"
+
 
 @interface MasterAndTudiViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -57,27 +59,35 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *masterRuleDes;
 
-@property(nonatomic,strong) NSArray * opt;
+@property(nonatomic,strong) NSArray * optlist;
 
-@property(nonatomic,strong) NSArray * optImage;
+
 @end
 
 @implementation MasterAndTudiViewController
 
 
-- (NSArray *)optImage{
-    if (_optImage == nil) {
-        _optImage = @[@"chb",@"cll",@"czf"];
+
+- (NSArray *)optlist{
+    if (_optlist == nil) {
+        
+        MastListMenu * me = [[MastListMenu alloc] init];
+        me.imageName = @"chb";
+        me.nameLable = @"伙伴总数";
+        
+        MastListMenu * me1 = [[MastListMenu alloc] init];
+        me1.imageName = @"cll";
+        me1.nameLable = @"昨日/历史浏览量";
+        
+        MastListMenu * me2 = [[MastListMenu alloc] init];
+        me2.imageName = @"czf";
+        me2.nameLable = @"昨日/历史转发量";
+        
+        _optlist = @[me,me1,me2];
     }
-    return _optImage;
+    return _optlist;
 }
 
-- (NSArray *)opt{
-    if (_opt == nil) {
-        _opt = @[@"伙伴总数",@"昨日/历史浏览量",@"昨日/历史转发量"];
-    }
-    return _opt;
-}
 
 +(instancetype)pushMaster:(UIViewController*)controller{
     MasterAndTudiViewController * mc = [[self alloc] init];
@@ -89,6 +99,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    self.title = @"伙伴联盟";
     
     LWLog(@"%s---%@",__func__,NSStringFromCGRect(self.iconView.frame));
     self.masterRuleDes.hidden = YES;
@@ -110,7 +123,7 @@
 //    btn.layer.borderColor = [UIColor whiteColor].CGColor;
 //    btn.layer.borderWidth = 1;
     
-    [btn setImage:[UIImage imageNamed:@"main_title_left_refresh"] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:@"home_title_right_share"] forState:UIControlStateNormal];
     UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem = left;
 
@@ -158,23 +171,24 @@
         wself.des =json[@"resultData"][@"shareDesc"];
         wself.shareUrl = json[@"resultData"][@"shareUrl"];
         [MBProgressHUD hideHUD];
+        MastListMenu * me = [self.optlist firstObject];
+        me.rightDes = [NSString stringWithFormat:@"%ld人",[json[@"resultData"][@"prenticeAmount"] integerValue]];
         wself.nameLable.text = [NSString stringWithFormat:@"%@",json[@"resultData"][@"inviteCode"]];
         self.tuDiCount.text = [NSString stringWithFormat:@"%ld",[json[@"resultData"][@"prenticeAmount"] integerValue]];
         self.firstLable.text = [NSString xiaoshudianweishudeal:[json[@"resultData"][@"totalScore"] floatValue]];
         self.secondLable.text = [NSString xiaoshudianweishudeal:[json[@"resultData"][@"yesterdayTotalScore"] floatValue]];
-        self.thirdLable.text = [NSString stringWithFormat:@"%ld/%ld",[json[@"resultData"][@"yesterdayBrowseAmount"] integerValue],[json[@"resultData"][@"historyTotalBrowseAmount"] integerValue]];
-        
-        self.fourthLable.text = [NSString stringWithFormat:@"%ld/%ld",[json[@"resultData"][@"yesterdayTurnAmount"] integerValue],[json[@"resultData"][@"historyTotalTurnAmount"] integerValue]];
-        LWLog(@"%@",json);
-        
+        MastListMenu * me1 = [self.optlist objectAtIndex:1];
+        me1.rightDes =  [NSString stringWithFormat:@"%d/%d次",[json[@"resultData"][@"yesterdayBrowseAmount"] intValue],[json[@"resultData"][@"historyTotalBrowseAmount"] intValue]];
+        MastListMenu * me2 = [self.optlist lastObject];
+        me2.rightDes =  [NSString stringWithFormat:@"%d/%d次",[json[@"resultData"][@"yesterdayTurnAmount"] intValue],[json[@"resultData"][@"historyTotalTurnAmount"] intValue]];
         if (json[@"resultData"][@"desc"]) {
-            
-           
             self.masterRuleDes.hidden = NO;
             self.masterRuleDes.text =[NSString stringWithFormat:@"  %@",json[@"resultData"][@"desc"]] ;
         }else{
             self.masterRuleDes.hidden = YES;
         }
+        
+        [self.optionList reloadData];
     } failure:^(NSError *error) {
         [MBProgressHUD hideHUD];
     }];
@@ -223,19 +237,21 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return self.opt.count;
+    return self.optlist.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"123"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"123"];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"123"];
+//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    cell.textLabel.text = [self.opt objectAtIndex:indexPath.row];
-    cell.imageView.image = [UIImage imageNamed:[self.optImage objectAtIndex:indexPath.row]];
+     MastListMenu * me1 = [self.optlist objectAtIndex:indexPath.row];
+    cell.textLabel.text = me1.nameLable;
+    cell.imageView.image = [UIImage imageNamed:me1.imageName];
+    cell.detailTextLabel.text = me1.rightDes;
     return cell;
 }
 

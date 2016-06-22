@@ -68,6 +68,19 @@
 @property (weak, nonatomic) IBOutlet UIButton *accountCl;
 - (IBAction)asdsdfsqfgqwerewrqew:(id)sender;
 
+
+/**我的等级*/
+@property (weak, nonatomic) IBOutlet UILabel *myLevelName;
+
+/**转发数*/
+@property (weak, nonatomic) IBOutlet UILabel *turnLable;
+
+/**浏览量*/
+@property (weak, nonatomic) IBOutlet UILabel *browLable;
+
+@property (weak, nonatomic) IBOutlet UILabel *huobanLable;
+
+
 @end
 
 @implementation PersonMessageTableViewController
@@ -97,6 +110,8 @@
     
     __weak PersonMessageTableViewController * wself = self;
     
+    self.iconView.layer.borderWidth = 3;
+    self.iconView.layer.borderColor = [UIColor whiteColor].CGColor;
     UserModel *user = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:user.userHead] options:SDWebImageRetryFailed progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
         [wself.iconView setImage:image forState:UIControlStateNormal];
@@ -143,6 +158,23 @@
     [super viewDidAppear:animated];
     
     [self.navigationController setNavigationBarHidden:NO];
+    
+    [self initDate];
+}
+
+
+- (void)initDate{
+    
+    UserModel *user = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+    
+    self.myLevelName.text = user.levelName;
+    
+    self.turnLable.text = [NSString stringWithFormat:@"%ld",[self.userInfo.TotalTurnAmount integerValue]];
+    
+    
+    self.browLable.text = [NSString stringWithFormat:@"%ld",[self.userInfo.TotalBrowseAmount integerValue]];
+    
+    self.huobanLable.text = [NSString stringWithFormat:@"%ld",[self.userInfo.PrenticeAmount integerValue]];
 }
 
 
@@ -245,48 +277,30 @@
             nameVC.delegate = self;
             [self.navigationController pushViewController:nameVC animated:YES];
         }
-        if (indexPath.row == 3) {//生日
+        if (indexPath.row == 3) {//我的等级
             
         }
     }
-    if (indexPath.section == 1) {
-        if (indexPath.row == 0) { //职业
-             ProfessionalController *pro = [[ProfessionalController alloc] initWithStyle:UITableViewStylePlain];
-            pro.DefauleDateID = self.person.industryId;
-            pro.Setgoods = self.person.industryList;
-            pro.delegate = self;
-            pro.type = 0;
-            [self.navigationController pushViewController:pro animated:YES];
-        }
-        if (indexPath.row == 1) { //收入
-            ProfessionalController *pro = [[ProfessionalController alloc] initWithStyle:UITableViewStylePlain]; //instantiateViewControllerWithIdentifier:@"ProfessionalController"];
-            pro.delegate = self;
-            pro.Setgoods= self.person.incomeList;
-            pro.type = 1;
-            pro.DefauleDateID = self.person.incomeId;
-            [self.navigationController pushViewController:pro animated:YES];
-        }
-//        if (indexPath.row == 2) { //爱好
-//            ProfessionalController *pro = [[ProfessionalController alloc] initWithStyle:UITableViewStylePlain];
-//            pro.DefauleDateID = self.person.favoriteId;
+//    if (indexPath.section == 1) {
+//        if (indexPath.row == 0) { //职业
+//             ProfessionalController *pro = [[ProfessionalController alloc] initWithStyle:UITableViewStylePlain];
+//            pro.DefauleDateID = self.person.industryId;
+//            pro.Setgoods = self.person.industryList;
 //            pro.delegate = self;
-//            pro.Setgoods = self.person.favoriteList;
-//            pro.type = 2;
+//            pro.type = 0;
 //            [self.navigationController pushViewController:pro animated:YES];
 //        }
-    }
-//    if (indexPath.section == 2) {
-//        if (indexPath.row == 0) { //职业
-//            
-//            NSString * path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-//            NSFileManager * manger = [NSFileManager defaultManager];
-//            [manger removeItemAtPath:path error:nil];
-//            
-//            ViewController *  vc = (ViewController * )[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"ViewController"];
-//            [self presentViewController:vc animated:YES completion:nil];
-//            
+//        if (indexPath.row == 1) { //收入
+//            ProfessionalController *pro = [[ProfessionalController alloc] initWithStyle:UITableViewStylePlain]; //instantiateViewControllerWithIdentifier:@"ProfessionalController"];
+//            pro.delegate = self;
+//            pro.Setgoods= self.person.incomeList;
+//            pro.type = 1;
+//            pro.DefauleDateID = self.person.incomeId;
+//            [self.navigationController pushViewController:pro animated:YES];
 //        }
+//
 //    }
+
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{

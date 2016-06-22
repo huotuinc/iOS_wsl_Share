@@ -17,4 +17,7 @@
 @property (nonatomic, strong) NSMutableArray *bcTitleArray;
 @property (nonatomic, strong) PNLineChart *lineChart;
 
+
+//- (void) UpdateTheLine;
+
 @end

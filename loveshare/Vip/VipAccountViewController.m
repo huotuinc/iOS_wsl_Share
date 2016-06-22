@@ -36,6 +36,7 @@
 @property(nonatomic,strong) UIButton * searchButton;
 
 
+
 @end
 
 @implementation VipAccountViewController
@@ -86,6 +87,13 @@
     [CTL insertSegmentWithTitle:@"架构" atIndex:0 animated:YES];
     [CTL insertSegmentWithTitle:@"资讯" atIndex:1 animated:YES];
     CTL.selectedSegmentIndex = 0;
+    //修改字体的默认颜色与选中颜色
+    CTL.layer.borderWidth = 0.0;
+    CTL.tintColor = [UIColor whiteColor];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:225.0/255 green:128/255.0 blue:0/255.0 alpha:1.000],UITextAttributeTextColor,  [UIFont systemFontOfSize:16.f],UITextAttributeFont ,[UIColor whiteColor],UITextAttributeTextShadowColor ,nil];
+    [CTL setTitleTextAttributes:dic forState:UIControlStateSelected];
+    
+    
     self.navigationItem.titleView= CTL;
     // Do any additional setup after loading the view.
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
@@ -99,6 +107,7 @@
     
     [self.head beginRefreshing];
 }
+
 
 - (void)RefreshJicheng{
     _head = [MJRefreshNormalHeader  headerWithRefreshingTarget:self refreshingAction:@selector(headRefreshVip)];

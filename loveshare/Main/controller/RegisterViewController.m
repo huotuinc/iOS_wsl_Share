@@ -47,7 +47,7 @@
 - (void)leftBtn{
     // 左上角
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setImage:[UIImage imageNamed:@"Nav_Left_Return_Back"] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:@"Nav_Left_Return_White_Back"] forState:UIControlStateNormal];
 //    [backButton setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
     [backButton setTitle:@"返回" forState:UIControlStateNormal];
     
@@ -186,6 +186,19 @@
             [UserLoginTool LoginModelWriteToShaHe:userModel andFileName:RegistUserDate];
             [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",userModel.mallUserId] forKey:ChoneMallAccount];
             [[NSUserDefaults standardUserDefaults] setObject:userModel.unionId forKey:PhoneLoginunionid];
+            
+            
+            UserModel * usermodel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+            NSMutableDictionary * parame = [NSMutableDictionary dictionary];
+            parame[@"loginCode"] = usermodel.loginCode;
+            parame[@"type"] = @"0";
+            parame[@"token"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceToken"];
+            //获取支付参数
+            [UserLoginTool loginRequestGet:@"AddDeviceToken" parame:parame success:^(id json) {
+                LWLog(@"%@",json);
+            } failure:nil];
+            
+            
             [self SetupLoginIn];
         }else{
             
