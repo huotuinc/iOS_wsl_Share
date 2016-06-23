@@ -116,33 +116,54 @@
     [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:user.userHead] options:SDWebImageRetryFailed progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
         [wself.iconView setImage:image forState:UIControlStateNormal];
     }];
-    self.userInfo = user;
-    self.navigationController.navigationBarHidden = NO;
-    NSMutableDictionary * parame = [NSMutableDictionary dictionary];
-    parame[@"loginCode"] = user.loginCode;
-    NSDictionary * dict = [UserLoginTool LogingetDateSyncWith:@"UserInfo" WithParame:parame];
-    if ([dict[@"status"] integerValue] == 1 && [dict[@"resultCode"] integerValue] == 1) {
-        PersonCenterModel * person = [PersonCenterModel mj_objectWithKeyValues:dict[@"resultData"]];
-        LWLog(@"%@",[person mj_keyValues]);
-        self.person = person;
-        if (person) {
-            self.nameLable.text = person.name;
-            self.sexLable.text = person.sex==1 ? @"男":@"女";  //1男
-            self.birDate.text = [[person.birth componentsSeparatedByString:@" "] firstObject];
-            self.careerLable.text =person.industry;
-            self.favLable.text = person.favorite;
-            self.userIncomeLable.text = person.income;
-            
-        }
-        self.registTimeLable.text = [[self.userInfo.regTime componentsSeparatedByString:@" "] firstObject] ;
+    
+    NSString * name = nil;
+    if (user.RealName.length) {
+        name = user.RealName;
+    }else if(user.UserNickName.length){
+        name = user.UserNickName;
+    }else{
+        name = user.userName;
     }
+    
+    self.nameLable.text = name;
+    
+    if (user.sex == 1) {
+        self.sexLable.text = @"男";
+    }else if(user.sex == 2){
+        self.sexLable.text = @"女";
+    }else{
+        self.sexLable.text = @"未知";
+    }
+    
+    self.registTimeLable.text = [[user.regTime componentsSeparatedByString:@" "] firstObject];
+//    self.userInfo = user;
+//    self.navigationController.navigationBarHidden = NO;
+//    NSMutableDictionary * parame = [NSMutableDictionary dictionary];
+//    parame[@"loginCode"] = user.loginCode;
+//    NSDictionary * dict = [UserLoginTool LogingetDateSyncWith:@"UserInfo" WithParame:parame];
+//    if ([dict[@"status"] integerValue] == 1 && [dict[@"resultCode"] integerValue] == 1) {
+//        PersonCenterModel * person = [PersonCenterModel mj_objectWithKeyValues:dict[@"resultData"]];
+//        LWLog(@"%@",[person mj_keyValues]);
+//        self.person = person;
+//        if (person) {
+//            self.nameLable.text = person.name;
+//            self.sexLable.text = person.sex==1 ? @"男":@"女";  //1男
+//            self.birDate.text = [[person.birth componentsSeparatedByString:@" "] firstObject];
+//            self.careerLable.text =person.industry;
+//            self.favLable.text = person.favorite;
+//            self.userIncomeLable.text = person.income;
+//            
+//        }
+//        self.registTimeLable.text = [[self.userInfo.regTime componentsSeparatedByString:@" "] firstObject] ;
+//    }
     
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setInitDate];
-    self.title = @"个人信息";
+    self.title = @"个人中心";
     _datePicker = [[UIDatePicker alloc] init];
     _datePicker.datePickerMode = UIDatePickerModeDate;
     _datePicker.date = [NSDate date];
@@ -172,12 +193,12 @@
     
     self.myLevelName.text = user.levelName;
     
-    self.turnLable.text = [NSString stringWithFormat:@"%ld",[self.userInfo.TotalTurnAmount integerValue]];
+    self.turnLable.text = [NSString stringWithFormat:@"%ld",(long)[self.userInfo.TotalTurnAmount integerValue]];
     
     
-    self.browLable.text = [NSString stringWithFormat:@"%ld",[self.userInfo.TotalBrowseAmount integerValue]];
+    self.browLable.text = [NSString stringWithFormat:@"%ld",(long)[self.userInfo.TotalBrowseAmount integerValue]];
     
-    self.huobanLable.text = [NSString stringWithFormat:@"%ld",[self.userInfo.PrenticeAmount integerValue]];
+    self.huobanLable.text = [NSString stringWithFormat:@"%ld",(long)[self.userInfo.PrenticeAmount integerValue]];
 }
 
 
@@ -441,14 +462,22 @@
 
 - (void)NameControllerpickName:(NSString *)name{
     LWLog(@"%@",name);
+    
+    if (!name.length) {
+        return;
+    }
+    
+    UserModel *user = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+    
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
     parame[@"loginCode"] = self.userInfo.loginCode;
     parame[@"name"] = name;
     parame[@"sex"] = @(1);
-    parame[@"industry"] = self.person.industry;
-    parame[@"favorite"] = self.person.favorite;
-    parame[@"income"] = self.person.income;
-    parame[@"birth"] = [self convertDateFromString:self.person.birth];
+    parame[@"loginCode"] = user.loginCode;
+//    parame[@"industry"] = self.person.industry;
+//    parame[@"favorite"] = self.person.favorite;
+//    parame[@"income"] = self.person.income;
+//    parame[@"birth"] = [self convertDateFromString:self.person.birth];
 //    parame[@"sex"] = self.userInfo.sex;
     //sex,birth,industry,industry,industry
     [MBProgressHUD showMessage:@"资料上传中"];
@@ -456,6 +485,12 @@
     LWLog(@"%@",dict);
     if ([dict[@"status"] integerValue] == 1 && [dict[@"resultCode"] integerValue] == 1) {
         self.nameLable.text = name;
+        
+        UserModel *user = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+        user.RealName = name;
+        
+        [UserLoginTool LoginModelWriteToShaHe:user andFileName:RegistUserDate];
+        
     }
     [MBProgressHUD hideHUD];
 }
@@ -586,7 +621,7 @@
 {
     
     
-    LWLog(@"%ld",sex);
+    LWLog(@"%ld",(long)sex);
     if (self.selfsex) {
         self.selfsex  = 0;
     }else{
@@ -607,8 +642,17 @@
             LWLog(@"%@",json);
             if (sex) {
                 self.sexLable.text = @"女";
+                UserModel *user = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+                user.sex = 2;
+                
+                [UserLoginTool LoginModelWriteToShaHe:user andFileName:RegistUserDate];
+                
             }else{
                 self.sexLable.text = @"男";
+                UserModel *user = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+                user.sex = 1;
+                
+                [UserLoginTool LoginModelWriteToShaHe:user andFileName:RegistUserDate];
             }
             
         }

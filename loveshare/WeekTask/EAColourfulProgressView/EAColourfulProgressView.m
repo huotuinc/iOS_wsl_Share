@@ -31,7 +31,7 @@ static NSUInteger const EAColourfulProgressViewNumberOfSegments = 3;
   
   [self setupView];
     
-    self.currentValue = 0;
+//    self.currentValue = 0;
 }
 
 
@@ -121,11 +121,15 @@ static NSUInteger const EAColourfulProgressViewNumberOfSegments = 3;
 
 - (void)updateToCurrentValue:(NSInteger)currentValue animated:(BOOL)animated
 {
+    
+
+  
   self.currentValue = currentValue;
   
   CGFloat borders = 2 * self.borderLineWidth;
   CGFloat width = ceilf((self.backgroundView.bounds.size.width - borders) * self.fractionLeft);
   
+
   self.fillingWidthConstraint.constant = width;
   
   if (animated) {
@@ -136,6 +140,8 @@ static NSUInteger const EAColourfulProgressViewNumberOfSegments = 3;
   } else {
     self.fillingView.backgroundColor = self.fillingColor;
   }
+    
+//   [self se]
 }
 
 
@@ -185,14 +191,14 @@ static NSUInteger const EAColourfulProgressViewNumberOfSegments = 3;
   maximumValue = ((maximumValue > 0) ? maximumValue : 1);
   
   if (self.currentValue <= 0) {
-    return 1;
+    return 0.0;
   }
   
-  if (self.currentValue > (maximumValue + 1)) {
+  if (self.currentValue >= (maximumValue + 1)) {
     return 0;
   }
-  
-  return ((maximumValue - (self.currentValue - 1))) / maximumValue;
+//  ((maximumValue - (self.currentValue - 1))) / maximumValue;
+  return ((self.currentValue)*1.0) / maximumValue;
 }
 
 - (float)segmentFractionLeft

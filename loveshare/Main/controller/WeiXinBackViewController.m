@@ -26,6 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setup];
+    
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
 }
 
 

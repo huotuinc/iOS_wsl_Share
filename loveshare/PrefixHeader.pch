@@ -125,7 +125,7 @@
 //
 //#define MainUrl @"http://api.guo.fancat.cn:8084"
 
-#define MainUrl @"http://taskapi.fhsilk.com"
+//#define MainUrl @"http://taskapi.fhsilk.com"
 
 
 #define MallPhoneLogin @"http://cosytest.51flashmall.com"
@@ -143,9 +143,19 @@
 //#define DEBUG 1
 
 #ifdef DEBUG
+#define isProduction NO
+//#define MALLScrent @"1165a8d240b29af3f418b8d10599d0dc"
+//#define MainUrl @"http://api.guo.fancat.cn:8084"
+
+#define MainUrl @"http://taskapi.fhsilk.com"
+#define MALLScrent @"2a5577a6792d46eb984580e5591467f7"
+
 #define LWLog(...) NSLog(__VA_ARGS__)
 #else
 #define LWLog(...)
+#define MainUrl @"http://taskapi.fhsilk.com"
+#define MALLScrent @"2a5577a6792d46eb984580e5591467f7"
+#define isProduction YES
 #endif
 
 

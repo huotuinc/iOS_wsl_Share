@@ -256,7 +256,7 @@
             cell.imageView.layer.cornerRadius = 5;
             cell.imageView.layer.masksToBounds = YES;
             cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
-            
+            cell.imageView.backgroundColor = [UIColor colorWithRed:244/255.0 green:166/255.0 blue:31/255.0 alpha:1];
         }
         JiTuan * model = self.JITuan[indexPath.row];
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:[UIImage imageNamed:@"imglogo"]];

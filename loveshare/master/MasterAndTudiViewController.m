@@ -24,7 +24,7 @@
 
 @property(nonatomic,copy) NSString * shareUrl;
 
-
+@property(nonatomic,copy) NSString *  shareTitkedes;
 @property(nonatomic,copy) NSString *  des;
 
 /**头像*/
@@ -103,7 +103,7 @@
     AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     ad.currentVC = self;
     
-    self.title = @"伙伴联盟";
+    self.title = @"推荐有奖";
     
     LWLog(@"%s---%@",__func__,NSStringFromCGRect(self.iconView.frame));
     self.masterRuleDes.hidden = YES;
@@ -123,16 +123,9 @@
 
 - (void)shareBtn{
     UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
-//    btn.layer.cornerRadius = 16;
-////    btn.layer.masksToBounds = YES;
-//    btn.layer.borderColor = [UIColor whiteColor].CGColor;
-//    btn.layer.borderWidth = 1;
-    
     [btn setImage:[UIImage imageNamed:@"home_title_right_share"] forState:UIControlStateNormal];
     UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem = left;
-
-    //    [btn sd_setImageWithURL:[NSURL URLWithString:userInfo.userHead] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"geren"]];
     [btn addTarget:self action:@selector(shareBtnclick) forControlEvents:UIControlEventTouchDown];
 }
 
@@ -142,10 +135,13 @@
     aa.taskInfo = self.shareUrl;
     aa.taskName = self.des;
     aa.taskSmallImgUrl = nil;
-    [UserLoginTool LoginToShareTextMessageByShareSdk:self.des andUrl:self.shareUrl success:^(int json) {
+    aa.taskTitle = self.shareTitkedes;
+    [UserLoginTool LoginToShareTextMessageByShareSdkWithShareTitle:self.shareTitkedes withShareDes:self.des andUrl:self.shareUrl success:^(int json) {
         [MBProgressHUD showSuccess:@"分享成功"];
         LWLog(@"%d",json);
-    } failure:nil];
+    } failure:^(id json) {
+        
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -175,6 +171,7 @@
         LWLog(@"%@",json);
         wself.des =json[@"resultData"][@"shareDesc"];
         wself.shareUrl = json[@"resultData"][@"shareUrl"];
+        wself.shareTitkedes = json[@"resultData"][@"shareTitle"];
         [MBProgressHUD hideHUD];
         MastListMenu * me = [self.optlist firstObject];
         me.rightDes = [NSString stringWithFormat:@"%ld人",[json[@"resultData"][@"prenticeAmount"] integerValue]];
@@ -229,15 +226,15 @@
 }
 
 - (IBAction)shareYaoqinMa:(id)sender {
-    LWLog(@"%@",self.shareUrl);
-    NewShareModel * aa = [[NewShareModel alloc] init];
-    aa.taskInfo = self.shareUrl;
-    aa.taskName = self.des;
-    aa.taskSmallImgUrl = nil;
-    [UserLoginTool LoginToShareTextMessageByShareSdk:self.des andUrl:self.shareUrl success:^(int json) {
-        [MBProgressHUD showSuccess:@"分享成功"];
-        LWLog(@"%d",json);
-    } failure:nil];
+//    LWLog(@"%@",self.shareUrl);
+//    NewShareModel * aa = [[NewShareModel alloc] init];
+//    aa.taskInfo = self.shareUrl;
+//    aa.taskName = self.des;
+//    aa.taskSmallImgUrl = nil;
+//    [UserLoginTool LoginToShareTextMessageByShareSdk:self.des andUrl:self.shareUrl success:^(int json) {
+//        [MBProgressHUD showSuccess:@"分享成功"];
+//        LWLog(@"%d",json);
+//    } failure:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

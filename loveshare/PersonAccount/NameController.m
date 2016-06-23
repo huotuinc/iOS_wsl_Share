@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.nameLabel.delegate = self;
-    self.title = @"姓名";
+    self.title = @"昵称";
     [self.nameLabel becomeFirstResponder];
     
     AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];

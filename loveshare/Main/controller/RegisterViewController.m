@@ -41,6 +41,10 @@
     
     [self setup];
     [self leftBtn];
+    
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
 }
 
 
@@ -186,41 +190,24 @@
             [UserLoginTool LoginModelWriteToShaHe:userModel andFileName:RegistUserDate];
             [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",userModel.mallUserId] forKey:ChoneMallAccount];
             [[NSUserDefaults standardUserDefaults] setObject:userModel.unionId forKey:PhoneLoginunionid];
-            
-            
-            UserModel * usermodel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
-            NSMutableDictionary * parame = [NSMutableDictionary dictionary];
-            parame[@"loginCode"] = usermodel.loginCode;
-            parame[@"type"] = @"0";
-            parame[@"token"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceToken"];
-            //获取支付参数
-            [UserLoginTool loginRequestGet:@"AddDeviceToken" parame:parame success:^(id json) {
-                LWLog(@"%@",json);
-            } failure:nil];
-            
-            
+            NSString * deve = [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceToken"];
+            if (deve.length) {
+                UserModel * usermodel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+                NSMutableDictionary * parame = [NSMutableDictionary dictionary];
+                parame[@"loginCode"] = usermodel.loginCode;
+                parame[@"type"] = @"0";
+                parame[@"token"] = deve;
+                //获取支付参数
+                [UserLoginTool loginRequestGet:@"AddDeviceToken" parame:parame success:^(id json) {
+                    LWLog(@"%@",json);
+                } failure:nil];
+            }
             [self SetupLoginIn];
         }else{
             
             [MBProgressHUD showError:[dict objectForKey:@"tip"]];
         }
-//        if ([dict[@"tip"] isEqualToString:@"用户名不存在"]) {//要去注册
-//            LoginViewController * registVc = (LoginViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"LoginViewController"];
-//            registVc.callType = 1;
-//            registVc.PhoneNumber = self.iphoneNumber.text;
-//            registVc.codeNumber = self.yaoqingText.text;
-//            [self.navigationController pushViewController:registVc animated:YES];
-//        }else{
-//            UserModel * userModel = [UserModel mj_objectWithKeyValues:dict[@"resultData"]];
-//            [UserLoginTool LoginModelWriteToShaHe:userModel andFileName:RegistUserDate];
-//            
-//            
-//            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",userModel.mallUserId] forKey:ChoneMallAccount];
-//            [[NSUserDefaults standardUserDefaults] setObject:userModel.unionId forKey:PhoneLoginunionid];
-//            [self SetupLoginIn];
-//            
-//            
-//        }
+
         LWLog(@"%@",dict);
     }
 }

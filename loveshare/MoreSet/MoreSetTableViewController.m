@@ -35,7 +35,7 @@
 //    textAttr[NSForegroundColorAttributeName] = [UIColor blackColor];
 //    [self.navigationController.navigationBar setTitleTextAttributes:textAttr];
     
-    self.title = @"设置";
+    self.title = @"更多选项";
     self.versionNum.text = [NSString stringWithFormat:@"v%@",AppVersion];
     self.tableView.tableFooterView = [[UIView alloc] init];
     

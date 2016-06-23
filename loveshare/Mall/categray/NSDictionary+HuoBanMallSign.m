@@ -42,7 +42,7 @@
     for (NSString * dicKey in arr) {
         [signCap appendString:[NSString stringWithFormat:@"%@=%@&",dicKey,[dict valueForKey:dicKey]]];
     }
-    NSString * aa = [signCap substringToIndex:signCap.length-1];
+//    NSString * aa = [signCap substringToIndex:signCap.length-1];
     
     //NSString * cc  = [NSString stringWithFormat:@"%@%@",aa,HuoBanMallBuyAppSecrect];
 //    dict[@"sign"] = [MD5Encryption md5by32:cc];
@@ -56,7 +56,7 @@
     
     
     
-   UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+//   UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableString * signUrl = [NSMutableString stringWithString:urlStr]; //元素url
     NSDate * timestamp = [[NSDate alloc] init];
     NSString *timeSp = [NSString stringWithFormat:@"%lld", (long long)[timestamp timeIntervalSince1970] * 1000];  //转化为UNIX时间戳

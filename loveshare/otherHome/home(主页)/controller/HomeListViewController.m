@@ -195,7 +195,7 @@ static NSString * homeCellidentify = @"homeCellId";
 - (void)setUpInit{
     
     
-    [self.navigationController.navigationBar  setBarTintColor:[UIColor colorWithRed:255/255.0 green:78/255.0 blue:0 alpha:1]];
+    [self.navigationController.navigationBar  setBarTintColor:[UIColor colorWithRed:233/255.0 green:147/255.0 blue:25/255.0 alpha:1]];
     
     self.title = @"乐享资讯";
 //    UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
@@ -261,7 +261,7 @@ static NSString * homeCellidentify = @"homeCellId";
     [centerNot addObserver:self selector:@selector(GoADDetail) name:@"AdClick" object:nil];
     
     
-    AppDelegate * de = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+   
 }
 
 

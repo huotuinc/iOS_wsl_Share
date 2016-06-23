@@ -111,8 +111,8 @@ static NSString *hobbyIdentify = @"hobbyCellId";
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    NSMutableString *str = [NSMutableString string];
-    NSMutableString *strss = [NSMutableString string];
+//    NSMutableString *str = [NSMutableString string];
+//    NSMutableString *strss = [NSMutableString string];
 //    for (NSString *temp in self.userSelected) {
 //        [str appendFormat:@"%@,",temp];
 //        twoOption * option = [self.favs objectAtIndex:[temp intValue]];

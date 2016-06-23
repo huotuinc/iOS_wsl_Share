@@ -133,7 +133,7 @@
 //尾部刷新
 - (void)footRefresh  //加载最新数据
 {
-    TodayAdvance * model =  [self.dateArray lastObject];
+//    TodayAdvance * model =  [self.dateArray lastObject];
     [self GetDateWithOldTaskidPageSize:10];
 }
 
@@ -154,7 +154,7 @@
             LWLog(@"%lu",(unsigned long)array.count);
             wself.dateLine.max = [json[@"resultData"][@"maxScore"] longValue];
 //            wself.dateLine.min = [json[@"resultData"][@"minScore"] in];
-            wself.dateLine.totalCount = [json[@"resultData"][@"minScore"] longValue];
+            wself.dateLine.totalCount = [json[@"resultData"][@"minScore"] intValue];
             if (array.count) {
                 [wself.dateArray removeAllObjects];
                 [wself.dateArray addObjectsFromArray:array];

@@ -211,14 +211,14 @@
     
 }
 
-+ (void)LoginToShareTextMessageByShareSdk:(NSString *)shareText andUrl:(NSString *) aaurl success:(void (^)(int json))success failure:(void (^)(id json))failure{
++ (void)LoginToShareTextMessageByShareSdkWithShareTitle:(NSString *)shareTitle withShareDes:(NSString *)shareText andUrl:(NSString *) aaurl success:(void (^)(int json))success failure:(void (^)(id json))failure{
     
     NSArray* imageArray = @[[UIImage imageNamed:@"29"]];
     
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-    [shareParams SSDKSetupShareParamsByText:nil images:imageArray
+    [shareParams SSDKSetupShareParamsByText:shareText images:imageArray
                                         url:[NSURL URLWithString:aaurl]
-                                      title:shareText
+                                      title:shareTitle
                                        type:SSDKContentTypeAuto];
     
     //2、分享（可以弹出我们的分享菜单和编辑界面）

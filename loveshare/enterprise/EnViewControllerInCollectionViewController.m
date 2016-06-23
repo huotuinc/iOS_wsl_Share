@@ -38,7 +38,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc
                                         ] init];
-    CGFloat with =  (ScreenWidth - 2 * Margin) /3.0;
+    CGFloat with =  (ScreenWidth - 5 * Margin) /3.0;
     CGFloat height = with * 100 / 80.0;
     layout.minimumLineSpacing = Margin;
     layout.minimumInteritemSpacing = Margin;

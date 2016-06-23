@@ -18,12 +18,17 @@
 /**徒弟列表*/
 @property(nonatomic,strong) NSIndexPath * lastIndexPath;
 
+
+
+/**转发*/
 @property (weak, nonatomic) IBOutlet UILabel *turnLable;
 
 
+/**浏览量*/
 @property (weak, nonatomic) IBOutlet UILabel *browsLable;
 
 
+/**徒弟*/
 @property (weak, nonatomic) IBOutlet UILabel *tudiLable;
 
 
@@ -155,6 +160,21 @@
 }
 
 
+- (NSString *)toDealNumber:(NSString *)title andNumber:(int) number {
+    
+    if (number < 10000) {
+        return  [NSString stringWithFormat:@"%@:%d",title,number];
+    }else{
+        
+        if(number % 10000 == 0){
+            return  [NSString stringWithFormat:@"%@:%d万",title,(number/10000)];
+        }else{
+            return  [NSString stringWithFormat:@"%@:%.2f万",title,(number/10000.0)];
+        }
+        
+    }
+    
+}
 
 - (void)setUp{
     
@@ -166,14 +186,19 @@
     self.headImage.layer.borderColor = [UIColor whiteColor].CGColor;
     self.headImage.layer.borderWidth = 2;
     
-    [self.headImage sd_setImageWithURL:[NSURL URLWithString:self.model.logo] placeholderImage:[UIImage imageNamed:@"xiangxtouxiang"]];
+    
+    [self.headImage sd_setImageWithURL:[NSURL URLWithString:self.model.logo] placeholderImage:[UIImage imageNamed:@"xiangxtouxiang"] options:SDWebImageRetryFailed];
     
     self.sssssss.text = self.xixi;
     
-    self.turnLable.text = [NSString stringWithFormat:@" %d次",self.model.totalTurnCount];
-    self.browsLable.text = [NSString stringWithFormat:@" %d次",self.model.totalBrowseCount];
-    self.tudiLable.text = [NSString stringWithFormat:@" %d人",self.model.prenticeCount];
-    self.scoreJifen.text = [NSString stringWithFormat:@" %@",[NSString xiaoshudianweishudeal:[self.model.totalScore floatValue]]];
+    
+    self.turnLable.text = [NSString stringWithFormat:@"%@次",[self toDealNumber:@"转发量" andNumber:self.model.totalTurnCount]];
+    
+    self.browsLable.text = [NSString stringWithFormat:@"%@次",[self toDealNumber:@"浏览量" andNumber:self.model.totalBrowseCount]];
+    
+    
+    self.tudiLable.text = [NSString stringWithFormat:@"%@人",[self toDealNumber:@"伙伴" andNumber:self.self.model.prenticeCount]];
+//    self.scoreJifen.text = [NSString stringWithFormat:@" %@",[NSString xiaoshudianweishudeal:[self.model.totalScore floatValue]]];
     self.firstLable.userInteractionEnabled = YES;
     self.secondLable.userInteractionEnabled = YES;
     
@@ -394,7 +419,7 @@
     if (self.setTag == 1) {
         HistoryModel * model =  self.dateArray[section];
         LWLog(@"%@",[model mj_keyValues]);
-        NSString * time = [NSString stringWithFormat:@"%@ 收益",[[model.date componentsSeparatedByString:@" "] firstObject]];
+        NSString * time = [NSString stringWithFormat:@"%@",[[model.date componentsSeparatedByString:@" "] firstObject]];
         TitleHead * view = [[[NSBundle mainBundle] loadNibNamed:@"TitleHead" owner:nil options:nil] lastObject];
         view.timeLable.text = time;
         LWLog(@"--------%d",model.browseAmount);
@@ -434,6 +459,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
         }
+        cell.userInteractionEnabled = NO;
         HistoryModel * model =  self.dateArray[indexPath.section];
         AwardList * models = model.awardList[indexPath.row];
         LWLog(@"%@", [models mj_keyValues]);

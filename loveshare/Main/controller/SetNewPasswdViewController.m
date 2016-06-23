@@ -73,6 +73,9 @@
         [self leftBtn];
     }
     
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
 }
 
 
@@ -139,6 +142,10 @@
     }else if(![self.first.text isEqualToString:self.second.text]){
         [MBProgressHUD showError:@"两次输入密码不一致"];
         return;
+    }else if(self.first.text.length < 6){
+        [MBProgressHUD showError:@"密码不得小于6位"];
+        return;
+        
     }
     
     if (self.isRegist) {

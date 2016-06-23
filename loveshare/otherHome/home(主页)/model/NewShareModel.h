@@ -13,4 +13,5 @@
 @property(nonatomic,copy)NSString * taskInfo;
 @property(nonatomic,copy)NSString * taskName;
 @property(nonatomic,copy)NSString * taskSmallImgUrl;
+@property(nonatomic,copy)NSString * taskTitle;
 @end

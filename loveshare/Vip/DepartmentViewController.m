@@ -112,7 +112,7 @@ static NSString *deCell = @"deCell";
 }
 - (void)setInit{
     
-    __weak DepartmentViewController * wself = self;
+//    __weak DepartmentViewController * wself = self;
     self.listTableView.tableFooterView = [[UIView alloc] init];
 //    self.listTableView.rowHeight = 50;
     self.firstLable.userInteractionEnabled = YES;
@@ -124,7 +124,7 @@ static NSString *deCell = @"deCell";
     
     self.listTableView.delegate = self;
     self.listTableView.dataSource = self;
-    CGFloat aa  = (ScreenWidth - 40.0) / 5;
+    CGFloat aa  = (ScreenWidth - 40.0) / 4;
     UIView * view = [[UIView alloc] init];
     view.backgroundColor = [UIColor orangeColor];
     self.firstLable.textColor = [UIColor orangeColor];

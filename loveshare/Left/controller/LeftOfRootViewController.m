@@ -163,7 +163,7 @@
     if ([isFirstHome isEqualToString:@"1"] && [isShareSuccessAndGoHome isEqualToString:@"YES"] && ![isFirstSSLeft isEqualToString:@"YES"]){
         [defaults setObject:@"YES" forKey:@"isFirstSSLeft"];
         [defaults synchronize];
-        [self makeGuideView];
+//        [self makeGuideView];
     }
  
 }

@@ -180,11 +180,10 @@
         NSArray *array = [[UIApplication sharedApplication] scheduledLocalNotifications];
         if (array.count > 0) {
             for (int i = 0; i < array.count; i++) {
-                UILocalNotification *loa = [array objectAtIndex:i];
-                NSDictionary *userInfo = loa.userInfo;
-                NSNumber *obj = userInfo[@"id"];
-                int mytag = [obj intValue];
-//                if (self.task.taskId == mytag) {
+//                UILocalNotification *loa = [array objectAtIndex:i];
+//                NSDictionary *userInfo = loa.userInfo;
+//                NSNumber *obj = userInfo[@"id"];
+               //                if (self.task.taskId == mytag) {
 ////                    loa.applicationIconBadgeNumber = 0;
 //                    [[UIApplication sharedApplication] cancelLocalNotification:loa];
 //                    [MBProgressHUD showSuccess:@"已取消提醒"];

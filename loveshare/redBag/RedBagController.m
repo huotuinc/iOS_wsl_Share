@@ -26,6 +26,8 @@
     UIImageView * red = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hb-1"]];
     _red = red;
     [red sizeToFit];
+    
+    
     [self.view addSubview:red];
 }
 @end

@@ -71,7 +71,7 @@
         
         
         UILabel * score = [[UILabel alloc] init];
-        score.backgroundColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:246/255.0];
+        score.backgroundColor = [UIColor colorWithRed:237/255.0 green:237/255.0 blue:237/255.0 alpha:246/255.0];
         _score = score;
         score.adjustsFontSizeToFitWidth = YES;
         score.textAlignment = NSTextAlignmentCenter;
@@ -80,7 +80,7 @@
         [score setTextColor:[UIColor blackColor]];
         
         UILabel * time = [[UILabel alloc] init];
-        time.backgroundColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:246/255.0];
+        time.backgroundColor = [UIColor colorWithRed:237/255.0 green:237/255.0 blue:237/255.0 alpha:246/255.0];
         _time = time;
         time.adjustsFontSizeToFitWidth = YES;
         time.textAlignment = NSTextAlignmentCenter;

@@ -27,7 +27,7 @@
     ad.currentVC = self;
     
     
-    self.title = @"累计浏览排行榜";
+    self.title = @"浏览量排行";
     
 //    self.tableView.userInteractionEnabled = NO;
     self.tableView.rowHeight = 60;

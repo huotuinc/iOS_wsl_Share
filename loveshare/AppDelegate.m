@@ -26,7 +26,7 @@
 
 
 static NSString *channel = @"Publish channel";
-static BOOL isProduction = NO;
+
 
 
 
@@ -82,6 +82,9 @@ static BOOL isProduction = NO;
         
     }
     
+    
+    
+    
     application.applicationIconBadgeNumber = 0;
     
     LWLog(@"%@",[initModel mj_keyValues]);
@@ -94,9 +97,11 @@ static BOOL isProduction = NO;
     }else{
         [self setUp:initModel];
     }
+
     return YES;
     
 }
+
 
 
 - (void)setupInitNew:(InitModel *) model{
@@ -266,14 +271,22 @@ static BOOL isProduction = NO;
     NSString * myDeviceToken = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSLog(@"%@",myDeviceToken);
     
-    [[NSUserDefaults standardUserDefaults] setObject:myDeviceToken forKey:@"DeviceToken"];
     
-    if (myDeviceToken.length) {
+    NSString * registrationID =  [JPUSHService registrationID];
+//    LWLog(@"%@",registrationID);
+    
+    if (registrationID.length) {
+        [[NSUserDefaults standardUserDefaults] setObject:registrationID forKey:@"DeviceToken"];
+    }
+    
+    
+    
+    if (myDeviceToken.length || registrationID.length) {
         UserModel * usermodel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
         NSMutableDictionary * parame = [NSMutableDictionary dictionary];
         parame[@"loginCode"] = usermodel.loginCode;
         parame[@"type"] = @"0";
-        parame[@"token"] = myDeviceToken;
+        parame[@"token"] = registrationID;
         //获取支付参数
         [UserLoginTool loginRequestGet:@"AddDeviceToken" parame:parame success:^(id json) {
             LWLog(@"%@",json);
@@ -311,10 +324,31 @@ static BOOL isProduction = NO;
     if ([[userInfo allKeys] containsObject:@"type"]) {
        
         switch ([[userInfo objectForKey:@"type"] intValue]) {
-            case 0: //红包
-                break;
-            case 1:{ //任务
+            case 0:{ //红包
                 
+                
+                LWLog(@"%@",userInfo);
+                NSDictionary * dict = [userInfo objectForKey:@"aps"];
+                UIAlertController * vc = [UIAlertController alertControllerWithTitle:@"奖励" message:[NSString stringWithFormat:@"%@,获得%@",dict[@"alert"],[userInfo objectForKey:@"money"]] preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction * a1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//                    NewTaskDataModel * aa = [[NewTaskDataModel alloc] init];
+//                    aa.taskId =  [[userInfo objectForKey:@"money"] intValue];
+//                    detailViewController * vc =(detailViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"detailViewController"];
+//                    vc.taskModel = aa;
+//                    [self.currentVC.navigationController pushViewController:vc animated:YES];
+                }];
+                
+//                UIAlertAction * a2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//                    
+//                }];
+                [vc addAction:a1];
+//                [vc addAction:a2];
+                
+                [self.currentVC presentViewController:vc animated:YES completion:nil];
+                
+                break;
+            }
+            case 1:{ //任务
                 NSDictionary * dict = [userInfo objectForKey:@"aps"];
                 UIAlertController * vc = [UIAlertController alertControllerWithTitle:@"资讯推送" message:dict[@"alert"] preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction * a1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -324,20 +358,12 @@ static BOOL isProduction = NO;
                     vc.taskModel = aa;
                     [self.currentVC.navigationController pushViewController:vc animated:YES];
                 }];
-                
                 UIAlertAction * a2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     
                 }];
                 [vc addAction:a1];
                 [vc addAction:a2];
-                
                 [self.currentVC presentViewController:vc animated:YES completion:nil];
-                
-//                NewTaskDataModel * aa = [[NewTaskDataModel alloc] init];
-//                aa.taskId =  [[userInfo objectForKey:@"id"] intValue];
-//                detailViewController * vc =(detailViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"detailViewController"];
-//                vc.taskModel = aa;
-////                [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
             case 2: //任务

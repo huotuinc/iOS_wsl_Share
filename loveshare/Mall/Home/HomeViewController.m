@@ -260,7 +260,12 @@
     self.homeWebView.delegate = _webViewProgress;
     [self.homeWebView loadRequest:req];
     InitModel * ini = (InitModel * )[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:InitModelCaches];
-    NSString * cc = [NSString stringWithFormat:@"%@%@%@",[[NSUserDefaults standardUserDefaults] objectForKey:WebSit],@"/bottom.aspx?customerid=",ini.customerId];
+    
+    NSString * web = [[NSUserDefaults standardUserDefaults] objectForKey:WebSit];
+    if (!web.length) {
+        web = ini.website;
+    }
+    NSString * cc = [NSString stringWithFormat:@"%@%@%@",web,@"/bottom.aspx?customerid=",ini.customerId];
     LWLog(@"%@",cc);
     NSURLRequest * Bottomreq = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:cc]];
     self.homeBottonWebView.scalesPageToFit = YES;
@@ -271,7 +276,7 @@
     [self.homeBottonWebView loadRequest:Bottomreq];
     //集成刷新控件
     [self AddMjRefresh];
-    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithCustomView:self.shareBtn]];
+//    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithCustomView:self.shareBtn]];
 
 }
 

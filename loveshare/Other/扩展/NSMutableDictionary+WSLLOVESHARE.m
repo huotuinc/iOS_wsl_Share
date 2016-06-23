@@ -24,7 +24,7 @@
         }
         NSString * sian = [signCap substringToIndex:signCap.length-1];
         LWLog(@"%@",sian);
-        NSString * sianzz = [NSString stringWithFormat:@"%@2a5577a6792d46eb984580e5591467f7",sian];
+        NSString * sianzz = [NSString stringWithFormat:@"%@%@",sian,MALLScrent];
         
         
          NSString *unicodeStr = [NSString stringWithCString:[sianzz UTF8String] encoding:NSUTF8StringEncoding];

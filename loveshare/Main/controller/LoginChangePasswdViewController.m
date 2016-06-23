@@ -8,7 +8,7 @@
 
 #import "LoginChangePasswdViewController.h"
 
-@interface LoginChangePasswdViewController ()
+@interface LoginChangePasswdViewController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberText;
 
@@ -37,6 +37,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupInit];
     
+    AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ad.currentVC = self;
+    
 }
 
 
@@ -44,6 +47,7 @@
     
     self.title = @"获取验证码";
     
+    self.phoneNumberText.delegate = self;
     
     self.first.alpha = 0.7;
     self.second.alpha = 0.7;
@@ -75,6 +79,26 @@
     
     
 }
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    
+    if (!self.isInapp) {
+        
+        NSMutableDictionary* p = [NSMutableDictionary dictionary];
+        p[@"mobile"] = self.phoneNumberText.text;
+        [UserLoginTool loginRequestGet:@"VerifyMobile" parame:p success:^(id json) {
+        
+            LWLog(@"%@",json);
+        if ([[json objectForKey:@"status"] integerValue] == 54001 && [[json objectForKey:@"resultCode"] integerValue] == 1)
+            [MBProgressHUD showError:json[@"tip"]];
+        } failure:^(NSError *error) {
+            
+        }];
+        
+    }
+    
+}
+
 
 - (void)leftBtn{
     // 左上角

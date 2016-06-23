@@ -113,7 +113,7 @@
     
     self.toppottn.layer.cornerRadius = 5;
     self.toppottn.layer.masksToBounds = YES;
-    self.toppottn.backgroundColor = [UIColor colorWithRed:255/255.0 green:78/255.0 blue:0 alpha:1];
+    self.toppottn.backgroundColor = [UIColor colorWithRed:233/255.0 green:147/255.0 blue:25/255.0 alpha:1];
     
     self.contentWebView.scalesPageToFit = YES;
     
@@ -221,9 +221,6 @@
         
         LWLog(@"%@",json);
         if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
-            
-            
-            
             wself.shareModel.taskInfo = json[@"resultData"][@"taskInfo"];
             wself.shareModel.taskSmallImgUrl = json[@"resultData"][@"taskSmallImgUrl"];
             wself.shareModel.taskName = json[@"resultData"][@"taskName"];
@@ -246,7 +243,7 @@
     
     
     LWLog(@"xxxx%@",[_shareModel mj_keyValues]);
-    _shareModel.taskInfo = @"www.baidu.com";
+    _shareModel.taskInfo = self.shareModel.taskInfo;
     LWLog(@"xxxx%@",[_shareModel mj_keyValues]);
     [UserLoginTool LoginToShareMessageByShareSdk:_shareModel success:^(int json) {
         NSMutableDictionary * parame = [NSMutableDictionary dictionary];

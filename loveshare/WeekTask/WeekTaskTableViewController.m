@@ -55,6 +55,7 @@
     //获取支付参数
     [UserLoginTool loginRequestGet:@"WeekTask" parame:parame success:^(NSDictionary * json) {
         
+        LWLog(@"%@",json);
         if ([[json objectForKey:@"resultCode"] integerValue] == 1 && [[json objectForKey:@"status"] integerValue] == 1) {
            _dateArray =  [WeekModel mj_objectArrayWithKeyValuesArray:[json objectForKey:@"resultData"]];
             [self.tableView reloadData];

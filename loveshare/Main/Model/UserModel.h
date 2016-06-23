@@ -67,5 +67,7 @@
 /**历史总浏览量*/
 @property(nonatomic,strong) NSNumber * TotalBrowseAmount;
 
+/** 0 未知  1 男  2 女*/
+@property(nonatomic,assign) int sex;
 
 @end

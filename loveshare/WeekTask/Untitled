@@ -1,0 +1,1674 @@
+Jun 22 19:10:57 Administratorde-iPod SpringBoard[48] <Warning>: SBLockScreenNotificationListController: Attempting to remove a bulletin I don't have
+Jun 22 19:10:58 Administratorde-iPod SpringBoard[48] <Error>:  SecTrustEvaluate  [leaf IssuerCommonName SubjectCommonName]
+Jun 22 19:10:58 Administratorde-iPod SpringBoard[48] <Error>:  SecTrustEvaluate  [leaf IssuerCommonName SubjectCommonName]
+Jun 22 19:10:58 Administratorde-iPod SpringBoard[48] <Warning>: SBLockScreenNotificationListController: Attempting to remove a bulletin I don't have
+Jun 22 19:10:59 Administratorde-iPod securityd[84] <Error>:  secTaskDiagnoseEntitlements MISSING keychain entitlements: no stored taskRef found
+Jun 22 19:10:59 Administratorde-iPod securityd[84] <Error>:  secTaskDiagnoseEntitlements MISSING keychain entitlements: no stored taskRef found
+Jun 22 19:10:59 Administratorde-iPod amfid[214] <Error>:  SecTrustEvaluate  [leaf IssuerCommonName SubjectCommonName]
+Jun 22 19:10:59 Administratorde-iPod kernel[0] <Notice>: xpcproxy[359] Container: /private/var/mobile/Containers/Data/Application/BD45097A-D5B7-45FF-94A6-5D0D1F7D6ACC (sandbox)
+Jun 22 19:10:59 Administratorde-iPod com.apple.xpc.launchd[1] <Error>: assertion failed: 13F69: launchd + 85529 [083E000D-4C31-3B98-A2C4-6FADB4D1940F]: 0x3
+Jun 22 19:11:00 Administratorde-iPod loveshare[359] <Warning>: 2016-06-22 19:11:00.381 | JPUSH | I - [JPUSHService] 
+	--------------------------- JPush Log ----------------------------
+	--------------------JPush SDK Version:2.1.0--build:346----------
+	-----------------AppKey:88d262e559be8cd7d6bec30c----------------
+	----------------------------------------------------------------
+Jun 22 19:11:00 Administratorde-iPod loveshare[359] <Warning>: 2016-06-22 19:11:00.426 | JPUSH | I - [JPUSHClientController] Action - setup
+Jun 22 19:11:00 Administratorde-iPod loveshare[359] <Warning>: 77
+Jun 22 19:11:00 Administratorde-iPod loveshare[359] <Warning>: LaunchImage-700-568h
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Error>: Could not successfully update network info during initialization.
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Warning>: {
+	    IsBindMobile = 1;
+	    PrenticeAmount = 0;
+	    RealName = qwert;
+	    TotalBrowseAmount = 0;
+	    TotalTurnAmount = 0;
+	    UserNickName = "\U90ed\U5b5f\U7a33";
+	    UserPassword = e10adc3949ba59abbe56e057f20f883e;
+	    alipayId = "";
+	    checkInDays = 0;
+	    city = 0;
+	    completeInfo = 1;
+	    completeTaskCount = 0;
+	    crashCount = 0;
+	    dayCheckIn = 0;
+	    exp = 0;
+	    favoriteAmount = 0;
+	    isSuper = 1;
+	    judgeEmulator = 0;
+	    levelName = "\U65b0\U624b";
+	    lockScore = 0;
+	    loginCode = "15267150743^e10adc3949ba59abbe56e057f20f883e";
+	    mallUserId = 0;
+	    mobile = 15267150743;
+	    regTime = "2016-03-07 17-27-49";
+	    score = "0.16";
+	    shareContent = "http://task.fhsilk.com/shareapp.html?u=0";
+	    shareDes = "\U9006\U5929\U4e86\Uff01\U5206\U7ea2\Uff0c\U8ba9\U670b\U53cb\U5708\U76f4\U63a5\U53d8\U73b0\Uff0c\U5988\U5988\U518d\U4e5f\U4e0d\U7528\U62c5\U5fc3\U6211\U7684\U751f\U6d3b\U8d39\U4e86\Uff01";
+	    todayBrowseCount = 0;
+	    totalScore = "1279.57";
+	    totalTaskCount = 100;
+	    turnAmount = 29;
+	    turnUserId = 0;
+	    unionId = "";
+	    userHead = "http://taskapi.fhsilk.com/resource/turnuserimg/0becd463dae449488c5087218feee46c.jpg";
+	    userName = 15267150743;
+	    welfareCount = 0;
+	    withdrawalPassword = f8218f3e5f939a92be368d802a63fa9b;
+	    yesScore = 0;
+	}
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Warning>: {
+	    pwd = e10adc3949ba59abbe56e057f20f883e;
+	    userName = 15267150743;
+	}
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Warning>: {"userName":"15267150743","pwd":"e10adc3949ba59abbe56e057f20f883e"}
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Warning>: http://taskapi.fhsilk.com?req=init&p=%7B%22userName%22:%2215267150743%22,%22pwd%22:%22e10adc3949ba59abbe56e057f20f883e%22%7D&imei=C8753AB7-B153-4E3F-9FDE-FB4FEB0ED7F3&operation=FH2016APP&sign=524485d76fe451d90f26090011b9d7cb&version=1.
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Warning>: 成功---{
+	    description = "\U6210\U529f";
+	    resultCode = 1;
+	    resultData =     {
+	        CashType = 0;
+	        aboutUsUrl = "<null>";
+	        adclick = "";
+	        adimg = "http://taskapi.fhsilk.com///resource/appimg/appad/pic20160620172048433634.jpg";
+	        appSecret = "<null>";
+	        changeBoundary = 1;
+	        channelList = "1,2,3";
+	        checkExps = "<null>";
+	        customerId = 3723;
+	        disasterFlag = 0;
+	        disasterUrl = "";
+	        grenadeRewardInfo = "\n1\U3001\U7528\U6237\U8d5a\U53d6\U7684\U79ef\U5206\U9700\U70b9\U51fb\U5e95\U90e8\U5151\U6362\U6309\U94ae\Uff0c\U5c06\U5206\U7ea2\U79ef\U5206\U5151\U6362\U6210\U5546\U57ce\U79ef\U5206\Uff0c\U65b9\U53ef\U7528\U4e8e\U79ef\U5206\U5546\U57ce\U8d2d\U7269\n2\U30011\U4e2a\U5206\U7ea2\U79ef\U5206=1\U4e2a\U5546\U57ce\U79ef\U5206=1\U5143\U94b1\n3\U3001\U5206\U7ea2\U79ef\U5206\U4ee51\U4e2a\U79ef\U5206\U4e3a\U5355\U4f4d\U8fdb\U884c\U5151\U6362\n4\U3001\U5546\U57ce\U79ef\U5206\U4ec5\U7528\U4e8e\U79ef\U5206\U5546\U57ce\U6d88\U8d39\Uff0c\U4e0d\U5151\U6362\U73b0\U91d1\n";
+	        groups =         (
+	                        {
+	                name = "\U663e\U793a\U5168\U90e8";
+	                type = 0;
+	            }
+	        );
+	        isCompleteUserInfo = 0;
+	        loadingImg = "<null>";
+	        loginStatus = 1;
+	        manualServiceUrl = "<null>";
+	        putInUrl = "<null>";
+	        ruleUrl = "<null>";
+	        serviceUrl = "<null>";
+	        smsEnable = 0;
+	        smsTag = "";
+	        taskBrowseScore = "0.05";
+	        taskLinkScore = 0;
+	        taskTimeLag = 10;
+	        taskTurnScore = 0;
+	        toolUrl = "<null>";
+	        updateMD5 = "<null>";
+	        updateTips = "\U7cfb\U7edf\U4f18\U5316";
+	        updateType = 2;
+	        updateUrl = "http://taskres.fhsilk.com/resource/download/fh.apk";
+	        userData =         {
+	            IsBindMobile = 1;
+	            PrenticeAmount = 0;
+	            RealName = qwert;
+	            TotalBrowseAmount = 0;
+	            TotalTurnAmount = 0;
+	            UserNickName = "\U90ed\U5b5f\U7a33";
+	            alipayId = "";
+	            checkInDays = 0;
+	            city = 0;
+	            completeInfo = 1;
+	            completeTaskCount = 0;
+	            crashCount = 0;
+	            dayCheckIn = 0;
+	            exp = 0;
+	            favoriteAmount = 0;
+	            isSuper = 1;
+	            judgeEmulator = 0;
+	            levelName = "\U65b0\U624b";
+	            lockScore = 0;
+	            loginCode = "15267150743^e10adc3949ba59abbe56e057f20f883e";
+	            mallUserId = 0;
+	            mobile = 15267150743;
+	            msg = "<null>";
+	            picUrl = "http://taskapi.fhsilk.com/resource/turnuserimg/0becd463dae449488c5087218feee46c.jpg";
+	            regTime = "2016-03-07 17-27-49";
+	            score = "0.16";
+	            shareContent = "http://task.fhsilk.com/shareapp.html?u=0";
+	            shareDes = "\U9006\U5929\U4e86\Uff01\U5206\U7ea2\Uff0c\U8ba9\U670b\U53cb\U5708\U76f4\U63a5\U53d8\U73b0\Uff0c\U5988\U5988\U518d\U4e5f\U4e0d\U7528\U62c5\U5fc3\U6211\U7684\U751f\U6d3b\U8d39\U4e86\Uff01";
+	            todayBrowseCount = 0;
+	            totalScore = "1279.57";
+	            totalTaskCount = 100;
+	            turnAmount = 29;
+	            turnUserId = 0;
+	            unionId = "";
+	            userHead = "http://taskapi.fhsilk.com/resource/turnuserimg/0becd463dae449488c5087218feee46c.jpg";
+	            userName = 15267150743;
+	            welfareCount = 0;
+	            withdrawalPassword = f8218f3e5f939a92be368d802a63fa9b;
+	            yesScore = 0;
+	        };
+	        website = "http://wanshiliafx.silk08.com";
+	        weixinKey = "<null>";
+	        wxVersionCode = "";
+	    };
+	    status = 1;
+	    tip = "\U64cd\U4f5c\U6210\U529f";
+	}
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Warning>: /var/mobile/Containers/Data/Application/BD45097A-D5B7-45FF-94A6-5D0D1F7D6ACC/Documents/RegistUserDate
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Warning>: /var/mobile/Containers/Data/Application/BD45097A-D5B7-45FF-94A6-5D0D1F7D6ACC/Documents/InitModelCaches
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Warning>: model _-- tesr{
+	    CashType = 0;
+	    adclick = "";
+	    adimg = "http://taskapi.fhsilk.com///resource/appimg/appad/pic20160620172048433634.jpg";
+	    changeBoundary = 1;
+	    channelList = "1,2,3";
+	    customerId = 3723;
+	    disasterFlag = 0;
+	    disasterUrl = "";
+	    grenadeRewardInfo = "\n1\U3001\U7528\U6237\U8d5a\U53d6\U7684\U79ef\U5206\U9700\U70b9\U51fb\U5e95\U90e8\U5151\U6362\U6309\U94ae\Uff0c\U5c06\U5206\U7ea2\U79ef\U5206\U5151\U6362\U6210\U5546\U57ce\U79ef\U5206\Uff0c\U65b9\U53ef\U7528\U4e8e\U79ef\U5206\U5546\U57ce\U8d2d\U7269\n2\U30011\U4e2a\U5206\U7ea2\U79ef\U5206=1\U4e2a\U5546\U57ce\U79ef\U5206=1\U5143\U94b1\n3\U3001\U5206\U7ea2\U79ef\U5206\U4ee51\U4e2a\U79ef\U5206\U4e3a\U5355\U4f4d\U8fdb\U884c\U5151\U6362\n4\U3001\U5546\U57ce\U79ef\U5206\U4ec5\U7528\U4e8e\U79ef\U5206\U5546\U57ce\U6d88\U8d39\Uff0c\U4e0d\U5151\U6362\U73b0\U91d1\n";
+	    isCompleteUserInfo = 0;
+	    loginStatus = 1;
+	    smsEnable = 0;
+	    smsTag = "";
+	    taskBrowseScore = "0.05";
+	    taskLinkScore = 0;
+	    taskTimeLag = 10;
+	    taskTurnScore = 0;
+	    updateType = 2;
+	    updateUrl = "http://taskres.fhsilk.com/resource/download/fh.apk";
+	    website = "http://wanshiliafx.silk08.com";
+	    wxVersionCode = "";
+	}
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Warning>: {
+	    CashType = 0;
+	    adclick = "";
+	    adimg = "http://taskapi.fhsilk.com///resource/appimg/appad/pic20160620172048433634.jpg";
+	    changeBoundary = 1;
+	    channelList = "1,2,3";
+	    customerId = 3723;
+	    disasterFlag = 0;
+	    disasterUrl = "";
+	    grenadeRewardInfo = "\n1\U3001\U7528\U6237\U8d5a\U53d6\U7684\U79ef\U5206\U9700\U70b9\U51fb\U5e95\U90e8\U5151\U6362\U6309\U94ae\Uff0c\U5c06\U5206\U7ea2\U79ef\U5206\U5151\U6362\U6210\U5546\U57ce\U79ef\U5206\Uff0c\U65b9\U53ef\U7528\U4e8e\U79ef\U5206\U5546\U57ce\U8d2d\U7269\n2\U30011\U4e2a\U5206\U7ea2\U79ef\U5206=1\U4e2a\U5546\U57ce\U79ef\U5206=1\U5143\U94b1\n3\U3001\U5206\U7ea2\U79ef\U5206\U4ee51\U4e2a\U79ef\U5206\U4e3a\U5355\U4f4d\U8fdb\U884c\U5151\U6362\n4\U3001\U5546\U57ce\U79ef\U5206\U4ec5\U7528\U4e8e\U79ef\U5206\U5546\U57ce\U6d88\U8d39\Uff0c\U4e0d\U5151\U6362\U73b0\U91d1\n";
+	    isCompleteUserInfo = 0;
+	    loginStatus = 1;
+	    smsEnable = 0;
+	    smsTag = "";
+	    taskBrowseScore = "0.05";
+	    taskLinkScore = 0;
+	    taskTimeLag = 10;
+	    taskTurnScore = 0;
+	    updateType = 2;
+	    updateUrl = "http://taskres.fhsilk.com/resource/download/fh.apk";
+	    website = "http://wanshiliafx.silk08.com";
+	    wxVersionCode = "";
+	}
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Error>: Could not successfully update network info during initialization.
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Warning>: http://taskapi.fhsilk.com///resource/appimg/appad/pic20160620172048433634.jpg
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Warning>: 77
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Warning>: LaunchImage-700-568h
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Warning>: -------------------{
+	    "_j_msgid" = 2997134568;
+	    aps =     {
+	        alert = tuissss;
+	        badge = 1;
+	        sound = default;
+	    };
+	    id = 81;
+	    type = 1;
+	}---------------
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Warning>: {
+	    "_j_msgid" = 2997134568;
+	    aps =     {
+	        alert = tuissss;
+	        badge = 1;
+	        sound = default;
+	    };
+	    id = 81;
+	    type = 1;
+	}
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Warning>: Attempting to load the view of a view controller while it is deallocating is not allowed and may result in undefined behavior (<UIAlertController: 0x160ddc00>)
+Jun 22 19:11:01 Administratorde-iPod loveshare[359] <Warning>: retryHandleOpenURL
+Jun 22 19:11:02 Administratorde-iPod loveshare[359] <Warning>: 即时资讯
+Jun 22 19:11:02 Administratorde-iPod loveshare[359] <Warning>: 企业专区
+Jun 22 19:11:02 Administratorde-iPod loveshare[359] <Warning>: {{0, 20}, {320, 548}}
+Jun 22 19:11:02 Administratorde-iPod loveshare[359] <Warning>: {{0, 0}, {0, 0}}
+Jun 22 19:11:03 Administratorde-iPod loveshare[359] <Error>: 2016-06-22 19:11:03.124 | JPUSH | W - [JPUSHClientController] Not get deviceToken yet. Maybe: your certificate not configured APNs? or current network is not so good so APNs registration failed?  or there is no APNs register code? Please refer to JPush docs.
+Jun 22 19:11:03 Administratorde-iPod loveshare[359] <Warning>: iRate did not prompt for rating because the app was first used less than 10 days ago
+Jun 22 19:11:03 Administratorde-iPod loveshare[359] <Warning>: iRate is checking http://itunes.apple.com/CN/lookup?bundleId=hz.huotu.wsl.aifenxiang to retrieve the App Store details...
+Jun 22 19:11:03 Administratorde-iPod loveshare[359] <Warning>: <cc11663a 8ec1fe62 b827a148 87aad238 d5ab1ffc 4c8f597d 6e1faeed b6a598c8>
+Jun 22 19:11:03 Administratorde-iPod loveshare[359] <Warning>: cc11663a8ec1fe62b827a14887aad238d5ab1ffc4c8f597d6e1faeedb6a598c8
+Jun 22 19:11:03 Administratorde-iPod loveshare[359] <Warning>: 2016-06-22 19:11:03.512 | JPUSH | I - [JPUSHSessionController] sis is not on protect
+Jun 22 19:11:03 Administratorde-iPod loveshare[359] <Warning>: 2016-06-22 19:11:03.529 | JPUSH | I - [JPUSHAddressController] Action - sendSisRequest
+Jun 22 19:11:03 Administratorde-iPod loveshare[359] <Warning>: <NSURLRequest: 0x15dd6eb0> { URL: http://taskapi.fhsilk.com/?imei=C8753AB7-B153-4E3F-9FDE-FB4FEB0ED7F3&operation=FH2016APP&p=%7B%22loginCode%22%3A%2215267150743%5Ee10adc3949ba59abbe56e057f20f883e%22%7D&req=PayConfig&sign=672084669182e8adc7659351b30bd795&version=1.0 }
+Jun 22 19:11:03 Administratorde-iPod loveshare[359] <Warning>: {
+	    description = "\U6210\U529f";
+	    resultCode = 1;
+	    resultData =     (
+	                {
+	            appId = "";
+	            appKey = heygjpickdtnsfigz9f65v0kwczhbi1b;
+	            notify = "/Alipay/AppNotify.aspx";
+	            partnerId = 2088811376845221;
+	            payType = 400;
+	            payTypeName = "\U652f\U4ed8\U5b9d\U624b\U673a\U7f51\U9875\U5373\U65f6\U5230\U8d26";
+	            webPagePay = 1;
+	        },
+	                {
+	            appId = wx369cdeb338051de5;
+	            appKey = 201601181448wensliab20160904g20c;
+	            notify = "/Weixin/Notify/PaymentNotifyV3.aspx";
+	            partnerId = 1299890301;
+	            payType = 300;
+	            payTypeName = "\U5fae\U4fe1APP\U652f\U4ed8";
+	            webPagePay = 0;
+	        }
+	    );
+	    status = 1;
+	}
+Jun 22 19:11:03 Administratorde-iPod loveshare[359] <Warning>: 0--1---1---0
+Jun 22 19:11:03 Administratorde-iPod loveshare[359] <Warning>: {
+	    loginCode = "15267150743^e10adc3949ba59abbe56e057f20f883e";
+	    orderby = 1;
+	    pageIndex = 1;
+	    sortType = 0;
+	    storeId = 0;
+	    taskStaus = 1;
+	}
+Jun 22 19:11:03 Administratorde-iPod loveshare[359] <Error>: Could not successfully update network info during initialization.
+Jun 22 19:11:03 Administratorde-iPod loveshare[359] <Warning>: <NSURLRequest: 0x15d334d0> { URL: http://taskapi.fhsilk.com/?imei=C8753AB7-B153-4E3F-9FDE-FB4FEB0ED7F3&operation=FH2016APP&p=%7B%22loginCode%22%3A%2215267150743%5Ee10adc3949ba59abbe56e057f20f883e%22%2C%22type%22%3A%220%22%2C%22token%22%3A%22cc11663a8ec1fe62b827a14887aad238d5ab1ffc4c8f597d6e1faeedb6a598c8%22%7D&req=AddDeviceToken&sign=35a5355b25d0048a814d4b15937a9a81&version=1.0 }
+Jun 22 19:11:03 Administratorde-iPod loveshare[359] <Warning>: {
+	    description = "\U6210\U529f";
+	    resultCode = 1;
+	    status = 1;
+	    tip = "\U64cd\U4f5c\U6210\U529f";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: <NSURLRequest: 0x15ee7500> { URL: http://taskapi.fhsilk.com/?imei=C8753AB7-B153-4E3F-9FDE-FB4FEB0ED7F3&operation=FH2016APP&p=%7B%22loginCode%22%3A%2215267150743%5Ee10adc3949ba59abbe56e057f20f883e%22%2C%22taskStaus%22%3A1%2C%22storeId%22%3A0%2C%22orderby%22%3A1%2C%22pageIndex%22%3A1%2C%22sortType%22%3A0%7D&req=TaskList&sign=9ec54bfe636b91f82993464fbba1d536&version=1.0 }
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    description = "\U6210\U529f";
+	    pageIndex = 1;
+	    resultCode = 1;
+	    resultData =     {
+	        taskData =         (
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.05";
+	                awardSend = 0;
+	                browseCount = 1;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = 200;
+	                online = 0;
+	                orderTime = "2016-05-23 07-02-00";
+	                rebate = "";
+	                sendCount = 15;
+	                sendList = "3,1";
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 294;
+	                taskInfo = "";
+	                taskName = "\U8eab\U4f53\U597d\U4e0d\U597d\Uff0c\U201c\U526a\U5200\U3001\U77f3\U5934\U3001\U5e03\U201d\U4e00\U6d4b\U5c31\U77e5\U9053\Uff01";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/8336dc5e4bee4557b6b6759d027c0f6c_104X104.jpg";
+	                totalScore = 200;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.05";
+	                awardSend = 0;
+	                browseCount = 1;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = "199.95";
+	                online = 0;
+	                orderTime = "2016-05-22 14-56-00";
+	                rebate = "";
+	                sendCount = 12;
+	                sendList = 3;
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 292;
+	                taskInfo = "";
+	                taskName = "\U98df\U7269\U6389\U5728\U5730\U4e0a\Uff0c5\U79d2\U5185\U6361\U8d77\U6765\U8fd8\U80fd\U5403\Uff1f\U90a310\U79d2\U5462\Uff1f";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/b08a439d0f2f442d84692af312cb0112_104X104.jpg";
+	                totalScore = 200;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.05";
+	                awardSend = 0;
+	                browseCount = 139;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = "193.05";
+	                online = 0;
+	                orderTime = "2016-05-21 07-40-00";
+	                rebate = "";
+	                sendCount = 67;
+	                sendList = 3;
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 291;
+	                taskInfo = "";
+	                taskName = "\U963f\U91cc\U8054\U624b\U516c\U5b89\U8fde\U7aef4\U5bb6\U8386\U7530\U5236\U5047\U978b\U5382\Uff0c\U6848\U503c\U8fbe\U5343\U4e07";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/0a829bf1f14549d28d73eb4b5bff2bfc_104X104.jpg";
+	                totalScore = 200;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.05";
+	                awardSend = "0.1";
+	                browseCount = 229;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = "175.15";
+	                online = 0;
+	                orderTime = "2016-05-21 07-38-00";
+	                rebate = "";
+	                sendCount = 134;
+	                sendList = 3;
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 289;
+	                taskInfo = "";
+	                taskName = "\U5fc3\U4e0e\U5fc3\U4e4b\U95f4\Uff0c\U6700\U9700\U8981\U5c0a\U91cd";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/ae660ef78925407aa988c24eaedc53a4_104X104.jpg";
+	                totalScore = 200;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.05";
+	                awardSend = "0.1";
+	                browseCount = 352;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = 163;
+	                online = 0;
+	                orderTime = "2016-05-19 11-30-00";
+	                rebate = "";
+	                sendCount = 194;
+	                sendList = 1;
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 287;
+	                taskInfo = "";
+	                taskName = "\U4f60\U968f\U624b\U6254\U6389\U7684\U5783\U573e\Uff0c\U53ef\U80fd\U5c31\U662f\U5b83\U4eec\U4e00\U751f\U7684\U75db\U82e6\Uff01";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/2d82164f077549ccb6c88b72e4a53b14_104X104.jpg";
+	                totalScore = 200;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.05";
+	                awardSend = "0.1";
+	                browseCount = 2024;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = 81;
+	                online = 0;
+	                orderTime = "2016-05-19 10-15-00";
+	                rebate = "";
+	                sendCount = 178;
+	                sendList = 1;
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 285;
+	                taskInfo = "";
+	                taskName = "\U8fd8\U5403\U6851\U845a\U5417\Uff1f\U8d76\U7d27\U770b\Uff0c\U522b\U602a\U6211\U6ca1\U544a\U8bc9\U4f60\Uff01";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/353205972f504f6590d78486d211ca45_104X104.jpg";
+	                totalScore = 200;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.05";
+	                awardSend = "0.1";
+	                browseCount = 867;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = "140.15";
+	                online = 0;
+	                orderTime = "2016-05-18 15-10-00";
+	                rebate = "";
+	                sendCount = 179;
+	                sendList = "";
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 280;
+	                taskInfo = "";
+	                taskName = "\U201c\U516b\U4ebf\U4ef6\U886c\U886b\U6362\U67b6\U98de\U673a\U201d\Uff0c\U4e2d\U56fd\U5236\U9020\U8fd8\U662f\U5ec9\U4ef7\U4ee3\U540d\U8bcd\U5417";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/c052cec675cc4704bfbd77e36f7984c5_104X104.jpg";
+	                totalScore = 200;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.05";
+	                awardSend = "0.1";
+	                browseCount = 1637;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = "94.75";
+	                online = 0;
+	                orderTime = "2016-05-18 07-00-00";
+	                rebate = "";
+	                sendCount = 234;
+	                sendList = "1,3";
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 278;
+	                taskInfo = "";
+	                taskName = "\U80fd\U5e72\U7684\U4eba\U4e0d\U662f\U6ca1\U6709\U60c5\U7eea\Uff0c\U800c\U662f\U4e0d\U88ab\U60c5\U7eea\U5de6\U53f3";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/e183823a535e4d70a36d5ddabb864493_104X104.jpg";
+	                totalScore = 200;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.05";
+	                awardSend = 0;
+	                browseCount = 1817;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = "209.15";
+	                online = 0;
+	                orderTime = "2016-05-13 09-58-00";
+	                rebate = "";
+	                sendCount = 243;
+	                sendList = 1;
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 253;
+	                taskInfo = "";
+	                taskName = "\U5e74\U85aa10\U4e07\Uff0c\U5982\U4f55\U79ef\U7d2f\U4eba\U751f\U7684\U7b2c\U4e00\U4e2a100\U4e07\Uff1f";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/f710e616041d4e998b12ca84a8545630_104X104.jpg";
+	                totalScore = 300;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.1";
+	                awardSend = "0.5";
+	                browseCount = 2428;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = "79.2";
+	                online = 0;
+	                orderTime = "2016-05-07 18-30-00";
+	                rebate = "";
+	                sendCount = 356;
+	                sendList = "";
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 223;
+	                taskInfo = "";
+	                taskName = "\U4e2d\U56fd\U7535\U5546\U4e3a\U4f55\U53ea\U6210\U5c31\U4e86\U9a6c\U4e91\U3001\U5218\U5f3a\U4e1c\Uff1f";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/2302b3ead09844689ef3f7b2c5ae809a_104X104.jpg";
+	                totalScore = 500;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.05";
+	                awardSend = 0;
+	                browseCount = 4536;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = "273.2";
+	                online = 0;
+	                orderTime = "2016-05-05 09-30-00";
+	                rebate = "";
+	                sendCount = 202;
+	                sendList = "";
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 216;
+	                taskInfo = "";
+	                taskName = "\U674e\U5f00\U590d\Uff1a\U778e\U5fd9\U65cf\U4e0e\U9ad8\U6548\U4eba\U58eb\U768413\U4e2a\U4e0d\U540c\U70b9";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/9ca7bdf98c4147f7a6c0349d08c8320a_104X104.jpg";
+	                totalScore = 500;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.05";
+	                awardSend = 0;
+	                browseCount = 2106;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = "394.7";
+	                online = 0;
+	                orderTime = "2016-05-02 07-30-00";
+	                rebate = "";
+	                sendCount = 181;
+	                sendList = "";
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 204;
+	                taskInfo = "";
+	                taskName = "\U9648\U5fe0\U5b9e | \U4eba\U4e8b\U65e0\U5e38\Uff0c\U540d\U53e5\U9192\U4eba";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/b73863f67bfa477ea822c35aeb9f9d26_104X104.jpg";
+	                totalScore = 500;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.1";
+	                awardSend = "0.5";
+	                browseCount = 4200;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = "223.5";
+	                online = 0;
+	                orderTime = "2016-04-30 07-30-00";
+	                rebate = "";
+	                sendCount = 313;
+	                sendList = "";
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 198;
+	                taskInfo = "";
+	                taskName = "\U4e3a\U4ec0\U4e48\U6211\U4eec\U603b\U662f\U65e0\U6cd5\U7406\U89e3\U5f7c\U6b64\Uff1f\U4f60\U662f\U5426\U72af6\U4e2a\U6c9f\U901a\U9519\U8bef";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/9a7dda8d00d34069a0b24db3c0882563_104X104.jpg";
+	                totalScore = 800;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.05";
+	                awardSend = 0;
+	                browseCount = 6329;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = "283.55";
+	                online = 0;
+	                orderTime = "2016-04-29 07-30-00";
+	                rebate = "";
+	                sendCount = 191;
+	                sendList = "";
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 195;
+	                taskInfo = "";
+	                taskName = "\U524d\U53f0\U5c0f\U59b9\U88ab\U9a6c\U4e91\U5ffd\U60a016\U5e74\Uff0c\U5982\U4eca\U8eab\U4ef7\U4e0a\U4ebf";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/43ef1bac4d5c433e965bf371081dff39_104X104.jpg";
+	                totalScore = 600;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.1";
+	                awardSend = "0.5";
+	                browseCount = 1970;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = 652;
+	                online = 0;
+	                orderTime = "2016-04-28 18-30-00";
+	                rebate = "";
+	                sendCount = 302;
+	                sendList = 1;
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 194;
+	                taskInfo = "";
+	                taskName = "\U5728\U676d\U5dde\U9664\U4e86\U897f\U6e56\Uff0c\U6211\U4eec\U8fd8\U80fd\U53bb\U54ea\U513f\Uff1f";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/9045cdee503d44f388b361efd7398953_104X104.jpg";
+	                totalScore = 1000;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.15";
+	                awardSend = "0.15";
+	                browseCount = 2118;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = "643.15";
+	                online = 0;
+	                orderTime = "2016-04-08 21-13-00";
+	                rebate = "";
+	                sendCount = 261;
+	                sendList = "";
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 128;
+	                taskInfo = "";
+	                taskName = "\U4e07\U4e8b\U5229\U8463\U4e8b\U957f\U5c60\U7ea2\U71d5\U88ab\U6388\U5168\U7701\U975e\U516c\U7ecf\U6d4e\U4eba\U58eb\U6700\U9ad8\U8363\U8a89!";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/6e66dbb3379f434f8e6be5b5e0e899cc_104X104.jpg";
+	                totalScore = 1000;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.05";
+	                awardSend = 0;
+	                browseCount = 477;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = "26.15";
+	                online = 0;
+	                orderTime = "2016-03-28 09-52-00";
+	                rebate = "";
+	                sendCount = 72;
+	                sendList = "";
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 103;
+	                taskInfo = "";
+	                taskName = "\U4f60\U7684\U6bcf\U5355\U7f51\U8d2d\Uff0c\U90fd\U53ef\U80fd\U5728\U5e2e\U5fd9\U6269\U5efa\U4e2d\U56fd\U6700\U5927\U7684\U9ed1\U5e02";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/b6513b840f18487aa1c488a326609a20_104X104.jpg";
+	                totalScore = 50;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.05";
+	                awardSend = 0;
+	                browseCount = 783;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = "26.85";
+	                online = 0;
+	                orderTime = "2016-03-17 18-25-00";
+	                rebate = "";
+	                sendCount = 191;
+	                sendList = "";
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 79;
+	                taskInfo = "";
+	                taskName = "\U4e07\U4e8b\U5229\U4f1a\U547c\U5438\U7684\U6625\U5b63\U8695\U4e1d\U88ab\Uff0c\U9001\U4f60\U8695\U7720\U4e00\U201c\U88ab\U201d\U5b50\Uff01";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/e3e1f2e53066403095ae97ff2e2ad459_104X104.jpg";
+	                totalScore = 66;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.05";
+	                awardSend = 0;
+	                browseCount = 1093;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = "11.35";
+	                online = 0;
+	                orderTime = "2016-03-16 11-21-00";
+	                rebate = "";
+	                sendCount = 101;
+	                sendList = "";
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 75;
+	                taskInfo = "";
+	                taskName = "\U8fd9\U4e2a3\U5c81\U5c0f\U841d\U8389\U7adf\U7136\U6210\U4e86\U97e9\U56fd\U6700\U4f1a\U7a7f\U8863\U670d\U7684\U4eba\Uff01";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/bb847ae4a4c64a118a9dfd26e62adb74_104X104.jpg";
+	                totalScore = 66;
+	                type = 999999;
+	            },
+	                        {
+	                ShowTurnButton = 1;
+	                advancedseconds = "<null>";
+	                awardLink = 0;
+	                awardScan = "0.05";
+	                awardSend = 0;
+	                browseCount = 346;
+	                flagHaveIntro = 1;
+	                flagLimitCount = 0;
+	                flagShowSend = 0;
+	                isFav = 0;
+	                isSend = 0;
+	                lastScore = "48.7";
+	                online = 0;
+	                orderTime = "2016-02-29 11-59-00";
+	                rebate = "";
+	                sendCount = 43;
+	                sendList = "";
+	                status = 3;
+	                storeId = 3723;
+	                storeName = "\U4e50\U4eab\U5934\U6761";
+	                taskId = 51;
+	                taskInfo = "";
+	                taskName = "\U542c\U8bf4\U4eca\U5929\U662f\U56db\U5e74\U4e00\U9047\U7684\U7a00\U7f55\U65e5\U5b50\Uff0c\U5149\U9634\U83ab\U8d1f";
+	                taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/04514dd7f54c49a39ed656304fde4edc_104X104.jpg";
+	                totalScore = 66;
+	                type = 999999;
+	            }
+	        );
+	        todayTotalScore = 0;
+	        topIds = "";
+	    };
+	    status = 1;
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-05-23 07-02-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: (null)
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-05-22 14-56-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = 0;
+	            browseCount = 1;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = 200;
+	            online = 0;
+	            orderTime = "2016-05-23 07-02-00";
+	            rebate = 0;
+	            sendCount = 15;
+	            sendList = "3,1";
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 294;
+	            taskInfo = "";
+	            taskName = "\U8eab\U4f53\U597d\U4e0d\U597d\Uff0c\U201c\U526a\U5200\U3001\U77f3\U5934\U3001\U5e03\U201d\U4e00\U6d4b\U5c31\U77e5\U9053\Uff01";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/8336dc5e4bee4557b6b6759d027c0f6c_104X104.jpg";
+	            totalScore = 200;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-05-23";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-05-21 07-40-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = 0;
+	            browseCount = 1;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = "199.95";
+	            online = 0;
+	            orderTime = "2016-05-22 14-56-00";
+	            rebate = 0;
+	            sendCount = 12;
+	            sendList = 3;
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 292;
+	            taskInfo = "";
+	            taskName = "\U98df\U7269\U6389\U5728\U5730\U4e0a\Uff0c5\U79d2\U5185\U6361\U8d77\U6765\U8fd8\U80fd\U5403\Uff1f\U90a310\U79d2\U5462\Uff1f";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/b08a439d0f2f442d84692af312cb0112_104X104.jpg";
+	            totalScore = 200;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-05-22";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-05-21 07-38-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = 0;
+	            browseCount = 139;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = "193.05";
+	            online = 0;
+	            orderTime = "2016-05-21 07-40-00";
+	            rebate = 0;
+	            sendCount = 67;
+	            sendList = 3;
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 291;
+	            taskInfo = "";
+	            taskName = "\U963f\U91cc\U8054\U624b\U516c\U5b89\U8fde\U7aef4\U5bb6\U8386\U7530\U5236\U5047\U978b\U5382\Uff0c\U6848\U503c\U8fbe\U5343\U4e07";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/0a829bf1f14549d28d73eb4b5bff2bfc_104X104.jpg";
+	            totalScore = 200;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-05-21";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-05-19 11-30-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = 0;
+	            browseCount = 139;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = "193.05";
+	            online = 0;
+	            orderTime = "2016-05-21 07-40-00";
+	            rebate = 0;
+	            sendCount = 67;
+	            sendList = 3;
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 291;
+	            taskInfo = "";
+	            taskName = "\U963f\U91cc\U8054\U624b\U516c\U5b89\U8fde\U7aef4\U5bb6\U8386\U7530\U5236\U5047\U978b\U5382\Uff0c\U6848\U503c\U8fbe\U5343\U4e07";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/0a829bf1f14549d28d73eb4b5bff2bfc_104X104.jpg";
+	            totalScore = 200;
+	            type = 999999;
+	        },
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = "0.1";
+	            browseCount = 229;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = "175.15";
+	            online = 0;
+	            orderTime = "2016-05-21 07-38-00";
+	            rebate = 0;
+	            sendCount = 134;
+	            sendList = 3;
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 289;
+	            taskInfo = "";
+	            taskName = "\U5fc3\U4e0e\U5fc3\U4e4b\U95f4\Uff0c\U6700\U9700\U8981\U5c0a\U91cd";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/ae660ef78925407aa988c24eaedc53a4_104X104.jpg";
+	            totalScore = 200;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-05-21";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-05-19 10-15-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = "0.1";
+	            browseCount = 352;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = 163;
+	            online = 0;
+	            orderTime = "2016-05-19 11-30-00";
+	            rebate = 0;
+	            sendCount = 194;
+	            sendList = 1;
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 287;
+	            taskInfo = "";
+	            taskName = "\U4f60\U968f\U624b\U6254\U6389\U7684\U5783\U573e\Uff0c\U53ef\U80fd\U5c31\U662f\U5b83\U4eec\U4e00\U751f\U7684\U75db\U82e6\Uff01";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/2d82164f077549ccb6c88b72e4a53b14_104X104.jpg";
+	            totalScore = 200;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-05-19";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-05-18 15-10-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = "0.1";
+	            browseCount = 352;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = 163;
+	            online = 0;
+	            orderTime = "2016-05-19 11-30-00";
+	            rebate = 0;
+	            sendCount = 194;
+	            sendList = 1;
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 287;
+	            taskInfo = "";
+	            taskName = "\U4f60\U968f\U624b\U6254\U6389\U7684\U5783\U573e\Uff0c\U53ef\U80fd\U5c31\U662f\U5b83\U4eec\U4e00\U751f\U7684\U75db\U82e6\Uff01";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/2d82164f077549ccb6c88b72e4a53b14_104X104.jpg";
+	            totalScore = 200;
+	            type = 999999;
+	        },
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = "0.1";
+	            browseCount = 2024;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = 81;
+	            online = 0;
+	            orderTime = "2016-05-19 10-15-00";
+	            rebate = 0;
+	            sendCount = 178;
+	            sendList = 1;
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 285;
+	            taskInfo = "";
+	            taskName = "\U8fd8\U5403\U6851\U845a\U5417\Uff1f\U8d76\U7d27\U770b\Uff0c\U522b\U602a\U6211\U6ca1\U544a\U8bc9\U4f60\Uff01";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/353205972f504f6590d78486d211ca45_104X104.jpg";
+	            totalScore = 200;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-05-19";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-05-18 07-00-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = "0.1";
+	            browseCount = 867;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = "140.15";
+	            online = 0;
+	            orderTime = "2016-05-18 15-10-00";
+	            rebate = 0;
+	            sendCount = 179;
+	            sendList = "";
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 280;
+	            taskInfo = "";
+	            taskName = "\U201c\U516b\U4ebf\U4ef6\U886c\U886b\U6362\U67b6\U98de\U673a\U201d\Uff0c\U4e2d\U56fd\U5236\U9020\U8fd8\U662f\U5ec9\U4ef7\U4ee3\U540d\U8bcd\U5417";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/c052cec675cc4704bfbd77e36f7984c5_104X104.jpg";
+	            totalScore = 200;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-05-18";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-05-13 09-58-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = "0.1";
+	            browseCount = 867;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = "140.15";
+	            online = 0;
+	            orderTime = "2016-05-18 15-10-00";
+	            rebate = 0;
+	            sendCount = 179;
+	            sendList = "";
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 280;
+	            taskInfo = "";
+	            taskName = "\U201c\U516b\U4ebf\U4ef6\U886c\U886b\U6362\U67b6\U98de\U673a\U201d\Uff0c\U4e2d\U56fd\U5236\U9020\U8fd8\U662f\U5ec9\U4ef7\U4ee3\U540d\U8bcd\U5417";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/c052cec675cc4704bfbd77e36f7984c5_104X104.jpg";
+	            totalScore = 200;
+	            type = 999999;
+	        },
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = "0.1";
+	            browseCount = 1637;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = "94.75";
+	            online = 0;
+	            orderTime = "2016-05-18 07-00-00";
+	            rebate = 0;
+	            sendCount = 234;
+	            sendList = "1,3";
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 278;
+	            taskInfo = "";
+	            taskName = "\U80fd\U5e72\U7684\U4eba\U4e0d\U662f\U6ca1\U6709\U60c5\U7eea\Uff0c\U800c\U662f\U4e0d\U88ab\U60c5\U7eea\U5de6\U53f3";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/e183823a535e4d70a36d5ddabb864493_104X104.jpg";
+	            totalScore = 200;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-05-18";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-05-07 18-30-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = 0;
+	            browseCount = 1817;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = "209.15";
+	            online = 0;
+	            orderTime = "2016-05-13 09-58-00";
+	            rebate = 0;
+	            sendCount = 243;
+	            sendList = 1;
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 253;
+	            taskInfo = "";
+	            taskName = "\U5e74\U85aa10\U4e07\Uff0c\U5982\U4f55\U79ef\U7d2f\U4eba\U751f\U7684\U7b2c\U4e00\U4e2a100\U4e07\Uff1f";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/f710e616041d4e998b12ca84a8545630_104X104.jpg";
+	            totalScore = 300;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-05-13";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-05-05 09-30-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.1";
+	            awardSend = "0.5";
+	            browseCount = 2428;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = "79.2";
+	            online = 0;
+	            orderTime = "2016-05-07 18-30-00";
+	            rebate = 0;
+	            sendCount = 356;
+	            sendList = "";
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 223;
+	            taskInfo = "";
+	            taskName = "\U4e2d\U56fd\U7535\U5546\U4e3a\U4f55\U53ea\U6210\U5c31\U4e86\U9a6c\U4e91\U3001\U5218\U5f3a\U4e1c\Uff1f";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/2302b3ead09844689ef3f7b2c5ae809a_104X104.jpg";
+	            totalScore = 500;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-05-07";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-05-02 07-30-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = 0;
+	            browseCount = 4536;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = "273.2";
+	            online = 0;
+	            orderTime = "2016-05-05 09-30-00";
+	            rebate = 0;
+	            sendCount = 202;
+	            sendList = "";
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 216;
+	            taskInfo = "";
+	            taskName = "\U674e\U5f00\U590d\Uff1a\U778e\U5fd9\U65cf\U4e0e\U9ad8\U6548\U4eba\U58eb\U768413\U4e2a\U4e0d\U540c\U70b9";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/9ca7bdf98c4147f7a6c0349d08c8320a_104X104.jpg";
+	            totalScore = 500;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-05-05";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-04-30 07-30-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = 0;
+	            browseCount = 2106;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = "394.7";
+	            online = 0;
+	            orderTime = "2016-05-02 07-30-00";
+	            rebate = 0;
+	            sendCount = 181;
+	            sendList = "";
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 204;
+	            taskInfo = "";
+	            taskName = "\U9648\U5fe0\U5b9e | \U4eba\U4e8b\U65e0\U5e38\Uff0c\U540d\U53e5\U9192\U4eba";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/b73863f67bfa477ea822c35aeb9f9d26_104X104.jpg";
+	            totalScore = 500;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-05-02";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-04-29 07-30-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.1";
+	            awardSend = "0.5";
+	            browseCount = 4200;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = "223.5";
+	            online = 0;
+	            orderTime = "2016-04-30 07-30-00";
+	            rebate = 0;
+	            sendCount = 313;
+	            sendList = "";
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 198;
+	            taskInfo = "";
+	            taskName = "\U4e3a\U4ec0\U4e48\U6211\U4eec\U603b\U662f\U65e0\U6cd5\U7406\U89e3\U5f7c\U6b64\Uff1f\U4f60\U662f\U5426\U72af6\U4e2a\U6c9f\U901a\U9519\U8bef";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/9a7dda8d00d34069a0b24db3c0882563_104X104.jpg";
+	            totalScore = 800;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-04-30";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-04-28 18-30-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = 0;
+	            browseCount = 6329;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = "283.55";
+	            online = 0;
+	            orderTime = "2016-04-29 07-30-00";
+	            rebate = 0;
+	            sendCount = 191;
+	            sendList = "";
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 195;
+	            taskInfo = "";
+	            taskName = "\U524d\U53f0\U5c0f\U59b9\U88ab\U9a6c\U4e91\U5ffd\U60a016\U5e74\Uff0c\U5982\U4eca\U8eab\U4ef7\U4e0a\U4ebf";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/43ef1bac4d5c433e965bf371081dff39_104X104.jpg";
+	            totalScore = 600;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-04-29";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-04-08 21-13-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.1";
+	            awardSend = "0.5";
+	            browseCount = 1970;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = 652;
+	            online = 0;
+	            orderTime = "2016-04-28 18-30-00";
+	            rebate = 0;
+	            sendCount = 302;
+	            sendList = 1;
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 194;
+	            taskInfo = "";
+	            taskName = "\U5728\U676d\U5dde\U9664\U4e86\U897f\U6e56\Uff0c\U6211\U4eec\U8fd8\U80fd\U53bb\U54ea\U513f\Uff1f";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/9045cdee503d44f388b361efd7398953_104X104.jpg";
+	            totalScore = 1000;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-04-28";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-03-28 09-52-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.15";
+	            awardSend = "0.15";
+	            browseCount = 2118;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = "643.15";
+	            online = 0;
+	            orderTime = "2016-04-08 21-13-00";
+	            rebate = 0;
+	            sendCount = 261;
+	            sendList = "";
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 128;
+	            taskInfo = "";
+	            taskName = "\U4e07\U4e8b\U5229\U8463\U4e8b\U957f\U5c60\U7ea2\U71d5\U88ab\U6388\U5168\U7701\U975e\U516c\U7ecf\U6d4e\U4eba\U58eb\U6700\U9ad8\U8363\U8a89!";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/6e66dbb3379f434f8e6be5b5e0e899cc_104X104.jpg";
+	            totalScore = 1000;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-04-08";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-03-17 18-25-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = 0;
+	            browseCount = 477;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = "26.15";
+	            online = 0;
+	            orderTime = "2016-03-28 09-52-00";
+	            rebate = 0;
+	            sendCount = 72;
+	            sendList = "";
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 103;
+	            taskInfo = "";
+	            taskName = "\U4f60\U7684\U6bcf\U5355\U7f51\U8d2d\Uff0c\U90fd\U53ef\U80fd\U5728\U5e2e\U5fd9\U6269\U5efa\U4e2d\U56fd\U6700\U5927\U7684\U9ed1\U5e02";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/b6513b840f18487aa1c488a326609a20_104X104.jpg";
+	            totalScore = 50;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-03-28";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-03-16 11-21-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = 0;
+	            browseCount = 783;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = "26.85";
+	            online = 0;
+	            orderTime = "2016-03-17 18-25-00";
+	            rebate = 0;
+	            sendCount = 191;
+	            sendList = "";
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 79;
+	            taskInfo = "";
+	            taskName = "\U4e07\U4e8b\U5229\U4f1a\U547c\U5438\U7684\U6625\U5b63\U8695\U4e1d\U88ab\Uff0c\U9001\U4f60\U8695\U7720\U4e00\U201c\U88ab\U201d\U5b50\Uff01";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/e3e1f2e53066403095ae97ff2e2ad459_104X104.jpg";
+	            totalScore = 66;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-03-17";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: 2016-02-29 11-59-00
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    tasks =     (
+	                {
+	            ShowTurnButton = 1;
+	            awardLink = 0;
+	            awardScan = "0.05";
+	            awardSend = 0;
+	            browseCount = 1093;
+	            flagHaveIntro = 1;
+	            flagLimitCount = 0;
+	            flagShowSend = 0;
+	            isFav = 0;
+	            isSend = 0;
+	            lastScore = "11.35";
+	            online = 0;
+	            orderTime = "2016-03-16 11-21-00";
+	            rebate = 0;
+	            sendCount = 101;
+	            sendList = "";
+	            status = 3;
+	            storeId = 3723;
+	            storeName = "\U4e50\U4eab\U5934\U6761";
+	            taskId = 75;
+	            taskInfo = "";
+	            taskName = "\U8fd9\U4e2a3\U5c81\U5c0f\U841d\U8389\U7adf\U7136\U6210\U4e86\U97e9\U56fd\U6700\U4f1a\U7a7f\U8863\U670d\U7684\U4eba\Uff01";
+	            taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/bb847ae4a4c64a118a9dfd26e62adb74_104X104.jpg";
+	            totalScore = 66;
+	            type = 999999;
+	        }
+	    );
+	    timeSectionTitle = "2016-03-16";
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    ShowTurnButton = 1;
+	    awardLink = 0;
+	    awardScan = "0.05";
+	    awardSend = 0;
+	    browseCount = 1;
+	    flagHaveIntro = 1;
+	    flagLimitCount = 0;
+	    flagShowSend = 0;
+	    isFav = 0;
+	    isSend = 0;
+	    lastScore = 200;
+	    online = 0;
+	    orderTime = "2016-05-23 07-02-00";
+	    rebate = 0;
+	    sendCount = 15;
+	    sendList = "3,1";
+	    status = 3;
+	    storeId = 3723;
+	    storeName = "\U4e50\U4eab\U5934\U6761";
+	    taskId = 294;
+	    taskInfo = "";
+	    taskName = "\U8eab\U4f53\U597d\U4e0d\U597d\Uff0c\U201c\U526a\U5200\U3001\U77f3\U5934\U3001\U5e03\U201d\U4e00\U6d4b\U5c31\U77e5\U9053\Uff01";
+	    taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/8336dc5e4bee4557b6b6759d027c0f6c_104X104.jpg";
+	    totalScore = 200;
+	    type = 999999;
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    ShowTurnButton = 1;
+	    awardLink = 0;
+	    awardScan = "0.05";
+	    awardSend = 0;
+	    browseCount = 1;
+	    flagHaveIntro = 1;
+	    flagLimitCount = 0;
+	    flagShowSend = 0;
+	    isFav = 0;
+	    isSend = 0;
+	    lastScore = "199.95";
+	    online = 0;
+	    orderTime = "2016-05-22 14-56-00";
+	    rebate = 0;
+	    sendCount = 12;
+	    sendList = 3;
+	    status = 3;
+	    storeId = 3723;
+	    storeName = "\U4e50\U4eab\U5934\U6761";
+	    taskId = 292;
+	    taskInfo = "";
+	    taskName = "\U98df\U7269\U6389\U5728\U5730\U4e0a\Uff0c5\U79d2\U5185\U6361\U8d77\U6765\U8fd8\U80fd\U5403\Uff1f\U90a310\U79d2\U5462\Uff1f";
+	    taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/b08a439d0f2f442d84692af312cb0112_104X104.jpg";
+	    totalScore = 200;
+	    type = 999999;
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    ShowTurnButton = 1;
+	    awardLink = 0;
+	    awardScan = "0.05";
+	    awardSend = 0;
+	    browseCount = 139;
+	    flagHaveIntro = 1;
+	    flagLimitCount = 0;
+	    flagShowSend = 0;
+	    isFav = 0;
+	    isSend = 0;
+	    lastScore = "193.05";
+	    online = 0;
+	    orderTime = "2016-05-21 07-40-00";
+	    rebate = 0;
+	    sendCount = 67;
+	    sendList = 3;
+	    status = 3;
+	    storeId = 3723;
+	    storeName = "\U4e50\U4eab\U5934\U6761";
+	    taskId = 291;
+	    taskInfo = "";
+	    taskName = "\U963f\U91cc\U8054\U624b\U516c\U5b89\U8fde\U7aef4\U5bb6\U8386\U7530\U5236\U5047\U978b\U5382\Uff0c\U6848\U503c\U8fbe\U5343\U4e07";
+	    taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/0a829bf1f14549d28d73eb4b5bff2bfc_104X104.jpg";
+	    totalScore = 200;
+	    type = 999999;
+	}
+Jun 22 19:11:04 Administratorde-iPod loveshare[359] <Warning>: {
+	    ShowTurnButton = 1;
+	    awardLink = 0;
+	    awardScan = "0.05";
+	    awardSend = "0.1";
+	    browseCount = 229;
+	    flagHaveIntro = 1;
+	    flagLimitCount = 0;
+	    flagShowSend = 0;
+	    isFav = 0;
+	    isSend = 0;
+	    lastScore = "175.15";
+	    online = 0;
+	    orderTime = "2016-05-21 07-38-00";
+	    rebate = 0;
+	    sendCount = 134;
+	    sendList = 3;
+	    status = 3;
+	    storeId = 3723;
+	    storeName = "\U4e50\U4eab\U5934\U6761";
+	    taskId = 289;
+	    taskInfo = "";
+	    taskName = "\U5fc3\U4e0e\U5fc3\U4e4b\U95f4\Uff0c\U6700\U9700\U8981\U5c0a\U91cd";
+	    taskSmallImgUrl = "http://taskapi.fhsilk.com/resource/taskimg/ae660ef78925407aa988c24eaedc53a4_104X104.jpg";
+	    totalScore = 200;
+	    type = 999999;
+	}
+Jun 22 19:11:05 Administratorde-iPod loveshare[359] <Warning>: iRate could not find the App Store ID for this application. If the application is not intended for App Store release then you must specify a custom ratingsURL.
+Jun 22 19:11:05 Administratorde-iPod loveshare[359] <Warning>: iRate could not find your app on iTunes. If your app is not yet on the store or is not intended for App Store release then don't worry about this
+Jun 22 19:11:06 Administratorde-iPod loveshare[359] <Warning>: 2016-06-22 19:11:06.641 | JPUSH | I - [JPUSHDeviceTokenReport] upload device token success
