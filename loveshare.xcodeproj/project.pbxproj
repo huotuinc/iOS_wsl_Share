@@ -85,6 +85,9 @@
 		EF3877D91C8FFAFE008279BD /* NameController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3877D41C8FFAFE008279BD /* NameController.m */; };
 		EF3877DA1C8FFAFE008279BD /* SexController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3877D61C8FFAFE008279BD /* SexController.m */; };
 		EF3877DD1C8FFB14008279BD /* ProfessionalController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3877DC1C8FFB14008279BD /* ProfessionalController.m */; };
+		EF41255A1D1CC35E002F8E19 /* TudiTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4125591D1CC35E002F8E19 /* TudiTableViewController.m */; };
+		EF4125631D1CCFA2002F8E19 /* MyNewTudiListcell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4125611D1CCFA2002F8E19 /* MyNewTudiListcell.m */; };
+		EF4125641D1CCFA2002F8E19 /* MyNewTudiListcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF4125621D1CCFA2002F8E19 /* MyNewTudiListcell.xib */; };
 		EF41EEA31D114BAD006786F8 /* SetNewPasswdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF41EEA21D114BAD006786F8 /* SetNewPasswdViewController.m */; };
 		EF5763BC1D179F0F00A3C039 /* MastListMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5763BB1D179F0F00A3C039 /* MastListMenu.m */; };
 		EF5763CA1D17DB4E00A3C039 /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5763BF1D17DB4E00A3C039 /* UUBar.m */; };
@@ -392,6 +395,11 @@
 		EF3877D61C8FFAFE008279BD /* SexController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SexController.m; sourceTree = "<group>"; };
 		EF3877DB1C8FFB14008279BD /* ProfessionalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalController.h; sourceTree = "<group>"; };
 		EF3877DC1C8FFB14008279BD /* ProfessionalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalController.m; sourceTree = "<group>"; };
+		EF4125581D1CC35E002F8E19 /* TudiTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TudiTableViewController.h; sourceTree = "<group>"; };
+		EF4125591D1CC35E002F8E19 /* TudiTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TudiTableViewController.m; sourceTree = "<group>"; };
+		EF4125601D1CCFA2002F8E19 /* MyNewTudiListcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNewTudiListcell.h; sourceTree = "<group>"; };
+		EF4125611D1CCFA2002F8E19 /* MyNewTudiListcell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNewTudiListcell.m; sourceTree = "<group>"; };
+		EF4125621D1CCFA2002F8E19 /* MyNewTudiListcell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNewTudiListcell.xib; sourceTree = "<group>"; };
 		EF41EEA11D114BAD006786F8 /* SetNewPasswdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetNewPasswdViewController.h; sourceTree = "<group>"; };
 		EF41EEA21D114BAD006786F8 /* SetNewPasswdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetNewPasswdViewController.m; sourceTree = "<group>"; };
 		EF5763BA1D179F0F00A3C039 /* MastListMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MastListMenu.h; sourceTree = "<group>"; };
@@ -1091,6 +1099,18 @@
 			path = Encryption;
 			sourceTree = "<group>";
 		};
+		EF4125571D1CC2B6002F8E19 /* tudi */ = {
+			isa = PBXGroup;
+			children = (
+				EF4125581D1CC35E002F8E19 /* TudiTableViewController.h */,
+				EF4125591D1CC35E002F8E19 /* TudiTableViewController.m */,
+				EF4125601D1CCFA2002F8E19 /* MyNewTudiListcell.h */,
+				EF4125611D1CCFA2002F8E19 /* MyNewTudiListcell.m */,
+				EF4125621D1CCFA2002F8E19 /* MyNewTudiListcell.xib */,
+			);
+			path = tudi;
+			sourceTree = "<group>";
+		};
 		EF5763BD1D17DB4E00A3C039 /* UUChart */ = {
 			isa = PBXGroup;
 			children = (
@@ -1687,6 +1707,7 @@
 		EFF072851C8939F000150FA2 /* loveshare */ = {
 			isa = PBXGroup;
 			children = (
+				EF4125571D1CC2B6002F8E19 /* tudi */,
 				EF57640E1D192FB400A3C039 /* redBag */,
 				EFC015E11D1693E600869BA1 /* PersonCenter */,
 				EFC015CC1D15360700869BA1 /* WeekTask(本周任务) */,
@@ -1899,6 +1920,7 @@
 				EF15C96B1C98EECE00ABD2F6 /* TodayTableViewCell.xib in Resources */,
 				EF5764141D1933BF00A3C039 /* HomeGetRedPocketCView.xib in Resources */,
 				F2748EAA1CD21C10003C99CD /* DepartmentTableViewCell.xib in Resources */,
+				EF4125641D1CCFA2002F8E19 /* MyNewTudiListcell.xib in Resources */,
 				EFF072961C8939F000150FA2 /* LaunchScreen.storyboard in Resources */,
 				EFC253FC1D0EAA6600E33E24 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				EFD8C8C31D069F1F007922D6 /* TopFitTableViewCell.xib in Resources */,
@@ -2094,6 +2116,7 @@
 				EFFA36FB1C8AD9BD00D6AE4D /* UserModel.m in Sources */,
 				EF6F977B1C89755200D760EC /* AFURLSessionManager.m in Sources */,
 				EF6F97801C89755200D760EC /* AFNetworkActivityIndicatorManager.m in Sources */,
+				EF4125631D1CCFA2002F8E19 /* MyNewTudiListcell.m in Sources */,
 				EFD2B0811CEC77D000F00431 /* TopOptionTableViewContion.m in Sources */,
 				EF6F977E1C89755200D760EC /* AFAutoPurgingImageCache.m in Sources */,
 				EF911F721C8EA10100BA7050 /* NewShareModel.m in Sources */,
@@ -2161,6 +2184,7 @@
 				EF3636751C9046A3006AD6F1 /* TwoOption.m in Sources */,
 				EFFE36481CA01FE2000EA32D /* LeftTableViewCell.m in Sources */,
 				EFBD4FBC1D13A9C500EFEEC8 /* EnViewControllerInCollectionViewController.m in Sources */,
+				EF41255A1D1CC35E002F8E19 /* TudiTableViewController.m in Sources */,
 				EF5A1EF01C8D7272002035FC /* TaskGrouoModel.m in Sources */,
 				F28CC0771CDB799300F4B72E /* BCCollectionViewCell.m in Sources */,
 				EF3877DA1C8FFAFE008279BD /* SexController.m in Sources */,

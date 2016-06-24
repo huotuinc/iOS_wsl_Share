@@ -260,7 +260,8 @@ static NSString * homeCellidentify = @"homeCellId";
     _centerNot = centerNot;
     [centerNot addObserver:self selector:@selector(GoADDetail) name:@"AdClick" object:nil];
     
-    
+    MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+    [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
    
 }
 

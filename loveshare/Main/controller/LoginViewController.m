@@ -47,7 +47,7 @@
     self.title = @"登录";
     //设置标题样式
     NSMutableDictionary * textAttr = [NSMutableDictionary dictionary];
-    textAttr[NSForegroundColorAttributeName] = [UIColor blackColor];
+    textAttr[NSForegroundColorAttributeName] = [UIColor whiteColor];
     [self.navigationController.navigationBar setTitleTextAttributes:textAttr];
     
 }

@@ -9,7 +9,7 @@
 #import "RAYNewFunctionGuideVC.h"
 #import "NJKWebViewProgress.h"
 #import "NJKWebViewProgressView.h"
-
+#import "MMRootViewController.h"
 
 @interface detailViewController ()<UIWebViewDelegate,NJKWebViewProgressDelegate>
 
@@ -57,6 +57,9 @@
         [self makeGuideView];
     }
 //    [self makeGuideView];
+    
+    MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+    [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
     
     
   

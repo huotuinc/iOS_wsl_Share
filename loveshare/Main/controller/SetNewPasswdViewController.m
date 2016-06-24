@@ -69,9 +69,9 @@
         [self.confirmBtn setTitle:@"注册" forState:UIControlStateNormal];
     }
     
-    if(!self.isInApp){
-        [self leftBtn];
-    }
+//    if(!self.isInApp){
+////        [self leftBtn];
+//    }
     
     AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     ad.currentVC = self;

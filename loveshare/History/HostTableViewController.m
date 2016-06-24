@@ -75,6 +75,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+    [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
     
     AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     ad.currentVC = self;

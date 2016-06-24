@@ -7,7 +7,7 @@
 //
 
 #import "MasterAndTudiViewController.h"
-
+#import "TudiTableViewController.h"
 //#import "FollowerListController.h"
 #import "FollowListTableViewController.h"
 
@@ -249,6 +249,11 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"123"];
 //        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
+    if (indexPath.row == 0) {
+        cell.userInteractionEnabled = YES;
+    }else{
+        cell.userInteractionEnabled = NO;
+    }
     
      MastListMenu * me1 = [self.optlist objectAtIndex:indexPath.row];
     cell.textLabel.text = me1.nameLable;
@@ -260,5 +265,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row == 0) {
+        
+        TudiTableViewController * a = [[TudiTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        [self.navigationController pushViewController:a animated:YES];
+    }
 }
 @end

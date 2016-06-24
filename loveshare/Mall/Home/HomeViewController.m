@@ -217,6 +217,12 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    
+    
+    MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+    [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
+    
+    
     [self SelectMoreAccount];
     _webViewProgress = [[NJKWebViewProgress alloc] init];
     _webViewProgress.webViewProxyDelegate = self;
@@ -276,7 +282,7 @@
     [self.homeBottonWebView loadRequest:Bottomreq];
     //集成刷新控件
     [self AddMjRefresh];
-//    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithCustomView:self.shareBtn]];
+//    self.navigationI。tem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithCustomView:self.shareBtn]];
 
 }
 

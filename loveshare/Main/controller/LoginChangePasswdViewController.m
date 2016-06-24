@@ -69,11 +69,11 @@
 
     
     
-    if (!self.isInapp) {
-        // 左上角
-        [self leftBtn];
-    }
-    
+//    if (!self.isInapp) {
+//        // 左上角
+//        [self leftBtn];
+//    }
+//    
     
     
     
