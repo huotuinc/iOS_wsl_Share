@@ -9,7 +9,7 @@
 #import "PersonViewController.h"
 #import "HostTableViewCell.h"
 #import "FollowList.h"
-
+#import "MyNewTudiListcell.h"
 
 @interface PersonViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *headImage;
@@ -18,6 +18,8 @@
 /**徒弟列表*/
 @property(nonatomic,strong) NSIndexPath * lastIndexPath;
 
+
+@property(nonatomic,assign) int TudiPageIndex;
 
 
 /**转发*/
@@ -31,9 +33,9 @@
 /**徒弟*/
 @property (weak, nonatomic) IBOutlet UILabel *tudiLable;
 
-
+/**任务*/
 @property (weak, nonatomic) IBOutlet UILabel *firstLable;
-
+/**伙伴*/
 @property (weak, nonatomic) IBOutlet UILabel *secondLable;
 
 @property (weak, nonatomic) IBOutlet UITableView *listLable;
@@ -62,12 +64,22 @@
 @property(nonatomic,strong) MJRefreshNormalHeader * head;
 @property(nonatomic,strong) MJRefreshAutoFooter * footer;
 
+@property(nonatomic,strong) NSMutableArray * mYNewFLowListArray;
 
 @end
 
 @implementation PersonViewController
 
-
+- (NSMutableArray *)mYNewFLowListArray{
+    
+    
+    if (_mYNewFLowListArray == nil) {
+        _mYNewFLowListArray = [NSMutableArray array];
+    }
+    return _mYNewFLowListArray;
+    
+    
+}
 - (NSMutableArray *)dateArray{
     if (_dateArray == nil) {
         _dateArray = [NSMutableArray array];
@@ -117,8 +129,8 @@
         LWLog(@"暂无分页功能");
         [self.listLable.mj_footer endRefreshing];
     }else{
-        ++_followerPageIndex;
-        [self setupTudiDateWithPageIndex:_followerPageIndex];
+        
+        [self setupTudiDateWithPageIndex:self.TudiPageIndex+1];
     }
 }
 
@@ -156,6 +168,7 @@
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
     
+    [self.listLable registerNib:[UINib nibWithNibName:@"MyNewTudiListcell" bundle:nil] forCellReuseIdentifier:@"MyNewTudiListcell"];
     
 }
 
@@ -220,7 +233,7 @@
         _firstLable.textColor = [UIColor orangeColor];
         _secondLable.textColor = [UIColor blackColor];
         _redView.frame = CGRectMake(aa *0.5-aa/2/2+30, _containView.frame.size.height-2, aa / 2 , 2);
-        self.setTag = 1;
+        self.setTag = 1;  // = 1 为任务; = 2 为徒弟
 //        [wself.head beginRefreshing];
         [self.lists removeAllObjects];
         [self.listLable reloadData];
@@ -234,7 +247,7 @@
         _firstLable.textColor = [UIColor blackColor];
         _secondLable.textColor = [UIColor orangeColor];
         _redView.frame = CGRectMake(aa *0.5-aa/2/2+30+aa, _containView.frame.size.height-2, aa / 2 , 2);
-        self.setTag = 2;
+        self.setTag = 2; // = 1 为任务; = 2 为徒弟
 //        [wself.head beginRefreshing];
         [self.dateArray removeAllObjects];
         [self.listLable reloadData];
@@ -264,19 +277,24 @@
         LWLog(@"%@",json);
 //        wself.setTag = 1;
         LWLog(@"**************请求数据成功********");
+        
+        self.TudiPageIndex = [[json objectForKey:@"pageIndex"] intValue];
         if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
             NSArray * array = [FollowModel mj_objectArrayWithKeyValuesArray:json[@"resultData"]];
 //            wself.listLable.tableFooterView = _footer;
             if (pageIndex == 1) {
-                [wself ToGroupList:array];
+                
+                [wself.mYNewFLowListArray removeAllObjects];
+                [wself.mYNewFLowListArray addObjectsFromArray:array];
                 [wself.listLable.mj_header endRefreshing];
 
             } else {
-                [wself ToMoreGroupList:array];
+                [wself.mYNewFLowListArray addObjectsFromArray:array];
                 [wself.listLable.mj_footer endRefreshing];
             }
             [MBProgressHUD hideHUD];
             [wself.listLable reloadData];
+            
         }
     } failure:^(NSError *error) {
         if (pageIndex == 1) {
@@ -335,11 +353,11 @@
     parame[@"date"] = @"";
     parame[@"pageSize"] = @(Pagesize);
     parame[@"currentUserId"] = @(self.model.userid);
-//    [MBProgressHUD showMessage:nil];
+    [MBProgressHUD showMessage:nil];
     [UserLoginTool loginRequestGet:@"NewTotalScoreList" parame:parame success:^(id json) {
         LWLog(@"%@",json);
 //         wself.setTag = 2;
-        
+        [MBProgressHUD hideHUD];
         if ([json[@"resultCode"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
             NSArray * array = [HistoryModel mj_objectArrayWithKeyValuesArray:json[@"resultData"][@"itemData"]];
             LWLog(@"%lu",(unsigned long)array.count);
@@ -354,10 +372,10 @@
             }
         }
         
-        
+        [wself.listLable.mj_header endRefreshing];
     } failure:^(NSError *error) {
         [wself.listLable.mj_header endRefreshing];
-//        [MBProgressHUD hideHUD];
+        [MBProgressHUD hideHUD];
     }];
     
     
@@ -365,11 +383,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     LWLog(@"%d",self.setTag);
-    if (self.setTag== 1) {//徒弟
+    if (self.setTag== 1) {// 任务
         return  self.dateArray.count;
     }else{
-        LWLog(@"%lu",(unsigned long)self.lists.count);
-        return self.lists.count;
+//        LWLog(@"%lu",(unsigned long)self.lists.count);
+//        return  self.mYNewFLowListArray.count;
+        
+        return 1;
     }
     
     
@@ -378,17 +398,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if (self.setTag== 1) {
+    if (self.setTag== 1) {//任务
         HistoryModel * model =  self.dateArray[section];
         return model.awardList.count;
     }else{
-        if (section == self.openSection && self.openStatus == YES) {
-            FollowList * ss = self.lists[section];
-            NSLog(@"%lu",(unsigned long)ss.list.count);
-            return ss.list.count;
-        } else {
-            return 0;
-        }
+        return self.mYNewFLowListArray.count;
+        
     }
     
 }
@@ -401,7 +416,7 @@
        return 30;
     }
     
-    return 60;
+    return 0;
 }
 
 
@@ -410,7 +425,7 @@
     if (self.setTag == 1) {
         return 167;
     }
-    return 60;
+    return 109;
     
 }
 
@@ -428,23 +443,23 @@
         return view;
     }
     else {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TudiTableViewCell" owner:nil options:nil];
-        _sectionFollowerView = [nib firstObject];
-        _sectionFollowerView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 60);
-        FollowList * fol =  self.lists[section];
-        FollowModel * mod = (FollowModel *)fol.list[0];
-//        _sectionFollowerView.backgroundColor = [UIColor lightGrayColor];
-        _sectionFollowerView.arrow.image = [UIImage imageNamed:@"downArrow"];
-        _sectionFollowerView.model = mod;
-        [_sectionFollowerView bk_whenTapped:^{
-            self.openSection = section;
-            LWLog(@"点击的是第%ld个section",(long)self.openSection);
-            self.openStatus = YES;
-//            NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:self.openSection];
-//            [self.listLable reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-            [self.listLable reloadData];
-        }];
-        return _sectionFollowerView;
+//        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TudiTableViewCell" owner:nil options:nil];
+//        _sectionFollowerView = [nib firstObject];
+//        _sectionFollowerView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 60);
+//        FollowList * fol =  self.lists[section];
+//        FollowModel * mod = (FollowModel *)fol.list[0];
+////        _sectionFollowerView.backgroundColor = [UIColor lightGrayColor];
+//        _sectionFollowerView.arrow.image = [UIImage imageNamed:@"downArrow"];
+//        _sectionFollowerView.model = mod;
+//        [_sectionFollowerView bk_whenTapped:^{
+//            self.openSection = section;
+//            LWLog(@"点击的是第%ld个section",(long)self.openSection);
+//            self.openStatus = YES;
+////            NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:self.openSection];
+////            [self.listLable reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+//            [self.listLable reloadData];
+//        }];
+        return nil;
     }
     
 }
@@ -466,20 +481,17 @@
         cell.model = models;
         return cell;
     }else{
-        if (indexPath.section == self.openSection && self.openStatus == YES) {
-            static NSString * reidess = @"down";
-            DownTudiTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reidess];
-            LWLog(@"self.lists.count--------%ld",(unsigned long)self.lists.count);
-            FollowList * fol =  self.lists[indexPath.section];
-            FollowModel * mod = (FollowModel *)fol.list[0];
+        
+        MyNewTudiListcell * cell = [tableView dequeueReusableCellWithIdentifier:@"MyNewTudiListcell" forIndexPath:indexPath];
+        
+        cell.contentView.layer.cornerRadius = 5;
+        cell.contentView.layer.masksToBounds = YES;
+        //    cell.backgroundColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1];
+        FollowModel * model = [self.mYNewFLowListArray objectAtIndex:indexPath.row];
+        cell.model = model;
+        cell.userInteractionEnabled = NO;
+        return cell;
 
-            LWLog(@"%@",[mod mj_keyValues]) ;
-            cell.model = mod;
-            //        cell.textLabel.text = [NSString stringWithFormat:@"昨日浏览/转发量: %d/%d次",[mod.yesterdayBrowseAmount integerValue],[mod.yesterdayTurnAmount integerValue]];
-            //        cell.detailTextLabel.text = [NSString stringWithFormat:@"历史浏览/转发量: %d/%d次",[mod.historyTotalBrowseAmount integerValue],[mod.historyTotalTurnAmount integerValue]];
-            return cell;
-        }
-        return nil;
 //        if (indexPath.row == 0) {
 //            static NSString * reide = @"top";
 //            TudiTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reide];

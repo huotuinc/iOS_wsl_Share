@@ -26,7 +26,12 @@
 ;
 @property (weak, nonatomic) IBOutlet UILabel *joinLabel;
 @property (weak, nonatomic) IBOutlet UILabel *introduceLabel;
+
+
 @property (weak, nonatomic) IBOutlet UIImageView *getImage;
+
+
+
 @property (weak, nonatomic) IBOutlet UIImageView *topImage;
 @property (weak, nonatomic) IBOutlet UILabel *lastLabel;
 @end
@@ -47,10 +52,8 @@
     _joinLabel.text = [NSString stringWithFormat:@"%@",model.sendCount];
     _introduceLabel.text = [NSString stringWithFormat:@"由[%@]提供",model.storeName?model.storeName:@"分红"];
     
-    if (model.sendList.length) {
+    if (model.isSend) {
         _getImage.image = [UIImage imageNamed:@"已完成"];
-    }else if(model.lastScore <= 0.001){
-        _getImage.image = [UIImage imageNamed:@"已领完"];
     }else{
         _getImage.image = nil;
     }

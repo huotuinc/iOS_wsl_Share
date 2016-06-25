@@ -1038,7 +1038,6 @@ static NSString *MMDrawerOpenSideKey = @"MMDrawerOpenSide";
 }
 
 -(void)panGestureCallback:(UIPanGestureRecognizer *)panGesture{
-    [panGesture.view endEditing:YES];
     switch (panGesture.state) {
         case UIGestureRecognizerStateBegan:{
             if(self.animatingDrawer){

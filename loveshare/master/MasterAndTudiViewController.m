@@ -103,7 +103,7 @@
     AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     ad.currentVC = self;
     
-    self.title = @"推荐有奖";
+    self.title = @"我要推荐";
     
     LWLog(@"%s---%@",__func__,NSStringFromCGRect(self.iconView.frame));
     self.masterRuleDes.hidden = YES;
@@ -240,6 +240,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return self.optlist.count;
+    
+   
 }
 
 
@@ -247,12 +249,15 @@
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"123"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"123"];
-//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.textColor = [UIColor blackColor];
+        cell.detailTextLabel.textColor = [UIColor blackColor];
     }
     if (indexPath.row == 0) {
         cell.userInteractionEnabled = YES;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }else{
         cell.userInteractionEnabled = NO;
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
      MastListMenu * me1 = [self.optlist objectAtIndex:indexPath.row];

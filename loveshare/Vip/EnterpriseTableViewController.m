@@ -133,9 +133,10 @@
     parame[@"loginCode"] = userInfo.loginCode;
     parame[@"orid"] = @(self.model.orgid);
     parame[@"taskId"] = self.taskId;
-    
+    [MBProgressHUD showMessage:nil];
     [UserLoginTool loginRequestGet:@"UserOrganize" parame:parame success:^(id json) {
         LWLog(@"%@",json);
+        [MBProgressHUD hideHUD];
         if ([json[@"status"] integerValue] == 1 || [json[@"resultCode"] integerValue] == 1) {
             NSArray * array = [JiTuan mj_objectArrayWithKeyValuesArray:json[@"resultData"]];
             ;
@@ -146,6 +147,7 @@
         }
     } failure:^(NSError *error) {
         LWLog(@"%@",error.description);
+        [MBProgressHUD hideHUD];
     }];
 
     
@@ -159,7 +161,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return self.SortArray.count;
+    
+    if (self.SortArray.count == 0) {
+        self.optionLable.backgroundColor = [UIColor colorWithPatternImage:[UserLoginTool LoginCreateImageWithNoDate]];
+    }else{
+        self.optionLable.backgroundColor = [UIColor whiteColor];
+    }
+    return  self.SortArray.count;
 }
 
 
@@ -198,6 +206,7 @@
         EnterpriseTableViewController* vc = (EnterpriseTableViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"EnterpriseTableViewController"];
         vc.model = model;
         vc.title = model.name;
+        vc.taskId = self.taskId;
         [self.navigationController pushViewController:vc animated:YES];
     } else {
         DepartmentViewController* vc = (DepartmentViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"DepartmentViewController"];

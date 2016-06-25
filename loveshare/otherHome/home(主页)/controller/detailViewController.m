@@ -17,6 +17,7 @@
 
 
 
+@property(nonatomic,strong) NewTaskDataModel * modelXX;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *toppottn;
@@ -222,8 +223,13 @@
     parame[@"taskId"] = @(taskModel.taskId);
     [UserLoginTool loginRequestGet:@"TaskDetail" parame:parame success:^(id json) {
         
+        
+        
+        
         LWLog(@"%@",json);
         if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
+            NewTaskDataModel * model = [NewTaskDataModel mj_objectWithKeyValues:[json objectForKey:@"resultData"]];
+            wself.modelXX = model;
             wself.shareModel.taskInfo = json[@"resultData"][@"taskInfo"];
             wself.shareModel.taskSmallImgUrl = json[@"resultData"][@"taskSmallImgUrl"];
             wself.shareModel.taskName = json[@"resultData"][@"taskName"];
@@ -261,7 +267,8 @@
             if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1){
                 [MBProgressHUD showSuccess:@"分享成功"];
                 
-                
+                self.taskModel.isSend = 1;
+//                self.modelXX.isSend = 1;
                 //判断是否为第一次分享
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                 NSString *isFirstShare = [defaults stringForKey:@"isFirstShare"];
@@ -290,6 +297,10 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:YES];
     [_webViewProgressView removeFromSuperview];
+    
+    if ([self.delegate respondsToSelector:@selector(ToRefreshDate:)]) {
+        [self.delegate ToRefreshDate:self.taskModel];
+    }
     
 }
 

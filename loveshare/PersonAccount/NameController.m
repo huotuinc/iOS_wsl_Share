@@ -31,6 +31,8 @@
 {
    
     [super viewWillAppear:animated];
+    
+    
     self.nameLabel.text = self.name;
 }
 

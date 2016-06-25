@@ -51,6 +51,7 @@ static NSString *deCell = @"deCell";
     ad.currentVC = self;
     
     
+    self.title = self.dilu;
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     [self setInit];
@@ -88,8 +89,10 @@ static NSString *deCell = @"deCell";
     parame[@"sort"] = @(sortType);
     parame[@"taskId"] = self.taskId;
     parame[@"pid"] = @(self.model.orgid);
+    [MBProgressHUD showMessage:nil];
     [UserLoginTool loginRequestGet:@"GetGroupPerson" parame:parame success:^(id json) {
         LWLog(@"%@",json);
+        [MBProgressHUD hideHUD];
         if([json[@"resultCode"] integerValue] == 1 ||[json[@"status"] integerValue] == 1){
            NSArray * arrays = [JiTuanModel mj_objectArrayWithKeyValuesArray:json[@"resultData"]];
             if (pageIndex != 1) {
@@ -105,7 +108,7 @@ static NSString *deCell = @"deCell";
             [wself.listTableView reloadData];
         }
     } failure:^(NSError *error) {
-        
+        [MBProgressHUD hideHUD];
     }];
     
     
@@ -199,7 +202,13 @@ static NSString *deCell = @"deCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     LWLog(@"%lu",(unsigned long)self.originArray.count);
-    return self.originArray.count;
+  
+    if (self.originArray.count == 0) {
+        self.listTableView.backgroundColor = [UIColor colorWithPatternImage:[UserLoginTool LoginCreateImageWithNoDate]];
+    }else{
+        self.listTableView.backgroundColor = [UIColor whiteColor];
+    }
+    return  self.originArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60.f;

@@ -19,7 +19,7 @@
                         <rect key="frame" x="9" y="9" width="302" height="103"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天欧冠巴萨激战尤文fads 发生的发生发放的是" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGH-4D-mst" userLabel="标题">
-                                <rect key="frame" x="95" y="17" width="202" height="41"/>
+                                <rect key="frame" x="95" y="17" width="187" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.14117647059999999" green="0.69411764710000001" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -51,11 +51,11 @@
                                 <color key="textColor" red="0.51372549019607838" green="0.4823529411764706" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XbP-Z9-ED8">
-                                <rect key="frame" x="232" y="0.0" width="70" height="70"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="已完成" translatesAutoresizingMaskIntoConstraints="NO" id="XbP-Z9-ED8">
+                                <rect key="frame" x="262" y="0.0" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="DJz-vZ-aVd"/>
-                                    <constraint firstAttribute="width" constant="70" id="oYc-bj-GXo"/>
+                                    <constraint firstAttribute="height" constant="40" id="DJz-vZ-aVd"/>
+                                    <constraint firstAttribute="width" constant="40" id="oYc-bj-GXo"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="499.9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCU-me-ygE">
@@ -105,7 +105,7 @@
                             <constraint firstItem="oCU-me-ygE" firstAttribute="top" secondItem="Hle-dh-2f8" secondAttribute="top" id="Ydl-Ud-D7M"/>
                             <constraint firstItem="oCU-me-ygE" firstAttribute="bottom" secondItem="Hle-dh-2f8" secondAttribute="bottom" id="a5h-35-SYE"/>
                             <constraint firstItem="dW0-1k-guf" firstAttribute="width" secondItem="Hle-dh-2f8" secondAttribute="width" id="apP-Dh-BXF"/>
-                            <constraint firstAttribute="trailing" secondItem="nGH-4D-mst" secondAttribute="trailing" constant="5" id="blR-Bg-BaQ"/>
+                            <constraint firstAttribute="trailing" secondItem="nGH-4D-mst" secondAttribute="trailing" constant="20" id="blR-Bg-BaQ"/>
                             <constraint firstItem="oCU-me-ygE" firstAttribute="leading" secondItem="dW0-1k-guf" secondAttribute="trailing" constant="5" id="dQx-UK-bPl"/>
                             <constraint firstItem="dW0-1k-guf" firstAttribute="width" secondItem="jox-UP-QpS" secondAttribute="width" id="eSl-BT-Mph"/>
                             <constraint firstItem="XbP-Z9-ED8" firstAttribute="top" secondItem="wf1-Ei-z0c" secondAttribute="top" id="fZ9-SO-msl"/>
@@ -167,5 +167,6 @@
         <image name="homeBrow" width="32" height="32"/>
         <image name="hometurn" width="32" height="32"/>
         <image name="mrtou_b" width="150" height="150"/>
+        <image name="已完成" width="53" height="53"/>
     </resources>
 </document>

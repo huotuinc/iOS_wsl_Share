@@ -28,7 +28,65 @@
 static NSString *channel = @"Publish channel";
 
 
-
+- (void)MonNet{
+    //3.判断网络状况
+    AFNetworkReachabilityManager *netManager = [AFNetworkReachabilityManager sharedManager];
+    [netManager startMonitoring];  //开始监听
+    [netManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+        
+        if (status == AFNetworkReachabilityStatusNotReachable)
+        {
+            UIAlertController * vc = [UIAlertController alertControllerWithTitle:@"错误提示" message:@"当前设备没有链接到网络" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction * a1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                //                    NewTaskDataModel * aa = [[NewTaskDataModel alloc] init];
+                //                    aa.taskId =  [[userInfo objectForKey:@"money"] intValue];
+                //                    detailViewController * vc =(detailViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"detailViewController"];
+                //                    vc.taskModel = aa;
+                //                    [self.currentVC.navigationController pushViewController:vc animated:YES];
+            }];
+            
+            //                UIAlertAction * a2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //
+            //                }];
+            [vc addAction:a1];
+            //                [vc addAction:a2];
+            
+            [self.currentVC presentViewController:vc animated:YES completion:nil];
+            
+            
+            
+            return;
+            
+        }else if (status == AFNetworkReachabilityStatusUnknown){
+            UIAlertController * vc = [UIAlertController alertControllerWithTitle:@"错误提示" message:@"未知网络,请检查网络" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction * a1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                //                    NewTaskDataModel * aa = [[NewTaskDataModel alloc] init];
+                //                    aa.taskId =  [[userInfo objectForKey:@"money"] intValue];
+                //                    detailViewController * vc =(detailViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"detailViewController"];
+                //                    vc.taskModel = aa;
+                //                    [self.currentVC.navigationController pushViewController:vc animated:YES];
+            }];
+            
+            //                UIAlertAction * a2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //
+            //                }];
+            [vc addAction:a1];
+            //                [vc addAction:a2];
+            
+            [self.currentVC presentViewController:vc animated:YES completion:nil];
+            LWLog(@"未知网络");
+            
+        }else if (status == AFNetworkReachabilityStatusReachableViaWWAN){
+            
+            LWLog(@"WiFi");
+            
+        }else if (status == AFNetworkReachabilityStatusReachableViaWiFi){
+            
+            LWLog(@"手机网络");
+        }
+        
+    }];
+}
 
 - (BOOL) isFirstLoad{
     
@@ -83,7 +141,7 @@ static NSString *channel = @"Publish channel";
     }
     
     
-    
+    [self MonNet];
     
     application.applicationIconBadgeNumber = 0;
     
@@ -325,8 +383,6 @@ static NSString *channel = @"Publish channel";
        
         switch ([[userInfo objectForKey:@"type"] intValue]) {
             case 0:{ //红包
-                
-                
                 LWLog(@"%@",userInfo);
                 NSDictionary * dict = [userInfo objectForKey:@"aps"];
                 UIAlertController * vc = [UIAlertController alertControllerWithTitle:@"奖励" message:[NSString stringWithFormat:@"%@,获得%@",dict[@"alert"],[userInfo objectForKey:@"money"]] preferredStyle:UIAlertControllerStyleAlert];

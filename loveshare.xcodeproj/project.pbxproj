@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		346DC368A095B2B2C935D191 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A5C951EBE8DD98233ED8F6 /* libPods.a */; };
+		1159206C2CD23767C28487DE /* libPods-loveshareTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D90D04C52DAFD8B92AB9396C /* libPods-loveshareTests.a */; };
+		4B0ADFD316C2745B9D551436 /* libPods-loveshare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 252CAC8039A020DCAE0634E2 /* libPods-loveshare.a */; };
+		DC0863EDBFDCA318DE7FFA9C /* libPods-loveshareUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F6CB86813D01050A776F16 /* libPods-loveshareUITests.a */; };
 		EF15C9631C98EA2700ABD2F6 /* TodayAdvance.m in Sources */ = {isa = PBXBuildFile; fileRef = EF15C9621C98EA2700ABD2F6 /* TodayAdvance.m */; };
 		EF15C96A1C98EECE00ABD2F6 /* TodayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF15C9681C98EECE00ABD2F6 /* TodayTableViewCell.m */; };
 		EF15C96B1C98EECE00ABD2F6 /* TodayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF15C9691C98EECE00ABD2F6 /* TodayTableViewCell.xib */; };
@@ -254,9 +256,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1C7E34E9A6B9EB3139B09BC5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		67A5C951EBE8DD98233ED8F6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8FA95B3B623F3B57FE6DB99A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		252CAC8039A020DCAE0634E2 /* libPods-loveshare.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-loveshare.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2981B46FB4AD7B305B1B17EC /* Pods-loveshareTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loveshareTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-loveshareTests/Pods-loveshareTests.debug.xcconfig"; sourceTree = "<group>"; };
+		51F6CB86813D01050A776F16 /* libPods-loveshareUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-loveshareUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		59475FC30E1C11CF52631902 /* Pods-loveshareUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loveshareUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-loveshareUITests/Pods-loveshareUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8DF3FF7BD1EF7D87E6B2E23A /* Pods-loveshare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loveshare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-loveshare/Pods-loveshare.debug.xcconfig"; sourceTree = "<group>"; };
+		9D19C13CFFB86A3704CCE3D9 /* Pods-loveshare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loveshare.release.xcconfig"; path = "Pods/Target Support Files/Pods-loveshare/Pods-loveshare.release.xcconfig"; sourceTree = "<group>"; };
+		AC9C82E93595D134B920270D /* Pods-loveshareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loveshareTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-loveshareTests/Pods-loveshareTests.release.xcconfig"; sourceTree = "<group>"; };
+		D90D04C52DAFD8B92AB9396C /* libPods-loveshareTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-loveshareTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE89626252736DD3FE553611 /* Pods-loveshareUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loveshareUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-loveshareUITests/Pods-loveshareUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EF15C9611C98EA2700ABD2F6 /* TodayAdvance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayAdvance.h; sourceTree = "<group>"; };
 		EF15C9621C98EA2700ABD2F6 /* TodayAdvance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayAdvance.m; sourceTree = "<group>"; };
 		EF15C9671C98EECE00ABD2F6 /* TodayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayTableViewCell.h; sourceTree = "<group>"; };
@@ -690,9 +698,9 @@
 				EFC253FD1D0EAA6600E33E24 /* libWeChatSDK.a in Frameworks */,
 				EF6F97C51C8A770700D760EC /* libicucore.tbd in Frameworks */,
 				EFC253F71D0EAA6600E33E24 /* ShareSDK.framework in Frameworks */,
-				346DC368A095B2B2C935D191 /* libPods.a in Frameworks */,
 				EFC253FB1D0EAA6600E33E24 /* TencentOpenAPI.framework in Frameworks */,
 				EF17BB101C9D9B210072856E /* jpush-ios-2.1.0.a in Frameworks */,
+				4B0ADFD316C2745B9D551436 /* libPods-loveshare.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,6 +708,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1159206C2CD23767C28487DE /* libPods-loveshareTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,21 +716,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC0863EDBFDCA318DE7FFA9C /* libPods-loveshareUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		21D7EB9A88FA518A682A0C94 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				1C7E34E9A6B9EB3139B09BC5 /* Pods.debug.xcconfig */,
-				8FA95B3B623F3B57FE6DB99A /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		65D1EAB06F12F7736F8D78F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -740,9 +741,24 @@
 				EF6F97C81C8A771A00D760EC /* libstdc++.tbd */,
 				EF6F97C61C8A771000D760EC /* libz.tbd */,
 				EF6F97C41C8A770700D760EC /* libicucore.tbd */,
-				67A5C951EBE8DD98233ED8F6 /* libPods.a */,
+				252CAC8039A020DCAE0634E2 /* libPods-loveshare.a */,
+				D90D04C52DAFD8B92AB9396C /* libPods-loveshareTests.a */,
+				51F6CB86813D01050A776F16 /* libPods-loveshareUITests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B3AB611E89E35266ED4AFE07 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8DF3FF7BD1EF7D87E6B2E23A /* Pods-loveshare.debug.xcconfig */,
+				9D19C13CFFB86A3704CCE3D9 /* Pods-loveshare.release.xcconfig */,
+				2981B46FB4AD7B305B1B17EC /* Pods-loveshareTests.debug.xcconfig */,
+				AC9C82E93595D134B920270D /* Pods-loveshareTests.release.xcconfig */,
+				59475FC30E1C11CF52631902 /* Pods-loveshareUITests.debug.xcconfig */,
+				DE89626252736DD3FE553611 /* Pods-loveshareUITests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		EF15C9601C98E9E500ABD2F6 /* model */ = {
@@ -1689,8 +1705,8 @@
 				EFF0729F1C8939F000150FA2 /* loveshareTests */,
 				EFF072AA1C8939F000150FA2 /* loveshareUITests */,
 				EFF072841C8939F000150FA2 /* Products */,
-				21D7EB9A88FA518A682A0C94 /* Pods */,
 				65D1EAB06F12F7736F8D78F3 /* Frameworks */,
+				B3AB611E89E35266ED4AFE07 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1808,12 +1824,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EFF072B01C8939F000150FA2 /* Build configuration list for PBXNativeTarget "loveshare" */;
 			buildPhases = (
-				74866E9C25F2E6D008E9B5B1 /* Check Pods Manifest.lock */,
+				7D8B3520BE1DF7BA0FB1C4F5 /* [CP] Check Pods Manifest.lock */,
 				EFF0727F1C8939F000150FA2 /* Sources */,
 				EFF072801C8939F000150FA2 /* Frameworks */,
 				EFF072811C8939F000150FA2 /* Resources */,
-				10DDB45642ACC8838AC7B0B3 /* Embed Pods Frameworks */,
-				B983C9FCBD3BFA5554112C6E /* Copy Pods Resources */,
+				7F4DD4677ABABFDAF8975E86 /* [CP] Embed Pods Frameworks */,
+				EF3FD06ABDF41187E8221233 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1828,9 +1844,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EFF072B31C8939F000150FA2 /* Build configuration list for PBXNativeTarget "loveshareTests" */;
 			buildPhases = (
+				191F99F88CB145522867D644 /* [CP] Check Pods Manifest.lock */,
 				EFF072981C8939F000150FA2 /* Sources */,
 				EFF072991C8939F000150FA2 /* Frameworks */,
 				EFF0729A1C8939F000150FA2 /* Resources */,
+				A0391BFE6D3673800942B56C /* [CP] Embed Pods Frameworks */,
+				FB56788B9E9E0C5E64A5DCD5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1846,9 +1865,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EFF072B61C8939F000150FA2 /* Build configuration list for PBXNativeTarget "loveshareUITests" */;
 			buildPhases = (
+				428EF866AF0866F27D68A9F5 /* [CP] Check Pods Manifest.lock */,
 				EFF072A31C8939F000150FA2 /* Sources */,
 				EFF072A41C8939F000150FA2 /* Frameworks */,
 				EFF072A51C8939F000150FA2 /* Resources */,
+				1951978669365403B7841CE8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1971,29 +1992,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		10DDB45642ACC8838AC7B0B3 /* Embed Pods Frameworks */ = {
+		191F99F88CB145522867D644 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		74866E9C25F2E6D008E9B5B1 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2001,19 +2007,109 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		B983C9FCBD3BFA5554112C6E /* Copy Pods Resources */ = {
+		1951978669365403B7841CE8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-loveshareUITests/Pods-loveshareUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		428EF866AF0866F27D68A9F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7D8B3520BE1DF7BA0FB1C4F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7F4DD4677ABABFDAF8975E86 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-loveshare/Pods-loveshare-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0391BFE6D3673800942B56C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-loveshareTests/Pods-loveshareTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF3FD06ABDF41187E8221233 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-loveshare/Pods-loveshare-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB56788B9E9E0C5E64A5DCD5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-loveshareTests/Pods-loveshareTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2327,7 +2423,7 @@
 		};
 		EFF072B11C8939F000150FA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C7E34E9A6B9EB3139B09BC5 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 8DF3FF7BD1EF7D87E6B2E23A /* Pods-loveshare.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2361,7 +2457,7 @@
 		};
 		EFF072B21C8939F000150FA2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8FA95B3B623F3B57FE6DB99A /* Pods.release.xcconfig */;
+			baseConfigurationReference = 9D19C13CFFB86A3704CCE3D9 /* Pods-loveshare.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2394,6 +2490,7 @@
 		};
 		EFF072B41C8939F000150FA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2981B46FB4AD7B305B1B17EC /* Pods-loveshareTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhiwei Yu (K7FU393EUA)";
@@ -2407,6 +2504,7 @@
 		};
 		EFF072B51C8939F000150FA2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC9C82E93595D134B920270D /* Pods-loveshareTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhiwei Yu (K7FU393EUA)";
@@ -2420,6 +2518,7 @@
 		};
 		EFF072B71C8939F000150FA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59475FC30E1C11CF52631902 /* Pods-loveshareUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
 				INFOPLIST_FILE = loveshareUITests/Info.plist;
@@ -2433,6 +2532,7 @@
 		};
 		EFF072B81C8939F000150FA2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE89626252736DD3FE553611 /* Pods-loveshareUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Zhiwei Yu (M8M3BZP7CQ)";
 				INFOPLIST_FILE = loveshareUITests/Info.plist;

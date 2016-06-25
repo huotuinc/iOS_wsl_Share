@@ -2178,7 +2178,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="       将此拜(邀)师(请)令(码)分享给好友，让其注册时输入，即可收入师门。徒弟每次提现成功后，都会贡献提现金额的10%(暂时由粉猫补贴)给师傅哦~" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQa-oI-wqf">
-                                        <rect key="frame" x="10" y="350" width="580" height="36"/>
+                                        <rect key="frame" x="10" y="320" width="580" height="36"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -2186,10 +2186,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a01-2B-A0W">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13857560740" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIO-Ud-QBJ">
-                                                <rect key="frame" x="161" y="44" width="108" height="21"/>
+                                                <rect key="frame" x="161" y="29" width="108" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="17" id="2EM-qx-WMd"/>
                                                 </constraints>
@@ -2203,7 +2203,7 @@
                                                 </variation>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xiangxtouxiang" translatesAutoresizingMaskIntoConstraints="NO" id="Ivz-LY-W0S">
-                                                <rect key="frame" x="20" y="40" width="70" height="70"/>
+                                                <rect key="frame" x="20" y="25" width="70" height="70"/>
                                                 <color key="backgroundColor" red="0.42352941179999998" green="0.7843137255" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Ivz-LY-W0S" secondAttribute="height" id="85V-3d-QYU"/>
@@ -2219,20 +2219,20 @@
                                                 </variation>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邀请码:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="psF-dd-j0N">
-                                                <rect key="frame" x="100" y="44" width="56" height="21"/>
+                                                <rect key="frame" x="100" y="29" width="56" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BAr-aP-nnG">
-                                                <rect key="frame" x="90" y="75" width="510" height="1"/>
+                                                <rect key="frame" x="90" y="60" width="510" height="1"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="ec1-yq-C9b"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHV-Bf-a6r">
-                                                <rect key="frame" x="100" y="78" width="127" height="30"/>
+                                                <rect key="frame" x="100" y="63" width="127" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Por-zf-fDT"/>
@@ -2292,7 +2292,7 @@
                                         </variation>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="65G-Sd-OYN">
-                                        <rect key="frame" x="0.0" y="150" width="600" height="180"/>
+                                        <rect key="frame" x="0.0" y="120" width="600" height="180"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="180" id="bwz-7S-mfs"/>
@@ -2309,7 +2309,7 @@
                                     <constraint firstItem="65G-Sd-OYN" firstAttribute="top" secondItem="a01-2B-A0W" secondAttribute="bottom" id="Gzg-q1-Mhu"/>
                                     <constraint firstItem="65G-Sd-OYN" firstAttribute="leading" secondItem="5Ob-Kw-1l1" secondAttribute="leading" id="Qux-ct-mhd"/>
                                     <constraint firstAttribute="trailing" secondItem="MQa-oI-wqf" secondAttribute="trailing" id="StQ-DQ-85Y"/>
-                                    <constraint firstItem="a01-2B-A0W" firstAttribute="height" secondItem="5Ob-Kw-1l1" secondAttribute="height" multiplier="1:4" id="WMP-9h-7th"/>
+                                    <constraint firstItem="a01-2B-A0W" firstAttribute="height" secondItem="5Ob-Kw-1l1" secondAttribute="height" multiplier="1:5" id="WMP-9h-7th"/>
                                     <constraint firstItem="a01-2B-A0W" firstAttribute="leading" secondItem="5Ob-Kw-1l1" secondAttribute="leading" id="bzD-Yl-Oce"/>
                                     <constraint firstItem="MQa-oI-wqf" firstAttribute="top" secondItem="a01-2B-A0W" secondAttribute="bottom" constant="5" id="plu-hr-hWn"/>
                                     <constraint firstAttribute="trailing" secondItem="a01-2B-A0W" secondAttribute="trailing" id="rh1-Ig-hIb"/>

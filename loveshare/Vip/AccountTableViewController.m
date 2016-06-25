@@ -76,9 +76,9 @@
     __weak AccountTableViewController * wself = self;
     UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
-    parame[@"level"] = @(0);
+    parame[@"level"] = @(-1);
     parame[@"loginCode"] = userInfo.loginCode;
-    parame[@"pid"] = @(1);
+    parame[@"pid"] = @(0);
     parame[@"taskId"] = @(self.taskModel.taskId);
     [MBProgressHUD showMessage:nil];
     [UserLoginTool loginRequestGet:@"UserOrganize" parame:parame success:^(id json) {
@@ -104,7 +104,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return self.JITuan.count;
+  
+    
+    if (self.JITuan.count == 0) {
+        self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UserLoginTool LoginCreateImageWithNoDate]];
+    }else{
+        self.tableView.backgroundColor = [UIColor whiteColor];
+    }
+    return  self.JITuan.count;
    
 }
 

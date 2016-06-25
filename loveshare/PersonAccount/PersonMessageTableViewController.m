@@ -136,6 +136,8 @@
         self.sexLable.text = @"未知";
     }
     
+    [self initDate];
+    
     self.registTimeLable.text = [[user.regTime componentsSeparatedByString:@" "] firstObject];
 //    self.userInfo = user;
 //    self.navigationController.navigationBarHidden = NO;
@@ -183,7 +185,7 @@
     
     [self.navigationController setNavigationBarHidden:NO];
     
-    [self initDate];
+    
 }
 
 
@@ -290,7 +292,7 @@
         if (indexPath.row == 1) { //姓名
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             NameController *nameVC = [storyboard instantiateViewControllerWithIdentifier:@"NameController"];
-            nameVC.name = self.person.name;
+            nameVC.name = self.nameLable.text;
             nameVC.delegate = self;
             [self.navigationController pushViewController:nameVC animated:YES];
         }
@@ -621,21 +623,21 @@
 {
     
     
-    LWLog(@"%ld",(long)sex);
-    if (self.selfsex) {
-        self.selfsex  = 0;
-    }else{
-        self.selfsex = 1;
-    }
-    
+//    LWLog(@"%ld",(long)sex);
+//    if (self.selfsex) {
+//        self.selfsex  = 0;
+//    }else{
+//        self.selfsex = 1;
+//    }
+    UserModel *user = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
-    parame[@"loginCode"] = self.userInfo.loginCode;
-    parame[@"industry"] = @(self.person.industryId);
-    parame[@"income"] = @(self.person.incomeId);
-    parame[@"name"] = self.person.name;
+    parame[@"loginCode"] = user.loginCode;
+//    parame[@"industry"] = @(self.person.industryId);
+//    parame[@"income"] = @(self.person.incomeId);
+    parame[@"name"] = self.nameLable.text;
     parame[@"sex"] = @(sex+1);
-    parame[@"favorite"] = self.person.favorite;
-    parame[@"birth"] = [[self.person.birth componentsSeparatedByString:@" "] firstObject];
+//    parame[@"favorite"] = self.person.favorite;
+//    parame[@"birth"] = [[self.person.birth componentsSeparatedByString:@" "] firstObject];
     [MBProgressHUD showMessage:@"资料上传中"];
     [UserLoginTool loginRequestGet:@"UpdateUserInfo" parame:parame success:^(id json) {
         if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {

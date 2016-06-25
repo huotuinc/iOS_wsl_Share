@@ -141,7 +141,7 @@ static NSUInteger const EAColourfulProgressViewNumberOfSegments = 3;
     self.fillingView.backgroundColor = self.fillingColor;
   }
     
-//   [self se]
+    [self layoutIfNeeded];
 }
 
 

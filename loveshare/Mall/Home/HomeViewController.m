@@ -372,15 +372,15 @@
     
     if (webView.tag == 100) {
         self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-        if (_showBackArrows) {//返回按钮
-            [UIView animateWithDuration:0.05 animations:^{
-                self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.leftOption];
-            }];
-        }else{
-            [UIView animateWithDuration:0.05 animations:^{
-                self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.leftOption];
-            }];
-        }
+//        if (_showBackArrows) {//返回按钮
+//            [UIView animateWithDuration:0.05 animations:^{
+//                self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.leftOption];
+//            }];
+//        }else{
+//            [UIView animateWithDuration:0.05 animations:^{
+//                self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.leftOption];
+//            }];
+//        }
     }
     
     [self.homeWebView.scrollView.mj_header endRefreshing];

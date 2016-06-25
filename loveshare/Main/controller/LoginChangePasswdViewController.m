@@ -81,19 +81,19 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
-    
     if (!self.isInapp) {
-        
-        NSMutableDictionary* p = [NSMutableDictionary dictionary];
-        p[@"mobile"] = self.phoneNumberText.text;
-        [UserLoginTool loginRequestGet:@"VerifyMobile" parame:p success:^(id json) {
-        
-            LWLog(@"%@",json);
-        if ([[json objectForKey:@"status"] integerValue] == 54001 && [[json objectForKey:@"resultCode"] integerValue] == 1)
-            [MBProgressHUD showError:json[@"tip"]];
-        } failure:^(NSError *error) {
-            
-        }];
+        if (textField.text.length == 11) {
+            NSMutableDictionary* p = [NSMutableDictionary dictionary];
+            p[@"mobile"] = self.phoneNumberText.text;
+            [UserLoginTool loginRequestGet:@"VerifyMobile" parame:p success:^(id json) {
+                
+                LWLog(@"%@",json);
+                if ([[json objectForKey:@"status"] integerValue] == 54001 && [[json objectForKey:@"resultCode"] integerValue] == 1)
+                    [MBProgressHUD showError:json[@"tip"]];
+            } failure:^(NSError *error) {
+                
+            }];
+        }
         
     }
     
@@ -123,10 +123,10 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSString * phoneNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"localPhoneNumber"];
-    if (phoneNumber.length) {
-        self.phoneNumberText.text = phoneNumber;
-    }
+//    NSString * phoneNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"localPhoneNumber"];
+//    if (phoneNumber.length) {
+//        self.phoneNumberText.text = phoneNumber;
+//    }
 }
 
 - (void)backdismiss{
@@ -139,6 +139,8 @@
         [MBProgressHUD showError:@"手机号为空"];
         return;
     }
+    
+    [self.phomecode becomeFirstResponder];
     [self settime];
     NSMutableDictionary * dict = [NSMutableDictionary dictionary];
     dict[@"mobile"] = self.phoneNumberText.text;

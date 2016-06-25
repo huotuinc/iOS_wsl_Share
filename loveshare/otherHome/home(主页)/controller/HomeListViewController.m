@@ -454,7 +454,7 @@ static NSString * homeCellidentify = @"homeCellId";
 }
 - (void)makeGuideView{
     RAYNewFunctionGuideVC *vc = [[RAYNewFunctionGuideVC alloc]init];
-    vc.titles = @[@"温馨提示: 点击咨询查看咨询详情"];
+    vc.titles = @[@"温馨提示: 点击资讯查看资讯详情"];
     vc.frames = @[@"{{0,  140},{130,140}}"];
     
     [self presentViewController:vc animated:YES completion:nil];

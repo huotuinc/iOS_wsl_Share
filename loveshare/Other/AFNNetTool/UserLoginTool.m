@@ -1,4 +1,4 @@
-//
+ //
 //  UserLoginTool.m
 //  fanmore---
 //
@@ -48,8 +48,11 @@
         LWLog(@"%@",task.currentRequest);
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        LWLog(@"%@",task.currentRequest);
-        failure(error);
+        LWLog(@"%@--%@",task.currentRequest,[error description]);
+//        if (error) {
+//            failure(error);
+//        }
+        
     }];
     
 }
@@ -122,7 +125,8 @@
      //获取URL
     NSURL *urls = [NSURL URLWithString:strUrl];
      //设置请求
-    NSURLRequest *request = [NSURLRequest requestWithURL:urls];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urls];
+    request.timeoutInterval = 30;
      
     //发生GET同步请求（Sync）
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];

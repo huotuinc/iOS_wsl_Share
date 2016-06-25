@@ -44,7 +44,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods.xcscheme</key>
+		<key>Pods-loveshare.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-loveshareTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-loveshareUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -55,11 +65,6 @@
 			<false/>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>SVProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -87,7 +92,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>26D6621E36365D4BF022D7435880D275</key>
+		<key>302B722AC065E221DF3E2E7FE8D1EAAB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,7 +102,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6583CAA677F1F5BED83617480B0548F1</key>
+		<key>70BC44266C6FFE30D2C57129458E070B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,11 +117,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8F74D9EA91F4C43190670066BAC37D44</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>9EAB3E42EF957541E6C3C76D35FD008E</key>
 		<dict>
 			<key>primary</key>
@@ -127,12 +127,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A6E0CA68475ED042C5AF46B589AB54C2</key>
+		<key>A6A6E9BD98C39890BCBACC237C594E54</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>B4A3E08D49931371F7247521A50EAF79</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D86A00B6DC056A3C5CC642DB1865F3F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -143,6 +148,11 @@
 			<true/>
 		</dict>
 		<key>E811118AB23F86AD6C69A77BC0307B6F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F50F37954237EBEAA7C95BDD211ACFC9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

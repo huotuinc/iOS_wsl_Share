@@ -12,7 +12,7 @@
 #import "UIImage+LHB.h"
 
 
-@interface HomeListTableController()
+@interface HomeListTableController()<detailViewDelegate>
 
 /**当前索引*/
 @property(nonatomic,assign) NSInteger pageIndex;
@@ -32,6 +32,9 @@
 
 /**商家id*/
 @property(nonatomic,assign) NSInteger storyID;
+
+
+@property(nonatomic,strong) NSIndexPath * select;
 
 @end
 
@@ -293,12 +296,16 @@
 //
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    
+    self.select = indexPath;
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     LWLog(@"%@",indexPath);
     TaskGrouoModel * group = self.taskGroup[indexPath.section];
     NewTaskDataModel *task =  [group.tasks objectAtIndex:indexPath.row];
     detailViewController * vc =(detailViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"detailViewController"];
     vc.taskModel = task;
+    vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -357,4 +364,12 @@
     
 }
 
+
+- (void)ToRefreshDate:(NewTaskDataModel *) taskModel{
+    
+    TaskGrouoModel * aa = self.taskGroup[self.select.section];
+    aa.tasks[self.select.row] = taskModel;
+    
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:self.select,nil] withRowAnimation:UITableViewRowAnimationNone];
+}
 @end

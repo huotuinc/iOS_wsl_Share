@@ -86,6 +86,8 @@
     [self.programView updateToCurrentValue:current animated:YES];
     
     
+    
+    
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

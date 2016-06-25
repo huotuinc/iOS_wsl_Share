@@ -13,7 +13,7 @@
 @protocol detailViewDelegate <NSObject>
 
 @optional
-
+- (void)ToRefreshDate:(NewTaskDataModel *) taskModel;
 
 @end
 
@@ -21,6 +21,8 @@
 
 @interface detailViewController : UIViewController
 
+
+@property(nonatomic,weak) id<detailViewDelegate> delegate;
 
 @property(nonatomic,strong) NewTaskDataModel * taskModel;
 

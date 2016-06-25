@@ -239,10 +239,25 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (self.CTL.selectedSegmentIndex==0) {
-        return self.JITuan.count;
+        if (self.JITuan.count == 0) {
+            self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UserLoginTool LoginCreateImageWithNoDate]];
+        }else{
+            self.tableView.backgroundColor = [UIColor whiteColor];
+        }
+        return  self.JITuan.count;
+        
     }else{
-        return self.VipRenWudates.count;
+        if (self.VipRenWudates.count == 0) {
+            self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UserLoginTool LoginCreateImageWithNoDate]];
+        }else{
+            self.tableView.backgroundColor = [UIColor whiteColor];
+        }
+        return  self.VipRenWudates.count;
+        
     }
+    
+    
+    
     
 }
 
@@ -307,9 +322,11 @@
             [self.navigationController pushViewController:vc animated:YES];
         } else {
             DepartmentViewController* department = (DepartmentViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"DepartmentViewController"];
+            LWLog(@"%@",[model mj_keyValues]);
+            LWLog(@"%@",self.title);
             department.model = model;
             department.taskId = @(0);
-            department.dilu = self.title;
+            department.dilu = model.name;
             [self.navigationController pushViewController:department animated:YES];
 
         }
@@ -319,6 +336,7 @@
         NewTaskDataModel * model = self.VipRenWudates[indexPath.row];
         AccountTableViewController* vc = [[AccountTableViewController alloc] initWithStyle:UITableViewStylePlain];
         vc.taskModel = model;
+        LWLog(@"%@",[model mj_keyValues]);
         [self.navigationController pushViewController:vc animated:YES];
     }
     

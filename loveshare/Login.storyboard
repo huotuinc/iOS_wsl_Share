@@ -840,6 +840,6 @@
         <image name="mima" width="24" height="24"/>
         <image name="qq" width="25" height="25"/>
         <image name="shouji" width="24" height="24"/>
-        <image name="weixin" width="301" height="301"/>
+        <image name="weixin" width="300" height="30"/>
     </resources>
 </document>

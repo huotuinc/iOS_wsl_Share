@@ -37,7 +37,7 @@
     
     OptionModel * md5 = [[OptionModel alloc] init];
     md5.optionImageName = @"hb";
-    md5.OptionName = @"推荐有奖";
+    md5.OptionName = @"我要推荐";
     
     
     OptionModel * md6 = [[OptionModel alloc] init];
