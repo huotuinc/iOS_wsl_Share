@@ -9,7 +9,7 @@
 #import "HomeViewController.h"
 #import <NJKWebViewProgress.h>
 #import <NJKWebViewProgressView.h>
-#import "NSDictionary+EXTERN.h"
+
 #import "NSMutableDictionary+WSLLOVESHARE.h"
 #import "UIViewController+MMDrawerController.h"
 
@@ -250,9 +250,7 @@
     LWLog(@"%@",[NSString stringWithFormat:@"%@",usermodel.loginCode]);
     signDict[@"moblie"] =  [[usermodel.loginCode componentsSeparatedByString:@"^"] firstObject];
     LWLog(@"%@",usermodel.mobile);
-    NSDate * timestamp = [[NSDate alloc] init];
-    NSString *timeSp = [NSString stringWithFormat:@"%lld", (long long)[timestamp timeIntervalSince1970] * 1000];  //转化为UNIX时间戳
-    signDict[@"timestamp"] = timeSp;
+    signDict[@"timestamp"] = timestamp;
      NSString * newUrl =  [signDict WSLFenHongSignWithDict:signDict withURl:[NSString stringWithFormat:@"%@/OAuth2/WSLAuthorize.aspx?",[[NSUserDefaults standardUserDefaults] objectForKey:WebSit]]];
     
     LWLog(@"%@",newUrl);

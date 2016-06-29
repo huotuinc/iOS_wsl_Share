@@ -11,7 +11,7 @@
 @interface NSDictionary (HuoBanMallSign)
 
 
-+ (NSMutableDictionary *)asignWithMutableDictionary:(NSMutableDictionary *)dict;
++ (NSString *)asignWithMutableDictionary:(NSMutableDictionary *)dict;
 
 + (NSString *)ToSignUrlWithString:(NSString *)urlStr;
 @end

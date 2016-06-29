@@ -9,7 +9,6 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
-#import "NSDictionary+EXTERN.h"
 #import "MD5Encryption.h"
 #import "UserLoginTool.h"
 #import <MJExtension.h>
@@ -138,7 +137,7 @@
 /**设备唯一号*/
 #define  DeviceNo ([[UIDevice currentDevice].identifierForVendor UUIDString])
 
-
+#define timestamp [NSString stringWithFormat:@"%.0f",([[[NSDate alloc] init] timeIntervalSince1970]*1000)]
 
 //#define DEBUG 1
 
@@ -146,9 +145,12 @@
 #define isProduction NO
 #define MALLScrent @"1165a8d240b29af3f418b8d10599d0dc"
 #define MainUrl @"http://api.guo.fancat.cn:8084"
-
+//
 //#define MainUrl @"http://taskapi.fhsilk.com"
 //#define MALLScrent @"2a5577a6792d46eb984580e5591467f7"
+
+
+#define APPScreat @"483686ad1fe2bd8a02bbdca24e109953a4a96c"
 
 #define LWLog(...) NSLog(__VA_ARGS__)
 #else
@@ -156,12 +158,13 @@
 #define MainUrl @"http://taskapi.fhsilk.com"
 #define MALLScrent @"2a5577a6792d46eb984580e5591467f7"
 #define isProduction YES
+#define APPScreat @"0ad8abe244331aacf89c9231848c9f49"
 #endif
 
 
 //
 
-#define LWNewFeatureImageCount 3
+#define LWNewFeatureImageCount 2
 #define LAST_RUN_VERSION_KEY @"LAST_RUN_VERSION_KEY"
 #define LAST_Flage_KEY @"LAST_Flage_KEY"
 

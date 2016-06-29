@@ -207,7 +207,7 @@ static NSString * homeCellidentify = @"homeCellId";
     btn.layer.borderColor = [UIColor whiteColor].CGColor;
     btn.layer.borderWidth = 1;
     self.leftBtn = btn;
-//    [btn sd_setImageWithURL:[NSURL URLWithString:userInfo.userHead] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"geren"]];
+    [btn sd_setImageWithURL:nil forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"geren"]];
     [btn addTarget:self action:@selector(leftButton) forControlEvents:UIControlEventTouchDown];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectController:) name:@"backToHomeView" object:nil];
@@ -361,46 +361,42 @@ static NSString * homeCellidentify = @"homeCellId";
  */
 - (void)selectController:(NSNotification *) note{
     
-    if([note.userInfo[@"option"] integerValue] == 0){//首页
+    
+    LWLog(@"%@",note.userInfo);
+    
+    
+    if([note.userInfo[@"optionname"] isEqualToString:@"乐享资讯"]){//首页
         [self.navigationController popToRootViewControllerAnimated:NO];
         
-    }else if([note.userInfo[@"option"] integerValue] == 1){//历史浏览
-       
+    }else if([note.userInfo[@"optionname"] isEqualToString:@"历史浏览"]){//历史浏览
         HostTableViewController * vc = [[HostTableViewController alloc] init];
         [self.navigationController pushViewController:vc animated:NO];
         
-        
-    }else if([note.userInfo[@"option"] integerValue] == 2){//排行榜
-        
+    }else if([note.userInfo[@"optionname"] isEqualToString:@"排行榜"]){//排行榜
         TopTenListTableViewController * topten = [[TopTenListTableViewController alloc] init];
         [self.navigationController pushViewController:topten animated:NO];
         
-        
-        
-        
-    }else if([note.userInfo[@"option"] integerValue] == 3){//本周任务
-        
-        
+    }else if([note.userInfo[@"optionname"] isEqualToString:@"本周任务"]){//本周任务
         WeekTaskTableViewController * vc = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"WeekTaskTableViewController"];
         [self.navigationController pushViewController:vc animated:NO];
         NSLog(@"本周人物");
-    }else if([note.userInfo[@"option"] integerValue] == 4){//师徒联盟
+    }else if([note.userInfo[@"optionname"] isEqualToString:@"我要推荐"]){//师徒联盟
         MasterAndTudiViewController * vc = (MasterAndTudiViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"MasterAndTudiViewController"];
         [self.navigationController pushViewController:vc animated:NO];
-    }else if([note.userInfo[@"option"] integerValue] == 5){//内购商城
+    }else if([note.userInfo[@"optionname"] isEqualToString:@"内购商城"]){//内购商城
         HomeViewController * vc =  (HomeViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"HomeViewController"];
         [self.navigationController pushViewController:vc animated:NO];
         
-    }else if([note.userInfo[@"option"] integerValue] == 6){//更多设置
+    }else if([note.userInfo[@"optionname"] isEqualToString:@"更多选项"]){//更多设置
         
         MoreSetTableViewController * vc = (MoreSetTableViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"MoreSetTableViewController"];
         [self.navigationController pushViewController:vc animated:NO];
     
-    }else if([note.userInfo[@"option"] integerValue] == 7){//监督管理
+    }else if([note.userInfo[@"optionname"] isEqualToString:@"监督管理"]){//监督管理
         VipAccountViewController * vip = [[VipAccountViewController alloc] initWithStyle:UITableViewStylePlain];
         [self.navigationController pushViewController:vip animated:NO];
         
-    }else if([note.userInfo[@"option"] integerValue] == 100){
+    }else if([note.userInfo[@"optionname"] isEqualToString:@"个人中心"]){
         
         PersonMessageTableViewController * pers = (PersonMessageTableViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"PersonMessageTableViewController"];
         [self.navigationController pushViewController:pers animated:NO];
@@ -412,8 +408,8 @@ static NSString * homeCellidentify = @"homeCellId";
     [super viewWillAppear:animated];
     [self.view endEditing:YES];
 
-    UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
-    [self.leftBtn sd_setImageWithURL:[NSURL URLWithString:userInfo.userHead] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"geren"]];
+//    UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+//    [self.leftBtn sd_setImageWithURL:[NSURL URLWithString:userInfo.userHead] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"geren"]];
     
     
     self.navigationController.navigationBarHidden = NO;

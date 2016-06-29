@@ -12,41 +12,53 @@
 //#import "UserInfo.h"
 @implementation NSDictionary (HuoBanMallSign)
 
-+ (NSMutableDictionary *)asignWithMutableDictionary:(NSMutableDictionary *)dict{
++ (NSString *)asignWithMutableDictionary:(NSMutableDictionary *)dict{
     
+    NSMutableDictionary * InDict = nil;
+    if (dict) {
+        InDict = [NSMutableDictionary dictionaryWithDictionary:dict];
+        InDict[@"timestamp"] = timestamp;
+    }else{
+        InDict = [NSMutableDictionary dictionary];
+        InDict[@"timestamp"] = timestamp;
+    }
     
-    dict[@"customerid"] = @"";//HuoBanMallBuyApp_Merchant_Id;
-    NSDate * timestamp = [[NSDate alloc] init];
-    NSString *timeSp = [NSString stringWithFormat:@"%lld", (long long)[timestamp timeIntervalSince1970] * 1000];  //转化为UNIX时间戳
-    dict[@"appid"] = @"";//HuoBanMallBuyAppId;
-    dict[@"timestamp"] = timeSp;
-    dict[@"operation"]=@"app";
     //计算asign参数
-    NSArray * arr = [dict allKeys];
+    NSArray * arr = [InDict allKeys];
     [arr enumerateObjectsUsingBlock:^(NSString*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
-        NSString * cc = [dict objectForKey:obj];
+        
+        
+        NSString * cc = [NSString stringWithFormat:@"%@",[InDict objectForKey:obj]];
+        
+        LWLog(@"%@",cc);
         if (cc.length==0) {
 //            NSLog(@"%@",cc);
-            [dict removeObjectForKey:obj];
+            [InDict removeObjectForKey:obj];
         }
         
     }];
     //计算asign参数
-    arr = [dict allKeys];
+    arr = [InDict allKeys];
     arr = [arr sortedArrayUsingComparator:^NSComparisonResult(NSString* obj1, NSString* obj2) {
         return [obj1 compare:obj2] == NSOrderedDescending;
     }];
     NSMutableString * signCap = [[NSMutableString alloc] init];
     //进行asign拼接
     for (NSString * dicKey in arr) {
-        [signCap appendString:[NSString stringWithFormat:@"%@=%@&",dicKey,[dict valueForKey:dicKey]]];
+        [signCap appendString:[NSString stringWithFormat:@"%@=%@&",dicKey,[InDict valueForKey:dicKey]]];
     }
-//    NSString * aa = [signCap substringToIndex:signCap.length-1];
+    NSString * aa = [signCap substringToIndex:signCap.length-1];
     
-    //NSString * cc  = [NSString stringWithFormat:@"%@%@",aa,HuoBanMallBuyAppSecrect];
-//    dict[@"sign"] = [MD5Encryption md5by32:cc];
-    return dict;
+    LWLog(@"%@",aa);
+    
+    NSString * cc  = [NSString stringWithFormat:@"%@%@",aa,APPScreat];
+    
+    NSString *unicodeStr = [NSString stringWithCString:[cc UTF8String] encoding:NSUTF8StringEncoding];
+    
+    InDict[@"sign"] = [MD5Encryption md5by32:unicodeStr];
+    return [InDict mj_JSONString];
+
 }
 
 
@@ -58,10 +70,10 @@
     
 //   UserModel * userInfo = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     NSMutableString * signUrl = [NSMutableString stringWithString:urlStr]; //元素url
-    NSDate * timestamp = [[NSDate alloc] init];
-    NSString *timeSp = [NSString stringWithFormat:@"%lld", (long long)[timestamp timeIntervalSince1970] * 1000];  //转化为UNIX时间戳
+//    NSDate * timestamp = [[NSDate alloc] init];
+//    NSString *timeSp = [NSString stringWithFormat:@"%lld", (long long)[timestamp timeIntervalSince1970] * 1000];  //转化为UNIX时间戳
     [signUrl appendFormat:@"&appid=%@",HuoBanMallBuyAppId];
-    [signUrl appendFormat:@"&timestamp=%@",timeSp];
+    [signUrl appendFormat:@"&timestamp=%@",timestamp];
     
     NSString * bu = nil;
     NSString * un = nil;

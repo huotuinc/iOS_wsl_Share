@@ -271,12 +271,15 @@ static NSString *channel = @"Publish channel";
     UserModel * usermodel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     LWLog(@"%@",[usermodel mj_keyValues]);
     NSMutableDictionary * parames =  [NSMutableDictionary dictionary];
-    parames[@"userName"] = (usermodel?usermodel.userName:@"");
-    parames[@"pwd"] = (usermodel?usermodel.UserPassword:@"");
+    parames[@"userName"] = (usermodel?usermodel.userName:@" ");
+    parames[@"pwd"] = (usermodel?usermodel.UserPassword:@" ");
     LWLog(@"%@",[parames mj_keyValues]);
     NSDictionary * dict = [UserLoginTool LogingetDateSyncWith:@"init" WithParame:parames];
     LWLog(@"%@---%@",dict[@"description"],dict);
     UserModel * user = [UserModel mj_objectWithKeyValues:dict[@"resultData"][@"userData"]];
+    
+    LWLog(@"%@",[user mj_keyValues]);
+    
     [UserLoginTool LoginModelWriteToShaHe:user andFileName:RegistUserDate];
     InitModel * model = [InitModel mj_objectWithKeyValues:dict[@"resultData"]];
     [UserLoginTool LoginModelWriteToShaHe:model andFileName:InitModelCaches];

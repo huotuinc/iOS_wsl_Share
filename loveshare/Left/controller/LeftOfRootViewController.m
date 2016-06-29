@@ -49,7 +49,19 @@
 }
 - (NSMutableArray *)optionArray{
     if (_optionArray == nil) {
+        
+         InitModel * modelxxx = (InitModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:InitModelCaches];
+        
         _optionArray = [OptionModel OptionModelBringBackArray];
+        
+        NSMutableArray * newop = [NSMutableArray arrayWithArray:_optionArray];
+        for (int i = 0; i<newop.count; i++) {
+            OptionModel * model = [newop objectAtIndex:i];
+            if (([model.OptionName isEqualToString:@"排行榜"]&& modelxxx.AppEnableRank == 0) || ([model.OptionName isEqualToString:@"本周任务"] && !modelxxx.AppEnableWeekTask)) {
+                [_optionArray removeObject:model];
+                
+            }
+        }
     }
     return _optionArray;
 }
@@ -65,7 +77,7 @@
     self.headImage.layer.borderWidth = 2;
     self.headImage.layer.borderColor = [UIColor whiteColor].CGColor;
     UserModel * userModel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
-    [self.headImage sd_setImageWithURL:[NSURL URLWithString:userModel.userHead] placeholderImage:nil completed:nil];
+    [self.headImage sd_setImageWithURL:[NSURL URLWithString:userModel.userHead] placeholderImage:[UIImage imageNamed:@"xiangxtouxiang"] completed:nil];
     
     
     NSString * name = nil;
@@ -96,7 +108,9 @@
     
     self.headImage.userInteractionEnabled = YES;
     [self.headImage bk_whenTapped:^{//个人中心
-        NSDictionary * objc = [NSDictionary dictionaryWithObject:@(100) forKey:@"option"];
+        NSMutableDictionary * objc = [NSMutableDictionary dictionary];
+        objc[@"option"] = @(100);
+        objc[@"optionname"] = @"个人中心";
         [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
         MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
         [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
@@ -104,7 +118,9 @@
     }];
     
     [self.infoView bk_whenTapped:^{
-        NSDictionary * objc = [NSDictionary dictionaryWithObject:@(100) forKey:@"option"];
+        NSMutableDictionary * objc = [NSMutableDictionary dictionary];
+        objc[@"option"] = @(100);
+        objc[@"optionname"] = @"个人中心";
         [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
         MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
         [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
@@ -179,7 +195,9 @@
 
 - (void)JifenChange{
     UserModel * userModel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
-    [self.headImage sd_setImageWithURL:[NSURL URLWithString:userModel.userHead] placeholderImage:nil completed:nil];
+    
+    
+    [self.headImage sd_setImageWithURL:[NSURL URLWithString:userModel.userHead] placeholderImage:[UIImage imageNamed:@"xiangxtouxiang"] completed:nil];
     self.userName.text= userModel.userName;
     self.userScore.text =[NSString stringWithFormat:@"可用分红%@",[NSString xiaoshudianweishudeal:userModel.score]] ;
     
@@ -224,75 +242,95 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    switch (indexPath.row) {//首页
-        case 0:{
-            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
-            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
-            [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-            [root toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-            break;
-        }
-        case 1:{//历史浏览
-            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
-            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
-            [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-            [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:^(BOOL finished) {
-            }];
-            break;
-        }
-
-        case 2:{//排行榜
-            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
-            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
-            [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
-            break;
-        }
-        case 3:{//本周任务
-            _aa.hidden = YES;
-            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
-            self.aa.text = @"";
-            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
-            [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
-            break;
-        }
-        case 4:{//伙伴联盟
-            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
-            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
-            [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
-            break;
-        }
-        case 5:{//内购商城
-            
-             
-            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
-            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
-            [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
-            break;
-        }
-        case 6:{//监督管理
-            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
-            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
-            [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
-            break;
-           
-        }
-        case 7:{//更多选项
-            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
-            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
-            [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
-            break;
-        }
-        default:
-            break;
+    OptionModel * model = [self.optionArray objectAtIndex:indexPath.row];
+    if (indexPath.row == 0) {
+        NSMutableDictionary * objc = [NSMutableDictionary dictionary];
+        objc[@"option"] = @(indexPath.row);
+        objc[@"optionname"] = model.OptionName;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
+        MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+        [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+        [root toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    }else{
+         NSMutableDictionary * objc = [NSMutableDictionary dictionary];
+        objc[@"option"] = @(indexPath.row);
+        objc[@"optionname"] = model.OptionName;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
+        MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+        [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+        [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:^(BOOL finished) {
+        }];
+       
     }
+//    switch (indexPath.row) {//首页
+//        case 0:{
+//            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
+//            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+//            [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+//            [root toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+//            break;
+//        }
+//        case 1:{//历史浏览
+//            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
+//            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+//            [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+//            [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:^(BOOL finished) {
+//            }];
+//            break;
+//        }
+//
+//        case 2:{//排行榜
+//            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
+//            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+//            [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
+//            break;
+//        }
+//        case 3:{//本周任务
+//            _aa.hidden = YES;
+//            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
+//            self.aa.text = @"";
+//            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+//            [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
+//            break;
+//        }
+//        case 4:{//伙伴联盟
+//            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
+//            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+//            [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
+//            break;
+//        }
+//        case 5:{//内购商城
+//            
+//             
+//            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
+//            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+//            [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
+//            break;
+//        }
+//        case 6:{//监督管理
+//            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
+//            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+//            [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
+//            break;
+//           
+//        }
+//        case 7:{//更多选项
+//            NSDictionary * objc = [NSDictionary dictionaryWithObject:@(indexPath.row) forKey:@"option"];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"backToHomeView" object:nil userInfo:objc];
+//            MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
+//            [root toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
+//            break;
+//        }
+//        default:
+//            break;
+//    }
     
 }
 

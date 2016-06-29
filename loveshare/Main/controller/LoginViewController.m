@@ -27,6 +27,13 @@
 
 - (IBAction)registerButton:(id)sender;
 
+
+@property (weak, nonatomic) IBOutlet UIImageView *youkeLogin;
+
+@property (weak, nonatomic) IBOutlet UIView *hidYoukeDenglu;
+
+
+
 @end
 
 @implementation LoginViewController
@@ -37,10 +44,47 @@
     
     AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     ad.currentVC = self;
+    
+    
+    InitModel * initmodel = (InitModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:InitModelCaches];
+    
+    
+    LWLog(@"%d",initmodel.GuestLogin);
+    
+    if (!initmodel.GuestLogin) {
+        self.hidYoukeDenglu.hidden = YES;
+        self.youkeLogin.hidden = YES;
+    }
+    
+    self.youkeLogin.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer * ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(youkeClick)];
+    
+    [self.youkeLogin addGestureRecognizer:ges];
+    
    
 }
 
 
+- (void)youkeClick{
+    
+    NSMutableDictionary * parame = [NSMutableDictionary dictionary];
+    parame[@"code"] = DeviceNo;
+    //获取支付参数
+    [MBProgressHUD showMessage:@"登陆中"];
+    [UserLoginTool loginRequestGet:@"GuestLogin" parame:parame success:^(NSDictionary* json) {
+        [MBProgressHUD hideHUD];
+        LWLog(@"%@",json);
+        UserModel * userModel = [UserModel mj_objectWithKeyValues:json[@"resultData"]];
+        [UserLoginTool LoginModelWriteToShaHe:userModel andFileName:RegistUserDate];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",userModel.mallUserId] forKey:ChoneMallAccount];
+        [[NSUserDefaults standardUserDefaults] setObject:userModel.unionId forKey:PhoneLoginunionid];
+        MMRootViewController * root = [[MMRootViewController alloc] init];
+        UIWindow * window = [UIApplication sharedApplication].keyWindow;
+        window.rootViewController = root;
+        [window makeKeyAndVisible];
+    } failure:nil];
+}
 
 
 - (void)setup{

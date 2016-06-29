@@ -522,7 +522,6 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xiangxtouxiang" translatesAutoresizingMaskIntoConstraints="NO" id="pUi-Wv-3h3">
                                         <rect key="frame" x="10" y="40" width="60" height="60"/>
-                                        <color key="backgroundColor" red="0.42352941179999998" green="0.7843137255" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="pUi-Wv-3h3" secondAttribute="height" id="2ti-jC-pWW"/>
                                         </constraints>
@@ -1222,6 +1221,7 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3i2-nm-AtP">
                                                     <rect key="frame" x="520" y="15" width="60" height="60"/>
+                                                    <color key="backgroundColor" red="0.92549019610000005" green="0.92941176469999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="1yw-Zu-OJU"/>
                                                         <constraint firstAttribute="width" constant="60" id="Bnw-Dc-ctE"/>
@@ -1770,7 +1770,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yaa-As-YW5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ixq-bC-6Fd">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xiangxtouxiang" translatesAutoresizingMaskIntoConstraints="NO" id="Ixq-bC-6Fd">
                                         <rect key="frame" x="265" y="10" width="70" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="6en-mf-dXC"/>
@@ -2204,7 +2204,6 @@
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xiangxtouxiang" translatesAutoresizingMaskIntoConstraints="NO" id="Ivz-LY-W0S">
                                                 <rect key="frame" x="20" y="25" width="70" height="70"/>
-                                                <color key="backgroundColor" red="0.42352941179999998" green="0.7843137255" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Ivz-LY-W0S" secondAttribute="height" id="85V-3d-QYU"/>
                                                     <constraint firstAttribute="height" constant="60" id="FJb-1F-bkI"/>

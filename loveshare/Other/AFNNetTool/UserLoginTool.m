@@ -38,10 +38,8 @@
     paramsOption[@"req"] = urlStr;
     paramsOption[@"operation"] = OPERATION_parame;
     paramsOption[@"version"] = AppVersion;
-
     paramsOption[@"imei"] = DeviceNo;
-    paramsOption[@"p"] = [params mj_JSONString];
-    paramsOption[@"sign"] = [NSDictionary asignWithMutableDictionary:paramsOption];  //计算asign
+    paramsOption[@"p"] = [NSDictionary asignWithMutableDictionary:params];
     [paramsOption removeObjectForKey:@"appSecret"];
     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     [manager GET:MainUrl parameters:paramsOption progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -102,14 +100,15 @@
 
 + (NSDictionary *)LogingetDateSyncWith:(NSString *)url WithParame:(NSMutableDictionary *)parame
  {
+     
      NSMutableDictionary * paramsOption = [NSMutableDictionary dictionary];
      paramsOption[@"req"] = url;
      paramsOption[@"operation"] = OPERATION_parame;
      paramsOption[@"version"] = AppVersion;
      paramsOption[@"imei"] = DeviceNo;
-     paramsOption[@"p"] = [parame mj_JSONString];
+     paramsOption[@"p"] = [NSDictionary asignWithMutableDictionary:parame];
      LWLog(@"%@",[parame mj_JSONString]);
-     paramsOption[@"sign"] = [NSDictionary asignWithMutableDictionary:paramsOption];  //计算asign
+//     paramsOption[@"sign"] = [NSDictionary asignWithMutableDictionary:paramsOption];  //计算asign
      NSArray * parameKey = [paramsOption allKeys];
      NSMutableString * paremUrl = [[NSMutableString alloc] init];
      for (int i = 0; i<parameKey.count; i++) {

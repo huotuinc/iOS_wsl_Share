@@ -193,14 +193,16 @@
     
     UserModel *user = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
     
+    
+    LWLog(@"%@",[user mj_keyValues]);
     self.myLevelName.text = user.levelName;
     
-    self.turnLable.text = [NSString stringWithFormat:@"%ld",(long)[self.userInfo.TotalTurnAmount integerValue]];
+    self.turnLable.text = [NSString stringWithFormat:@"%ld",(long)[user.TotalTurnAmount integerValue]];
     
     
-    self.browLable.text = [NSString stringWithFormat:@"%ld",(long)[self.userInfo.TotalBrowseAmount integerValue]];
+    self.browLable.text = [NSString stringWithFormat:@"%ld",(long)[user.TotalBrowseAmount integerValue]];
     
-    self.huobanLable.text = [NSString stringWithFormat:@"%ld",(long)[self.userInfo.PrenticeAmount integerValue]];
+    self.huobanLable.text = [NSString stringWithFormat:@"%ld",(long)[user.PrenticeAmount integerValue]];
 }
 
 

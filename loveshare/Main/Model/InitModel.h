@@ -192,4 +192,11 @@
 /**广告链接详情*/
 @property(nonatomic,copy)NSString * adclick;
 
+/**是否*/
+@property(nonatomic,assign) int AppEnableRank;
+
+@property(nonatomic,assign) int AppEnableWeekTask;
+
+/**是否启用游客账号*/
+@property(nonatomic,assign) BOOL GuestLogin;
 @end

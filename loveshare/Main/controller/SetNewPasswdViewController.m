@@ -7,7 +7,7 @@
 //
 
 #import "SetNewPasswdViewController.h"
-
+#import "PocyViewController.h"
 @interface SetNewPasswdViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *first;
 
@@ -30,6 +30,18 @@
 @property (weak, nonatomic) IBOutlet UIView *thirdDiv;
 @property (weak, nonatomic) IBOutlet UIView *foutD;
 
+
+/**用户协议和隐私政策*/
+@property (weak, nonatomic) IBOutlet UILabel *optionLable;
+
+@property (weak, nonatomic) IBOutlet UIView *optionContain;
+- (IBAction)userPolicy:(id)sender;
+
+- (IBAction)scretPolicy:(id)sender;
+
+
+
+
 @end
 
 @implementation SetNewPasswdViewController
@@ -37,6 +49,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.optionLable.adjustsFontSizeToFitWidth = YES;
     
     self.title = @"设置密码";
     
@@ -63,7 +77,7 @@
         
         self.foutD.hidden = YES;
         
-        
+        self.optionContain.hidden = YES;
         
     }else{
         [self.confirmBtn setTitle:@"注册" forState:UIControlStateNormal];
@@ -76,7 +90,11 @@
     AppDelegate * ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     ad.currentVC = self;
     
+   
+    
 }
+
+
 
 
 - (void)leftBtn{
@@ -221,4 +239,18 @@
     win.rootViewController = root;
 }
     
+- (IBAction)userPolicy:(id)sender {
+    PocyViewController * po = [[PocyViewController alloc] init];
+    po.title = @"用户协议";
+    po.url = @"http://task.fhsilk.com/UserAgreement.html";
+    [self.navigationController pushViewController:po animated:YES];
+    
+}
+
+- (IBAction)scretPolicy:(id)sender {
+    PocyViewController * po = [[PocyViewController alloc] init];
+    po.url = @"http://task.fhsilk.com/PrivacyPolicy.html";
+     po.title = @"隐私政策";
+    [self.navigationController pushViewController:po animated:YES];
+}
 @end

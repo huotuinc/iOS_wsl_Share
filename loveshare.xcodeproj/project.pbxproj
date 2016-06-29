@@ -40,7 +40,6 @@
 		EF1979691D1A29610061A718 /* HeadVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1979681D1A29610061A718 /* HeadVIew.m */; };
 		EF19796B1D1A29770061A718 /* HeadVIew.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF19796A1D1A29770061A718 /* HeadVIew.xib */; };
 		EF1B8A661C894054003D230A /* UserLoginTool.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A651C894054003D230A /* UserLoginTool.m */; };
-		EF1B8A781C89557D003D230A /* NSDictionary+EXTERN.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A691C89557D003D230A /* NSDictionary+EXTERN.m */; };
 		EF1B8A791C89557D003D230A /* NSString+EXTERN.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A6B1C89557D003D230A /* NSString+EXTERN.m */; };
 		EF1B8A7A1C89557D003D230A /* UIButton+CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A6D1C89557D003D230A /* UIButton+CountDown.m */; };
 		EF1B8A7D1C89557D003D230A /* UITableView+CJ.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1B8A731C89557D003D230A /* UITableView+CJ.m */; };
@@ -87,6 +86,7 @@
 		EF3877D91C8FFAFE008279BD /* NameController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3877D41C8FFAFE008279BD /* NameController.m */; };
 		EF3877DA1C8FFAFE008279BD /* SexController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3877D61C8FFAFE008279BD /* SexController.m */; };
 		EF3877DD1C8FFB14008279BD /* ProfessionalController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3877DC1C8FFB14008279BD /* ProfessionalController.m */; };
+		EF40ECAA1D2219D0009BD8A8 /* PocyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF40ECA91D2219D0009BD8A8 /* PocyViewController.m */; };
 		EF41255A1D1CC35E002F8E19 /* TudiTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4125591D1CC35E002F8E19 /* TudiTableViewController.m */; };
 		EF4125631D1CCFA2002F8E19 /* MyNewTudiListcell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4125611D1CCFA2002F8E19 /* MyNewTudiListcell.m */; };
 		EF4125641D1CCFA2002F8E19 /* MyNewTudiListcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF4125621D1CCFA2002F8E19 /* MyNewTudiListcell.xib */; };
@@ -313,8 +313,6 @@
 		EF19796A1D1A29770061A718 /* HeadVIew.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadVIew.xib; sourceTree = "<group>"; };
 		EF1B8A641C894054003D230A /* UserLoginTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoginTool.h; sourceTree = "<group>"; };
 		EF1B8A651C894054003D230A /* UserLoginTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoginTool.m; sourceTree = "<group>"; };
-		EF1B8A681C89557D003D230A /* NSDictionary+EXTERN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+EXTERN.h"; sourceTree = "<group>"; };
-		EF1B8A691C89557D003D230A /* NSDictionary+EXTERN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+EXTERN.m"; sourceTree = "<group>"; };
 		EF1B8A6A1C89557D003D230A /* NSString+EXTERN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EXTERN.h"; sourceTree = "<group>"; };
 		EF1B8A6B1C89557D003D230A /* NSString+EXTERN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EXTERN.m"; sourceTree = "<group>"; };
 		EF1B8A6C1C89557D003D230A /* UIButton+CountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CountDown.h"; sourceTree = "<group>"; };
@@ -403,6 +401,8 @@
 		EF3877D61C8FFAFE008279BD /* SexController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SexController.m; sourceTree = "<group>"; };
 		EF3877DB1C8FFB14008279BD /* ProfessionalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalController.h; sourceTree = "<group>"; };
 		EF3877DC1C8FFB14008279BD /* ProfessionalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalController.m; sourceTree = "<group>"; };
+		EF40ECA81D2219D0009BD8A8 /* PocyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocyViewController.h; sourceTree = "<group>"; };
+		EF40ECA91D2219D0009BD8A8 /* PocyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocyViewController.m; sourceTree = "<group>"; };
 		EF4125581D1CC35E002F8E19 /* TudiTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TudiTableViewController.h; sourceTree = "<group>"; };
 		EF4125591D1CC35E002F8E19 /* TudiTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TudiTableViewController.m; sourceTree = "<group>"; };
 		EF4125601D1CCFA2002F8E19 /* MyNewTudiListcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNewTudiListcell.h; sourceTree = "<group>"; };
@@ -857,8 +857,6 @@
 				EF907CC01CEABCB8007884A8 /* UIView+XMGExtension.m */,
 				EF3877C91C8FD8CC008279BD /* NSString+Encryption.h */,
 				EF3877CA1C8FD8CC008279BD /* NSString+Encryption.m */,
-				EF1B8A681C89557D003D230A /* NSDictionary+EXTERN.h */,
-				EF1B8A691C89557D003D230A /* NSDictionary+EXTERN.m */,
 				EF1B8A6A1C89557D003D230A /* NSString+EXTERN.h */,
 				EF1B8A6B1C89557D003D230A /* NSString+EXTERN.m */,
 				EF1B8A6C1C89557D003D230A /* UIButton+CountDown.h */,
@@ -1113,6 +1111,15 @@
 				EF3877C51C8FCC7E008279BD /* MD5Encryption.m */,
 			);
 			path = Encryption;
+			sourceTree = "<group>";
+		};
+		EF40ECA71D2219B9009BD8A8 /* pocy */ = {
+			isa = PBXGroup;
+			children = (
+				EF40ECA81D2219D0009BD8A8 /* PocyViewController.h */,
+				EF40ECA91D2219D0009BD8A8 /* PocyViewController.m */,
+			);
+			name = pocy;
 			sourceTree = "<group>";
 		};
 		EF4125571D1CC2B6002F8E19 /* tudi */ = {
@@ -1723,6 +1730,7 @@
 		EFF072851C8939F000150FA2 /* loveshare */ = {
 			isa = PBXGroup;
 			children = (
+				EF40ECA71D2219B9009BD8A8 /* pocy */,
 				EF4125571D1CC2B6002F8E19 /* tudi */,
 				EF57640E1D192FB400A3C039 /* redBag */,
 				EFC015E11D1693E600869BA1 /* PersonCenter */,
@@ -2248,7 +2256,6 @@
 				EF5C0B6A1C8BFE5300C76019 /* LeftOfRootViewController.m in Sources */,
 				EFC253E21D0E9F4B00E33E24 /* AdViewController.m in Sources */,
 				EFD8C8C71D06A2AF007922D6 /* TopTenOtherTableViewCell.m in Sources */,
-				EF1B8A781C89557D003D230A /* NSDictionary+EXTERN.m in Sources */,
 				EF3877CB1C8FD8CC008279BD /* NSString+Encryption.m in Sources */,
 				EF5A1EF41C8D7272002035FC /* BPCell.m in Sources */,
 				EFBD4FB91D12ABC700EFEEC8 /* LBLaunchImageAdView.m in Sources */,
@@ -2285,6 +2292,7 @@
 				F28CC0771CDB799300F4B72E /* BCCollectionViewCell.m in Sources */,
 				EF3877DA1C8FFAFE008279BD /* SexController.m in Sources */,
 				EF5A1EF31C8D7272002035FC /* TaskDataCeach.m in Sources */,
+				EF40ECAA1D2219D0009BD8A8 /* PocyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
