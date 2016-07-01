@@ -55,8 +55,7 @@
     NSString * cc  = [NSString stringWithFormat:@"%@%@",aa,APPScreat];
     
     NSString *unicodeStr = [NSString stringWithCString:[cc UTF8String] encoding:NSUTF8StringEncoding];
-    
-    InDict[@"sign"] = [MD5Encryption md5by32:unicodeStr];
+    InDict[@"sign"] = [MD5Encryption md5by32:[unicodeStr lowercaseString]];
     return [InDict mj_JSONString];
 
 }

@@ -50,6 +50,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    NSString * registrationID =  [JPUSHService registrationID];
+    //    LWLog(@"%@",registrationID);
+    
+    if (registrationID.length) {
+        [[NSUserDefaults standardUserDefaults] setObject:registrationID forKey:@"DeviceToken"];
+    }
+    
+    
+    
     self.optionLable.adjustsFontSizeToFitWidth = YES;
     
     self.title = @"设置密码";
@@ -178,6 +188,12 @@
         p[@"password"] = [MD5Encryption md5by32:self.first.text];
         p[@"verifyCode"] = self.vercode;
         p[@"invitationCode"] = self.revercode.text;
+        NSString * token = [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceToken"];
+      
+        if (token.length) {
+             token =  [JPUSHService registrationID];
+        }
+        p[@"token"] = token;
         [MBProgressHUD showMessage:nil];
         NSDictionary * dict = [UserLoginTool LogingetDateSyncWith:@"MobileRegister" WithParame:p];
         LWLog(@"%@",dict);
@@ -190,15 +206,15 @@
             [[NSUserDefaults standardUserDefaults] setObject:userModel.unionId forKey:PhoneLoginunionid];
             
             
-            UserModel * usermodel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
-            NSMutableDictionary * parame = [NSMutableDictionary dictionary];
-            parame[@"loginCode"] = usermodel.loginCode;
-            parame[@"type"] = @"0";
-            parame[@"token"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceToken"];
-            //获取支付参数
-            [UserLoginTool loginRequestGet:@"AddDeviceToken" parame:parame success:^(id json) {
-                LWLog(@"%@",json);
-            } failure:nil];
+//            UserModel * usermodel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+//            NSMutableDictionary * parame = [NSMutableDictionary dictionary];
+//            parame[@"loginCode"] = usermodel.loginCode;
+//            parame[@"type"] = @"0";
+//            parame[@"token"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceToken"];
+//            //获取支付参数
+//            [UserLoginTool loginRequestGet:@"AddDeviceToken" parame:parame success:^(id json) {
+//                LWLog(@"%@",json);
+//            } failure:nil];
             
             
             [self SetupLoginIn];

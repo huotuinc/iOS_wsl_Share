@@ -69,11 +69,11 @@
 
     
     
-//    if (!self.isInapp) {
-//        // 左上角
-//        [self leftBtn];
-//    }
-//    
+    if (!self.IsRegist) {
+        // 左上角
+        [self leftBtn];
+    }
+//
     
     
     
@@ -81,7 +81,7 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
-    if (!self.isInapp) {
+    if (!self.isInapp && self.IsRegist) {
         if (textField.text.length == 11) {
             NSMutableDictionary* p = [NSMutableDictionary dictionary];
             p[@"mobile"] = self.phoneNumberText.text;
@@ -103,11 +103,11 @@
 - (void)leftBtn{
     // 左上角
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setImage:[UIImage imageNamed:@"Nav_Left_Return_White_Back"] forState:UIControlStateNormal];
-    //    [backButton setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
+    [backButton setImage:[UIImage imageNamed:@"Nav_Left_Return_Back"] forState:UIControlStateNormal];
+//        [backButton setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
     [backButton setTitle:@"返回" forState:UIControlStateNormal];
     
-    [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     //        [backButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     [backButton sizeToFit];
     // 这句代码放在sizeToFit后面

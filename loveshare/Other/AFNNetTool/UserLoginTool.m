@@ -107,7 +107,7 @@
      paramsOption[@"version"] = AppVersion;
      paramsOption[@"imei"] = DeviceNo;
      paramsOption[@"p"] = [NSDictionary asignWithMutableDictionary:parame];
-     LWLog(@"%@",[parame mj_JSONString]);
+     LWLog(@"%@",[NSDictionary asignWithMutableDictionary:parame]);
 //     paramsOption[@"sign"] = [NSDictionary asignWithMutableDictionary:paramsOption];  //计算asign
      NSArray * parameKey = [paramsOption allKeys];
      NSMutableString * paremUrl = [[NSMutableString alloc] init];
