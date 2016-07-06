@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *optionList;
 
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHead;
 
 
 @property(nonatomic,copy) NSString * shareUrl;
@@ -105,6 +106,13 @@
     
     self.title = @"我要推荐";
     
+    if (ScreenHeight == 736) {
+        self.topViewHead.constant -= 20;
+    }else if(ScreenHeight == 568){
+        self.topViewHead.constant += 20;
+    }else if(ScreenHeight == 480){
+        self.topViewHead.constant += 40;
+    }
     LWLog(@"%s---%@",__func__,NSStringFromCGRect(self.iconView.frame));
     self.masterRuleDes.hidden = YES;
     self.iconView.layer.borderWidth = 2;

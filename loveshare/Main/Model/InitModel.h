@@ -199,4 +199,6 @@
 
 /**是否启用游客账号*/
 @property(nonatomic,assign) BOOL GuestLogin;
+/**新手指南地址*/
+@property(nonatomic,copy)NSString * guide;
 @end

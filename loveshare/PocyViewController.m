@@ -8,7 +8,7 @@
 
 #import "PocyViewController.h"
 
-@interface PocyViewController ()
+@interface PocyViewController ()<UIWebViewDelegate>
 
 @end
 
@@ -19,9 +19,9 @@
     // Do any additional setup after loading the view.
     
     UIWebView * web = [[UIWebView alloc] initWithFrame:self.view.bounds];
-    
+    web.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 64, 0);
     NSURLRequest * res = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.url]];
-    
+    web.delegate = self;
     [web loadRequest:res];
     [self.view addSubview:web];
 }
@@ -31,14 +31,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 }
-*/
-
 @end

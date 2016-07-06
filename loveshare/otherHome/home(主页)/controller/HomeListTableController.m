@@ -102,13 +102,11 @@
     
     [self AddRefresh];
     
-    LWLog(@"%@",NSStringFromCGRect(self.tableView.frame));
-
-
     
-    
+
 
 }
+
 
 
 - (void)StoryRefreshDateWithStroryID:(NSInteger)stroryID{

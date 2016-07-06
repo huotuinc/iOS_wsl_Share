@@ -11,4 +11,8 @@
 @interface PocyViewController : UIViewController
 
 @property(nonatomic,strong) NSString * url;
+
+
+@property(nonatomic,copy) NSString * title;
+
 @end

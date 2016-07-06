@@ -44,19 +44,23 @@
     md6.optionImageName = @"ng";
     md6.OptionName = @"内购商城";
     
-    
     OptionModel * md7 = [[OptionModel alloc] init];
-    md7.optionImageName = @"gd60X60";
-    md7.OptionName = @"更多选项";
+    md7.optionImageName = @"xs";
+    md7.OptionName = @"新手指南";
     
     
     OptionModel * md8 = [[OptionModel alloc] init];
-    md8.optionImageName = @"jd";
-    md8.OptionName = @"监督管理";
+    md8.optionImageName = @"gd60X60";
+    md8.OptionName = @"更多选项";
+    
+    
+    OptionModel * md9 = [[OptionModel alloc] init];
+    md9.optionImageName = @"jd";
+    md9.OptionName = @"监督管理";
     
     
     
-    NSMutableArray * option = [NSMutableArray arrayWithArray:@[md1,md2,md3,md4,md5,md6, md7, md8]];
+    NSMutableArray * option = [NSMutableArray arrayWithArray:@[md1,md2,md3,md4,md5,md6, md7, md8, md9]];
     return option;
 }
 @end

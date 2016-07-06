@@ -22,6 +22,7 @@
     //1、设置导航栏的主题
     [self setupNavBarTheme];
     
+   
     //2、设置导航栏的按钮主题
     [self setupNavBarButtonItemTheme];
 }
@@ -90,6 +91,10 @@
 //                           barMetrics:UIBarMetricsDefault];
 }
 
+//- (void)viewDidLoad{
+//    [super viewDidLoad];
+//    self.interactivePopGestureRecognizer.delegate = self;
+//}
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {

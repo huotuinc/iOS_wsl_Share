@@ -18,7 +18,7 @@
 #import "XYPopView.h"
 #import "TopTenListTableViewController.h"
 #import "EnViewController.h"
-
+#import "PocyViewController.h"
 
 #define pageSize 10
 
@@ -116,6 +116,7 @@
 @property(nonatomic,assign) NSInteger homeTaskStaus;
 
 @property(nonatomic,assign)  NSNotificationCenter * centerNot;
+
 
 
 @end
@@ -261,7 +262,9 @@ static NSString * homeCellidentify = @"homeCellId";
     [centerNot addObserver:self selector:@selector(GoADDetail) name:@"AdClick" object:nil];
     
     MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
-    [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
+    [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+//    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:^(BOOL finished) {
+//                }];
    
 }
 
@@ -341,6 +344,7 @@ static NSString * homeCellidentify = @"homeCellId";
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.backgroundColor = [UIColor whiteColor];
     scrollView.frame = self.view.bounds;
+//    scrollView.bounces = NO;
     scrollView.pagingEnabled = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
@@ -400,6 +404,12 @@ static NSString * homeCellidentify = @"homeCellId";
         
         PersonMessageTableViewController * pers = (PersonMessageTableViewController *)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"PersonMessageTableViewController"];
         [self.navigationController pushViewController:pers animated:NO];
+    }else if([note.userInfo[@"optionname"] isEqualToString:@"新手指南"]){
+        PocyViewController * vc = [[PocyViewController alloc] init];
+        InitModel * model = (InitModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:InitModelCaches];
+        vc.url = model.guide;
+        
+        [self.navigationController pushViewController:vc animated:NO];
     }
     
 }
@@ -501,6 +511,16 @@ static NSString * homeCellidentify = @"homeCellId";
 
 
 #pragma mark - <UIScrollViewDelegate>
+
+//- (void)scrollviewend:(UIScrollView *)scrollView{
+//    
+//
+//    if (scrollView.contentOffset.x <  0) {
+//        [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:^(BOOL finished) {
+//        }];
+//    }
+//}
+
 /**
  * 在scrollView滚动动画结束时, 就会调用这个方法
  * 前提: 使用setContentOffset:animated:或者scrollRectVisible:animated:方法让scrollView产生滚动动画
@@ -518,15 +538,14 @@ static NSString * homeCellidentify = @"homeCellId";
 {
     // 选中\点击对应的按钮
     NSUInteger index = scrollView.contentOffset.x / scrollView.xmg_width;
-    
     HomeTitleButton *titleButton = self.titleView.subviews[index];
     [self.titleView titleClick:titleButton];
-    
     // 添加子控制器的view
     [self addChildVcView];
     
     // 当index == 0时, viewWithTag:方法返回的就是self.titlesView
     //    XMGTitleButton *titleButton = (XMGTitleButton *)[self.titlesView viewWithTag:index];
 }
+
 
 @end
