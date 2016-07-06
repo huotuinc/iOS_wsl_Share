@@ -119,6 +119,8 @@
     self.toppottn.layer.masksToBounds = YES;
     self.toppottn.backgroundColor = [UIColor colorWithRed:233/255.0 green:147/255.0 blue:25/255.0 alpha:1];
     
+    [self.toppottn setTitle:@"分享资讯" forState:UIControlStateNormal];
+    
     self.contentWebView.scalesPageToFit = YES;
     
     self.contentWebView.scrollView.backgroundColor = [UIColor lightGrayColor];
