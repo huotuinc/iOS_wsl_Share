@@ -76,15 +76,15 @@
         me.imageName = @"chb";
         me.nameLable = @"伙伴总数";
         
-        MastListMenu * me1 = [[MastListMenu alloc] init];
-        me1.imageName = @"cll";
-        me1.nameLable = @"昨日/历史浏览量";
+//        MastListMenu * me1 = [[MastListMenu alloc] init];
+//        me1.imageName = @"cll";
+//        me1.nameLable = @"昨日/历史浏览量";
+//        
+//        MastListMenu * me2 = [[MastListMenu alloc] init];
+//        me2.imageName = @"czf";
+//        me2.nameLable = @"昨日/历史转发量";
         
-        MastListMenu * me2 = [[MastListMenu alloc] init];
-        me2.imageName = @"czf";
-        me2.nameLable = @"昨日/历史转发量";
-        
-        _optlist = @[me,me1,me2];
+        _optlist = @[me];
     }
     return _optlist;
 }
@@ -187,10 +187,10 @@
         self.tuDiCount.text = [NSString stringWithFormat:@"%ld",[json[@"resultData"][@"prenticeAmount"] integerValue]];
         self.firstLable.text = [NSString xiaoshudianweishudeal:[json[@"resultData"][@"totalScore"] floatValue]];
         self.secondLable.text = [NSString xiaoshudianweishudeal:[json[@"resultData"][@"yesterdayTotalScore"] floatValue]];
-        MastListMenu * me1 = [self.optlist objectAtIndex:1];
-        me1.rightDes =  [NSString stringWithFormat:@"%d/%d次",[json[@"resultData"][@"yesterdayBrowseAmount"] intValue],[json[@"resultData"][@"historyTotalBrowseAmount"] intValue]];
-        MastListMenu * me2 = [self.optlist lastObject];
-        me2.rightDes =  [NSString stringWithFormat:@"%d/%d次",[json[@"resultData"][@"yesterdayTurnAmount"] intValue],[json[@"resultData"][@"historyTotalTurnAmount"] intValue]];
+//        MastListMenu * me1 = [self.optlist objectAtIndex:1];
+//        me1.rightDes =  [NSString stringWithFormat:@"%d/%d次",[json[@"resultData"][@"yesterdayBrowseAmount"] intValue],[json[@"resultData"][@"historyTotalBrowseAmount"] intValue]];
+//        MastListMenu * me2 = [self.optlist lastObject];
+//        me2.rightDes =  [NSString stringWithFormat:@"%d/%d次",[json[@"resultData"][@"yesterdayTurnAmount"] intValue],[json[@"resultData"][@"historyTotalTurnAmount"] intValue]];
         if (json[@"resultData"][@"desc"]) {
             self.masterRuleDes.hidden = NO;
             self.masterRuleDes.text =[NSString stringWithFormat:@"  %@",json[@"resultData"][@"desc"]] ;

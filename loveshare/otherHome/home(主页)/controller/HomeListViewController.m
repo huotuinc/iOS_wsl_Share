@@ -256,15 +256,24 @@ static NSString * homeCellidentify = @"homeCellId";
     
     [self addChildVcView];
     
-    
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"adNotificate" object:self userInfo:url];
     NSNotificationCenter * centerNot = [NSNotificationCenter defaultCenter];
-    _centerNot = centerNot;
-    [centerNot addObserver:self selector:@selector(GoADDetail) name:@"AdClick" object:nil];
+    [centerNot addObserver:self selector:@selector(GoADDetail:) name:@"adNotificate" object:nil];
     
     MMRootViewController * root = (MMRootViewController *)self.mm_drawerController;
     [root setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
 //    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:^(BOOL finished) {
 //                }];
+    
+//    AppDelegate * delegateVc = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    
+//    LWLog(@"%@",delegateVc.adUrl);
+//    
+//    
+//    if(delegateVc.adUrl.length){
+//        
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:delegateVc.adUrl]];
+//    }
    
 }
 
@@ -272,15 +281,16 @@ static NSString * homeCellidentify = @"homeCellId";
 /**
  *  进入广告详情
  */
-- (void)GoADDetail{
+- (void)GoADDetail:(NSNotification *)note{
 
-   InitModel * model = (InitModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:InitModelCaches];
-    if (model.adclick.length) {
-        AdViewController * ad = [[AdViewController alloc] init];
-        ad.adLink = model.adclick;
-        [self.navigationController pushViewController:ad animated:YES];
-        
-    }
+    LWLog(@"%@",note.userInfo);
+    
+//    if (model.adclick.length) {
+//        AdViewController * ad = [[AdViewController alloc] init];
+//        ad.adLink = model.adclick;
+//        [self.navigationController pushViewController:ad animated:YES];
+//        
+//    }
 }
 
 #pragma mark - 添加子控制器的view

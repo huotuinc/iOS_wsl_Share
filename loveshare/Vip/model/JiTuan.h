@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+
+
 @interface JiTuan : NSObject
 
 
@@ -27,5 +29,6 @@
 @property(nonatomic,assign)int totalTurnCount;
 
 @property (nonatomic, strong) NSNumber *children;//o没有，1有
+
 
 @end

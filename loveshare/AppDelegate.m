@@ -11,14 +11,15 @@
 #import "LBLaunchImageAdView.h"
 #import "RedBagController.h"
 #import "NewTaskDataModel.h"
-
-@interface AppDelegate ()<WXApiDelegate>
+#import "MoreAdViewController.h"
+@interface AppDelegate ()<WXApiDelegate,UIScrollViewDelegate>
 
 @property(nonatomic,strong) UIButton * adButton;
 
 @property(nonatomic,strong) UIImageView * adImage;
 
 
+@property(nonatomic,strong)  UIScrollView * scrollView;
 
 @end
 
@@ -130,9 +131,9 @@ static NSString *channel = @"Publish channel";
     self.TodayPredictingNumber = [NSMutableDictionary dictionaryWithObject:@(0) forKey:@"today"];
     [JPUSHService setupWithOption:launchOptions appKey:JPushAppKey
                           channel:channel apsForProduction:isProduction];
-    [self addAd];
-    InitModel * initModel = [self AppInit:application];
     
+    InitModel * initModel = [self AppInit:application];
+//    [self addAd];
     if ([self isFirstLoad]) {
         self.isflag = YES;
     }else{
@@ -191,7 +192,7 @@ static NSString *channel = @"Publish channel";
         self.window.rootViewController = nac;
         
         LWLog(@"%@",model.adimg);
-        if(model.adimg.length){
+        if(model.AdList.count){
             [self addAd];
         }
         [self.window makeKeyAndVisible];
@@ -203,17 +204,23 @@ static NSString *channel = @"Publish channel";
  *  2、程序启动控制器的选择
  */
 - (void)SetupLoginIn:(InitModel *) model{
-    MMRootViewController * root = [[MMRootViewController alloc] init];
+    
+    
+    
+    
+    MoreAdViewController * vc = [[MoreAdViewController alloc] init];
+    vc.adlists = model.AdList;
+//    MMRootViewController * root = [[MMRootViewController alloc] init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = root;
+    self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
     
-    LWLog(@"%@",model.adimg);
-    if(model.adimg.length){
-//        [self addAD:model.adimg andDetailUrl:model.adclick];
-        [self addAd];
-        
-    }
+//    LWLog(@"%@",model.adimg);
+//    if(model.AdList.count){
+////        [self addAD:model.adimg andDetailUrl:model.adclick];
+//        [self addAd];
+//        
+//    }
 }
 
 
@@ -231,6 +238,60 @@ static NSString *channel = @"Publish channel";
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
  
+    
+    
+    UserModel * usermodel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+    LWLog(@"%@",[usermodel mj_keyValues]);
+    NSMutableDictionary * parames =  [NSMutableDictionary dictionary];
+    parames[@"userName"] = (usermodel?usermodel.userName:@" ");
+    parames[@"pwd"] = (usermodel?usermodel.UserPassword:@" ");
+    LWLog(@"%@",[parames mj_keyValues]);
+    NSDictionary * dict = [UserLoginTool LogingetDateSyncWith:@"init" WithParame:parames];
+    LWLog(@"%@---%@",dict[@"description"],dict);
+    UserModel * user = [UserModel mj_objectWithKeyValues:dict[@"resultData"][@"userData"]];
+    
+    LWLog(@"%@",[user mj_keyValues]);
+    
+    [UserLoginTool LoginModelWriteToShaHe:user andFileName:RegistUserDate];
+    
+    [InitModel mj_setupObjectClassInArray:^NSDictionary *{
+        return @{@"AdList":@"AdListModel"};
+    }];
+    InitModel * model = [InitModel mj_objectWithKeyValues:dict[@"resultData"]];
+    
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
+    NSLog(@"%@",path);
+    NSMutableDictionary * infodict = [ [ NSMutableDictionary alloc ] initWithContentsOfFile:path];
+    NSLog(@"%@",infodict);
+    NSArray * info = [infodict objectForKey:@"CFBundleURLTypes"];
+    for (int i = 0; i< info.count; i++) {
+       NSMutableDictionary * dict = [info objectAtIndex:i];
+       LWLog(@"%@",dict);
+        if ([[dict objectForKey:@"CFBundleURLName"] isEqualToString:@"weixin"]) {
+            NSMutableArray * array = [dict objectForKey:@"CFBundleURLSchemes"];
+            [array addObject:model.weixinKey];
+
+        }
+    }
+    BOOL iswright = [infodict writeToFile:path atomically:YES];
+    
+    
+    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
+    NSLog(@"%@",path1);
+    NSMutableDictionary * infodict1 = [ [ NSMutableDictionary alloc ] initWithContentsOfFile:path];
+    NSLog(@"%@",infodict1);
+    NSArray * info1 = [infodict1 objectForKey:@"CFBundleURLTypes"];
+
+    for (int i = 0; i< info1.count; i++) {
+        NSMutableDictionary * dict = [info objectAtIndex:i];
+        LWLog(@"%@",dict);
+    }
+    
+//    NSString *str = [dict objectForKey:@"CFBundleIdentifier"];
+//    NSLog(@"%@",str);
+    
+    
     [ShareSDK registerApp:WslShareSdkAppId
      
           activePlatforms:@[@(SSDKPlatformTypeWechat),
@@ -255,8 +316,8 @@ static NSString *channel = @"Publish channel";
          switch (platformType)
          {
              case SSDKPlatformTypeWechat:
-                 [appInfo SSDKSetupWeChatByAppId:WxAppID
-                                       appSecret:WxAppSecret];
+                 [appInfo SSDKSetupWeChatByAppId:model.weixinKey
+                                       appSecret:model.weixinAppSecret];
                  break;
              case SSDKPlatformTypeQQ:
                  [appInfo SSDKSetupQQByAppId:QQ
@@ -268,25 +329,25 @@ static NSString *channel = @"Publish channel";
          }
      }];
     
-    UserModel * usermodel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
-    LWLog(@"%@",[usermodel mj_keyValues]);
-    NSMutableDictionary * parames =  [NSMutableDictionary dictionary];
-    parames[@"userName"] = (usermodel?usermodel.userName:@" ");
-    parames[@"pwd"] = (usermodel?usermodel.UserPassword:@" ");
-    LWLog(@"%@",[parames mj_keyValues]);
-    NSDictionary * dict = [UserLoginTool LogingetDateSyncWith:@"init" WithParame:parames];
-    LWLog(@"%@---%@",dict[@"description"],dict);
-    UserModel * user = [UserModel mj_objectWithKeyValues:dict[@"resultData"][@"userData"]];
     
-    LWLog(@"%@",[user mj_keyValues]);
-    
-    [UserLoginTool LoginModelWriteToShaHe:user andFileName:RegistUserDate];
-    InitModel * model = [InitModel mj_objectWithKeyValues:dict[@"resultData"]];
     [UserLoginTool LoginModelWriteToShaHe:model andFileName:InitModelCaches];
     
-    LWLog(@"model _-- tesr%@",[model mj_keyValues]);
+    
+//    InitModel * modelxxxx = (InitModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:InitModelCaches];
+//    LWLog(@"model _-- tesr%@",[modelxxxx mj_keyValues]);
+//    LWLog(@"model _-- tesr%@",[model mj_keyValues]);
+//    for (int i = 0; i<model.AdList.count; i++) {
+//        AdListModel * admodel = [model.AdList objectAtIndex:i];
+//        LWLog(@"%@",admodel.itemImgUrl);
+//        SDWebImageDownloader * manager = [SDWebImageDownloader sharedDownloader];
+//        [manager downloadImageWithURL:[NSURL URLWithString:admodel.itemImgUrl] options:SDWebImageDownloaderLowPriority progress:nil completed:nil];
+//    }
+    
     //商城地址
-    if (dict[@"resultData"][@"website"]) {
+    
+    NSString * webHead = dict[@"resultData"][@"website"];
+    LWLog(@"%@",webHead);
+    if (webHead.length) {
         [[NSUserDefaults standardUserDefaults] setObject:(dict[@"resultData"][@"website"]) forKey:WebSit];
     }
     
@@ -331,17 +392,11 @@ static NSString *channel = @"Publish channel";
     NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     NSString * myDeviceToken = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSLog(@"%@",myDeviceToken);
-    
-    
     NSString * registrationID =  [JPUSHService registrationID];
 //    LWLog(@"%@",registrationID);
-    
     if (registrationID.length) {
         [[NSUserDefaults standardUserDefaults] setObject:registrationID forKey:@"DeviceToken"];
     }
-    
-    
-    
     if (myDeviceToken.length || registrationID.length) {
         UserModel * usermodel = (UserModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
         NSMutableDictionary * parame = [NSMutableDictionary dictionary];
@@ -441,67 +496,106 @@ static NSString *channel = @"Publish channel";
 
 - (void) addAd{
     InitModel * model = (InitModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:InitModelCaches];
-    LWLog(@"%lu",(unsigned long)model.adimg.length);
-    if (model.adimg.length) {// && [model.loginStatus intValue]
-        //获取启动图片
-        CGSize viewSize = self.window.bounds.size;
-        //横屏请设置成 @"Landscape"
-        NSString *viewOrientation = @"Portrait";
-        NSString *launchImageName = nil;
-        NSArray* imagesDict = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
-        for (NSDictionary* dict in imagesDict)
-        {
-            CGSize imageSize = CGSizeFromString(dict[@"UILaunchImageSize"]);
-            if (CGSizeEqualToSize(imageSize, viewSize) && [viewOrientation isEqualToString:dict[@"UILaunchImageOrientation"]])
-            {
-                launchImageName = dict[@"UILaunchImageName"];
-            }
+//
+//    MoreAdViewController * ad = [[MoreAdViewController alloc] init];
+//    ad.adlists = model.AdList;
+//    [[UIApplication sharedApplication].keyWindow addSubview:ad.view];
+//    [self.window insertSubview:ad.view atIndex:0];
+//    [self.window addSubview:ad.view];
+//    LWLog(@"%lu",(unsigned long)model.adimg.length);
+    
+    LWLog(@"%@",model.AdList);
+    
+    
+    UIScrollView * scrollView = [[UIScrollView alloc] init];
+    self.scrollView = scrollView;
+    scrollView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+    scrollView.delegate = self;
+    scrollView.userInteractionEnabled = YES;
+    [[UIApplication sharedApplication].keyWindow addSubview:scrollView];
+    
+    
+    if (model.AdList.count) {// && [model.loginStatus intValue]
+//        //获取启动图片
+//        CGSize viewSize = self.window.bounds.size;
+//        //横屏请设置成 @"Landscape"
+//        NSString *viewOrientation = @"Portrait";
+//        NSString *launchImageName = nil;
+//        NSArray* imagesDict = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
+//        for (NSDictionary* dict in imagesDict)
+//        {
+//            CGSize imageSize = CGSizeFromString(dict[@"UILaunchImageSize"]);
+//            if (CGSizeEqualToSize(imageSize, viewSize) && [viewOrientation isEqualToString:dict[@"UILaunchImageOrientation"]])
+//            {
+//                launchImageName = dict[@"UILaunchImageName"];
+//            }
+//            
+//        }
+//        LWLog(@"%@",launchImageName);
+        //2、添加图片
+        CGFloat scrollW = self.window.frame.size.width;
+        CGFloat scrollH = self.window.frame.size.height;
+        
+        
+        for (int index = 0; index<model.AdList.count; index++) {
             
+            AdListModel * dict = [model.AdList objectAtIndex:index];
+            LWLog(@"%@",dict.itemImgUrl);
+            UIImageView * ad = [[UIImageView alloc] initWithFrame:self.window.bounds];
+//            ad sd_setImageWithURL:[NSURL URLWithString:<#(nonnull NSString *)#>] placeholderImage:<#(UIImage *)#> options:<#(SDWebImageOptions)#>
+            ad.userInteractionEnabled = YES;
+            [ad addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(AdClick)]];
+            CGFloat imageX = index * scrollW;
+            CGFloat imageY = 0;
+            CGFloat imageW = scrollW;
+            CGFloat imageH = scrollH;
+            ad.frame =CGRectMake(imageX, imageY, imageW, imageH);
+            [scrollView addSubview:ad];
         }
-        LWLog(@"%@",launchImageName);
-        UIImageView * ad = [[UIImageView alloc] initWithFrame:self.window.bounds];
-        ad.userInteractionEnabled = YES;
-        [ad addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(AdClick)]];
-        [ad setImage:[UIImage imageNamed:launchImageName]];
-        ad.contentMode = UIViewContentModeScaleAspectFit;
-        [[UIApplication sharedApplication].keyWindow addSubview:ad];
-        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.layer.cornerRadius = 5;
-        btn.layer.masksToBounds = YES;
-        _adButton = btn;
-        _adImage = ad;
-        btn.frame = CGRectMake(ScreenWidth - 80, 20, 50, 30);
-        btn.alpha = 0.7;
-        btn.hidden = YES;
-        [btn setBackgroundColor:[UIColor blackColor]];
-        [btn addTarget:self action:@selector(JumpAd) forControlEvents:UIControlEventTouchUpInside];
-        [btn setTitle:@"跳过广告" forState:UIControlStateNormal];
-        btn.titleLabel.font = [UIFont systemFontOfSize:10];
-        [[UIApplication sharedApplication].keyWindow addSubview:btn];
-        SDWebImageManager * manager = [SDWebImageManager sharedManager];
-        [manager downloadImageWithURL:[NSURL URLWithString:model.adimg] options:SDWebImageRefreshCached progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-            [ad setImage:image];
-            btn.hidden = NO;
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [UIView animateWithDuration:1.0 animations:^{
-                    ad.alpha = 0.0;
-                    btn.alpha = 0.0;
-                } completion:^(BOOL finished) {
-                    
-                    [btn removeFromSuperview];
-                    [ad removeFromSuperview];
-                }];
-            });
-            
-        }];
         
+        //设置滚动内容范围尺寸
+        scrollView.contentSize = CGSizeMake(scrollW * model.AdList.count, 0);
         
-    }
+//        [ad setImage:[UIImage imageNamed:launchImageName]];
+//        ad.contentMode = UIViewContentModeScaleAspectFit;
+//        [[UIApplication sharedApplication].keyWindow addSubview:ad];
+//        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        btn.layer.cornerRadius = 5;
+//        btn.layer.masksToBounds = YES;
+//        _adButton = btn;
+//        _adImage = ad;
+//        btn.frame = CGRectMake(ScreenWidth - 80, 20, 50, 30);
+//        btn.alpha = 0.7;
+//        btn.hidden = YES;
+//        [btn setBackgroundColor:[UIColor blackColor]];
+//        [btn addTarget:self action:@selector(JumpAd) forControlEvents:UIControlEventTouchUpInside];
+//        [btn setTitle:@"跳过广告" forState:UIControlStateNormal];
+//        btn.titleLabel.font = [UIFont systemFontOfSize:10];
+//        [[UIApplication sharedApplication].keyWindow addSubview:btn];
+//        SDWebImageManager * manager = [SDWebImageManager sharedManager];
+//        [manager downloadImageWithURL:[NSURL URLWithString:model.adimg] options:SDWebImageRefreshCached progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+//            [ad setImage:image];
+//            btn.hidden = NO;
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [UIView animateWithDuration:1.0 animations:^{
+//                    ad.alpha = 0.0;
+//                    btn.alpha = 0.0;
+//                } completion:^(BOOL finished) {
+//                    
+//                    [btn removeFromSuperview];
+//                    [ad removeFromSuperview];
+//                }];
+//            });
+//            
+//        }];
+//        
+//        
+//    }
 
 }
 
-
+}
 - (void)AdClick{
     [_adImage removeFromSuperview];
     [_adButton removeFromSuperview];

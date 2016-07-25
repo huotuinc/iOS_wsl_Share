@@ -22,5 +22,8 @@
 
 @property (nonatomic,strong) UIViewController * currentVC;
 
+
+@property(nonatomic,strong) NSString * adUrl;
+
 @end
 

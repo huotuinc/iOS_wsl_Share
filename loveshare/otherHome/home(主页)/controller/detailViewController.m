@@ -11,7 +11,7 @@
 #import "NJKWebViewProgressView.h"
 #import "MMRootViewController.h"
 
-@interface detailViewController ()<UIWebViewDelegate,NJKWebViewProgressDelegate>
+@interface detailViewController ()<UIWebViewDelegate,NJKWebViewProgressDelegate,UIAlertViewDelegate>
 
 @property(nonatomic,strong)IBOutlet UIWebView * contentWebView;
 
@@ -251,42 +251,49 @@
     
 }
 - (IBAction)shareBtnClick:(UIButton*)sender {
-    
-    
     LWLog(@"xxxx%@",[_shareModel mj_keyValues]);
-    _shareModel.taskInfo = self.shareModel.taskInfo;
-    LWLog(@"xxxx%@",[_shareModel mj_keyValues]);
-    [UserLoginTool LoginToShareMessageByShareSdk:_shareModel success:^(int json) {
-        NSMutableDictionary * parame = [NSMutableDictionary dictionary];
-        UserModel *user =  (UserModel * )[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
-        parame[@"loginCode"] = user.loginCode;
-        parame[@"type"] = @(json);
-        parame[@"taskId"] = @(_taskModel.taskId);
+    
+    InitModel * model = (InitModel *)[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:InitModelCaches];
+    if(model.disasterFlag){
         
-        LWLog(@"%@",parame);
-        [UserLoginTool loginRequestGet:@"TurnTask" parame:parame success:^(id json) {
-            LWLog(@"%@",json);
-            if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1){
-                [MBProgressHUD showSuccess:@"分享成功"];
-                
-                self.taskModel.isSend = 1;
-//                self.modelXX.isSend = 1;
-                //判断是否为第一次分享
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                NSString *isFirstShare = [defaults stringForKey:@"isFirstShare"];
-                //正常是 ! [
-                if (![isFirstShare isEqualToString:@"YES"]){
-                    [defaults setObject:@"YES" forKey:@"isFirstShare"];
-                    [defaults setObject:@"YES" forKey:@"isFirstShareSuccess"];
-                    [defaults synchronize];
+        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"" message:@"复制链接 转发到朋友圈/朋友" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+        [alert show];
+        
+    }else{
+        _shareModel.taskInfo = self.shareModel.taskInfo;
+        LWLog(@"xxxx%@",[_shareModel mj_keyValues]);
+        [UserLoginTool LoginToShareMessageByShareSdk:_shareModel success:^(int json) {
+            NSMutableDictionary * parame = [NSMutableDictionary dictionary];
+            UserModel *user =  (UserModel * )[UserLoginTool LoginReadModelDateFromCacheDateWithFileName:RegistUserDate];
+            parame[@"loginCode"] = user.loginCode;
+            parame[@"type"] = @(json);
+            parame[@"taskId"] = @(_taskModel.taskId);
+            LWLog(@"%@",parame);
+            [UserLoginTool loginRequestGet:@"TurnTask" parame:parame success:^(id json) {
+                LWLog(@"%@",json);
+                if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1){
+                    [MBProgressHUD showSuccess:@"分享成功"];
+                    self.taskModel.isSend = 1;
+                    //                self.modelXX.isSend = 1;
+                    //判断是否为第一次分享
+                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                    NSString *isFirstShare = [defaults stringForKey:@"isFirstShare"];
+                    //正常是 ! [
+                    if (![isFirstShare isEqualToString:@"YES"]){
+                        [defaults setObject:@"YES" forKey:@"isFirstShare"];
+                        [defaults setObject:@"YES" forKey:@"isFirstShareSuccess"];
+                        [defaults synchronize];
+                    }
                 }
-            }
-        } failure:^(NSError *error) {
+            } failure:^(NSError *error) {
+                [MBProgressHUD showError:@"分享失败"];
+            }];
+        } failure:^(id error) {
             [MBProgressHUD showError:@"分享失败"];
         }];
-     } failure:^(id error) {
-        [MBProgressHUD showError:@"分享失败"];
-    }];
+ 
+    }
 }
 
 #pragma mark - NJKWebViewProgressDelegate
@@ -306,4 +313,12 @@
     
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (buttonIndex == 0) {
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string = self.shareModel.taskInfo;
+        [MBProgressHUD showSuccess:@"复制成功,请去微信端分享"];
+    }
+}
 @end

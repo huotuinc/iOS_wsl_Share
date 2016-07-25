@@ -16,6 +16,8 @@
 
 @property(nonatomic,strong) MJRefreshBackNormalFooter * footer;
 
+@property(nonatomic,assign) int pageIndex;
+
 
 @property(nonatomic,strong) NSMutableArray * dateArray;
 @end
@@ -34,6 +36,7 @@
     
     
     self.title = @"伙伴列表";
+    _pageIndex = 1;
     
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.tableView.rowHeight = 109;
@@ -61,10 +64,13 @@
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
     parame[@"loginCode"] = user.loginCode;
     parame[@"orderType"] = @(0);
-    parame[@"pageTag"] = @(0);
+    parame[@"pageIndex"] = @(_pageIndex);
     parame[@"pageSize"] = @(10);
+    
+    
+    LWLog(@"%@",parame);
+    self.pageIndex = 1;
     [UserLoginTool loginRequestGet:@"PrenticeList" parame:parame success:^(id json) {
-        
         LWLog(@"%@",json);
         if ([[json objectForKey:@"resultCode"] integerValue] == 1 && [[json objectForKey:@"status"] integerValue] == 1) {
             NSArray * date = [FollowModel mj_objectArrayWithKeyValuesArray:json[@"resultData"][@"list"]];
@@ -100,12 +106,15 @@
     NSMutableDictionary * parame = [NSMutableDictionary dictionary];
     parame[@"loginCode"] = user.loginCode;
     parame[@"orderType"] = @(0);
-    FollowModel * model = [self.dateArray lastObject];
-    parame[@"pageTag"] =[NSString stringWithFormat:@"%@",model.userId];
+//    FollowModel * model = [self.dateArray lastObject];
+    parame[@"pageIndex"] = @(_pageIndex+1);
     parame[@"pageSize"] = @(10);
+    __weak TudiTableViewController * wself = self;
+    LWLog(@"%@",parame);
     [UserLoginTool loginRequestGet:@"PrenticeList" parame:parame success:^(id json) {
         
         LWLog(@"%@",json);
+        wself.pageIndex = [[json objectForKey:@"pageIndex"] intValue];
         if ([[json objectForKey:@"resultCode"] integerValue] == 1 && [[json objectForKey:@"status"] integerValue] == 1) {
             NSArray * date = [FollowModel mj_objectArrayWithKeyValuesArray:json[@"resultData"][@"list"]];
             if (date.count) {

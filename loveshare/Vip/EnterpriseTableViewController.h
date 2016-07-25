@@ -15,4 +15,7 @@
 @property(nonatomic,strong)JiTuan * model;
 @property (nonatomic, strong) NSNumber *taskId;
 
+
+//@property(nonatomic,strong) NSArray * personArray;
+
 @end

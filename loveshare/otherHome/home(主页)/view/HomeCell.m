@@ -58,8 +58,23 @@
         _getImage.image = nil;
     }
    
-    _joinLabel.text = [NSString stringWithFormat:@"%@", model.browseCount];
-    _lastLabel.text = [NSString stringWithFormat:@"%@", model.sendCount];
+    NSString * browNumber = nil;
+    if ([model.browseCount integerValue] > 100000) {
+        browNumber = @"10万+";
+    }else if([model.browseCount integerValue] > 9999){
+        
+        int more = [model.browseCount integerValue]% 10000;
+        if (more == 0) {
+            browNumber = [NSString stringWithFormat:@"%d万",more];
+        }else{
+            browNumber = [NSString stringWithFormat:@"%.2f万",[model.browseCount integerValue] * 1.0 / 10000];
+        }
+        
+    }else{
+        browNumber = [NSString stringWithFormat:@"%ld",(long)[model.browseCount integerValue]];
+    }
+    _joinLabel.text = [NSString stringWithFormat:@"%@", browNumber];
+//    _lastLabel.text = [NSString stringWithFormat:@"%@", model.sendCount];
 }
 //
 //

@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AdListModel.h"
+
 
 @interface InitModel : NSObject
 /*
@@ -160,7 +162,7 @@
 @property(nonatomic,copy)NSString *channelList;
 @property(nonatomic,copy)NSString *checkExps;
 @property(nonatomic,strong)NSNumber *customerId;
-@property(nonatomic,strong)NSNumber * disasterFlag;
+//@property(nonatomic,strong)NSNumber * disasterFlag;
 @property(nonatomic,copy)NSString *disasterUrl;
 @property(nonatomic,copy)NSString *grenadeRewardInfo;
 @property(nonatomic,strong)NSNumber * isCompleteUserInfo;
@@ -183,7 +185,10 @@
 @property(nonatomic,copy)NSString *updateUrl;
 @property(nonatomic,copy)NSString *userData;
 @property(nonatomic,copy)NSString * website;
+
+/**微信*/
 @property(nonatomic,copy)NSString * weixinKey;
+@property(nonatomic,copy)NSString * weixinAppSecret;
 @property(nonatomic,copy)NSString * wxVersionCode;
 
 /**广告图片地址*/
@@ -201,4 +206,17 @@
 @property(nonatomic,assign) BOOL GuestLogin;
 /**新手指南地址*/
 @property(nonatomic,copy)NSString * guide;
+
+@property(nonatomic,strong) NSArray <AdListModel *>* AdList;
+
+
+/**广告倒计时时间*/
+@property(nonatomic,assign) int adTime;
+
+
+@property(nonatomic,assign) int disasterFlag;
 @end
+
+
+
+

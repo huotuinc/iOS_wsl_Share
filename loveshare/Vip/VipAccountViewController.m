@@ -9,7 +9,7 @@
 #import "VipAccountViewController.h"
 #import "VipSearchViewController.h"
 #import "DepartmentViewController.h"
-
+#import "PersonData.h"
 #define homeCellidentify @"homeCellIdSH"
 
 @interface VipAccountViewController ()<UISearchBarDelegate>
@@ -36,6 +36,7 @@
 @property(nonatomic,strong) UIButton * searchButton;
 
 
+@property(nonatomic,strong) NSArray * personArray;
 
 @end
 
@@ -202,6 +203,7 @@
         if ([json[@"status"] integerValue] == 1 || [json[@"resultCode"] integerValue] == 1) {
             NSArray * array = [JiTuan mj_objectArrayWithKeyValuesArray:json[@"resultData"]];
             ;
+//            self.personArray =  [JiTuanModel mj_objectArrayWithKeyValuesArray:json[@"resultData"][@"PersonData"]];
             if (array.count) {
                 [wself.JITuan removeAllObjects];
                 [wself.JITuan addObjectsFromArray:array];

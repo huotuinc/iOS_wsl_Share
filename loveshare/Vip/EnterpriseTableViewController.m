@@ -7,7 +7,8 @@
 //
 
 #import "EnterpriseTableViewController.h"
-
+#import "DepartmentTableViewCell.h"
+#import "JiTuanModel.h"
 @interface EnterpriseTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIView *containView;
@@ -21,6 +22,14 @@
 @property(nonatomic,strong) NSMutableArray * SortArray;
 
 @property(nonatomic,strong)UIView * redView;
+
+
+
+
+/**企业下面的人*/
+@property(nonatomic,strong) NSArray * enterPriseDownPerson;
+
+
 @end
 
 @implementation EnterpriseTableViewController
@@ -65,6 +74,8 @@
 //    self.optionLable.rowHeight = 50;
     self.optionLable.tableFooterView = [[UIView alloc] init];
     [self ToGetDate];
+    
+    [self.optionLable registerNib:[UINib nibWithNibName:@"DepartmentTableViewCell" bundle:nil] forCellReuseIdentifier:@"departperson"];
 }
 
 - (void)setInit{
@@ -142,7 +153,12 @@
             ;
             [wself.SortArray addObjectsFromArray:array];
             [wself.JITuan addObjectsFromArray:array];
+            
+            /**部门下面的人员*/
+            wself.enterPriseDownPerson =  [JiTuanModel mj_objectArrayWithKeyValuesArray:json[@"resultPersonData"]];
             [wself.optionLable reloadData];
+            
+            
             
         }
     } failure:^(NSError *error) {
@@ -167,55 +183,82 @@
     }else{
         self.optionLable.backgroundColor = [UIColor whiteColor];
     }
-    return  self.SortArray.count;
+    return  self.SortArray.count + self.enterPriseDownPerson.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"jituan"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"jituan"];
-        UILabel * lable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
-        cell.accessoryView = lable;
-        lable.textAlignment = NSTextAlignmentRight;
-        lable.text = @"xxx";
-        lable.adjustsFontSizeToFitWidth = YES;
-        cell.imageView.frame = CGRectMake(0, 0, 40, 40);
-        cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        cell.imageView.layer.cornerRadius = 5;
-        cell.imageView.layer.masksToBounds = YES;
-    }
     
-    JiTuan * model = self.SortArray[indexPath.row];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:[UIImage imageNamed:@"imglogo"]];
-    cell.textLabel.text = model.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"总转发%d次/总浏览%d次",model.totalTurnCount,model.totalBrowseCount];
-    UILabel * aa =  (UILabel *)cell.accessoryView;
-    aa.text = [NSString stringWithFormat:@"%d人",model.personCount];
-    return cell;
+    if(indexPath.row < self.SortArray.count){
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"jituan"];
+            UILabel * lable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
+            cell.accessoryView = lable;
+            lable.textAlignment = NSTextAlignmentRight;
+            lable.text = @"xxx";
+            lable.adjustsFontSizeToFitWidth = YES;
+            cell.imageView.frame = CGRectMake(0, 0, 40, 40);
+            cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+            cell.imageView.layer.cornerRadius = 5;
+            cell.imageView.layer.masksToBounds = YES;
+        }
+        
+        JiTuan * model = self.SortArray[indexPath.row];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:[UIImage imageNamed:@"imglogo"]];
+        cell.textLabel.text = model.name;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"总转发%d次/总浏览%d次",model.totalTurnCount,model.totalBrowseCount];
+        UILabel * aa =  (UILabel *)cell.accessoryView;
+        aa.text = [NSString stringWithFormat:@"%d人",model.personCount];
+        return cell;
+    }else{
+//        DepartmentTableViewCell.h
+        DepartmentTableViewCell * cell =  [tableView dequeueReusableCellWithIdentifier:@"departperson"];
+        JiTuanModel * model = self.enterPriseDownPerson[(indexPath.row-self.SortArray.count)];
+        [cell.imageVHead sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:[UIImage imageNamed:@"xiangxtouxiang"]];
+        cell.labelName.text = model.name;
+        cell.labelDetails.text = [NSString stringWithFormat:@"转发%d次/浏览%d次/伙伴%d人",model.totalTurnCount,model.totalBrowseCount, model.prenticeCount];
+        cell.labelScore.text = [NSString stringWithFormat:@"%@积分",[NSString xiaoshudianweishudeal:[model.totalScore floatValue]]];
+        return cell;
+        
+    }
 }
 
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    JiTuan * model = self.SortArray[indexPath.row];
-
-    if ([model.children integerValue] == 1) {
-        EnterpriseTableViewController* vc = (EnterpriseTableViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"EnterpriseTableViewController"];
-        vc.model = model;
-        vc.title = model.name;
-        vc.taskId = self.taskId;
-        [self.navigationController pushViewController:vc animated:YES];
-    } else {
-        DepartmentViewController* vc = (DepartmentViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"DepartmentViewController"];
-        vc.model = model;
-        vc.title = model.name;
-        vc.taskId = self.taskId;
-        vc.dilu = self.title;
-        [self.navigationController pushViewController:vc animated:YES];
+    LWLog(@"xxxxxxxx");
+    if (indexPath.row<self.SortArray.count) {
         
+        JiTuan * model = self.SortArray[indexPath.row];
+
+        if ([model.children integerValue] == 1) {
+            EnterpriseTableViewController* vc = (EnterpriseTableViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"EnterpriseTableViewController"];
+            vc.model = model;
+            vc.title = model.name;
+            vc.taskId = self.taskId;
+            [self.navigationController pushViewController:vc animated:YES];
+        } else {
+            DepartmentViewController* vc = (DepartmentViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"DepartmentViewController"];
+            vc.model = model;
+            vc.title = model.name;
+            vc.taskId = self.taskId;
+            vc.dilu = self.title;
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }
+    }
+    else{
+        
+        JiTuanModel * model = self.enterPriseDownPerson[(indexPath.row-self.SortArray.count)];
+        LWLog(@"%@",[model mj_keyValues]);
+        PersonViewController* vc = (PersonViewController*)[UserLoginTool LoginCreateControllerWithNameOfStory:nil andControllerIdentify:@"PersonViewController"];
+        vc.model = model;
+        vc.title = model.name;
+//        vc.xixi = [NSString stringWithFormat:@"%@/%@",self.dilu,self.title];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 
     
