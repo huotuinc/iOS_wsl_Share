@@ -72,13 +72,11 @@
         
     }
     NSMutableString * urlss =[NSMutableString stringWithFormat:@"%@?%@",MainUrl, [paremUrl substringToIndex:paremUrl.length-2]];
-    
-    
     NSDictionary * dict = @{@"p":[params mj_JSONString]};
     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
-    
-    [manager POST:urlss parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        [formData appendPartWithFileData:[params[@"pic"] dataUsingEncoding:NSUTF8StringEncoding] name:@"pic" fileName:@"head" mimeType:@"image/png"];
+    NSString * encoded = [urlss stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [manager POST:encoded parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [formData appendPartWithFileData:[params[@"pic"] dataUsingEncoding:NSUTF8StringEncoding] name:@"head" fileName:@"headImage" mimeType:@"image/png"];
     } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         LWLog(@"%@",task.originalRequest);
         success(responseObject);

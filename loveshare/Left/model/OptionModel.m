@@ -19,9 +19,9 @@
     md1.optionImageName = @"zx";
     md1.OptionName = @"乐享资讯";
     
-    OptionModel * md2 = [[OptionModel alloc] init];
-    md2.optionImageName = @"ls";
-    md2.OptionName = @"历史浏览";
+//    OptionModel * md2 = [[OptionModel alloc] init];
+//    md2.optionImageName = @"ls";
+//    md2.OptionName = @"历史浏览";
     
     
     OptionModel * md3 = [[OptionModel alloc] init];
@@ -60,7 +60,7 @@
     
     
     
-    NSMutableArray * option = [NSMutableArray arrayWithArray:@[md1,md2,md3,md4,md5,md6, md7, md8, md9]];
+    NSMutableArray * option = [NSMutableArray arrayWithArray:@[md1,md3,md4,md5,md6, md7, md8, md9]];
     return option;
 }
 @end

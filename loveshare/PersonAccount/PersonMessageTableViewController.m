@@ -384,7 +384,7 @@
         parame[@"loginCode"] = userInfo.loginCode;
         [MBProgressHUD showMessage:@"头像上传中..."];
         [UserLoginTool loginRequestPostWithFile:@"UploadPicture" parame:parame success:^(id json) {
-            
+            [MBProgressHUD hideHUD];
             LWLog(@"%@",json);
             if ([json[@"status"] integerValue] == 1 && [json[@"resultCode"] integerValue] == 1) {
                 
@@ -393,7 +393,7 @@
                 [UserLoginTool LoginModelWriteToShaHe:model andFileName:RegistUserDate];
                 [wself.iconView setImage:photoImage forState:UIControlStateNormal];
             }
-            [MBProgressHUD hideHUD];
+            
             
         } failure:^(NSError *error) {
             [MBProgressHUD hideHUD];
