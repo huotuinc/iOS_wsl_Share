@@ -32,7 +32,10 @@
 
 @property (weak, nonatomic) IBOutlet UIView *hidYoukeDenglu;
 
+@property (weak, nonatomic) UILabel *label;
 
+/**合作商家电话*/
+@property (weak, nonatomic) IBOutlet UILabel *cllPhoneNumber;
 
 @end
 
@@ -54,6 +57,22 @@
     if (!initmodel.GuestLogin) {
         self.hidYoukeDenglu.hidden = YES;
         self.youkeLogin.hidden = YES;
+        
+        self.cllPhoneNumber.hidden = NO;
+        
+        NSString * originStr = @"合作联系: 0571-85045633";
+        NSRange rang = NSMakeRange(6, 13);
+        NSMutableAttributedString * att = [[NSMutableAttributedString alloc] initWithString:originStr];
+        NSDictionary *attributeDict = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor redColor],NSForegroundColorAttributeName,nil];
+        [att setAttributes:attributeDict range:rang];
+        self.cllPhoneNumber.attributedText = att;
+        self.cllPhoneNumber.userInteractionEnabled = YES;
+        
+        UITapGestureRecognizer * ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(NumberCLicl)];
+        [self.cllPhoneNumber addGestureRecognizer:ges];
+        
+        
+        
     }
     
     self.youkeLogin.userInteractionEnabled = YES;
@@ -63,6 +82,18 @@
     [self.youkeLogin addGestureRecognizer:ges];
     
    
+}
+
+- (void)NumberCLicl{
+    
+    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",@"0571-85045633"];
+    //            NSLog(@"str======%@",str);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
 }
 
 

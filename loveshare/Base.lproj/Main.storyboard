@@ -2401,7 +2401,7 @@
         <image name="bb45x45" width="22" height="22"/>
         <image name="jb" width="30" height="30"/>
         <image name="left" width="40" height="40"/>
-        <image name="login_bg_414x736" width="300" height="30"/>
+        <image name="login_bg_414x736" width="24" height="24"/>
         <image name="login_bg_bottom_414x736" width="828" height="1472"/>
         <image name="login_rgister_textfield_bg" width="3" height="3"/>
         <image name="mm45x45" width="22" height="22"/>

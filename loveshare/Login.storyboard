@@ -114,15 +114,15 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohD-Ah-M9t">
-                                <rect key="frame" x="233" y="202" width="72" height="30"/>
+                                <rect key="frame" x="224" y="202" width="81" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="68" id="D4l-CN-9eB"/>
                                     <constraint firstAttribute="height" constant="30" id="N81-8g-DOC"/>
                                     <constraint firstAttribute="height" constant="32" id="R5v-qv-mM7"/>
                                     <constraint firstAttribute="width" constant="95" id="zq1-r6-rcP"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="忘记密码?">
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="设置密码?">
                                     <color key="titleColor" red="0.31106368127147765" green="0.31106368127147765" blue="0.31106368127147765" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="default">
@@ -223,6 +223,15 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CT-6t-tFx">
+                                <rect key="frame" x="139" y="416" width="42" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="LMk-q3-xAB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -230,6 +239,7 @@
                             <constraint firstAttribute="trailing" secondItem="3ns-RR-TzE" secondAttribute="trailing" id="76f-fp-5he"/>
                             <constraint firstItem="tv6-oc-xwX" firstAttribute="leading" secondItem="B9c-QI-ne3" secondAttribute="leading" id="7UM-Ij-nmj"/>
                             <constraint firstItem="ohD-Ah-M9t" firstAttribute="top" secondItem="tv6-oc-xwX" secondAttribute="top" id="7dO-VE-Vrn"/>
+                            <constraint firstItem="4CT-6t-tFx" firstAttribute="centerX" secondItem="dIH-ir-aEV" secondAttribute="centerX" id="969-kh-rzn"/>
                             <constraint firstItem="ygi-Y9-1Ds" firstAttribute="top" secondItem="MoJ-sQ-4uX" secondAttribute="bottom" id="GHT-k6-rvp"/>
                             <constraint firstAttribute="trailing" secondItem="MoJ-sQ-4uX" secondAttribute="trailing" id="IoV-ua-4cn"/>
                             <constraint firstItem="tv6-oc-xwX" firstAttribute="width" secondItem="B9c-QI-ne3" secondAttribute="width" id="SLx-5S-k1T"/>
@@ -241,6 +251,7 @@
                             <constraint firstAttribute="trailing" secondItem="B9c-QI-ne3" secondAttribute="trailing" constant="15" id="kop-3z-rva"/>
                             <constraint firstItem="3ns-RR-TzE" firstAttribute="top" secondItem="8EL-4F-W2K" secondAttribute="bottom" id="qZT-ZW-W50"/>
                             <constraint firstItem="MoJ-sQ-4uX" firstAttribute="leading" secondItem="dIH-ir-aEV" secondAttribute="leading" id="rzC-Op-MEw"/>
+                            <constraint firstItem="ygi-Y9-1Ds" firstAttribute="top" secondItem="4CT-6t-tFx" secondAttribute="bottom" constant="20" id="u1J-0K-8G1"/>
                             <constraint firstItem="tv6-oc-xwX" firstAttribute="height" secondItem="B9c-QI-ne3" secondAttribute="height" id="uGf-nO-TUH"/>
                             <constraint firstItem="ohD-Ah-M9t" firstAttribute="trailing" secondItem="B9c-QI-ne3" secondAttribute="trailing" id="v7P-gY-K09"/>
                             <constraint firstItem="B9c-QI-ne3" firstAttribute="leading" secondItem="dIH-ir-aEV" secondAttribute="leading" constant="15" id="yS8-oI-sS2"/>
@@ -256,6 +267,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="cllPhoneNumber" destination="4CT-6t-tFx" id="Oxg-1f-bLT"/>
                         <outlet property="hidYoukeDenglu" destination="Pjq-4L-hce" id="vNg-ob-jXd"/>
                         <outlet property="passwdText" destination="0In-BB-Vcb" id="fl6-df-fKk"/>
                         <outlet property="phoneNumberText" destination="6Re-nf-5fc" id="Fue-lC-5kG"/>
@@ -494,7 +506,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册表示你同意该" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tx6-xv-2Y2">
                                         <rect key="frame" x="140" y="14" width="112" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>

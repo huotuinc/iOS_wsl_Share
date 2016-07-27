@@ -259,6 +259,7 @@ static NSString *channel = @"Publish channel";
     }];
     InitModel * model = [InitModel mj_objectWithKeyValues:dict[@"resultData"]];
     
+    LWLog(@"%@",[model mj_keyValues]);
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
     NSLog(@"%@",path);
@@ -274,8 +275,6 @@ static NSString *channel = @"Publish channel";
 
         }
     }
-    BOOL iswright = [infodict writeToFile:path atomically:YES];
-    
     
     NSString *path1 = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
     NSLog(@"%@",path1);

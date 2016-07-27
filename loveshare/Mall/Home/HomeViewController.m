@@ -269,7 +269,11 @@
     if (!web.length) {
         web = ini.website;
     }
-    NSString * cc = [NSString stringWithFormat:@"%@%@%@",web,@"/bottom.aspx?customerid=",ini.customerId];
+    
+    ini = nil;
+    
+    LWLog(@"%@",ini.customerId);
+    NSString * cc = [NSString stringWithFormat:@"%@%@%@",web,@"/bottom.aspx?customerid=",ini.customerId?ini.customerId:@"3723"];
     LWLog(@"%@",cc);
     NSURLRequest * Bottomreq = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:cc]];
     self.homeBottonWebView.scalesPageToFit = YES;
